@@ -12,8 +12,14 @@ import { apiPath, networkDelay } from '../utils';
  * (ADR 0016).
  */
 export const identityHandlers = [
-  http.get(apiPath('/me'), async () => {
+  http.get(apiPath('/me'), async ({ cookies }) => {
     await networkDelay();
+    // E2E escape hatch: tests can drop the stubbed identity by setting the
+    // `elpa-e2e-identity=none` cookie before navigating. The cookie has no
+    // meaning outside MSW (dev/test only) so it never ships to production.
+    if (cookies['elpa-e2e-identity'] === 'none') {
+      return new HttpResponse(null, { status: 401 });
+    }
     return HttpResponse.json({
       id: 'admin-local',
       email: 'admin@elpa.local',
