@@ -15,6 +15,11 @@ translate and normalize it into English before adding it to the repository.
 Preserve a source's original language only when quoting it is materially
 necessary, and label the quotation accordingly.
 
+User-facing strings in `apps/web` are Romanian; the bilingual i18n
+infrastructure is preserved (typed keys, `en` locale files kept as skeletons)
+so other locales can be added without redesign. The repository-language rule
+above still applies to keys, code, and translator comments.
+
 ## Sources of truth
 
 Read these before planning a material change:
@@ -57,8 +62,8 @@ changes so other agents can bootstrap quickly.
 - Use the repository-pinned Node.js and `pnpm` versions.
 - Keep package-level scripts runnable directly; Turborepo orchestrates and
   caches tasks but must not be the only way to execute them.
-- Use TypeScript as the primary implementation language across `api`,
-  `frontend`, and `data-studio`.
+- Use TypeScript as the primary implementation language across `apps/api` and
+  `apps/web`.
 - Introduce another runtime only behind an explicit application or worker
   boundary and document the workload that justifies it.
 - Use the canonical terms from `UBIQUITOUS_LANGUAGE.md` in code and docs.
@@ -66,12 +71,15 @@ changes so other agents can bootstrap quickly.
 - Keep application boundaries explicit; do not create cross-application imports
   that bypass shared package contracts.
 - Treat the backend API as the shared system boundary for both the
-  Recommendation Product and Data Studio. Client applications must not connect
-  directly to persistence or create a second application-specific backend
-  without an accepted architectural decision.
+  Recommendation Product and Data Studio. The client must not connect
+  directly to persistence or create a client-specific backend without an
+  accepted architectural decision.
 - Treat anonymous Recommendation Product access and administrative Data Studio
-  access as distinct trust boundaries. A shared API deployment never implies
-  shared authorization.
+  access as distinct trust boundaries. Hosting both audiences in one client
+  application (ADR 0015) never implies shared authorization; the API
+  enforces authorization on every request, and the client separates the two
+  audiences by route family (`_public` versus `_studio`) and by
+  audience-scoped API namespaces.
 - During the Data Studio alpha, simulated identity and one Administrator role
   are intentional. Keep the simulation isolated behind the authentication
   boundary, visibly configured, and replaceable; do not spread fake-user logic
@@ -97,14 +105,25 @@ changes so other agents can bootstrap quickly.
 - Build the API with NestJS and the Fastify adapter. Controllers translate
   transport concerns; they do not own domain rules, persistence queries, or
   long-running data-processing workflows.
-- Treat the generated OpenAPI document as the REST contract authority. Both
-  client applications consume a generated TypeScript client package and must
-  not import DTOs or other implementation types from `apps/api`.
-- Regenerate and verify the OpenAPI document and client in the same change that
-  alters an API contract.
-- Do not assume or scaffold a client framework or component library until the
-  UI foundation decision is accepted. React, TypeScript, and Material UI are
-  candidates, not current repository standards.
+- Treat the generated OpenAPI document as the REST contract authority. The
+  client consumes a generated TypeScript client inside
+  `apps/web/src/lib/apiClient/` and must not import DTOs or other
+  implementation types from `apps/api`.
+- Expose distinct DTOs per projection in the OpenAPI contract so that the
+  published-versus-canonical boundary from ADR 0013 is encoded in generated
+  types (`PublishedOffer` versus `Offer`, etc.). Do not import admin API
+  namespaces inside `recommendation/` or under the `_public` layout; the
+  ESLint `no-restricted-imports` boundary enforces this and must not be
+  weakened without an accepted architectural decision.
+- Regenerate and verify the OpenAPI document and client in the same change
+  that alters an API contract.
+- The client UI foundation is React 19 + TypeScript strict + Material UI 9 +
+  Vite 8 with TanStack Router/Query, Zustand, React Hook Form + Zod, and
+  i18next, adopted from the `react-enterprise-boilerplate` chassis. Follow
+  the state-ownership rules described in `apps/web/docs/architecture.md`
+  (server state in TanStack Query, URL state in the router, form state in
+  React Hook Form, global client state in Zustand, ephemeral state in
+  `useState`); do not mirror server data into Zustand.
 - Use the repository script for Drizzle Studio against local development data
   only. Never expose it as an application feature or connect it casually to a
   production database.

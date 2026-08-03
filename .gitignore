@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+storybook-static/
+
+# Turborepo
+.turbo/
+
+# Test output
+coverage/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+
+# Environment (never commit real environment values)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Bundle analysis
+stats.html
+
+# Vite / TypeScript
+.vite/
+*.tsbuildinfo
+
+# Local tool state (not shared through the repo)
+.serena/
+.claude/

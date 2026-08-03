@@ -1,0 +1,41 @@
+{
+  "name": "elpa",
+  "private": true,
+  "version": "0.0.0",
+  "description": "ELPA monorepo (workspace root; runnable applications live under apps/*).",
+  "packageManager": "pnpm@10.15.0",
+  "engines": {
+    "node": ">=22.22.0",
+    "pnpm": ">=10"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:coverage": "turbo run test:coverage",
+    "test:e2e": "turbo run test:e2e",
+    "storybook": "turbo run storybook",
+    "build-storybook": "turbo run build-storybook",
+    "codegen": "turbo run codegen",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "validate": "pnpm format:check && turbo run validate",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.1",
+    "@commitlint/config-conventional": "^21.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.1.1",
+    "prettier": "^3.9.6",
+    "turbo": "^2.5.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,mjs,cjs,json,md,yml,yaml,html,css}": [
+      "prettier --write"
+    ]
+  }
+}

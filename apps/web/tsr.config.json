@@ -1,0 +1,7 @@
+{
+  "$schema": "https://raw.githubusercontent.com/TanStack/router/main/packages/router-generator/src/config.schema.json",
+  "target": "react",
+  "routesDirectory": "./src/app/router/routes",
+  "generatedRouteTree": "./src/app/router/routeTree.gen.ts",
+  "autoCodeSplitting": true
+}

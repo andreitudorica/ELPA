@@ -1,0 +1,7 @@
+{
+  "required": "Acest câmp este obligatoriu.",
+  "email": "Introdu o adresă de email validă.",
+  "minLength": "Trebuie să conțină cel puțin {{count}} caractere.",
+  "maxLength": "Trebuie să conțină cel mult {{count}} caractere.",
+  "passwordMinLength": "Parola trebuie să conțină cel puțin {{count}} caractere."
+}

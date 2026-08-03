@@ -2,15 +2,17 @@
 
 ## Product boundary
 
-ELPA initially consists of three independently runnable, testable, buildable,
-and deployable applications in one monorepo:
+ELPA consists of two independently runnable, testable, buildable, and
+deployable applications in one monorepo:
 
-- `api`: the shared backend and system boundary;
-- `frontend`: the public Recommendation Product;
-- `data-studio`: the internal research and curation product.
+- `apps/api`: the shared backend and system boundary;
+- `apps/web`: one client application hosting the anonymous Recommendation
+  Product at `/*` and the internal, Administrator-guarded Data Studio at
+  `/studio/*` (ADR 0015).
 
-Both clients consume the same API. Data Studio is the product name; “Admin
-Dashboard” describes at most one administrative interface within it.
+Both product responsibilities live in one client. Data Studio is the product
+name; "Admin Dashboard" describes at most one administrative interface within
+it.
 
 ## Application architecture
 
@@ -18,9 +20,23 @@ Dashboard” describes at most one administrative interface within it.
 - TypeScript is the primary language.
 - The monorepo uses `pnpm` workspaces and Turborepo.
 - The API uses NestJS with the Fastify adapter.
+- The client is React 19 + Vite 8 + Material UI 9, with TanStack Router,
+  TanStack Query, Zustand, React Hook Form + Zod, and i18next.
 - REST/JSON and OpenAPI define the external contract.
-- Both clients use a generated TypeScript API client and never import API
-  implementation types.
+- The client uses a generated TypeScript API client (inside `apps/web`) and
+  never imports API implementation types. Distinct DTOs per projection encode
+  the published-versus-canonical boundary from ADR 0013 in the generated
+  types.
+- Route-family separation (`_public` and `_studio`) with two `beforeLoad`
+  policies expresses the audience split at the UX layer; the API remains the
+  authoritative trust boundary.
+- Mock Service Worker (MSW) is the permanent dev, test, and Storybook mock
+  backend behind the generated client, gated so it never runs in production
+  (ADR 0016); handler types are drift-checked against the generated OpenAPI
+  types once the schema exists.
+- The frontend chassis is adopted from `react-enterprise-boilerplate`
+  alongside its quality tooling — Storybook 10, Vitest 4, Playwright with
+  axe, ESLint 10 + Prettier + Husky + Commitlint, Renovate (ADR 0017).
 
 ## Persistence and processing
 
@@ -50,7 +66,7 @@ Dashboard” describes at most one administrative interface within it.
 
 - The API is packaged as a portable container.
 - Hosted environments use managed PostgreSQL with backups.
-- Client applications are separately deployable.
+- The client application is separately deployable as a static SPA.
 - Docker Compose supplies local PostgreSQL and supporting services.
 - Kubernetes and self-managed production databases are excluded initially.
 - A single provider is preferred; AWS and Google Cloud remain under discussion,
@@ -69,14 +85,14 @@ Dashboard” describes at most one administrative interface within it.
 
 ## Explicit open decisions
 
-| Decision | Current direction | Owner or trigger |
-| --- | --- | --- |
-| Client UI foundation | React, TypeScript, and Material UI are leading candidates | Alin confirms before client scaffolding |
-| Cloud provider | AWS or Google Cloud, single-provider preference | Team discussion using cost and managed-service criteria |
-| Infrastructure as code | Not selected | Select with cloud provider |
-| OIDC provider | Not selected | Required after protected alpha |
-| Queue and workers | Not selected | Acquisition experiment measurements |
-| Recommendation ranking | Not selected | Curated evaluation dataset and product experiment |
+| Decision                           | Current direction                                                                                              | Owner or trigger                                        |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| Cloud provider                     | AWS or Google Cloud, single-provider preference                                                                | Team discussion using cost and managed-service criteria |
+| Infrastructure as code             | Not selected                                                                                                   | Select with cloud provider                              |
+| OIDC provider                      | Not selected                                                                                                   | Required after protected alpha                          |
+| Queue and workers                  | Not selected                                                                                                   | Acquisition experiment measurements                     |
+| Recommendation ranking             | Not selected                                                                                                   | Curated evaluation dataset and product experiment       |
+| Client split into two applications | Deferred; revisited if Recommendation Product develops SSR/SEO or a materially different UX profile (ADR 0015) | New ADR required to reintroduce                         |
 
 ## Implementation starting point
 

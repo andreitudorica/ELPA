@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Supersede in-flight runs for the same branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CI: 'true'
+
+jobs:
+  validate:
+    name: Validate (format, lint, typecheck, test, build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up pnpm (version from package.json "packageManager")
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node (version from .nvmrc)
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate
+        run: pnpm validate
+
+      # Codegen drift check. No-op until apps/api publishes an OpenAPI document
+      # and apps/web defines a `codegen` script; once both exist, this fails the
+      # build if the committed generated client is out of date.
+      - name: Codegen drift check
+        run: |
+          pnpm turbo run codegen
+          git diff --exit-code apps || {
+            echo "::error::Generated code is out of date. Run 'pnpm codegen' and commit."
+            exit 1
+          }
+
+  e2e:
+    name: Playwright (chromium)
+    runs-on: ubuntu-latest
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up pnpm (version from package.json "packageManager")
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node (version from .nvmrc)
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Full browser matrix runs on the nightly workflow.
+      - name: Install Playwright browsers (chromium only)
+        run: pnpm --filter @elpa/web exec playwright install --with-deps chromium
+        if: hashFiles('apps/web/playwright.config.ts') != ''
+
+      - name: Run end-to-end tests
+        run: pnpm turbo run test:e2e -- --project=chromium
+        if: hashFiles('apps/web/playwright.config.ts') != ''
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            apps/web/playwright-report/
+            apps/web/test-results/
+          retention-days: 7
