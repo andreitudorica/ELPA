@@ -15,7 +15,7 @@ export function NotFoundPage() {
         title={t('feedback.notFound.title')}
         description={t('feedback.notFound.description')}
         action={
-          <ButtonLink to="/dashboard" variant="contained">
+          <ButtonLink to="/" variant="contained">
             {t('feedback.notFound.action')}
           </ButtonLink>
         }

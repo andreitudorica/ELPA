@@ -1,5 +1,5 @@
-import { redirect, type ParsedLocation } from '@tanstack/react-router';
 import type { QueryClient } from '@tanstack/react-query';
+import { redirect, type ParsedLocation } from '@tanstack/react-router';
 
 import { routePaths } from '@/app/config/routes';
 

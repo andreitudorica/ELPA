@@ -23,7 +23,7 @@ function StudioChrome() {
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Box component="header" sx={{ px: 3, py: 2, borderBottom: 1, borderColor: 'divider' }}>
-        <Stack direction="row" spacing={1} alignItems="center">
+        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
           <Typography variant="subtitle1" component="p" sx={{ fontWeight: 700 }}>
             {appConfig.name} · Data Studio
           </Typography>

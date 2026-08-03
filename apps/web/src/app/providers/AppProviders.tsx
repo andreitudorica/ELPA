@@ -2,8 +2,8 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useEffect, type ReactNode } from 'react';
 
-import { AppSnackbar } from '@/components/feedback/AppSnackbar';
 import { useLanguage } from '@/app/store/preferencesStore';
+import { AppSnackbar } from '@/components/feedback/AppSnackbar';
 import { i18n } from '@/i18n';
 import { env } from '@/lib/env';
 
