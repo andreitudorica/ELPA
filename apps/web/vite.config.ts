@@ -33,11 +33,11 @@ export default defineConfig(({ mode }) => ({
     },
   },
   server: {
-    port: 5173,
+    port: 5273,
     strictPort: true,
   },
   preview: {
-    port: 4173,
+    port: 4273,
     strictPort: true,
   },
   build: {

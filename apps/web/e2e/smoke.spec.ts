@@ -21,16 +21,16 @@ test.describe('smoke', () => {
   });
 
   test('Data Studio without identity redirects to /studio/unauthorized', async ({ page }) => {
-    // Dev-mode MSW stubs an Administrator for `/api/me` by default. The mock
-    // handler reads this window flag to drop the identity so we can assert the
-    // unauthorized redirect. `addInitScript` runs before any page script, so
-    // the flag is set by the time MSW handlers execute (they run in the page
-    // context via BroadcastChannel, so `window` is reachable). Playwright's
-    // `page.route` cannot intercept because MSW handles the fetch inside the
-    // page's service worker.
+    // Bypass the MSW service worker for this test: the SW is racy on a fresh
+    // browser context (it may not control the page in time to intercept the
+    // first `/api/me`), so we disable it and stub the endpoint at Playwright's
+    // network layer instead. `addInitScript` runs before any page script, so
+    // `main.tsx` sees the flag and skips `worker.start()`.
     await page.addInitScript(() => {
-      (window as unknown as { __ELPA_E2E_NO_IDENTITY__: boolean }).__ELPA_E2E_NO_IDENTITY__ = true;
+      (window as unknown as { __ELPA_E2E_DISABLE_MOCKS__: boolean }).__ELPA_E2E_DISABLE_MOCKS__ =
+        true;
     });
+    await page.route('**/api/me', (route) => route.fulfill({ status: 401 }));
     await page.goto('/studio/');
     await expect(page).toHaveURL(/\/studio\/unauthorized/);
     await expect(page.getByRole('heading', { name: 'Unauthorized' })).toBeVisible();

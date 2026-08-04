@@ -10,7 +10,7 @@ export default defineConfig({
   ...(isCI ? { workers: 2 } : {}),
   reporter: isCI ? [['html', { open: 'never' }], ['github']] : [['html', { open: 'never' }]],
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:5273',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: isCI ? 'retain-on-failure' : 'off',
@@ -28,7 +28,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'pnpm dev',
-    url: 'http://localhost:5173',
+    url: 'http://localhost:5273',
     reuseExistingServer: !isCI,
     timeout: 120_000,
   },

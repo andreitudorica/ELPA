@@ -14,18 +14,6 @@ import { apiPath, networkDelay } from '../utils';
 export const identityHandlers = [
   http.get(apiPath('/me'), async () => {
     await networkDelay();
-    // E2E escape hatch: tests can drop the stubbed identity by setting
-    // `window.__ELPA_E2E_NO_IDENTITY__ = true` via Playwright's
-    // `addInitScript` before navigating. Handlers run in the page context
-    // (MSW broadcasts SW intercepts to the client), so `window` is reachable.
-    // The flag is dev/test only and never ships to production.
-    if (
-      typeof window !== 'undefined' &&
-      (window as unknown as { __ELPA_E2E_NO_IDENTITY__?: boolean }).__ELPA_E2E_NO_IDENTITY__ ===
-        true
-    ) {
-      return new HttpResponse(null, { status: 401 });
-    }
     return HttpResponse.json({
       id: 'admin-local',
       email: 'admin@elpa.local',

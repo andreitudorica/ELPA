@@ -35,6 +35,17 @@ async function enableMocking(): Promise<void> {
     logger.warn('MSW requested in production build — refusing to start worker.');
     return;
   }
+  // E2E escape hatch: tests that need to control `/api/*` responses at the
+  // Playwright layer (via `page.route`) set this flag with `addInitScript`
+  // before navigating so the MSW service worker never registers and cannot
+  // race the first request. Dev/test-only; production build ignores it.
+  if (
+    typeof window !== 'undefined' &&
+    (window as unknown as { __ELPA_E2E_DISABLE_MOCKS__?: boolean }).__ELPA_E2E_DISABLE_MOCKS__ ===
+      true
+  ) {
+    return;
+  }
   const { worker } = await import('@/mocks/browser');
   await worker.start({ onUnhandledRequest: 'bypass' });
 }
