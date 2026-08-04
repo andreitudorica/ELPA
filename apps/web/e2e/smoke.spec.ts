@@ -20,17 +20,17 @@ test.describe('smoke', () => {
     expect(serious.map((violation) => `${violation.id}: ${violation.help}`)).toEqual([]);
   });
 
-  test('Data Studio without identity redirects to /studio/unauthorized', async ({
-    page,
-    context,
-  }) => {
-    // Dev-mode MSW stubs an Administrator for `/api/me` by default; the mock
-    // handler honours this cookie to drop the identity so we can assert the
-    // unauthorized redirect. Playwright's `page.route` cannot intercept because
-    // MSW handles the fetch inside the page's service worker.
-    await context.addCookies([
-      { name: 'elpa-e2e-identity', value: 'none', url: 'http://localhost:5173' },
-    ]);
+  test('Data Studio without identity redirects to /studio/unauthorized', async ({ page }) => {
+    // Dev-mode MSW stubs an Administrator for `/api/me` by default. The mock
+    // handler reads this window flag to drop the identity so we can assert the
+    // unauthorized redirect. `addInitScript` runs before any page script, so
+    // the flag is set by the time MSW handlers execute (they run in the page
+    // context via BroadcastChannel, so `window` is reachable). Playwright's
+    // `page.route` cannot intercept because MSW handles the fetch inside the
+    // page's service worker.
+    await page.addInitScript(() => {
+      (window as unknown as { __ELPA_E2E_NO_IDENTITY__: boolean }).__ELPA_E2E_NO_IDENTITY__ = true;
+    });
     await page.goto('/studio/');
     await expect(page).toHaveURL(/\/studio\/unauthorized/);
     await expect(page.getByRole('heading', { name: 'Unauthorized' })).toBeVisible();
