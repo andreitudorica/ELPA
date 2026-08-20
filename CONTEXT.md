@@ -3,6 +3,32 @@
 ELPA structures evidence about event providers and their offers so internal
 operators can approve reliable data for later recommendation to users.
 
+## Ambition and scope
+
+ELPA is being built to become the primary interface for organising an event
+end-to-end. The **Recommendation Product** serves both individual planners
+(B2C) and business clients (B2B — agencies, corporate teams, associations,
+public-sector organisers) from the same catalog. The catalog is intended to
+cover the full supplier stack of an event: from the venue and **Operating
+Location** down to the smallest supporting supplier (rentals, staffing,
+transport, decor, entertainment, catering add-ons, long-tail specialists).
+
+The strategic moat is a large, continuously refreshed database of
+**Providers** and **Offers** built through focused **Research Campaigns**,
+manual curation, and — as sources prove themselves — automated **Acquisition
+Runs** at scale. Regardless of how a **Claim** is acquired, the
+Recommendation Product only ever surfaces **Verified** and **Published**
+data, so scale never bypasses trust.
+
+## Initial market
+
+The first launch market is **Romania**. Romanian is the primary user-facing
+language, and initial **Research Campaigns**, category coverage, and source
+selection target Romania. The domain model, i18n infrastructure, and
+persistence design remain locale-generic so a second market can be opened
+without domain refactoring; the decision to open one will be recorded as an
+ADR.
+
 ## Language
 
 **Data Studio**:
@@ -23,6 +49,17 @@ _Avoid_: User, Operator during alpha
 A person who uses the Recommendation Product without requiring an account in
 the initial release.
 _Avoid_: Administrator, customer until a commercial relationship exists
+
+**Event Brief**:
+The structured description a **User** builds through the Recommendation
+Product's stepper: event type, guest counts (total and overnight), date
+window, region, vibe, must-haves, and budget. An Event Brief lives on the
+User's session and is never an attribute of an **Offer**. The recommendation
+engine and AI helper reason over `Event Brief × Offer` to rank
+recommendations and to surface unmet needs (e.g., "outdoor event, off-grid
+property — have you considered a backup generator?").
+_Avoid_: Event (unqualified — the User's plan is the Event Brief; the
+gathering itself has no domain representation), Search query, Filters
 
 **Research Campaign**:
 A bounded research effort defined by a geographic area, event need, category,
@@ -62,6 +99,17 @@ _Avoid_: Provider, venue
 A concrete service, product, package, rental, or bookable place that can be
 evaluated for recommendation.
 _Avoid_: Provider, listing
+
+**Group Rental Property**:
+The first **Category** targeted by the POC vertical slice — an **Offer** in
+which a **User** rents a full property (no shared spaces with strangers, no
+live-in staff) for a group stay, typically overnight, suitable for events
+such as birthdays, baby showers, weekend getaways, or gatherings with
+barbecue. Property type (`cabana`, `casa_de_vacanta`, `vila`, `complex`,
+`cottage`) is an attribute of the Offer, not a separate Category. Public
+Romanian label: _Cabane și case de închiriat_.
+_Avoid_: Cabin, House, Cottage as separate Categories; Pensiune, Hotel,
+short-term city Apartment (out of scope for this Category)
 
 **Verification**:
 A human decision about whether collected claims are sufficiently supported for

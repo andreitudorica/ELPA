@@ -4,6 +4,24 @@ This glossary combines the product context document with decisions confirmed
 during the domain interview. It will evolve as remaining ambiguities are
 resolved.
 
+## Scope and market
+
+- **Audiences**: the **Recommendation Product** serves both individual
+  planners (B2C) and business clients (B2B — agencies, corporate teams,
+  associations, public-sector organisers). Both are addressed as **Users**
+  in domain terms until a commercial relationship exists; segment-specific
+  behaviour, when needed, is expressed as an attribute of the request, not a
+  new actor.
+- **Coverage ambition**: the catalog is intended to cover the full supplier
+  stack of an event — from the venue and **Operating Location** down to the
+  smallest supporting supplier and service. **Providers** therefore range
+  from large operators to sole traders, and **Offers** range from full
+  packages down to single-line services and rentals.
+- **Initial market**: Romania. Romanian is the primary user-facing language
+  and the initial **Research Campaigns**, source selection, and category
+  coverage target Romania. The domain terms in this document are
+  locale-generic; market expansion is a future ADR-tracked decision.
+
 ## Research and curation
 
 | Term                  | Definition                                                                                                                | Aliases to avoid                                   |
@@ -26,6 +44,19 @@ resolved.
 | **Offer**              | A concrete service, product, package, rental, or bookable place that can be evaluated for recommendation. | Provider, listing                    |
 | **Category**           | A controlled classification used to group comparable **Offers**.                                          | Tag, provider type                   |
 
+### First vertical slice categories
+
+| Term                      | Definition                                                                                                                                                                                                                                                                                               | Aliases to avoid                                                                                                                                |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Group Rental Property** | A **Category** grouping **Offers** where a **User** rents a full property — no shared spaces with strangers, no live-in staff — for group stays, typically overnight, with attributes covering capacity, amenities, and event-hosting suitability. Public Romanian label: _Cabane și case de închiriat_. | Cabin, House, Cottage (these are `property_type` values, not separate Categories); Pensiune, Hotel, Apartament (out of scope for this Category) |
+
+**Scope notes for Group Rental Property:**
+
+- **Provider** is the entity a **User** transacts with — the owner directly, or a management firm when one intermediates bookings. Aggregator platforms (Booking, Airbnb, Travelminit, etc.) are never **Providers**; they are **Evidence** sources.
+- **Offer** is one independently-bookable unit. A complex whose cabins can be rented individually _and_ as a whole becomes multiple **Offers** (one per cabin plus one for the whole complex).
+- **Operating Location** is **not used** for this Category. The property address and geographic attributes live on the **Offer** itself. Operating Location remains available for future Categories where the Provider coordinates from a distinct physical place (kitchens, warehouses, dispatch offices).
+- The same physical property listed on Booking + Airbnb + direct owner site produces multiple **Candidates** with source-attributed **Claims**; duplicate resolution collapses them to one canonical **Provider** + **Offer** while preserving all **Evidence** sources.
+
 ## Products and actors
 
 | Term                       | Definition                                                                                                                    | Aliases to avoid                                               |
@@ -34,6 +65,25 @@ resolved.
 | **Recommendation Product** | The user-facing product that turns an event need into explainable recommendations based on approved offers.                   | ELPA MVP as a permanent name                                   |
 | **Administrator**          | An internal team member with full Data Studio capabilities during the alpha.                                                  | User, Operator during alpha                                    |
 | **User**                   | A person seeking providers and offers through the Recommendation Product without requiring an account in the initial release. | Administrator, customer until a commercial relationship exists |
+
+## Recommendation
+
+| Term            | Definition                                                                                                                                                                                                                                                                                                                                                | Aliases to avoid                                                                                                                      |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| **Event Brief** | The structured description a **User** builds through the Recommendation Product's stepper: event type, guest counts, dates, region, vibe, must-haves, and budget. It lives on the User's session and is never an attribute of an **Offer**. The recommendation engine and AI helper reason over `Event Brief × Offer` to rank and to surface unmet needs. | Event (unqualified — the gathering itself has no domain representation); Search query; Filters (the Event Brief is a richer superset) |
+
+### Ontology layering
+
+- **Layer 1 — common Offer columns** apply to every **Offer** regardless of **Category**: name, description, Provider, geographic location, media, primary contact channel, external URLs, pricing summary, publication metadata. These are explicit relational columns.
+- **Layer 2 — Category-specific Offer attributes** use a versioned schema definition plus JSONB values (per `docs/architecture/data-model.md`). For **Group Rental Property** they group into: property shape, event-hosting policy, event-driving amenities, practical constraints, stay rules, pricing (structured), and setting.
+- **Layer 3 — Event Brief** is not on the Offer at all. It captures the User's context and is mapped to filters and scores over Layers 1 + 2 by the recommendation engine.
+- When a second Category is added, any Layer-2 attribute that turns out to be shared with ≥50 % of Categories is promoted to Layer 1. Layer 2 is deliberately schema-flexible but never schema-less.
+
+### Stepper structure
+
+- The stepper that fills the **Event Brief** has a **universal head** (event type, guests, dates, region, budget) and one **Category-specific tail** per Category the User's plan touches. Tails render only when their Category is relevant to the plan.
+- The POC ships the universal head plus the **Group Rental Property** tail (setting, must-haves, nice-to-haves, freeform context). Only `event_type` and `guest_count_total` are required; everything else is skippable.
+- Contextual prompts inside Steps 1–8 ("have you thought about a backup generator?") are **rule-based** functions of the Event Brief so far — deterministic and testable. The LLM enters only at the final freeform-context step, to produce up to three clarifying questions before recommendations render.
 
 ## Relationships
 

@@ -62,6 +62,74 @@ Re-fetch selected evidence and detect meaningful changes only after publication
 and freshness policies exist. A detected change creates new Claims and a
 reverification task; it never overwrites canonical data.
 
+## Extractor output contract
+
+Every acquisition extractor — deterministic parser or LLM-driven agent —
+returns the same envelope. The shape isolates provenance so extractor
+versions can evolve independently of the schema and so a broken parse never
+corrupts the source string.
+
+```jsonc
+{
+  "candidate": {
+    "kind": "group_rental_property",           // Category the Candidate targets
+    "source_url": "...",
+    "artifact_ref": "...",                     // pointer to preserved raw evidence
+    "fetched_at": "...",
+    "acquisition_run_id": "...",
+    "extractor_version": "llm_gpt5_v0.1"       // versioned per extractor
+  },
+  "provider_hint": {                           // never a resolved Provider; ADR 0013 invariant
+    "name": "...",
+    "contact_hints": { ... },
+    "provider_kind_hint": "individual" | "sole_trader_pfa" | "company_srl" | "..."
+  },
+  "claims": [
+    {
+      "target": "offer.<field>",               // one Claim per target field
+      "value": <field-typed>,
+      "evidence": {                            // discriminated union
+        "type": "text_span"       ,            // + quote + location tag
+             | "image_annotation" ,            // + image ref + caption/region
+             | "structured_field" ,            // + JSON-LD / schema.org pointer
+             | "inferred"         ,            // + rationale + policy_id
+        ...
+      },
+      "extraction_method": "llm_gpt5_v0.1" | "regex_price_v1" | "rule_source_policy_v1" | "...",
+      "confidence": 0.0..1.0                   // always required; float, not enum
+    }
+    // ... one Claim per target field; multiple Claims MAY target the same
+    // field if extractors disagree — verification picks the canonical value
+  ]
+}
+```
+
+Rules that follow from this shape:
+
+- **One Claim per target field, one Evidence per Claim.** Per-field
+  confidence and per-field freshness are already required (see the
+  Group Rental Property tiers in `data-studio-alpha.md`); atomic Claims are
+  what make them native rather than bolt-on.
+- **Evidence is a discriminated union**, not a free blob. Verification UIs
+  render each variant differently: `text_span` shows the verbatim quote;
+  `inferred` shows the rationale and cited policy so the Administrator sees
+  _why_ the value was proposed.
+- **`inferred` Claims are Claims proper.** A rule such as "silent listing
+  on a direct-owner site → `parties_allowed = by_arrangement`" produces a
+  low-confidence `inferred` Claim citing a versioned `policy_id`. It is
+  still verified, still auditable, still overridable.
+- **The extractor never returns canonical values.** It returns Claims. The
+  Verification Decision selects canonical values, per ADR 0013.
+- **Multiple extractors may target the same field.** Two Claims for the
+  same target are the normal shape whenever a freeform Claim
+  (`pricing_summary`) is accompanied by a parsed structured Claim
+  (`price_low`, `pricing_currency`) — the freeform Claim survives even
+  when the parser is wrong.
+- **The contract is TypeScript-first.** A Zod schema at the boundary is
+  the source of truth; the API DTOs (NestJS) and the generated client
+  types (ADR 0012) are derived from it. Malformed extractor outputs are
+  rejected before they touch the database.
+
 ## Technical boundary
 
 Each run has a durable record in PostgreSQL with:

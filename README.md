@@ -8,6 +8,46 @@ The project is in its definition phase. The current priority is the internal
 data-curation product, **ELPA Data Studio**. The public-facing Recommendation
 Product will consume approved data only.
 
+## Long-term vision
+
+ELPA aims to become the default place to organise an event end-to-end — for
+both individuals planning a personal occasion and businesses (agencies,
+corporate teams, associations) sourcing an event at any scale. A user or
+client describes what they want, and ELPA returns explainable, actionable
+recommendations that cover the full stack of an event: from the venue and
+Operating Location down to the smallest supporting supplier and service.
+
+The intended strategic moat is data breadth and quality. ELPA will build a
+large, continuously refreshed catalog by combining focused **Research
+Campaigns**, manual curation, and — as sources prove themselves — automated
+web acquisition. Every recommendation surfaced to Users remains grounded in
+**Verified**, **Published** data with traceable **Claims** and **Evidence**,
+so scale never comes at the cost of trust.
+
+The end-state is the largest centralized interface between suppliers of any
+kind — venues, caterers, entertainment, rentals, transport, staffing,
+photography, decor, and long-tail specialists — and the clients who need
+them, whether B2C or B2B.
+
+## First market
+
+The first launch market is **Romania**. Concretely this means:
+
+- **Language**: Romanian is the primary user-facing language across the
+  Recommendation Product and Data Studio. The bilingual i18n infrastructure
+  (`ro` default, `en` skeleton) is retained so later locales can be added
+  without a rewrite.
+- **Geography**: initial **Research Campaigns**, category coverage, source
+  selection, and evaluation datasets target Romania. Providers, Operating
+  Locations, and Offers outside Romania are out of scope until a second
+  market is explicitly opened.
+- **Domain rules**: currency, address formats, timezone, legal defaults, and
+  category conventions are Romania-first, but modelled generically so a
+  second market does not require domain refactoring.
+
+Expansion to additional markets is a future decision and will be recorded as
+an ADR at the point it is taken.
+
 ## Repository status
 
 Definition-phase repository with the frontend chassis in place. The
