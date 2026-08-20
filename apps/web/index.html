@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ELPA — Event Logistics and Planning App" />
+    <meta name="color-scheme" content="light dark" />
+    <title>ELPA</title>
+    <script>
+      // Apply the persisted color scheme before first paint to avoid a theme flash.
+      // Reads the Zustand "preferences" persist entry; falls back to the OS preference.
+      (function () {
+        try {
+          var stored = localStorage.getItem('app.preferences');
+          var mode = stored ? JSON.parse(stored).state.themeMode : 'system';
+          var resolved =
+            mode === 'system'
+              ? window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+              : mode;
+          document.documentElement.setAttribute('data-color-scheme', resolved);
+        } catch (_e) {
+          /* ignore — defaults apply */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

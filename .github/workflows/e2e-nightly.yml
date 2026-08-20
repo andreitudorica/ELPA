@@ -1,0 +1,50 @@
+name: E2E (full matrix, nightly)
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+env:
+  CI: 'true'
+
+jobs:
+  e2e:
+    name: Playwright (chromium, firefox, webkit, mobile)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up pnpm (version from package.json "packageManager")
+        uses: pnpm/action-setup@v5
+
+      - name: Set up Node (version from .nvmrc, pinned to Node 22)
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm --filter @elpa/web exec playwright install --with-deps chromium firefox webkit
+        if: hashFiles('apps/web/playwright.config.ts') != ''
+
+      - name: Run end-to-end tests
+        run: pnpm turbo run test:e2e
+        if: hashFiles('apps/web/playwright.config.ts') != ''
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: playwright-report-nightly
+          path: |
+            apps/web/playwright-report/
+            apps/web/test-results/
+          retention-days: 14

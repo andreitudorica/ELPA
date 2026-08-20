@@ -1,0 +1,34 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommits", "group:monorepos"],
+  "rangeStrategy": "bump",
+  "minimumReleaseAge": "3 days",
+  "packageRules": [
+    {
+      "description": "Group non-major dev tooling updates into one PR",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "dev tooling (non-major)"
+    },
+    {
+      "description": "Material UI packages move together",
+      "matchPackageNames": ["@mui/**"],
+      "groupName": "Material UI"
+    },
+    {
+      "description": "TanStack packages move together",
+      "matchPackageNames": ["@tanstack/**"],
+      "groupName": "TanStack"
+    },
+    {
+      "description": "ESLint packages move together",
+      "matchPackageNames": ["eslint", "@eslint/**", "eslint-**", "typescript-eslint"],
+      "groupName": "ESLint"
+    },
+    {
+      "description": "Storybook packages move together",
+      "matchPackageNames": ["storybook", "@storybook/**"],
+      "groupName": "Storybook"
+    }
+  ]
+}

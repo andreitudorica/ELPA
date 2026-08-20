@@ -1,0 +1,90 @@
+{
+  "appName": "Acme Console",
+  "skipToContent": "Sari la conținutul principal",
+  "actions": {
+    "add": "Adaugă",
+    "back": "Înapoi",
+    "cancel": "Anulează",
+    "clear": "Golește",
+    "close": "Închide",
+    "confirm": "Confirmă",
+    "create": "Creează",
+    "delete": "Șterge",
+    "edit": "Editează",
+    "logout": "Deconectare",
+    "retry": "Încearcă din nou",
+    "save": "Salvează",
+    "search": "Caută"
+  },
+  "navigation": {
+    "primary": "Navigație principală",
+    "dashboard": "Panou de bord",
+    "users": "Utilizatori",
+    "settings": "Setări",
+    "showcase": "Componente",
+    "openMenu": "Deschide meniul de navigație",
+    "collapseSidebar": "Restrânge bara laterală",
+    "expandSidebar": "Extinde bara laterală",
+    "breadcrumbs": "Traseu de navigare"
+  },
+  "userMenu": {
+    "label": "Meniu cont",
+    "settings": "Setări",
+    "logout": "Deconectare"
+  },
+  "theme": {
+    "label": "Temă",
+    "light": "Luminoasă",
+    "dark": "Întunecată",
+    "system": "Sistem"
+  },
+  "language": {
+    "label": "Limbă",
+    "en": "English",
+    "ro": "Română"
+  },
+  "feedback": {
+    "loading": "Se încarcă…",
+    "empty": {
+      "title": "Nimic aici deocamdată",
+      "description": "Nu există date de afișat."
+    },
+    "error": {
+      "title": "A apărut o problemă",
+      "description": "Datele nu au putut fi încărcate. Încearcă din nou."
+    },
+    "notFound": {
+      "title": "Pagina nu a fost găsită",
+      "description": "Pagina căutată nu există sau a fost mutată.",
+      "action": "Mergi la panoul de bord"
+    },
+    "unauthorized": {
+      "title": "Acces refuzat",
+      "description": "Nu ai permisiunea de a vedea această pagină.",
+      "action": "Mergi la panoul de bord"
+    },
+    "appError": {
+      "title": "Eroare de aplicație",
+      "description": "A apărut o eroare neașteptată. Reîncărcarea paginii poate ajuta.",
+      "reload": "Reîncarcă pagina"
+    }
+  },
+  "table": {
+    "rowsPerPage": "Rânduri pe pagină",
+    "displayedRows": "{{from}}–{{to}} din {{count}}",
+    "selectedCount": "{{count}} selectate",
+    "selectAll": "Selectează toate rândurile",
+    "selectRow": "Selectează rândul",
+    "sortedAscending": "sortat crescător",
+    "sortedDescending": "sortat descrescător"
+  },
+  "dirtyForm": {
+    "title": "Renunți la modificările nesalvate?",
+    "description": "Ai modificări nesalvate. Dacă părăsești pagina, acestea se vor pierde.",
+    "confirm": "Renunță la modificări",
+    "cancel": "Continuă editarea"
+  },
+  "confirmDialog": {
+    "defaultTitle": "Ești sigur?"
+  }
+}

@@ -10,36 +10,39 @@ Product will consume approved data only.
 
 ## Repository status
 
-This is a greenfield repository. Architecture, infrastructure, and the
-technology stack will be established through documented decisions before the
-initial implementation.
+Definition-phase repository with the frontend chassis in place. The
+monorepo uses `pnpm` workspaces and Turborepo:
 
-ELPA uses a monorepo with three separable applications:
+- `apps/api`: the shared REST API, a single-deployment modular monolith
+  (not yet scaffolded — its own decision session).
+- `apps/web`: **scaffolded from `react-enterprise-boilerplate` and adapted
+  to ELPA's ADR set** (ADR 0015/0016/0017). Hosts both the anonymous
+  Recommendation Product (`/*`) and Administrator-guarded ELPA Data Studio
+  (`/studio/*`), separated by route family and by two `beforeLoad` policies.
+  See [`apps/web/README.md`](./apps/web/README.md).
 
-- the shared API;
-- the Recommendation Product application, named `frontend`, which consumes the
-  shared API;
-- ELPA Data Studio, which consumes the same shared API.
+Each application remains independently runnable, testable, buildable, and
+deployable. Shared code belongs in explicitly owned packages rather than
+direct application-to-application imports. The single-client posture is
+recorded in ADR 0015 and is revisited only if the Recommendation Product
+develops SSR, SEO, or a materially different UX profile.
 
-The shared API is a single-deployment modular monolith. Each application must
-remain independently runnable, testable, buildable, and deployable. Shared code
-belongs in explicitly owned packages rather than direct application-to-
-application imports.
-
-TypeScript is the primary implementation language across all three
-applications. Additional runtimes require a workload-specific justification.
-The workspace uses `pnpm` workspaces with Turborepo for task orchestration and
-caching.
+TypeScript is the primary implementation language across both applications.
+Additional runtimes require a workload-specific justification. The workspace
+uses `pnpm` workspaces with Turborepo for task orchestration and caching.
 PostgreSQL is the authoritative operational database and system of record.
 Drizzle ORM is the primary persistence toolkit, with Drizzle Studio available
 through the repository's development scripts for local database inspection.
-The shared API uses NestJS with the Fastify adapter.
-It exposes REST/JSON contracts through OpenAPI, with generated TypeScript
-clients for both client applications.
+The shared API uses NestJS with the Fastify adapter. It exposes REST/JSON
+contracts through OpenAPI, with a generated TypeScript client that lives
+inside `apps/web`.
 
-The client UI foundation is intentionally undecided. React, TypeScript, and
-Material UI are the leading candidates, with the final selection delegated to
-the primary client developer.
+The client UI foundation is React 19 + TypeScript (strict) + Material UI 9 +
+Vite 8, adopted from the `react-enterprise-boilerplate` chassis. Server state
+is TanStack Query 5; routing is TanStack Router (file-based, type-safe);
+client state is Zustand 5; forms are React Hook Form 7 with Zod 4 schemas;
+i18n is i18next. The user-facing language is Romanian; the bilingual
+infrastructure is preserved for future locales.
 
 Initial Recommendation Product flows are anonymous. The Data Studio alpha has a
 single Administrator role and uses simulated identity; real authentication is
@@ -47,9 +50,10 @@ deferred until after the alpha. The target authentication design delegates
 identity to an OpenID Connect provider while ELPA owns invitations, roles,
 authorization, and audit data.
 
-Initial infrastructure uses a containerized API, managed PostgreSQL, separately
-deployed clients, and Docker Compose for local dependencies. Kubernetes and
-self-managed production databases are intentionally out of scope.
+Initial infrastructure uses a containerized API, managed PostgreSQL, a
+separately deployed static client, and Docker Compose for local dependencies.
+Kubernetes and self-managed production databases are intentionally out of
+scope.
 
 ## Documentation
 

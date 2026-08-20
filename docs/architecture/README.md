@@ -6,19 +6,19 @@ from meaningful trade-offs will move into concise ADRs under `docs/adr/`.
 
 ## Confirmed constraints
 
-- The Recommendation Product frontend and Data Studio are separate client
-  applications.
-- The Recommendation Product application is named `frontend` in the repository;
-  “Recommendation Product” remains its domain responsibility.
-- Both clients consume the same backend API as their system boundary.
-- The shared API is one backend application and one deployment, structured as a
-  modular monolith.
-- The three applications live in one monorepo and remain independently
-  runnable, testable, buildable, and deployable.
+- The Recommendation Product and Data Studio share one client application,
+  `apps/web`, split by route family: `/*` for anonymous public routes and
+  `/studio/*` for Administrator-guarded routes. Two pathless layouts encode
+  the two `beforeLoad` policies (ADR 0015).
+- The client consumes the shared backend API as its system boundary; trust
+  boundaries are enforced by the API, not by the client (ADR 0008, ADR 0009).
+- The shared API is one backend application and one deployment, structured as
+  a modular monolith.
+- The two applications (`apps/api`, `apps/web`) live in one monorepo and
+  remain independently runnable, testable, buildable, and deployable.
 - Applications do not import from one another; reusable contracts and tooling
   belong in explicitly owned shared packages.
-- TypeScript is the primary implementation language across all three
-  applications.
+- TypeScript is the primary implementation language across both applications.
 - A different runtime, such as Python for extraction workloads, may be added
   only behind an explicit boundary when concrete requirements justify it.
 - The monorepo uses `pnpm` workspaces and Turborepo. Package-level tasks remain
@@ -39,9 +39,15 @@ from meaningful trade-offs will move into concise ADRs under `docs/adr/`.
   modular-monolith boundaries; transport controllers remain thin, and data
   processing is implemented in application or domain services behind those
   boundaries.
-- The shared API exposes REST/JSON contracts described by OpenAPI. Both client
-  applications consume a generated TypeScript client package rather than
-  backend implementation types or handwritten request shapes.
+- The shared API exposes REST/JSON contracts described by OpenAPI. The client
+  application consumes a generated TypeScript client that lives inside
+  `apps/web/src/lib/apiClient/` rather than backend implementation types or
+  handwritten request shapes (ADR 0012 as revised by ADR 0015). The API
+  exposes distinct DTOs per projection so that the published-versus-canonical
+  boundary from ADR 0013 is preserved in the generated types
+  (`PublishedOffer` versus `Offer`, etc.), and an ESLint
+  `no-restricted-imports` boundary prevents admin API namespaces from being
+  imported inside `recommendation/` or under the `_public` layout.
 - Initial Recommendation Product workflows permit anonymous Users. The Data
   Studio alpha has one full-access Administrator role and simulated identity;
   real authentication is deferred until after alpha.
@@ -54,7 +60,7 @@ from meaningful trade-offs will move into concise ADRs under `docs/adr/`.
   infrastructure-protected private alpha environment. The API must fail closed
   if simulation is enabled for a public production deployment.
 - Initial hosting uses a containerized API, managed PostgreSQL with automated
-  backups, and separately deployed client applications on managed platforms.
+  backups, and a separately deployed static client on a managed platform.
 - Local dependencies run through Docker Compose. Kubernetes and self-managed
   production databases are excluded until measured requirements justify their
   operational cost.
@@ -70,10 +76,14 @@ from meaningful trade-offs will move into concise ADRs under `docs/adr/`.
   data with acceptable maintenance cost.
 
 The Recommendation Product uses published data and user-facing recommendation
-workflows. Data Studio additionally uses research, claims, verification,
-publication, and administrative workflows. Internal module boundaries must
-remain explicit enough to permit later extraction if operational needs justify
-it, but independently deployed services are not part of the initial design.
+workflows; those surfaces live under the `_public` route family and consume
+only published projections. Data Studio additionally uses research, claims,
+verification, publication, and administrative workflows; those surfaces live
+under the `_studio` route family and consume canonical, candidate, claim, and
+evidence data. Internal module boundaries must remain explicit enough to
+permit later extraction of a separate client application or backend service if
+operational needs justify it, but independently deployed clients and services
+are not part of the initial design.
 
 Detailed views:
 
@@ -89,26 +99,28 @@ The accepted top-level application structure is:
 ```text
 apps/
   api/
-  frontend/
-  data-studio/
-packages/
-  api-client/
+  web/
+    src/
+      _public/         route family: anonymous Recommendation Product
+      _studio/         route family: Administrator-guarded Data Studio
+      features/
+        recommendation/  public: search, results, explanation surfaces
+        access/          admin: session bootstrap; post-alpha: invitations, roles
+        research/        admin: Campaigns, Acquisition Runs, Candidates, Evidence, proposed Claims
+        catalog/         admin: Providers, Operating Locations, Offers, Categories
+        curation/        admin: Verification Decisions, canonical value selection, Publication, Reverification
+        audit/           admin: actor-attributed history
+        settings/        admin: preferences (theme, language)
+      lib/
+        apiClient/       generated from the API's OpenAPI document
 ```
 
-The concrete shared packages and their ownership boundaries remain to be
-designed. The identity provider, post-alpha authorization granularity,
-observability, concrete hosting provider, and infrastructure-as-code tooling
-remain to be decided.
+Shared packages are not scaffolded yet. Extraction of reusable pieces into
+`packages/*` is deferred until a second consumer justifies it. The identity
+provider, post-alpha authorization granularity, observability, concrete
+hosting provider, and infrastructure-as-code tooling remain to be decided.
 
 ## Open decisions
-
-### Client UI foundation
-
-Alin, as the developer expected to work most closely with the client
-applications, owns the final recommendation for their UI foundation. React with
-TypeScript and Material UI is the leading candidate, but it is not accepted yet.
-No agent should scaffold either client application around that candidate until
-the decision is confirmed.
 
 ### Cloud provider
 

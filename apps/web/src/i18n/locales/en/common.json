@@ -1,0 +1,90 @@
+{
+  "appName": "Acme Console",
+  "skipToContent": "Skip to main content",
+  "actions": {
+    "add": "Add",
+    "back": "Back",
+    "cancel": "Cancel",
+    "clear": "Clear",
+    "close": "Close",
+    "confirm": "Confirm",
+    "create": "Create",
+    "delete": "Delete",
+    "edit": "Edit",
+    "logout": "Log out",
+    "retry": "Try again",
+    "save": "Save",
+    "search": "Search"
+  },
+  "navigation": {
+    "primary": "Main navigation",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "settings": "Settings",
+    "showcase": "Showcase",
+    "openMenu": "Open navigation menu",
+    "collapseSidebar": "Collapse sidebar",
+    "expandSidebar": "Expand sidebar",
+    "breadcrumbs": "Breadcrumb"
+  },
+  "userMenu": {
+    "label": "Account menu",
+    "settings": "Settings",
+    "logout": "Log out"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "ro": "Română"
+  },
+  "feedback": {
+    "loading": "Loading…",
+    "empty": {
+      "title": "Nothing here yet",
+      "description": "There is no data to display."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "description": "The data could not be loaded. Please try again."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page you are looking for does not exist or has been moved.",
+      "action": "Go to dashboard"
+    },
+    "unauthorized": {
+      "title": "Access denied",
+      "description": "You do not have permission to view this page.",
+      "action": "Go to dashboard"
+    },
+    "appError": {
+      "title": "Application error",
+      "description": "An unexpected error occurred. Reloading the page may help.",
+      "reload": "Reload page"
+    }
+  },
+  "table": {
+    "rowsPerPage": "Rows per page",
+    "displayedRows": "{{from}}–{{to}} of {{count}}",
+    "selectedCount": "{{count}} selected",
+    "selectAll": "Select all rows",
+    "selectRow": "Select row",
+    "sortedAscending": "sorted ascending",
+    "sortedDescending": "sorted descending"
+  },
+  "dirtyForm": {
+    "title": "Discard unsaved changes?",
+    "description": "You have unsaved changes. If you leave this page they will be lost.",
+    "confirm": "Discard changes",
+    "cancel": "Keep editing"
+  },
+  "confirmDialog": {
+    "defaultTitle": "Are you sure?"
+  }
+}
