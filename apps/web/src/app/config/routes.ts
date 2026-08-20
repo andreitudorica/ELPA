@@ -9,6 +9,7 @@ export const routePaths = {
   publicHome: '/',
   studioRoot: '/studio',
   studioHome: '/studio/',
+  studioResearchCampaigns: '/studio/research-campaigns',
   studioUnauthorized: '/studio/unauthorized',
 } as const;
 

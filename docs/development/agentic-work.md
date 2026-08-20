@@ -39,26 +39,24 @@ state.
 - Treat acquisition automation as an experiment until it passes the promotion
   rule in `docs/product/data-acquisition-experiments.md`.
 
-## Intended repository validation contract
+## Repository validation contract
 
-The initial scaffold must expose stable root commands with package-level
-equivalents:
+The workspace exposes stable root commands with package-level equivalents:
 
 ```text
 pnpm format:check
 pnpm lint
 pnpm typecheck
 pnpm test
-pnpm test:integration
 pnpm build
 pnpm openapi:check
 pnpm db:check
 ```
 
-These names are the desired developer contract, not evidence that the commands
-already exist. `pnpm openapi:check` verifies that the client generated inside
-`apps/web/src/lib/apiClient/` matches the current API's OpenAPI document.
-Update this document when the workspace is scaffolded.
+`pnpm openapi:check` regenerates the API document and client, then verifies
+that both committed artifacts match. `pnpm db:check` validates the Drizzle
+migration history. Run package-level commands for the affected application
+during development and the relevant root checks before handoff.
 
 ## Finishing a task
 

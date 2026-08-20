@@ -1,12 +1,23 @@
-/**
- * Public surface of the generated API client (ADR 0012).
- *
- * This file is the only entry point outside `apps/web/src/lib/apiClient/`.
- * Curated re-exports here group generated operations by tag (e.g. `studio.*`,
- * `recommendation.*`) so consumers write `import { studio } from
- * '@/lib/apiClient'` rather than reaching into `./generated/**`.
- *
- * Empty until `apps/api` publishes an OpenAPI document.
- */
+import { api } from '@/lib/api/client';
 
-export {};
+import type { components } from './generated/schema';
+
+export type ResearchCampaign = components['schemas']['ResearchCampaign_Output'];
+export type CreateResearchCampaign = components['schemas']['CreateResearchCampaign'];
+export type Administrator = components['schemas']['Administrator_Output'];
+
+export const identity = {
+  currentAdministrator: () => api.get<Administrator>('/me'),
+};
+
+export const studio = {
+  researchCampaigns: {
+    list: (signal?: AbortSignal) =>
+      api.get<ResearchCampaign[]>(
+        '/admin/research-campaigns',
+        signal === undefined ? {} : { signal },
+      ),
+    create: (input: CreateResearchCampaign) =>
+      api.post<ResearchCampaign>('/admin/research-campaigns', { body: input }),
+  },
+};

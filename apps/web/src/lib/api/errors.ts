@@ -10,6 +10,7 @@ interface ApiErrorInit {
   message: string;
   status?: number;
   fieldErrors?: FieldErrors;
+  correlationId?: string;
   cause?: unknown;
 }
 
@@ -22,6 +23,7 @@ export class ApiError extends Error {
   readonly kind: ApiErrorKind;
   readonly status: number | undefined;
   readonly fieldErrors: FieldErrors | undefined;
+  readonly correlationId: string | undefined;
 
   constructor(init: ApiErrorInit) {
     super(init.message, init.cause === undefined ? undefined : { cause: init.cause });
@@ -29,6 +31,7 @@ export class ApiError extends Error {
     this.kind = init.kind;
     this.status = init.status;
     this.fieldErrors = init.fieldErrors;
+    this.correlationId = init.correlationId;
   }
 
   get isUnauthorized(): boolean {
@@ -53,16 +56,51 @@ export class ApiError extends Error {
   }
 }
 
-/** Error payload convention used by the backend (and mirrored by MSW handlers). */
-const errorBodySchema = z.object({
+const problemDetailsSchema = z.object({
+  title: z.string(),
+  detail: z.string().optional(),
+  correlation_id: z.string().optional(),
+  field_errors: z
+    .array(
+      z.object({
+        path: z.array(z.union([z.string(), z.number()])),
+        message: z.string(),
+      }),
+    )
+    .optional(),
+});
+
+const legacyErrorBodySchema = z.object({
   message: z.string().optional(),
   errors: z.record(z.string(), z.array(z.string())).optional(),
 });
 
 export function apiErrorFromResponse(status: number, body: unknown): ApiError {
-  const parsed = errorBodySchema.safeParse(body);
-  const message = parsed.success && parsed.data.message ? parsed.data.message : `Request failed`;
-  const fieldErrors = parsed.success ? parsed.data.errors : undefined;
+  const problem = problemDetailsSchema.safeParse(body);
+  if (problem.success) {
+    const groupedErrors: Record<string, string[]> = {};
+    for (const issue of problem.data.field_errors ?? []) {
+      const field = issue.path.find((part): part is string => typeof part === 'string');
+      if (field !== undefined) {
+        groupedErrors[field] = [...(groupedErrors[field] ?? []), issue.message];
+      }
+    }
+    const fieldErrors = Object.keys(groupedErrors).length > 0 ? groupedErrors : undefined;
+
+    return new ApiError({
+      kind: fieldErrors === undefined ? 'http' : 'validation',
+      message: problem.data.detail ?? problem.data.title,
+      status,
+      ...(fieldErrors !== undefined ? { fieldErrors } : {}),
+      ...(problem.data.correlation_id !== undefined
+        ? { correlationId: problem.data.correlation_id }
+        : {}),
+    });
+  }
+
+  const legacy = legacyErrorBodySchema.safeParse(body);
+  const message = legacy.success && legacy.data.message ? legacy.data.message : 'Request failed';
+  const fieldErrors = legacy.success ? legacy.data.errors : undefined;
   return new ApiError({
     kind: 'http',
     message,

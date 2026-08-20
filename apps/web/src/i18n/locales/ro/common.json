@@ -1,5 +1,5 @@
 {
-  "appName": "Acme Console",
+  "appName": "ELPA",
   "skipToContent": "Sari la conținutul principal",
   "actions": {
     "add": "Adaugă",
@@ -86,5 +86,50 @@
   },
   "confirmDialog": {
     "defaultTitle": "Ești sigur?"
+  },
+  "studio": {
+    "title": "ELPA Data Studio",
+    "description": "Construiește catalogul verificabil folosit de produsul de recomandări.",
+    "documentTitle": "Acasă · ELPA Data Studio"
+  },
+  "researchCampaigns": {
+    "title": "Campanii de cercetare",
+    "documentTitle": "Campanii de cercetare · ELPA Data Studio",
+    "description": "Definește nevoia, aria geografică, criteriile minime și sursele care vor fi investigate.",
+    "open": "Deschide campaniile",
+    "category": "Categorie: proprietate de închiriat pentru grupuri",
+    "country": "Țară: România",
+    "form": {
+      "title": "Campanie nouă",
+      "description": "Campania creează cadrul de cercetare; nu publică furnizori sau oferte.",
+      "name": "Numele campaniei",
+      "eventNeed": "Nevoia pentru eveniment",
+      "county": "Județ",
+      "locality": "Localitate (opțional)",
+      "minimumCriteria": "Criterii minime",
+      "sources": "Surse de investigat",
+      "onePerLine": "Introdu câte un criteriu pe fiecare rând.",
+      "oneUrlPerLine": "Introdu câte un URL complet pe fiecare rând.",
+      "required": "Acest câmp este obligatoriu.",
+      "nameTooShort": "Numele trebuie să conțină cel puțin 3 caractere.",
+      "countyTooShort": "Județul trebuie să conțină cel puțin 2 caractere.",
+      "invalidSource": "Fiecare sursă trebuie să fie un URL complet valid.",
+      "auditNotice": "Crearea este atribuită Administratorului curent și înregistrată în istoricul de audit.",
+      "submit": "Creează campania"
+    },
+    "list": {
+      "loading": "Se încarcă campaniile…",
+      "emptyTitle": "Nu există campanii de cercetare",
+      "emptyDescription": "Creează prima campanie pentru a începe cercetarea structurată.",
+      "created": "Creată la {{date}} de {{administrator}}",
+      "location": "Județul {{county}} · {{locality}}",
+      "allLocalities": "toate localitățile",
+      "sources": "Surse investigate"
+    },
+    "feedback": {
+      "created": "Campania de cercetare a fost creată.",
+      "createError": "Campania nu a putut fi creată.",
+      "loadError": "Campaniile de cercetare nu au putut fi încărcate."
+    }
   }
 }

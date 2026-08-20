@@ -23,7 +23,7 @@ export default defineConfig(
       globals: { ...globals.node },
       parserOptions: {
         projectService: {
-          allowDefaultProject: ['*.js', '*.mjs'],
+          allowDefaultProject: ['*.js', '*.mjs', '*.config.ts'],
         },
         tsconfigRootDir: import.meta.dirname,
       },
@@ -39,6 +39,38 @@ export default defineConfig(
       // is to carry metadata for the DI container. Allow classes when a
       // decorator gives them meaning.
       '@typescript-eslint/no-extraneous-class': ['error', { allowWithDecorator: true }],
+    },
+  },
+
+  {
+    files: ['src/{access,audit,catalog,curation,recommendation,research}/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: [
+                '../access/*',
+                '../audit/*',
+                '../catalog/*',
+                '../curation/*',
+                '../recommendation/*',
+                '../research/*',
+              ],
+              message: 'Import another domain module through its public barrel.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  {
+    files: ['src/{audit,research}/*.schema.ts'],
+    rules: {
+      // Drizzle needs the referenced table objects to declare physical foreign keys.
+      'no-restricted-imports': 'off',
     },
   },
 

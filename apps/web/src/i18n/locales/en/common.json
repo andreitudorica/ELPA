@@ -1,5 +1,5 @@
 {
-  "appName": "Acme Console",
+  "appName": "ELPA",
   "skipToContent": "Skip to main content",
   "actions": {
     "add": "Add",
@@ -86,5 +86,50 @@
   },
   "confirmDialog": {
     "defaultTitle": "Are you sure?"
+  },
+  "studio": {
+    "title": "ELPA Data Studio",
+    "description": "Build the verifiable catalog used by the Recommendation Product.",
+    "documentTitle": "Home · ELPA Data Studio"
+  },
+  "researchCampaigns": {
+    "title": "Research Campaigns",
+    "documentTitle": "Research Campaigns · ELPA Data Studio",
+    "description": "Define the need, geography, minimum criteria, and sources to investigate.",
+    "open": "Open campaigns",
+    "category": "Category: Group Rental Property",
+    "country": "Country: Romania",
+    "form": {
+      "title": "New campaign",
+      "description": "A campaign frames research; it does not publish Providers or Offers.",
+      "name": "Campaign name",
+      "eventNeed": "Event need",
+      "county": "County",
+      "locality": "Locality (optional)",
+      "minimumCriteria": "Minimum criteria",
+      "sources": "Sources to investigate",
+      "onePerLine": "Enter one criterion per line.",
+      "oneUrlPerLine": "Enter one complete URL per line.",
+      "required": "This field is required.",
+      "nameTooShort": "The name must contain at least 3 characters.",
+      "countyTooShort": "The county must contain at least 2 characters.",
+      "invalidSource": "Every source must be a valid complete URL.",
+      "auditNotice": "Creation is attributed to the current Administrator and recorded in the audit history.",
+      "submit": "Create campaign"
+    },
+    "list": {
+      "loading": "Loading campaigns…",
+      "emptyTitle": "No Research Campaigns yet",
+      "emptyDescription": "Create the first campaign to begin structured research.",
+      "created": "Created {{date}} by {{administrator}}",
+      "location": "{{county}} County · {{locality}}",
+      "allLocalities": "all localities",
+      "sources": "Investigated sources"
+    },
+    "feedback": {
+      "created": "The Research Campaign was created.",
+      "createError": "The Research Campaign could not be created.",
+      "loadError": "Research Campaigns could not be loaded."
+    }
   }
 }

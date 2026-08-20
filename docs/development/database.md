@@ -2,13 +2,12 @@
 
 ## Tooling
 
-The API workspace will install `drizzle-orm` and its selected PostgreSQL driver
-as runtime dependencies. `drizzle-kit` will be a pinned development dependency,
-so contributors and agents receive the migration CLI and Drizzle Studio through
-the normal repository installation; no global installation is required.
+The API workspace uses `drizzle-orm` with the `pg` driver. `drizzle-kit` is a
+development dependency, so contributors and agents receive the migration CLI
+and Drizzle Studio through the normal repository installation; no global
+installation is required.
 
-The root workspace will expose stable scripts that delegate to the owning
-database package or API application:
+The root workspace exposes stable scripts that delegate to `apps/api`:
 
 ```text
 pnpm db:generate
@@ -17,8 +16,16 @@ pnpm db:check
 pnpm db:studio
 ```
 
-Exact script implementations will be added with the initial workspace scaffold.
-The names above are the intended developer contract.
+Start and prepare a fresh local database with:
+
+```sh
+cp apps/api/.env.example apps/api/.env.local
+pnpm db:up
+pnpm db:migrate
+```
+
+`pnpm db:down` stops the services without removing the named PostgreSQL volume.
+The API never applies schema changes during startup.
 
 ## Drizzle Studio
 

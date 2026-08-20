@@ -53,8 +53,8 @@ an ADR at the point it is taken.
 Definition-phase repository with the frontend chassis in place. The
 monorepo uses `pnpm` workspaces and Turborepo:
 
-- `apps/api`: the shared REST API, a single-deployment modular monolith
-  (not yet scaffolded — its own decision session).
+- `apps/api`: the shared REST API, a runnable NestJS + Fastify modular
+  monolith with PostgreSQL/Drizzle persistence and generated OpenAPI.
 - `apps/web`: **scaffolded from `react-enterprise-boilerplate` and adapted
   to ELPA's ADR set** (ADR 0015/0016/0017). Hosts both the anonymous
   Recommendation Product (`/*`) and Administrator-guarded ELPA Data Studio
@@ -94,6 +94,27 @@ Initial infrastructure uses a containerized API, managed PostgreSQL, a
 separately deployed static client, and Docker Compose for local dependencies.
 Kubernetes and self-managed production databases are intentionally out of
 scope.
+
+## Run the POC locally
+
+```sh
+cp apps/api/.env.example apps/api/.env.local
+cp apps/web/.env.example apps/web/.env.local
+pnpm db:up
+pnpm db:migrate
+```
+
+Set `VITE_ENABLE_MOCKS=false` in `apps/web/.env.local`, then run the API and web
+scripts in separate terminals:
+
+```sh
+pnpm --filter @elpa/api dev
+pnpm --filter @elpa/web dev
+```
+
+Open `http://localhost:5273/studio/research-campaigns`. API liveness and
+database readiness are available at `http://localhost:3000/api/healthz` and
+`http://localhost:3000/api/readyz`.
 
 ## Documentation
 

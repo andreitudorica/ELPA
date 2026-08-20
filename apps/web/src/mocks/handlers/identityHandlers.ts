@@ -1,5 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
+import type { components } from '@/lib/apiClient/generated/schema';
+
 import { apiPath, networkDelay } from '../utils';
 
 /**
@@ -14,10 +16,11 @@ import { apiPath, networkDelay } from '../utils';
 export const identityHandlers = [
   http.get(apiPath('/me'), async () => {
     await networkDelay();
-    return HttpResponse.json({
-      id: 'admin-local',
+    const administrator: components['schemas']['Administrator_Output'] = {
+      id: '0198c5d2-8b7a-7000-8000-000000000001',
       email: 'admin@elpa.local',
       displayName: 'Local Administrator',
-    });
+    };
+    return HttpResponse.json(administrator);
   }),
 ];

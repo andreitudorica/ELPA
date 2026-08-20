@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: elpa
+      POSTGRES_USER: elpa
+      POSTGRES_PASSWORD: elpa
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U elpa -d elpa']
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    volumes:
+      - elpa_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  elpa_postgres_data:

@@ -1,0 +1,226 @@
+openapi: 3.0.0
+paths:
+  /api/me:
+    get:
+      operationId: AccessController_getCurrentAdministrator
+      parameters: []
+      responses:
+        '200':
+          description: The resolved ELPA Administrator for this request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Administrator_Output'
+      tags:
+        - identity
+  /api/admin/research-campaigns:
+    get:
+      operationId: ResearchCampaignController_list
+      parameters: []
+      responses:
+        '200':
+          description: Research Campaigns ordered from newest to oldest.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResearchCampaignList_Output'
+      tags:
+        - studio-research
+    post:
+      operationId: ResearchCampaignController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateResearchCampaign'
+      responses:
+        '201':
+          description: The newly opened Research Campaign.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResearchCampaign_Output'
+      tags:
+        - studio-research
+  /api/healthz:
+    get:
+      operationId: HealthController_check
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus_Output'
+      tags:
+        - Health
+  /api/readyz:
+    get:
+      operationId: ReadinessController_check
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus_Output'
+      tags:
+        - Readiness
+info:
+  title: ELPA API
+  description: REST contract shared by the Recommendation Product and ELPA Data Studio.
+  version: 0.1.0
+  contact: {}
+tags: []
+servers: []
+components:
+  schemas:
+    Administrator_Output:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+        email:
+          type: string
+          format: email
+          pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+        displayName:
+          type: string
+          minLength: 1
+      required:
+        - id
+        - email
+        - displayName
+      additionalProperties: false
+    ResearchCampaign_Output:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+        name:
+          type: string
+        eventNeed:
+          type: string
+        category:
+          type: string
+          enum:
+            - group_rental_property
+        countryCode:
+          type: string
+          enum:
+            - RO
+        county:
+          type: string
+        locality:
+          type: string
+          nullable: true
+        minimumCriteria:
+          type: array
+          items:
+            type: string
+        investigatedSources:
+          type: array
+          items:
+            type: string
+            format: uri
+        createdBy:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            email:
+              type: string
+              format: email
+              pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+            displayName:
+              type: string
+          required:
+            - id
+            - email
+            - displayName
+          additionalProperties: false
+        createdAt:
+          type: string
+          format: date-time
+          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+        updatedAt:
+          type: string
+          format: date-time
+          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+      required:
+        - id
+        - name
+        - eventNeed
+        - category
+        - countryCode
+        - county
+        - locality
+        - minimumCriteria
+        - investigatedSources
+        - createdBy
+        - createdAt
+        - updatedAt
+      additionalProperties: false
+    ResearchCampaignList_Output:
+      type: array
+      items:
+        $ref: '#/components/schemas/ResearchCampaign_Output'
+    CreateResearchCampaign:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 3
+          maxLength: 160
+        eventNeed:
+          type: string
+          minLength: 1
+          maxLength: 500
+        county:
+          type: string
+          minLength: 2
+          maxLength: 100
+        locality:
+          type: string
+          maxLength: 200
+        minimumCriteria:
+          minItems: 1
+          maxItems: 20
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 500
+        investigatedSources:
+          minItems: 1
+          maxItems: 50
+          type: array
+          items:
+            type: string
+            format: uri
+      required:
+        - name
+        - eventNeed
+        - county
+        - minimumCriteria
+        - investigatedSources
+    HealthStatus_Output:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+      required:
+        - status
+      additionalProperties: false

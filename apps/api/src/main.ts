@@ -1,36 +1,23 @@
 import 'reflect-metadata';
 
-import { NestFactory } from '@nestjs/core';
-import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
+import { Logger } from 'nestjs-pino';
 
-import { AppModule } from './app.module';
+import { createApplication } from './application';
 import { loadEnv } from './config/env';
 
 /**
  * Bootstrap sequence (per ADR 0007 + Phase A):
- *   1. Validate env with Zod → fail-fast if malformed (never boots
- *      production with silent defaults).
- *   2. Instantiate Nest on the Fastify adapter.
- *   3. Apply a global `/api` prefix; every route in the app lives under
- *      it, matching the public/admin split introduced in Q5.
- *   4. Listen on the configured host/port.
- *
- * Deliberately minimal — later Phase A commits layer in CLS, the
- * exception filter, the admin-controller decorator, boot-time route
- * verification, and OpenAPI generation without touching this sequence.
+ *   1. Validate env with Zod → fail-fast on malformed values.
+ *   2. Build the configured Nest + Fastify application.
+ *   3. Listen on the configured host/port.
  */
 async function bootstrap(): Promise<void> {
   const env = loadEnv();
-
-  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), {
-    bufferLogs: true,
-  });
-
-  app.setGlobalPrefix('api');
+  const app = await createApplication();
 
   await app.listen({ host: env.API_HOST, port: env.API_PORT });
 
-  console.log(`[apps/api] listening on ${env.API_BASE_URL} (env=${env.NODE_ENV})`);
+  app.get(Logger).log(`listening on ${env.API_BASE_URL} (env=${env.NODE_ENV})`, 'Bootstrap');
 }
 
 bootstrap().catch((err: unknown) => {

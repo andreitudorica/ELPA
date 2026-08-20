@@ -4,8 +4,4 @@
  * `GET /api/me` and never carries authorization state independently.
  * The API is the single enforcer of authorization on every request.
  */
-export interface Administrator {
-  id: string;
-  email: string;
-  displayName: string;
-}
+export type { Administrator } from '@/lib/apiClient';

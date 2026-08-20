@@ -25,8 +25,12 @@ erDiagram
     OFFER ||--o{ PUBLICATION : projected_by
 ```
 
-This is conceptual cardinality. Physical tables and identifiers will be
-designed during the first vertical slice.
+This is conceptual cardinality. The first physical slice now stores Research
+Campaigns, investigated campaign sources, Categories, Administrator membership,
+and Audit Events in PostgreSQL. Candidates, Evidence, Claims, canonical catalog
+records, verification, and publication remain conceptual until their vertical
+slices are implemented. Persistent identifiers use application-generated
+UUIDv7 values and every table carries `created_at` and `updated_at` timestamps.
 
 ## Research side
 

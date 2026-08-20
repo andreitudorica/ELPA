@@ -21,6 +21,7 @@ export default defineConfig(
       'test-results',
       'public/mockServiceWorker.js',
       'src/app/router/routeTree.gen.ts',
+      'src/lib/apiClient/generated/**',
     ],
   },
 

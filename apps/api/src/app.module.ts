@@ -1,14 +1,30 @@
 import { Module } from '@nestjs/common';
 
+import { AccessModule } from './access';
+import { AuditModule } from './audit';
+import { CatalogModule } from './catalog';
+import { CommonModule } from './common';
+import { CurationModule } from './curation';
+import { DatabaseModule } from './database';
 import { HealthModule } from './health/health.module';
+import { RecommendationModule } from './recommendation';
+import { ResearchModule } from './research';
 
 /**
- * Root module. In Phase A this only wires the liveness probe; module
- * boundaries (Access, Research, Catalog, Curation, Recommendation,
- * Audit — per ADR 0020) are added in later commits, each behind its
- * own public barrel.
+ * Composition root for the modular monolith. Domain modules expose only their
+ * public barrels; Database and Common own shared infrastructure concerns.
  */
 @Module({
-  imports: [HealthModule],
+  imports: [
+    CommonModule,
+    DatabaseModule,
+    AccessModule,
+    CatalogModule,
+    AuditModule,
+    ResearchModule,
+    CurationModule,
+    RecommendationModule,
+    HealthModule,
+  ],
 })
 export class AppModule {}

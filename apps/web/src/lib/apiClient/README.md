@@ -7,7 +7,7 @@ The typed contract layer between `apps/web` and `apps/api`, per ADR 0012.
 ```
 apiClient/
   generated/          # openapi-typescript output; never edited by hand
-    schema.d.ts       # produced by `pnpm codegen` from apps/api/openapi.json
+    schema.d.ts       # produced by `pnpm codegen` from apps/api/openapi.yaml
     README.md
   index.ts            # curated public surface: namespaced operation wrappers
 ```
@@ -19,10 +19,10 @@ to fail builds that forget to regenerate.
 ## Layered relationship with `lib/api/`
 
 `lib/api/client.ts` is the single transport chokepoint (bearer token, 401
-handler, timeout, Zod trust-boundary validation). The generated operation
-wrappers in `apiClient/` delegate to it — they add types and paths, not
-transport behavior. This preserves observability and the identity-boundary
-hooks (`setAuthTokenProvider`, `setUnauthorizedHandler`).
+handler, timeout, and RFC 7807 normalization). The curated `identity` and
+`studio` operations in `apiClient/index.ts` delegate to it while their payloads
+come from the generated contract. This preserves observability and the
+identity-boundary hooks without shipping a second fetch abstraction.
 
 ## MSW handlers
 
@@ -31,7 +31,6 @@ shapes against `generated/schema.d.ts` once it exists, so contract drift
 surfaces as a TypeScript error. Interim hand-written types under
 `src/mocks/types.ts` are permitted only until the first real generation.
 
-## Bootstrap state
-
-Until `apps/api` publishes an OpenAPI document, `generated/` is empty and
-`pnpm codegen` is a no-op. `apiClient/index.ts` re-exports nothing.
+The generated file is source-controlled. Run `pnpm openapi:generate` at the
+repository root after every API contract change; it regenerates both the API
+document and these TypeScript types.

@@ -1,7 +1,7 @@
 import { useQuery, type QueryClient } from '@tanstack/react-query';
 
-import { api } from '@/lib/api/client';
 import { ApiError } from '@/lib/api/errors';
+import { identity } from '@/lib/apiClient';
 
 import type { Administrator } from './types';
 
@@ -14,7 +14,7 @@ export const identityQueryKey = ['identity', 'me'] as const;
 
 async function fetchCurrentAdministrator(): Promise<Administrator | null> {
   try {
-    return await api.get<Administrator>('/me');
+    return await identity.currentAdministrator();
   } catch (error) {
     if (error instanceof ApiError && (error.isUnauthorized || error.isForbidden)) {
       return null;

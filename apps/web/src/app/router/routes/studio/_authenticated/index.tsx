@@ -1,24 +1,29 @@
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 import { createFileRoute } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 
-/** Data Studio home (placeholder — grown lazily as curation surfaces land). */
+import { routePaths } from '@/app/config/routes';
+import { AppCard } from '@/components/common/AppCard';
+import { PageHeader } from '@/components/layout/PageHeader';
+import { ButtonLink } from '@/components/navigation/routerLinks';
+
 export const Route = createFileRoute('/studio/_authenticated/')({
   component: StudioHome,
   staticData: {
-    title: () => 'Home · Data Studio',
+    title: (t) => t('studio.documentTitle'),
   },
 });
 
 function StudioHome() {
+  const { t } = useTranslation();
+
   return (
-    <Stack spacing={2}>
-      <Typography variant="h5" component="h1">
-        Data Studio
-      </Typography>
-      <Typography variant="body1" color="text.secondary">
-        Administrator surfaces will grow here.
-      </Typography>
-    </Stack>
+    <>
+      <PageHeader title={t('studio.title')} description={t('studio.description')} />
+      <AppCard title={t('researchCampaigns.title')} subheader={t('researchCampaigns.description')}>
+        <ButtonLink to={routePaths.studioResearchCampaigns}>
+          {t('researchCampaigns.open')}
+        </ButtonLink>
+      </AppCard>
+    </>
   );
 }

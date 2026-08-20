@@ -40,7 +40,7 @@ at the root fan out across workspaces.
 | `pnpm test` / `test:watch` / `test:coverage` | Vitest unit and component tests                                   |
 | `pnpm test:e2e` / `test:e2e:ui`              | Playwright end-to-end tests (Chromium in CI, full matrix nightly) |
 | `pnpm storybook` / `build-storybook`         | Component workshop                                                |
-| `pnpm codegen`                               | Regenerate the OpenAPI client (no-op until `apps/api` exists)     |
+| `pnpm codegen`                               | Regenerate types from `apps/api/openapi.yaml`                     |
 | `pnpm analyze`                               | Production build + bundle treemap (`stats.html`)                  |
 
 `pretypecheck`, `prebuild`, and `predev` invoke `tsr generate` so the
@@ -53,6 +53,18 @@ Validated at startup by `src/lib/env/index.ts` (Zod). See [`.env.example`](./.en
 Never add secrets — every `VITE_*` variable is embedded into the public bundle.
 There are no identity variables on the client; identity is server-owned
 (ADR 0009/0010).
+
+## Browser POC
+
+With PostgreSQL migrated and both development servers running, open
+`http://localhost:5273/studio/research-campaigns`. The Vite server proxies
+`/api/*` to `http://localhost:3000`, so browser requests use the real API
+without a local CORS exception.
+
+Set `VITE_ENABLE_MOCKS=false` in `apps/web/.env.local` to exercise the real
+`GET /api/me` identity boundary as well. When mocks remain enabled, only the
+identity call is simulated; unhandled Research Campaign requests bypass MSW
+and reach the API.
 
 ## Boundaries enforced by ESLint
 
