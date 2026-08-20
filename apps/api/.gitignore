@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+.turbo/
+*.tsbuildinfo
+
+# Environment (never commit real values).
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+pnpm-debug.log*
