@@ -164,6 +164,17 @@ fixture. For every experiment record:
 - cost per accepted Provider or Offer;
 - breakage after representative source changes.
 
+## Baseline status: structured open datasets
+
+Before the URL-based ladder, the acquisition baseline imported two structured
+national datasets — the official register of classified accommodation and the
+OpenStreetMap Romania extract — as versioned artifacts through the research
+CLI. It implements the invariants above (Evidence before Claims, versioned
+extraction methods, durable failures, no publication) and adds duplicate
+suggestions (rung 3) for those sources. It does not fetch web pages. Results,
+the evaluation protocol, and the next-source recommendation are in
+`docs/research/group-rental-property-baseline/`.
+
 ## Promotion rule
 
 An experiment becomes supported product behavior only when it reduces total

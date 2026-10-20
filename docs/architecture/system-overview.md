@@ -62,6 +62,12 @@ Modules communicate through explicit application contracts. They may share a
 database deployment, but one module must not mutate another module's tables
 through ad hoc queries.
 
+Duplicate detection is split along the same line: **Research** generates
+explainable Duplicate Suggestions between Candidates; **Curation** owns the
+decision that resolves them into canonical records. The acquisition baseline
+implements only the Research side (see
+`docs/research/group-rental-property-baseline/`).
+
 ## Contract boundary
 
 The API exposes REST/JSON. NestJS produces the OpenAPI document, and

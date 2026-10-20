@@ -1,0 +1,823 @@
+{
+  "reportVersion": "grp-acquisition-report@1",
+  "generatedAt": "2026-10-20T23:05:06.714Z",
+  "campaign": {
+    "id": "01a15b79-0b3e-7d4f-9601-f041d7248ee8",
+    "name": "Bază de referință achiziție — proprietăți pentru grupuri (România)",
+    "county": null,
+    "locality": null
+  },
+  "labelling": {
+    "observed": "Counted directly from stored source records, Evidence, Claims, and suggestions.",
+    "estimate": "Derived from unverified matcher suggestions; a range, not a fact.",
+    "notVerified": "No Candidate has passed Verification; no figure is a verified property count."
+  },
+  "sources": [
+    {
+      "sourceKey": "situr_accommodation_register",
+      "label": "Registrul structurilor de primire turistice cu funcțiuni de cazare (DGT / SITUR)",
+      "reuseTerms": "ro_public_register_no_explicit_licence",
+      "retentionPolicy": "personal_data_redacted",
+      "attribution": "Sursa: Ministerul Economiei, Antreprenoriatului și Turismului — Direcția Generală de Turism",
+      "artifacts": [
+        {
+          "sha256": "1765427e22acc9001ce41708f41a618a09ff14f3b682411cec08bea23843067b",
+          "datasetVersion": "2026-10-21",
+          "retrievedAt": "2026-10-20T22:11:22.000Z",
+          "byteSize": 3912901,
+          "originalUrl": "https://se.situr.gov.ro/OpenData/ExportToExcel?type=listaCazari"
+        },
+        {
+          "sha256": "d4854cff79bc1d92508d7845591e2041351f0d98c247b13437b9cf8824a9433b",
+          "datasetVersion": "2026-10-21",
+          "retrievedAt": "2026-10-20T22:39:48.354Z",
+          "byteSize": 3912901,
+          "originalUrl": "https://se.situr.gov.ro/OpenData/ExportToExcel?type=listaCazari"
+        }
+      ],
+      "latestRun": {
+        "id": "01a15b8e-e925-7d94-908b-35c1eb2ad1cf",
+        "status": "completed_with_rejections",
+        "startedAt": "2026-10-20T23:04:14.885Z",
+        "parserVersion": "situr-accommodation-xlsx@1",
+        "normalizerVersion": "situr-accommodation-normalizer@1",
+        "outputDigest": "db591e6e3f8fed79b9e6f5893e7383c9a8ecd3c51a5a27a9e2d704b579101199"
+      },
+      "runsByStatus": {
+        "completed_with_rejections": 3
+      },
+      "distinctOutputDigests": 1,
+      "records": {
+        "read": 32231,
+        "parsed": 32216,
+        "rejected": 15,
+        "rejectionsByCode": {
+          "unknown_county": 15
+        },
+        "excludedBySource": {}
+      },
+      "candidates": 32216,
+      "screening": {
+        "plausible": 3929,
+        "ambiguous": 11368,
+        "out_of_scope": 16919,
+        "insufficient_data": 0
+      },
+      "missingIdentifiers": {
+        "count": 16,
+        "definition": "Register rows without a classification certificate number or date; their record key relies on name and locality only."
+      },
+      "derivedKeyCollisions": 6,
+      "missingLocation": {
+        "withoutCounty": 0,
+        "withoutSettlement": 48,
+        "withoutCoordinates": 32216
+      },
+      "fieldCompleteness": [
+        {
+          "target": "offer.name",
+          "candidates": 32216,
+          "share": 1
+        },
+        {
+          "target": "offer.primary_locality",
+          "candidates": 32216,
+          "share": 1
+        },
+        {
+          "target": "offer.coordinates",
+          "candidates": 0,
+          "share": 0
+        },
+        {
+          "target": "offer.address",
+          "candidates": 29786,
+          "share": 0.9246
+        },
+        {
+          "target": "offer.sleeps_persons",
+          "candidates": 32182,
+          "share": 0.9989
+        },
+        {
+          "target": "offer.units_count",
+          "candidates": 32192,
+          "share": 0.9993
+        },
+        {
+          "target": "offer.rooms_count",
+          "candidates": 0,
+          "share": 0
+        },
+        {
+          "target": "offer.beds_count",
+          "candidates": 0,
+          "share": 0
+        },
+        {
+          "target": "offer.capacity_persons",
+          "candidates": 0,
+          "share": 0
+        },
+        {
+          "target": "offer.registry_classification",
+          "candidates": 32206,
+          "share": 0.9997
+        },
+        {
+          "target": "offer.registry_certificate",
+          "candidates": 32200,
+          "share": 0.9995
+        },
+        {
+          "target": "offer.website",
+          "candidates": 3078,
+          "share": 0.0955
+        },
+        {
+          "target": "offer.business_email_domain",
+          "candidates": 4130,
+          "share": 0.1282
+        },
+        {
+          "target": "provider_hint.legal_name",
+          "candidates": 23907,
+          "share": 0.7421
+        },
+        {
+          "target": "provider_hint.tax_id",
+          "candidates": 23423,
+          "share": 0.7271
+        },
+        {
+          "target": "provider_hint.operator",
+          "candidates": 0,
+          "share": 0
+        }
+      ]
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "label": "OpenStreetMap — Geofabrik Romania extract",
+      "reuseTerms": "odbl_1_0",
+      "retentionPolicy": "full_record",
+      "attribution": "© OpenStreetMap contributors, ODbL 1.0",
+      "artifacts": [
+        {
+          "sha256": "9eff756d49a9a77ff354a98c2b0b5674eaed9cbd88e24399464248b69cfb948a",
+          "datasetVersion": "2026-10-19T20:21:11.000Z",
+          "retrievedAt": "2026-10-20T22:40:16.184Z",
+          "byteSize": 331099272,
+          "originalUrl": "https://download.geofabrik.de/europe/romania-261019.osm.pbf"
+        }
+      ],
+      "latestRun": {
+        "id": "01a15b8d-c807-7274-af0a-d666f7da000a",
+        "status": "succeeded",
+        "startedAt": "2026-10-20T23:03:00.871Z",
+        "parserVersion": "osm-pbf-accommodation@1",
+        "normalizerVersion": "osm-accommodation-normalizer@1",
+        "outputDigest": "2e43104341c72fa5e79d2a5abd7f0492d06f07ecba41536a8471285e7f09207b"
+      },
+      "runsByStatus": {
+        "succeeded": 1
+      },
+      "distinctOutputDigests": 1,
+      "records": {
+        "read": 10645,
+        "parsed": 10645,
+        "rejected": 0,
+        "rejectionsByCode": {},
+        "excludedBySource": {
+          "outside_romania": 170,
+          "tourism_camp_pitch": 80,
+          "tourism_caravan_site": 20,
+          "tourism_wilderness_hut": 84
+        }
+      },
+      "candidates": 10645,
+      "screening": {
+        "plausible": 1495,
+        "ambiguous": 3781,
+        "out_of_scope": 5369,
+        "insufficient_data": 0
+      },
+      "missingIdentifiers": {
+        "count": 0,
+        "definition": "Every OpenStreetMap object has a native type and id."
+      },
+      "derivedKeyCollisions": 0,
+      "missingLocation": {
+        "withoutCounty": 0,
+        "withoutSettlement": 331,
+        "withoutCoordinates": 0
+      },
+      "fieldCompleteness": [
+        {
+          "target": "offer.name",
+          "candidates": 9579,
+          "share": 0.8999
+        },
+        {
+          "target": "offer.primary_locality",
+          "candidates": 10645,
+          "share": 1
+        },
+        {
+          "target": "offer.coordinates",
+          "candidates": 10645,
+          "share": 1
+        },
+        {
+          "target": "offer.address",
+          "candidates": 4267,
+          "share": 0.4008
+        },
+        {
+          "target": "offer.sleeps_persons",
+          "candidates": 0,
+          "share": 0
+        },
+        {
+          "target": "offer.units_count",
+          "candidates": 0,
+          "share": 0
+        },
+        {
+          "target": "offer.rooms_count",
+          "candidates": 543,
+          "share": 0.051
+        },
+        {
+          "target": "offer.beds_count",
+          "candidates": 76,
+          "share": 0.0071
+        },
+        {
+          "target": "offer.capacity_persons",
+          "candidates": 36,
+          "share": 0.0034
+        },
+        {
+          "target": "offer.registry_classification",
+          "candidates": 0,
+          "share": 0
+        },
+        {
+          "target": "offer.registry_certificate",
+          "candidates": 0,
+          "share": 0
+        },
+        {
+          "target": "offer.website",
+          "candidates": 2018,
+          "share": 0.1896
+        },
+        {
+          "target": "offer.business_email_domain",
+          "candidates": 551,
+          "share": 0.0518
+        },
+        {
+          "target": "provider_hint.legal_name",
+          "candidates": 0,
+          "share": 0
+        },
+        {
+          "target": "provider_hint.tax_id",
+          "candidates": 9,
+          "share": 0.0008
+        },
+        {
+          "target": "provider_hint.operator",
+          "candidates": 304,
+          "share": 0.0286
+        }
+      ]
+    }
+  ],
+  "crossSource": {
+    "matcherVersion": "grp-duplicate-matcher@1",
+    "suggestions": [
+      {
+        "relation": "same_property",
+        "strength": "possible",
+        "rule": "exact_core_name_with_caveats",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 2944
+      },
+      {
+        "relation": "same_property",
+        "strength": "possible",
+        "rule": "similar_name_same_settlement",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 2074
+      },
+      {
+        "relation": "same_property",
+        "strength": "likely",
+        "rule": "exact_core_name_same_settlement",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 1957
+      },
+      {
+        "relation": "same_property",
+        "strength": "possible",
+        "rule": "same_name_same_settlement",
+        "sources": "situr_accommodation_register~situr_accommodation_register",
+        "count": 1483
+      },
+      {
+        "relation": "same_property",
+        "strength": "likely",
+        "rule": "same_name_address_capacity",
+        "sources": "situr_accommodation_register~situr_accommodation_register",
+        "count": 481
+      },
+      {
+        "relation": "same_property",
+        "strength": "likely",
+        "rule": "address_match_similar_name",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 425
+      },
+      {
+        "relation": "same_property",
+        "strength": "possible",
+        "rule": "exact_core_name_with_caveats",
+        "sources": "osm_geofabrik_romania~osm_geofabrik_romania",
+        "count": 403
+      },
+      {
+        "relation": "same_property",
+        "strength": "possible",
+        "rule": "similar_name_same_settlement",
+        "sources": "osm_geofabrik_romania~osm_geofabrik_romania",
+        "count": 344
+      },
+      {
+        "relation": "same_property",
+        "strength": "possible",
+        "rule": "exact_core_name_same_settlement",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 255
+      },
+      {
+        "relation": "same_provider",
+        "strength": "possible",
+        "rule": "shared_website_domain",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 227
+      },
+      {
+        "relation": "same_provider",
+        "strength": "possible",
+        "rule": "shared_website_domain",
+        "sources": "osm_geofabrik_romania~osm_geofabrik_romania",
+        "count": 211
+      },
+      {
+        "relation": "same_property",
+        "strength": "possible",
+        "rule": "near_identical_name_same_settlement",
+        "sources": "situr_accommodation_register~situr_accommodation_register",
+        "count": 191
+      },
+      {
+        "relation": "same_property",
+        "strength": "likely",
+        "rule": "exact_core_name_same_settlement",
+        "sources": "osm_geofabrik_romania~osm_geofabrik_romania",
+        "count": 173
+      },
+      {
+        "relation": "same_provider",
+        "strength": "possible",
+        "rule": "shared_email_domain",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 147
+      },
+      {
+        "relation": "same_provider",
+        "strength": "possible",
+        "rule": "shared_listing_page",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 101
+      },
+      {
+        "relation": "same_property",
+        "strength": "likely",
+        "rule": "same_certificate_and_name",
+        "sources": "situr_accommodation_register~situr_accommodation_register",
+        "count": 94
+      },
+      {
+        "relation": "same_property",
+        "strength": "possible",
+        "rule": "address_match_similar_name",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 68
+      },
+      {
+        "relation": "same_property",
+        "strength": "likely",
+        "rule": "address_match_similar_name",
+        "sources": "osm_geofabrik_romania~osm_geofabrik_romania",
+        "count": 48
+      },
+      {
+        "relation": "same_provider",
+        "strength": "possible",
+        "rule": "shared_listing_page",
+        "sources": "osm_geofabrik_romania~osm_geofabrik_romania",
+        "count": 15
+      },
+      {
+        "relation": "same_provider",
+        "strength": "possible",
+        "rule": "shared_email_domain",
+        "sources": "osm_geofabrik_romania~osm_geofabrik_romania",
+        "count": 10
+      },
+      {
+        "relation": "same_provider",
+        "strength": "likely",
+        "rule": "shared_tax_id",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 9
+      },
+      {
+        "relation": "same_property",
+        "strength": "likely",
+        "rule": "same_listing_page",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 2
+      },
+      {
+        "relation": "same_property",
+        "strength": "possible",
+        "rule": "same_listing_page",
+        "sources": "osm_geofabrik_romania~situr_accommodation_register",
+        "count": 2
+      },
+      {
+        "relation": "same_provider",
+        "strength": "likely",
+        "rule": "shared_tax_id",
+        "sources": "osm_geofabrik_romania~osm_geofabrik_romania",
+        "count": 1
+      },
+      {
+        "relation": "same_property",
+        "strength": "likely",
+        "rule": "same_listing_page",
+        "sources": "osm_geofabrik_romania~osm_geofabrik_romania",
+        "count": 1
+      }
+    ],
+    "registerWithOsmCounterpart": {
+      "likely": 2384,
+      "likelyOrPossible": 6429,
+      "total": 32216
+    },
+    "osmWithRegisterCounterpart": {
+      "likely": 2384,
+      "likelyOrPossible": 5227,
+      "total": 10645
+    },
+    "candidatesWithOnlyPossibleMatches": 8278,
+    "distinctPropertyEstimate": {
+      "candidates": 42861,
+      "likelyClustersOnly": 39850,
+      "likelyAndPossibleClusters": 34360,
+      "definition": "Connected components of same-property suggestions. Using only likely suggestions merges least (upper bound of distinct properties); adding possible suggestions merges most (lower bound). Both rest on unverified decisions."
+    },
+    "incrementalInScopeCandidates": {
+      "registerOnly": 11726,
+      "osmOnly": 2705,
+      "inBoth": 3571,
+      "definition": "Candidates screened plausible or ambiguous (rubric v1) with no cross-source same-property suggestion of any strength. These are what each source adds that the other does not visibly contain."
+    },
+    "registerOperatorGroups": {
+      "groups": 2870,
+      "candidates": 8494,
+      "largest": 156
+    }
+  },
+  "coverage": {
+    "referencePopulation": "Current official-register Candidates in campaign scope screened plausible or ambiguous by rubric v1 (automated screening, not verified eligibility).",
+    "size": 15297,
+    "reconciledLikely": 1464,
+    "reconciledLikelyOrPossible": 3571,
+    "shareLikely": 0.0957,
+    "shareLikelyOrPossible": 0.2334,
+    "byCounty": [
+      {
+        "countyCode": "RO-AB",
+        "countyName": "Alba",
+        "size": 484,
+        "reconciledLikely": 62,
+        "reconciledLikelyOrPossible": 139
+      },
+      {
+        "countyCode": "RO-AR",
+        "countyName": "Arad",
+        "size": 151,
+        "reconciledLikely": 18,
+        "reconciledLikelyOrPossible": 40
+      },
+      {
+        "countyCode": "RO-AG",
+        "countyName": "Argeș",
+        "size": 468,
+        "reconciledLikely": 36,
+        "reconciledLikelyOrPossible": 95
+      },
+      {
+        "countyCode": "RO-BC",
+        "countyName": "Bacău",
+        "size": 199,
+        "reconciledLikely": 20,
+        "reconciledLikelyOrPossible": 46
+      },
+      {
+        "countyCode": "RO-BH",
+        "countyName": "Bihor",
+        "size": 541,
+        "reconciledLikely": 23,
+        "reconciledLikelyOrPossible": 79
+      },
+      {
+        "countyCode": "RO-BN",
+        "countyName": "Bistrița-Năsăud",
+        "size": 218,
+        "reconciledLikely": 15,
+        "reconciledLikelyOrPossible": 35
+      },
+      {
+        "countyCode": "RO-BT",
+        "countyName": "Botoșani",
+        "size": 26,
+        "reconciledLikely": 1,
+        "reconciledLikelyOrPossible": 3
+      },
+      {
+        "countyCode": "RO-BV",
+        "countyName": "Brașov",
+        "size": 1452,
+        "reconciledLikely": 236,
+        "reconciledLikelyOrPossible": 560
+      },
+      {
+        "countyCode": "RO-BR",
+        "countyName": "Brăila",
+        "size": 25,
+        "reconciledLikely": 7,
+        "reconciledLikelyOrPossible": 8
+      },
+      {
+        "countyCode": "RO-B",
+        "countyName": "București",
+        "size": 51,
+        "reconciledLikely": 4,
+        "reconciledLikelyOrPossible": 17
+      },
+      {
+        "countyCode": "RO-BZ",
+        "countyName": "Buzău",
+        "size": 151,
+        "reconciledLikely": 10,
+        "reconciledLikelyOrPossible": 38
+      },
+      {
+        "countyCode": "RO-CS",
+        "countyName": "Caraș-Severin",
+        "size": 335,
+        "reconciledLikely": 39,
+        "reconciledLikelyOrPossible": 71
+      },
+      {
+        "countyCode": "RO-CL",
+        "countyName": "Călărași",
+        "size": 23,
+        "reconciledLikely": 1,
+        "reconciledLikelyOrPossible": 3
+      },
+      {
+        "countyCode": "RO-CJ",
+        "countyName": "Cluj",
+        "size": 629,
+        "reconciledLikely": 70,
+        "reconciledLikelyOrPossible": 129
+      },
+      {
+        "countyCode": "RO-CT",
+        "countyName": "Constanța",
+        "size": 2258,
+        "reconciledLikely": 154,
+        "reconciledLikelyOrPossible": 637
+      },
+      {
+        "countyCode": "RO-CV",
+        "countyName": "Covasna",
+        "size": 182,
+        "reconciledLikely": 11,
+        "reconciledLikelyOrPossible": 19
+      },
+      {
+        "countyCode": "RO-DB",
+        "countyName": "Dâmbovița",
+        "size": 121,
+        "reconciledLikely": 10,
+        "reconciledLikelyOrPossible": 16
+      },
+      {
+        "countyCode": "RO-DJ",
+        "countyName": "Dolj",
+        "size": 74,
+        "reconciledLikely": 8,
+        "reconciledLikelyOrPossible": 13
+      },
+      {
+        "countyCode": "RO-GL",
+        "countyName": "Galați",
+        "size": 34,
+        "reconciledLikely": 1,
+        "reconciledLikelyOrPossible": 3
+      },
+      {
+        "countyCode": "RO-GR",
+        "countyName": "Giurgiu",
+        "size": 25,
+        "reconciledLikely": 2,
+        "reconciledLikelyOrPossible": 2
+      },
+      {
+        "countyCode": "RO-GJ",
+        "countyName": "Gorj",
+        "size": 395,
+        "reconciledLikely": 23,
+        "reconciledLikelyOrPossible": 47
+      },
+      {
+        "countyCode": "RO-HR",
+        "countyName": "Harghita",
+        "size": 669,
+        "reconciledLikely": 81,
+        "reconciledLikelyOrPossible": 135
+      },
+      {
+        "countyCode": "RO-HD",
+        "countyName": "Hunedoara",
+        "size": 520,
+        "reconciledLikely": 34,
+        "reconciledLikelyOrPossible": 101
+      },
+      {
+        "countyCode": "RO-IL",
+        "countyName": "Ialomița",
+        "size": 9,
+        "reconciledLikely": 0,
+        "reconciledLikelyOrPossible": 0
+      },
+      {
+        "countyCode": "RO-IS",
+        "countyName": "Iași",
+        "size": 109,
+        "reconciledLikely": 15,
+        "reconciledLikelyOrPossible": 31
+      },
+      {
+        "countyCode": "RO-IF",
+        "countyName": "Ilfov",
+        "size": 134,
+        "reconciledLikely": 1,
+        "reconciledLikelyOrPossible": 12
+      },
+      {
+        "countyCode": "RO-MM",
+        "countyName": "Maramureș",
+        "size": 907,
+        "reconciledLikely": 55,
+        "reconciledLikelyOrPossible": 136
+      },
+      {
+        "countyCode": "RO-MH",
+        "countyName": "Mehedinți",
+        "size": 282,
+        "reconciledLikely": 41,
+        "reconciledLikelyOrPossible": 72
+      },
+      {
+        "countyCode": "RO-MS",
+        "countyName": "Mureș",
+        "size": 406,
+        "reconciledLikely": 73,
+        "reconciledLikelyOrPossible": 119
+      },
+      {
+        "countyCode": "RO-NT",
+        "countyName": "Neamț",
+        "size": 424,
+        "reconciledLikely": 45,
+        "reconciledLikelyOrPossible": 93
+      },
+      {
+        "countyCode": "RO-OT",
+        "countyName": "Olt",
+        "size": 33,
+        "reconciledLikely": 1,
+        "reconciledLikelyOrPossible": 3
+      },
+      {
+        "countyCode": "RO-PH",
+        "countyName": "Prahova",
+        "size": 628,
+        "reconciledLikely": 87,
+        "reconciledLikelyOrPossible": 184
+      },
+      {
+        "countyCode": "RO-SM",
+        "countyName": "Satu Mare",
+        "size": 135,
+        "reconciledLikely": 2,
+        "reconciledLikelyOrPossible": 8
+      },
+      {
+        "countyCode": "RO-SJ",
+        "countyName": "Sălaj",
+        "size": 114,
+        "reconciledLikely": 6,
+        "reconciledLikelyOrPossible": 13
+      },
+      {
+        "countyCode": "RO-SB",
+        "countyName": "Sibiu",
+        "size": 625,
+        "reconciledLikely": 56,
+        "reconciledLikelyOrPossible": 138
+      },
+      {
+        "countyCode": "RO-SV",
+        "countyName": "Suceava",
+        "size": 1032,
+        "reconciledLikely": 74,
+        "reconciledLikelyOrPossible": 206
+      },
+      {
+        "countyCode": "RO-TR",
+        "countyName": "Teleorman",
+        "size": 15,
+        "reconciledLikely": 2,
+        "reconciledLikelyOrPossible": 3
+      },
+      {
+        "countyCode": "RO-TM",
+        "countyName": "Timiș",
+        "size": 184,
+        "reconciledLikely": 22,
+        "reconciledLikelyOrPossible": 46
+      },
+      {
+        "countyCode": "RO-TL",
+        "countyName": "Tulcea",
+        "size": 634,
+        "reconciledLikely": 64,
+        "reconciledLikelyOrPossible": 145
+      },
+      {
+        "countyCode": "RO-VS",
+        "countyName": "Vaslui",
+        "size": 29,
+        "reconciledLikely": 1,
+        "reconciledLikelyOrPossible": 1
+      },
+      {
+        "countyCode": "RO-VL",
+        "countyName": "Vâlcea",
+        "size": 428,
+        "reconciledLikely": 47,
+        "reconciledLikelyOrPossible": 107
+      },
+      {
+        "countyCode": "RO-VN",
+        "countyName": "Vrancea",
+        "size": 138,
+        "reconciledLikely": 6,
+        "reconciledLikelyOrPossible": 18
+      }
+    ],
+    "caveat": "This is the share of a defined official-register subset that OpenStreetMap can be reconciled with, under unverified suggestions. It is not the share of all Romanian group-rental properties: unregistered properties and the true eligible population are unknown."
+  },
+  "entityResolution": {
+    "status": "not_measured",
+    "reason": "No independently reviewed labels have been recorded for grp-duplicate-matcher@1. Precision, recall, and F1 are not reported until the review protocol is completed.",
+    "protocol": "docs/research/group-rental-property-baseline/evaluation-protocol.md"
+  },
+  "unknowns": [
+    "Whether any Candidate is rentable as a whole property or accepts private events (neither source states it).",
+    "The number of group-rental properties operating without a classification certificate.",
+    "Matcher precision and recall (pending independent review).",
+    "Stability of derived register record keys across future register versions (one version observed)."
+  ]
+}

@@ -27,9 +27,10 @@ erDiagram
 
 This is conceptual cardinality. The first physical slice now stores Research
 Campaigns, investigated campaign sources, Categories, Administrator membership,
-and Audit Events in PostgreSQL. Candidates, Evidence, Claims, canonical catalog
-records, verification, and publication remain conceptual until their vertical
-slices are implemented. Persistent identifiers use application-generated
+and Audit Events in PostgreSQL. Candidates, Evidence, Claims, and Acquisition
+Runs became physical with the acquisition baseline (see below); canonical
+catalog records, verification, and publication remain conceptual until their
+vertical slices are implemented. Persistent identifiers use application-generated
 UUIDv7 values and every table carries `created_at` and `updated_at` timestamps.
 
 ## Research side
@@ -54,6 +55,32 @@ capacity, price statement, delivery area, or party restriction. A Claim stores
 the asserted value, target concept, evidence, observation time, extraction
 method, and confidence or review state. Confidence is not truth and does not
 publish a Claim automatically.
+
+### Acquisition baseline physical model
+
+The acquisition baseline (`docs/research/group-rental-property-baseline/`)
+made the research side physical, all owned by the Research module:
+
+- `source_artifact` — a downloaded file: source, checksum, dataset version
+  read from the file, URL, retrieval time, reuse terms, retention policy.
+- `acquisition_run` — one import attempt for a campaign: artifact, parser and
+  normalizer versions, status (`running`, `succeeded`,
+  `completed_with_rejections`, `failed`), statistics, classified failure, and
+  an output digest over every Claim and rejection.
+- `evidence` — immutable source-record content, unique by source, record key,
+  and content checksum, with redacted fields listed (ADR 0023).
+- `acquisition_run_record` — how a run interpreted each record (parsed or
+  rejected, errors, campaign scope, resulting Candidate).
+- `candidate` — campaign-scoped possible Offer, unique by campaign, source,
+  and record key; `verification_status` is constrained to `unverified`.
+- `claim` — proposed value with target, Evidence locator (source field or
+  inference policy), extraction method version, confidence, and observation
+  time; `review_status` is constrained to `proposed`. Claim values use an
+  exact `jsonb` column so JSON strings are never coerced.
+- `duplicate_suggestion` — explainable same-property or same-provider
+  suggestion between two Candidates, per matcher version; never a merge.
+
+`research_campaign.county` is nullable: a null county is a national campaign.
 
 ## Canonical catalog
 

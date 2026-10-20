@@ -27,7 +27,7 @@ it.
   never imports API implementation types. Distinct DTOs per projection encode
   the published-versus-canonical boundary from ADR 0013 in the generated
   types.
-- Route-family separation (`_public` and `_studio`) with two `beforeLoad`
+- Route-family separation (`_public` and `studio/_authenticated`) with two `beforeLoad`
   policies expresses the audience split at the UX layer; the API remains the
   authoritative trust boundary.
 - Mock Service Worker (MSW) is the permanent dev, test, and Storybook mock
@@ -52,6 +52,10 @@ it.
   Automation proposes Candidates and Claims but never publishes them.
 - Queue, worker, browser automation, and extraction-vendor choices are deferred
   until experiments reveal real runtime needs.
+- Evidence is stored per source record in PostgreSQL with retention-policy
+  redaction; downloaded artifacts are referenced by checksum and kept outside
+  the database and repository (ADR 0023). Long-running imports run from the
+  research CLI, not from HTTP requests.
 
 ## Access and security
 

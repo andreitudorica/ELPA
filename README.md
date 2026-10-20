@@ -112,7 +112,10 @@ pnpm --filter @elpa/api dev
 pnpm --filter @elpa/web dev
 ```
 
-Open `http://localhost:5273/studio/research-campaigns`. API liveness and
+Open `http://localhost:5273/studio/research-campaigns`. To reproduce the
+acquisition baseline (official register + OpenStreetMap), follow
+[the reproduction guide](./docs/research/group-rental-property-baseline/reproduction.md).
+API liveness and
 database readiness are available at `http://localhost:3000/api/healthz` and
 `http://localhost:3000/api/readyz`.
 
@@ -127,6 +130,7 @@ database readiness are available at `http://localhost:3000/api/healthz` and
 - [Data model](./docs/architecture/data-model.md)
 - [Data Studio alpha](./docs/product/data-studio-alpha.md)
 - [Data acquisition experiments](./docs/product/data-acquisition-experiments.md)
+- [Group Rental Property acquisition baseline](./docs/research/group-rental-property-baseline/README.md)
 - [Agentic work](./docs/development/agentic-work.md)
 - [Database development workflow](./docs/development/database.md)
 - [Product source document (Romanian)](https://docs.google.com/document/d/1jL7QwXgTn8K2s6qbO2hBatXqevpWLSn69IcIJNVqwLk/edit)

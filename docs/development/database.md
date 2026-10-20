@@ -39,6 +39,19 @@ it at production by default. See the official
 [Drizzle Studio documentation](https://orm.drizzle.team/docs/drizzle-kit-studio)
 for current behavior and supported options.
 
+## JSONB values
+
+node-postgres already parses `jsonb` results, and Drizzle's built-in `jsonb`
+column parses string results again, turning the stored JSON string `"123"`
+into the number `123`. Columns whose top-level value may be a JSON string
+(Claim values) use `exactJsonb` from `apps/api/src/database/json-column.ts`.
+
+## Research data on disk
+
+Acquisition artifacts, reports, and evaluation exports are written to the
+ignored `apps/api/.data/` directory. They may contain licence-restricted or
+personal data and must never be committed.
+
 ## Persistence rules
 
 - PostgreSQL remains the authoritative system of record.

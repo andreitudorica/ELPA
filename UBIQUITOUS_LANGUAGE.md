@@ -24,16 +24,19 @@ resolved.
 
 ## Research and curation
 
-| Term                  | Definition                                                                                                                | Aliases to avoid                                   |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| **Research Campaign** | A bounded research effort defined by a geographic area, event need, category, minimum criteria, and investigated sources. | Scrape job, crawl                                  |
-| **Acquisition Run**   | One recorded attempt to import, fetch, extract, discover, or detect change from a defined input and source.               | Scrape when the acquisition stage is more specific |
-| **Candidate**         | A discovered possible provider, location, or offer that has not yet passed verification.                                  | Provider, listing                                  |
-| **Claim**             | A source-attributed immutable observation that preserves its value and observation time.                                  | Fact, canonical field                              |
-| **Evidence**          | The source material that supports one or more **Claims**.                                                                 | Truth                                              |
-| **Verification**      | A human decision that claims are sufficiently supported for their intended use.                                           | Automatic validation                               |
-| **Publication**       | Making approved data eligible for consumption by the recommendation product.                                              | Discovery, approval                                |
-| **Reverification**    | A later **Verification** prompted by age, change, contradiction, or risk.                                                 | Refresh                                            |
+| Term                     | Definition                                                                                                                                                                                                             | Aliases to avoid                                   |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **Research Campaign**    | A bounded research effort defined by a geographic area, event need, category, minimum criteria, and investigated sources.                                                                                              | Scrape job, crawl                                  |
+| **Acquisition Run**      | One recorded attempt to import, fetch, extract, discover, or detect change from a defined input and source.                                                                                                            | Scrape when the acquisition stage is more specific |
+| **Candidate**            | A discovered possible provider, location, or offer that has not yet passed verification.                                                                                                                               | Provider, listing                                  |
+| **Claim**                | A source-attributed immutable observation that preserves its value and observation time.                                                                                                                               | Fact, canonical field                              |
+| **Evidence**             | The source material that supports one or more **Claims**.                                                                                                                                                              | Truth                                              |
+| **Verification**         | A human decision that claims are sufficiently supported for their intended use.                                                                                                                                        | Automatic validation                               |
+| **Publication**          | Making approved data eligible for consumption by the recommendation product.                                                                                                                                           | Discovery, approval                                |
+| **Reverification**       | A later **Verification** prompted by age, change, contradiction, or risk.                                                                                                                                              | Refresh                                            |
+| **Source Artifact**      | A versioned file obtained from a source (an export, an extract), identified by checksum, from which an **Acquisition Run** reads **Evidence**.                                                                         | Dump, raw file                                     |
+| **Duplicate Suggestion** | An explainable, versioned proposal that two **Candidates** describe the same property or share a **Provider**. It never merges records; resolving it is a Curation decision.                                           | Match (as a decision), merge                       |
+| **Population Screening** | An automated, inferred **Claim** that classifies a **Candidate** against a Category's research population (plausible, ambiguous, out of scope, insufficient data). It orders review and never establishes eligibility. | Eligibility, qualification                         |
 
 ## Catalog
 
@@ -91,6 +94,11 @@ resolved.
 - An **Acquisition Run** may produce zero or more **Candidates**, **Evidence**
   records, and proposed **Claims**.
 - A **Candidate** accumulates one or more **Claims** supported by **Evidence**.
+- An **Acquisition Run** reads one **Source Artifact**; each distinct source
+  record content becomes one immutable **Evidence** row, reused when the same
+  content is read again.
+- A **Duplicate Suggestion** relates two **Candidates**; only Curation turns
+  suggestions into canonical **Providers** and **Offers**.
 - Multiple **Candidates** may resolve to one canonical **Provider** or **Offer**.
 - A **Provider** has one or more **Offers** and zero or more **Operating Locations**.
 - An **Offer** belongs to one **Provider** and may belong to one or more **Categories**.
@@ -131,6 +139,13 @@ resolved.
   granularity of **Verification** and **Publication** remains unresolved.
 - **Operator** is reserved for a possible future restricted curation role. The
   alpha has only the full-access **Administrator** role.
+- A guesthouse (_pensiune_) let exclusively to one group conflicts with the
+  Group Rental Property scope note that excludes _Pensiune_ and requires no
+  live-in staff. The acquisition baseline screens guesthouses as ambiguous
+  until review measures how often exclusive rental occurs; the Category
+  definition is unchanged pending that evidence.
+- A **Research Campaign**'s geographic area may be a county, a locality within
+  a county, or all of Romania (a national campaign, county left empty).
 - “MVP” describes a delivery stage rather than a stable product responsibility.
   The recommendation is **Recommendation Product** in the domain language and
   a separate application name once branding is decided.

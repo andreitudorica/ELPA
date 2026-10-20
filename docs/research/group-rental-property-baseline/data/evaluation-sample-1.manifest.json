@@ -1,0 +1,2805 @@
+{
+  "sampleVersion": "grp-eval-sample@1",
+  "seed": "elpa-grp-baseline-2026-10",
+  "partitionVersion": "grp-eval-partition@1",
+  "matcherVersion": "grp-duplicate-matcher@1",
+  "extractionMethods": [
+    "situr-accommodation-normalizer@1",
+    "osm-accommodation-normalizer@1",
+    "osm-locality-inference@1",
+    "grp-population-screening@1"
+  ],
+  "quotas": {
+    "record_match": 4,
+    "pair_match": 6,
+    "hard_case": 12,
+    "eligibility": 5
+  },
+  "artifacts": [
+    {
+      "sha256": "1765427e22acc9001ce41708f41a618a09ff14f3b682411cec08bea23843067b",
+      "datasetVersion": "2026-10-21"
+    },
+    {
+      "sha256": "d4854cff79bc1d92508d7845591e2041351f0d98c247b13437b9cf8824a9433b",
+      "datasetVersion": "2026-10-21"
+    },
+    {
+      "sha256": "9eff756d49a9a77ff354a98c2b0b5674eaed9cbd88e24399464248b69cfb948a",
+      "datasetVersion": "2026-10-19T20:21:11.000Z"
+    }
+  ],
+  "itemsByTask": {
+    "record_match": 136,
+    "pair_match": 151,
+    "eligibility": 65
+  },
+  "strata": {
+    "eligibility|osm_geofabrik_romania|ambiguous|rural": {
+      "population": 1325,
+      "sampled": 5
+    },
+    "eligibility|osm_geofabrik_romania|ambiguous|urban": {
+      "population": 1316,
+      "sampled": 5
+    },
+    "eligibility|osm_geofabrik_romania|out_of_scope|rural": {
+      "population": 1554,
+      "sampled": 5
+    },
+    "eligibility|osm_geofabrik_romania|out_of_scope|urban": {
+      "population": 2205,
+      "sampled": 5
+    },
+    "eligibility|osm_geofabrik_romania|plausible|rural": {
+      "population": 1044,
+      "sampled": 5
+    },
+    "eligibility|situr_accommodation_register|ambiguous|rural": {
+      "population": 4686,
+      "sampled": 5
+    },
+    "eligibility|situr_accommodation_register|ambiguous|unknown": {
+      "population": 514,
+      "sampled": 5
+    },
+    "eligibility|situr_accommodation_register|ambiguous|urban": {
+      "population": 2712,
+      "sampled": 5
+    },
+    "eligibility|situr_accommodation_register|out_of_scope|rural": {
+      "population": 1678,
+      "sampled": 5
+    },
+    "eligibility|situr_accommodation_register|out_of_scope|unknown": {
+      "population": 628,
+      "sampled": 5
+    },
+    "eligibility|situr_accommodation_register|out_of_scope|urban": {
+      "population": 9576,
+      "sampled": 5
+    },
+    "eligibility|situr_accommodation_register|plausible|rural": {
+      "population": 2431,
+      "sampled": 5
+    },
+    "eligibility|situr_accommodation_register|plausible|unknown": {
+      "population": 320,
+      "sampled": 5
+    },
+    "pair_match|hard_case|same_name_different_settlement": {
+      "population": 1366,
+      "sampled": 12
+    },
+    "pair_match|hard_case|same_operator_different_settlement": {
+      "population": 987,
+      "sampled": 12
+    },
+    "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|address_match_similar_name": {
+      "population": 34,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|exact_core_name_same_settlement": {
+      "population": 120,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|same_listing_page": {
+      "population": 1,
+      "sampled": 1
+    },
+    "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|exact_core_name_with_caveats": {
+      "population": 274,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|similar_name_same_settlement": {
+      "population": 232,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|likely|shared_tax_id": {
+      "population": 1,
+      "sampled": 1
+    },
+    "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_email_domain": {
+      "population": 3,
+      "sampled": 3
+    },
+    "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_listing_page": {
+      "population": 10,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_website_domain": {
+      "population": 128,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|address_match_similar_name": {
+      "population": 297,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|exact_core_name_same_settlement": {
+      "population": 1383,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|same_listing_page": {
+      "population": 2,
+      "sampled": 2
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|address_match_similar_name": {
+      "population": 41,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_same_settlement": {
+      "population": 185,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_with_caveats": {
+      "population": 2042,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|same_listing_page": {
+      "population": 2,
+      "sampled": 2
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|similar_name_same_settlement": {
+      "population": 1467,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|likely|shared_tax_id": {
+      "population": 4,
+      "sampled": 4
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_email_domain": {
+      "population": 75,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_listing_page": {
+      "population": 80,
+      "sampled": 6
+    },
+    "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_website_domain": {
+      "population": 173,
+      "sampled": 6
+    },
+    "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_certificate_and_name": {
+      "population": 73,
+      "sampled": 6
+    },
+    "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_name_address_capacity": {
+      "population": 333,
+      "sampled": 6
+    },
+    "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|near_identical_name_same_settlement": {
+      "population": 134,
+      "sampled": 6
+    },
+    "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|same_name_same_settlement": {
+      "population": 1016,
+      "sampled": 6
+    },
+    "record_match|likely|rural|complex": {
+      "population": 3,
+      "sampled": 3
+    },
+    "record_match|likely|rural|guest_house": {
+      "population": 371,
+      "sampled": 4
+    },
+    "record_match|likely|rural|rooms_or_apartments": {
+      "population": 166,
+      "sampled": 4
+    },
+    "record_match|likely|rural|whole_dwelling": {
+      "population": 28,
+      "sampled": 4
+    },
+    "record_match|likely|unknown|guest_house": {
+      "population": 14,
+      "sampled": 4
+    },
+    "record_match|likely|unknown|rooms_or_apartments": {
+      "population": 48,
+      "sampled": 4
+    },
+    "record_match|likely|unknown|whole_dwelling": {
+      "population": 13,
+      "sampled": 4
+    },
+    "record_match|likely|urban|complex": {
+      "population": 1,
+      "sampled": 1
+    },
+    "record_match|likely|urban|guest_house": {
+      "population": 267,
+      "sampled": 4
+    },
+    "record_match|likely|urban|rooms_or_apartments": {
+      "population": 76,
+      "sampled": 4
+    },
+    "record_match|likely|urban|whole_dwelling": {
+      "population": 64,
+      "sampled": 4
+    },
+    "record_match|none|rural|complex": {
+      "population": 212,
+      "sampled": 4
+    },
+    "record_match|none|rural|guest_house": {
+      "population": 2335,
+      "sampled": 4
+    },
+    "record_match|none|rural|rooms_or_apartments": {
+      "population": 2950,
+      "sampled": 4
+    },
+    "record_match|none|rural|whole_dwelling": {
+      "population": 255,
+      "sampled": 4
+    },
+    "record_match|none|unknown|complex": {
+      "population": 18,
+      "sampled": 4
+    },
+    "record_match|none|unknown|guest_house": {
+      "population": 62,
+      "sampled": 4
+    },
+    "record_match|none|unknown|rooms_or_apartments": {
+      "population": 389,
+      "sampled": 4
+    },
+    "record_match|none|unknown|whole_dwelling": {
+      "population": 45,
+      "sampled": 4
+    },
+    "record_match|none|urban|complex": {
+      "population": 69,
+      "sampled": 4
+    },
+    "record_match|none|urban|guest_house": {
+      "population": 808,
+      "sampled": 4
+    },
+    "record_match|none|urban|rooms_or_apartments": {
+      "population": 778,
+      "sampled": 4
+    },
+    "record_match|none|urban|whole_dwelling": {
+      "population": 250,
+      "sampled": 4
+    },
+    "record_match|possible|rural|complex": {
+      "population": 31,
+      "sampled": 4
+    },
+    "record_match|possible|rural|guest_house": {
+      "population": 389,
+      "sampled": 4
+    },
+    "record_match|possible|rural|rooms_or_apartments": {
+      "population": 330,
+      "sampled": 4
+    },
+    "record_match|possible|rural|whole_dwelling": {
+      "population": 47,
+      "sampled": 4
+    },
+    "record_match|possible|unknown|complex": {
+      "population": 9,
+      "sampled": 4
+    },
+    "record_match|possible|unknown|guest_house": {
+      "population": 29,
+      "sampled": 4
+    },
+    "record_match|possible|unknown|rooms_or_apartments": {
+      "population": 181,
+      "sampled": 4
+    },
+    "record_match|possible|unknown|whole_dwelling": {
+      "population": 26,
+      "sampled": 4
+    },
+    "record_match|possible|urban|complex": {
+      "population": 15,
+      "sampled": 4
+    },
+    "record_match|possible|urban|guest_house": {
+      "population": 208,
+      "sampled": 4
+    },
+    "record_match|possible|urban|rooms_or_apartments": {
+      "population": 103,
+      "sampled": 4
+    },
+    "record_match|possible|urban|whole_dwelling": {
+      "population": 73,
+      "sampled": 4
+    }
+  },
+  "items": [
+    {
+      "itemId": "record_match:1fc859976b93",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|complex",
+      "left": "situr_accommodation_register:cert:15443|2016-10-06|c29df7b690b6",
+      "right": null
+    },
+    {
+      "itemId": "record_match:a9ae8a0b8969",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|complex",
+      "left": "situr_accommodation_register:cert:25089|2022-06-21|9aa19237059a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:e8b1ecbdeb70",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|complex",
+      "left": "situr_accommodation_register:cert:31767|2022-07-28|c220b930ca2c",
+      "right": null
+    },
+    {
+      "itemId": "record_match:9d42edc318fd",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|guest_house",
+      "left": "situr_accommodation_register:cert:19144|2018-11-14|21e25c713a3d",
+      "right": null
+    },
+    {
+      "itemId": "record_match:87b93e3cea3f",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|guest_house",
+      "left": "situr_accommodation_register:cert:10330/6749|2023-08-28|3a85e44e044a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:01b24a61398b",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|guest_house",
+      "left": "situr_accommodation_register:cert:12388/8348|2026-03-11|27b95364ba1f",
+      "right": null
+    },
+    {
+      "itemId": "record_match:904f0b956a3a",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|guest_house",
+      "left": "situr_accommodation_register:cert:11373/7213|2010-12-06|ec486f83bf83",
+      "right": null
+    },
+    {
+      "itemId": "record_match:325b002119a6",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:27179|2021-11-02|a50353f57a53",
+      "right": null
+    },
+    {
+      "itemId": "record_match:03a5503d992f",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:43435|2025-08-05|95a975d6a9ac",
+      "right": null
+    },
+    {
+      "itemId": "record_match:1cd8a246648a",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:9754/6299|2019-01-09|5303f79184af",
+      "right": null
+    },
+    {
+      "itemId": "record_match:11797d88dd2b",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:36910|2023-11-14|cb075cd7f54a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:22e7de9bbd3f",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:11768/7514|2025-02-18|eb31211a5a52",
+      "right": null
+    },
+    {
+      "itemId": "record_match:56b42de7a652",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:13039/7587|2011-04-27|337bb9131904",
+      "right": null
+    },
+    {
+      "itemId": "record_match:04a34245e9c2",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:28356|2014-12-16|2b0f8ead5fe3",
+      "right": null
+    },
+    {
+      "itemId": "record_match:29af6dee4604",
+      "task": "record_match",
+      "stratum": "record_match|likely|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:7347/6647|2010-04-26|50aa00b9f1d9",
+      "right": null
+    },
+    {
+      "itemId": "record_match:d4f53317975a",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:8749/5619|2011-05-16|8ba239baea30",
+      "right": null
+    },
+    {
+      "itemId": "record_match:71d37b8914b4",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:6353/4920|2010-04-22|b0ca99909cbb",
+      "right": null
+    },
+    {
+      "itemId": "record_match:4c52cc8e9199",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:7915/8515|2025-07-07|1c026b4d93a0",
+      "right": null
+    },
+    {
+      "itemId": "record_match:1ac7344bc17b",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:12997|2009-09-08|40c51b8f1c2d",
+      "right": null
+    },
+    {
+      "itemId": "record_match:fd71033444fe",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:36517|2023-10-27|6c5ebe6765fb",
+      "right": null
+    },
+    {
+      "itemId": "record_match:99b6d5786eb9",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:19799|2025-03-10|26152bb07598",
+      "right": null
+    },
+    {
+      "itemId": "record_match:01c4d60bfacd",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:34606|2023-05-24|cddf3f8b2eeb",
+      "right": null
+    },
+    {
+      "itemId": "record_match:6d80802bf389",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:44642|2025-10-23|0bbe79cd4740",
+      "right": null
+    },
+    {
+      "itemId": "record_match:b20990fa9a66",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:15162A|2011-07-19|56c799ca3900",
+      "right": null
+    },
+    {
+      "itemId": "record_match:8fbfdd65a29a",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:5825/3622|2012-01-09|6484b6479946",
+      "right": null
+    },
+    {
+      "itemId": "record_match:e3e76f6135d2",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:28745|2015-08-18|eb684fbc9ad0",
+      "right": null
+    },
+    {
+      "itemId": "record_match:ed8a0106cfc3",
+      "task": "record_match",
+      "stratum": "record_match|likely|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:6547/4123|2026-03-10|3719c5461798",
+      "right": null
+    },
+    {
+      "itemId": "record_match:ac79d6a2bc65",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|complex",
+      "left": "situr_accommodation_register:cert:7922|2014-11-07|3c2fdadf9180",
+      "right": null
+    },
+    {
+      "itemId": "record_match:dd276feaf460",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|guest_house",
+      "left": "situr_accommodation_register:cert:13381|2018-08-08|ec57b1d98dbf",
+      "right": null
+    },
+    {
+      "itemId": "record_match:1c031a497d71",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|guest_house",
+      "left": "situr_accommodation_register:cert:37260|2024-01-08|c5e61c5e6aac",
+      "right": null
+    },
+    {
+      "itemId": "record_match:05f7c0d6b2ff",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|guest_house",
+      "left": "situr_accommodation_register:cert:11107/6754|2023-03-09|c3f7b08531fe",
+      "right": null
+    },
+    {
+      "itemId": "record_match:2ba6cc02085e",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|guest_house",
+      "left": "situr_accommodation_register:cert:13639|2010-08-12|90bffa29fe1d",
+      "right": null
+    },
+    {
+      "itemId": "record_match:23622ba3de42",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:11093/6981|2010-08-03|6a18a53374d4",
+      "right": null
+    },
+    {
+      "itemId": "record_match:a6b3fb54baff",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:42834|2025-06-04|b9c45a0e9d1a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:9fcb48d42f84",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:32740|2022-12-06|e46ed2501b76",
+      "right": null
+    },
+    {
+      "itemId": "record_match:b2509cabfc4a",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:13677|2010-09-14|4082e885ab5b",
+      "right": null
+    },
+    {
+      "itemId": "record_match:6792fcd3cfa7",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:40348|2024-10-28|add02d388a97",
+      "right": null
+    },
+    {
+      "itemId": "record_match:67944d27b5d9",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:9448/6234|2021-05-25|05df55b371cd",
+      "right": null
+    },
+    {
+      "itemId": "record_match:c40f6a756b7d",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:23553|2022-07-29|366348553a96",
+      "right": null
+    },
+    {
+      "itemId": "record_match:de99c9e42d5e",
+      "task": "record_match",
+      "stratum": "record_match|likely|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:6736/3429A|2011-08-08|a813636aed33",
+      "right": null
+    },
+    {
+      "itemId": "record_match:47276f1eeba6",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|complex",
+      "left": "situr_accommodation_register:cert:5192/3439|2022-04-26|a99ae78b36f9",
+      "right": null
+    },
+    {
+      "itemId": "record_match:91f8dc616367",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|complex",
+      "left": "situr_accommodation_register:cert:21654|2020-10-16|19856c120fed",
+      "right": null
+    },
+    {
+      "itemId": "record_match:7fee7ae9cdcd",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|complex",
+      "left": "situr_accommodation_register:cert:32159|2022-09-06|d0be7a7819be",
+      "right": null
+    },
+    {
+      "itemId": "record_match:196b272525d7",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|complex",
+      "left": "situr_accommodation_register:cert:22305|2026-04-08|f103169700dc",
+      "right": null
+    },
+    {
+      "itemId": "record_match:a6d0cedbb6b9",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|guest_house",
+      "left": "situr_accommodation_register:cert:23610|2021-08-06|0b1f305da213",
+      "right": null
+    },
+    {
+      "itemId": "record_match:1d7b557d20f2",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|guest_house",
+      "left": "situr_accommodation_register:cert:23381|2021-07-06|5391c7d84220",
+      "right": null
+    },
+    {
+      "itemId": "record_match:0f8f7920041d",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|guest_house",
+      "left": "situr_accommodation_register:cert:44044|2025-09-16|c77efe1996f0",
+      "right": null
+    },
+    {
+      "itemId": "record_match:a3e116185a66",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|guest_house",
+      "left": "situr_accommodation_register:cert:19531|2019-04-03|6ee442e77638",
+      "right": null
+    },
+    {
+      "itemId": "record_match:019be6603263",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:48260|2026-09-21|a5425fce0dd9",
+      "right": null
+    },
+    {
+      "itemId": "record_match:ecdd5c97a583",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:34310|2023-04-27|1f518a7a3a6b",
+      "right": null
+    },
+    {
+      "itemId": "record_match:712ff473cfae",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:31408|2018-03-20|67210c73146b",
+      "right": null
+    },
+    {
+      "itemId": "record_match:271c983a0c53",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:18648|2018-07-02|e24c4be8d001",
+      "right": null
+    },
+    {
+      "itemId": "record_match:15d7648eca42",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:9468/6624|2010-04-21|8583e995515a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:9e0a3a84ba9e",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:1687/1248A|2011-06-20|e0c5df339e91",
+      "right": null
+    },
+    {
+      "itemId": "record_match:dbb2f44871fd",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:4396/1762|2010-11-17|d3822c156564",
+      "right": null
+    },
+    {
+      "itemId": "record_match:a95a8ea2b057",
+      "task": "record_match",
+      "stratum": "record_match|none|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:44191|2025-09-29|3181b10d74e3",
+      "right": null
+    },
+    {
+      "itemId": "record_match:af43ad027fa6",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|complex",
+      "left": "situr_accommodation_register:cert:20244|2019-08-13|3cb56026df9e",
+      "right": null
+    },
+    {
+      "itemId": "record_match:e2a4ee9e43b0",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|complex",
+      "left": "situr_accommodation_register:cert:37109|2023-11-28|f606dfd95151",
+      "right": null
+    },
+    {
+      "itemId": "record_match:9fd061a726d3",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|complex",
+      "left": "situr_accommodation_register:cert:30001|2023-10-03|2de9502b964f",
+      "right": null
+    },
+    {
+      "itemId": "record_match:c2e2d3266592",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|complex",
+      "left": "situr_accommodation_register:cert:6516/8814|2012-07-06|e9a697c66b75",
+      "right": null
+    },
+    {
+      "itemId": "record_match:f69337a8cdf0",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:15550|2011-09-06|b4bbe1f2f23a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:6b4d910d861e",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:25130bis|2022-06-23|6c6fdc2f7967",
+      "right": null
+    },
+    {
+      "itemId": "record_match:c3585268b11e",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:16256|2011-11-30|4e13d7d4ce4a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:6a9a894337ca",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:14025/8674|2012-05-03|2013dcddfb12",
+      "right": null
+    },
+    {
+      "itemId": "record_match:6bd0bb572778",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:20544|2024-06-12|5a9d5e8b90cb",
+      "right": null
+    },
+    {
+      "itemId": "record_match:a0d708b51820",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:29096|2015-11-24|cff5d660bd06",
+      "right": null
+    },
+    {
+      "itemId": "record_match:c0619107bb9b",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:35064|2023-07-17|953898b2b8a2",
+      "right": null
+    },
+    {
+      "itemId": "record_match:4155e5e17249",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:33387|2022-12-28|4926fc71dea7",
+      "right": null
+    },
+    {
+      "itemId": "record_match:8dcda6c791d9",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:31146|2017-12-12|a29656130d06",
+      "right": null
+    },
+    {
+      "itemId": "record_match:267ca77761b3",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:14548|2011-06-08|d9a8579f85e1",
+      "right": null
+    },
+    {
+      "itemId": "record_match:34124f460b8f",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:38436|2024-05-10|36506c40dd51",
+      "right": null
+    },
+    {
+      "itemId": "record_match:ef31526eb7c7",
+      "task": "record_match",
+      "stratum": "record_match|none|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:14546|2023-11-01|6401767ba900",
+      "right": null
+    },
+    {
+      "itemId": "record_match:0d853ed9166a",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|complex",
+      "left": "situr_accommodation_register:cert:30103|2016-09-13|6ca6d0724fdc",
+      "right": null
+    },
+    {
+      "itemId": "record_match:226aa2b3d581",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|complex",
+      "left": "situr_accommodation_register:cert:21158|2021-07-06|aeeb016a25f2",
+      "right": null
+    },
+    {
+      "itemId": "record_match:60d8a3b8cb46",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|complex",
+      "left": "situr_accommodation_register:cert:20305|2019-08-27|e002f02c0561",
+      "right": null
+    },
+    {
+      "itemId": "record_match:99afe73dee49",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|complex",
+      "left": "situr_accommodation_register:cert:32546|2022-10-21|bf19780f473e",
+      "right": null
+    },
+    {
+      "itemId": "record_match:b4852ae1b7f0",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|guest_house",
+      "left": "situr_accommodation_register:cert:5080/3390A|2011-03-07|d910386fd22a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:0a33708e07f1",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|guest_house",
+      "left": "situr_accommodation_register:cert:46049|2026-03-09|4e45fae602c9",
+      "right": null
+    },
+    {
+      "itemId": "record_match:79ffaa1fa39b",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|guest_house",
+      "left": "situr_accommodation_register:cert:9978/6407|2009-11-03|260d4dff4d56",
+      "right": null
+    },
+    {
+      "itemId": "record_match:34cc379034b3",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|guest_house",
+      "left": "situr_accommodation_register:cert:15535|2011-09-06|9ff46ee3ff4c",
+      "right": null
+    },
+    {
+      "itemId": "record_match:f52eaf985bd8",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:35304|2023-07-19|8461ecac2f9e",
+      "right": null
+    },
+    {
+      "itemId": "record_match:2be4612c764f",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:32905|2022-12-08|5b7f21fda98a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:2966432f2d73",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:19308|2018-12-19|b83963a19356",
+      "right": null
+    },
+    {
+      "itemId": "record_match:3ab75c1d63de",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:35939|2023-09-04|975cf5b33f93",
+      "right": null
+    },
+    {
+      "itemId": "record_match:a939e65d974f",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:9414/6147|2012-07-12|e0a7a9abe4d6",
+      "right": null
+    },
+    {
+      "itemId": "record_match:68b897917591",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:12897|2009-07-17|854a3c64cc6b",
+      "right": null
+    },
+    {
+      "itemId": "record_match:124eaf68ef7d",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:5941/7037|2010-08-19|702bba04cc5d",
+      "right": null
+    },
+    {
+      "itemId": "record_match:36c2c9ad5e8c",
+      "task": "record_match",
+      "stratum": "record_match|none|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:18063|2012-07-09|5db6a2ab0ec5",
+      "right": null
+    },
+    {
+      "itemId": "record_match:3c660217bbbb",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|complex",
+      "left": "situr_accommodation_register:cert:36223|2023-09-26|a69e6f3c4ad7",
+      "right": null
+    },
+    {
+      "itemId": "record_match:83643880a78a",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|complex",
+      "left": "situr_accommodation_register:cert:16205|2023-07-17|8464804a6b46",
+      "right": null
+    },
+    {
+      "itemId": "record_match:f3618999c0d6",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|complex",
+      "left": "situr_accommodation_register:cert:1787/159|2011-09-20|7019e135ebda",
+      "right": null
+    },
+    {
+      "itemId": "record_match:02cafe8de042",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|complex",
+      "left": "situr_accommodation_register:cert:27755|2014-03-10|624f2c98fce2",
+      "right": null
+    },
+    {
+      "itemId": "record_match:1ff8f551e37c",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|guest_house",
+      "left": "situr_accommodation_register:cert:29650|2016-03-23|73bb1f348df9",
+      "right": null
+    },
+    {
+      "itemId": "record_match:76b4324d272f",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|guest_house",
+      "left": "situr_accommodation_register:cert:10796/6987|2010-08-04|a7b587aa5e00",
+      "right": null
+    },
+    {
+      "itemId": "record_match:0ff6a01fe3ef",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|guest_house",
+      "left": "situr_accommodation_register:cert:14888a|2015-11-24|6cd3352bf5f2",
+      "right": null
+    },
+    {
+      "itemId": "record_match:9dd46f65540c",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|guest_house",
+      "left": "situr_accommodation_register:cert:8273/5309|2009-10-29|2bbb8d92c997",
+      "right": null
+    },
+    {
+      "itemId": "record_match:5bd84d5a2841",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:21721|2020-10-20|f670abfccb99",
+      "right": null
+    },
+    {
+      "itemId": "record_match:95b0f3371e1d",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:28468|2015-07-07|c00c4fff6eb3",
+      "right": null
+    },
+    {
+      "itemId": "record_match:f37dca7b82ce",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:19587|2019-04-16|d751cd29fa6d",
+      "right": null
+    },
+    {
+      "itemId": "record_match:98532726abdd",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:20967|2024-06-10|d322400c66ae",
+      "right": null
+    },
+    {
+      "itemId": "record_match:468cce7bbf37",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:12466/8206|2011-10-31|3b2aa11ff91f",
+      "right": null
+    },
+    {
+      "itemId": "record_match:b3895a62888e",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:10026/6574|2017-09-19|9e7739a2203d",
+      "right": null
+    },
+    {
+      "itemId": "record_match:b5d3658adafa",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:16044|2023-03-20|007f95782454",
+      "right": null
+    },
+    {
+      "itemId": "record_match:c89168a39c13",
+      "task": "record_match",
+      "stratum": "record_match|possible|rural|whole_dwelling",
+      "left": "situr_accommodation_register:cert:11608/7329|2018-02-13|83df1bdd35d1",
+      "right": null
+    },
+    {
+      "itemId": "record_match:c2bfc8474335",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|complex",
+      "left": "situr_accommodation_register:cert:19850|2023-04-05|340bb63c8a18",
+      "right": null
+    },
+    {
+      "itemId": "record_match:19116cc02011",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|complex",
+      "left": "situr_accommodation_register:cert:30941|2019-05-22|315afce4754a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:5e300c8ebfa9",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|complex",
+      "left": "situr_accommodation_register:cert:35570|2023-08-09|d26ab4e7eeed",
+      "right": null
+    },
+    {
+      "itemId": "record_match:004baf5519af",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|complex",
+      "left": "situr_accommodation_register:cert:23294|2021-06-15|f873a8480882",
+      "right": null
+    },
+    {
+      "itemId": "record_match:6959a96f471e",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:11610/7471|2015-07-14|affbc6d9a7f6",
+      "right": null
+    },
+    {
+      "itemId": "record_match:7ed43fe60c8f",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:28227|2014-11-19|a0a53b6c8f2c",
+      "right": null
+    },
+    {
+      "itemId": "record_match:c55148e2a8b9",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:17786|2023-05-18|701a0b3e596b",
+      "right": null
+    },
+    {
+      "itemId": "record_match:397880ee6d56",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|guest_house",
+      "left": "situr_accommodation_register:cert:7797/513|2011-05-16|890916be5e1a",
+      "right": null
+    },
+    {
+      "itemId": "record_match:88741c9146af",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:14540|2011-06-09|8d90c4e2a274",
+      "right": null
+    },
+    {
+      "itemId": "record_match:d5d9ada7b169",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:23045|2025-02-11|ffed4e332179",
+      "right": null
+    },
+    {
+      "itemId": "record_match:e864455e6a03",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:35597|2023-08-10|20b4f6475146",
+      "right": null
+    },
+    {
+      "itemId": "record_match:c260f7082d1c",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:20447|2025-12-09|dba314ba5896",
+      "right": null
+    },
+    {
+      "itemId": "record_match:ddd6a7708ea0",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:14520A|2011-06-07|c54049f28425",
+      "right": null
+    },
+    {
+      "itemId": "record_match:667ed04a828d",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:959/291|2010-05-25|698ca83bafe9",
+      "right": null
+    },
+    {
+      "itemId": "record_match:6030a7c14482",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:15607|2016-08-03|892afebe3577",
+      "right": null
+    },
+    {
+      "itemId": "record_match:c769c4ad4854",
+      "task": "record_match",
+      "stratum": "record_match|possible|unknown|whole_dwelling",
+      "left": "situr_accommodation_register:cert:316/142|2012-03-22|2158a0d0ff05",
+      "right": null
+    },
+    {
+      "itemId": "record_match:8523d642c248",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|complex",
+      "left": "situr_accommodation_register:cert:13674|2010-09-14|4277e328ef66",
+      "right": null
+    },
+    {
+      "itemId": "record_match:9dd5aba14948",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|complex",
+      "left": "situr_accommodation_register:cert:27542|2013-12-19|2ec02fddea33",
+      "right": null
+    },
+    {
+      "itemId": "record_match:485c5c5cb78c",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|complex",
+      "left": "situr_accommodation_register:cert:27107|2013-07-31|a758ce3a9217",
+      "right": null
+    },
+    {
+      "itemId": "record_match:4be8e72af5ed",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|complex",
+      "left": "situr_accommodation_register:cert:29271|2015-12-07|7edd1bd1e59c",
+      "right": null
+    },
+    {
+      "itemId": "record_match:0830dbb6f43b",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|guest_house",
+      "left": "situr_accommodation_register:cert:16188|2011-11-17|30354c0bf2bb",
+      "right": null
+    },
+    {
+      "itemId": "record_match:d49a3198460d",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|guest_house",
+      "left": "situr_accommodation_register:cert:27719|2014-03-05|93e8cae2586f",
+      "right": null
+    },
+    {
+      "itemId": "record_match:5ad74e28c56d",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|guest_house",
+      "left": "situr_accommodation_register:cert:15914|2024-10-09|9dfc45ea3c8c",
+      "right": null
+    },
+    {
+      "itemId": "record_match:64f282dd4ce6",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|guest_house",
+      "left": "situr_accommodation_register:cert:13609|2010-08-04|268dbe14a70b",
+      "right": null
+    },
+    {
+      "itemId": "record_match:bd831d0920f4",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:19639|2019-04-17|5e8bed2e1158",
+      "right": null
+    },
+    {
+      "itemId": "record_match:557ec344f0de",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:19770|2019-05-20|a93b4a1a45d1",
+      "right": null
+    },
+    {
+      "itemId": "record_match:226ec869eb6b",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:29868|2019-05-22|283caa0de23e",
+      "right": null
+    },
+    {
+      "itemId": "record_match:6d3e8794948d",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|rooms_or_apartments",
+      "left": "situr_accommodation_register:cert:21365|2020-10-01|50f4bf07a0f1",
+      "right": null
+    },
+    {
+      "itemId": "record_match:175b57912a61",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:3205/1140|2011-10-06|c6702f6df46d",
+      "right": null
+    },
+    {
+      "itemId": "record_match:050308b56eda",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:28520|2015-07-10|f4d0681de9f6",
+      "right": null
+    },
+    {
+      "itemId": "record_match:f83149159480",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:14664A|2011-06-16|747f512e4ad6",
+      "right": null
+    },
+    {
+      "itemId": "record_match:9873be6b5fd2",
+      "task": "record_match",
+      "stratum": "record_match|possible|urban|whole_dwelling",
+      "left": "situr_accommodation_register:cert:391/733|2009-09-29|27e19c8ba9be",
+      "right": null
+    },
+    {
+      "itemId": "pair_match:c7d909d03f1e",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:node/271626733",
+      "right": "osm_geofabrik_romania:way/316366350"
+    },
+    {
+      "itemId": "pair_match:bb0bfc716866",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:node/8791177322",
+      "right": "osm_geofabrik_romania:way/949621207"
+    },
+    {
+      "itemId": "pair_match:b823f606232e",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/265752464",
+      "right": "osm_geofabrik_romania:way/265752465"
+    },
+    {
+      "itemId": "pair_match:9a79f63f9f57",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/154184143",
+      "right": "osm_geofabrik_romania:way/154184149"
+    },
+    {
+      "itemId": "pair_match:45b4f4911793",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/949621198",
+      "right": "osm_geofabrik_romania:way/949621207"
+    },
+    {
+      "itemId": "pair_match:c2917bb0bcba",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/265752465",
+      "right": "osm_geofabrik_romania:way/265752466"
+    },
+    {
+      "itemId": "pair_match:28235f054786",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/5296033921",
+      "right": "osm_geofabrik_romania:node/5299944821"
+    },
+    {
+      "itemId": "pair_match:7a29a0d31e3f",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/5009373023",
+      "right": "osm_geofabrik_romania:way/636214384"
+    },
+    {
+      "itemId": "pair_match:09488e7918bf",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/2079501598",
+      "right": "osm_geofabrik_romania:way/1153039898"
+    },
+    {
+      "itemId": "pair_match:abf2a6fb13e4",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/9543679453",
+      "right": "osm_geofabrik_romania:way/1035840553"
+    },
+    {
+      "itemId": "pair_match:51eb6233ce5c",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/567531613",
+      "right": "osm_geofabrik_romania:way/727512626"
+    },
+    {
+      "itemId": "pair_match:4d51f49fa6c8",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/3325125716",
+      "right": "osm_geofabrik_romania:way/325889799"
+    },
+    {
+      "itemId": "pair_match:71f6dc2e843a",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|likely|same_listing_page",
+      "left": "osm_geofabrik_romania:node/2272745650",
+      "right": "osm_geofabrik_romania:way/1152224687"
+    },
+    {
+      "itemId": "pair_match:0cdf814978b2",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:node/3898839736",
+      "right": "osm_geofabrik_romania:node/5063656593"
+    },
+    {
+      "itemId": "pair_match:e21879b87037",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:node/10727244679",
+      "right": "osm_geofabrik_romania:node/2954187112"
+    },
+    {
+      "itemId": "pair_match:6b4805dc291f",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:node/7503442294",
+      "right": "osm_geofabrik_romania:node/7887230185"
+    },
+    {
+      "itemId": "pair_match:36b0dbb34973",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:node/4432338226",
+      "right": "osm_geofabrik_romania:way/136986865"
+    },
+    {
+      "itemId": "pair_match:1f49e65a4a86",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:node/4853216931",
+      "right": "osm_geofabrik_romania:way/30334387"
+    },
+    {
+      "itemId": "pair_match:c11c4d2dda73",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:node/8252654419",
+      "right": "osm_geofabrik_romania:node/8420236817"
+    },
+    {
+      "itemId": "pair_match:212c0b495f07",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/13970088924",
+      "right": "osm_geofabrik_romania:node/9751078316"
+    },
+    {
+      "itemId": "pair_match:5f13d26585d0",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:way/1111645542",
+      "right": "osm_geofabrik_romania:way/85319861"
+    },
+    {
+      "itemId": "pair_match:c50ad337c6d3",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:way/191144399",
+      "right": "osm_geofabrik_romania:way/321690538"
+    },
+    {
+      "itemId": "pair_match:6c5ca9f1f8c7",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/9008275198",
+      "right": "osm_geofabrik_romania:way/351508367"
+    },
+    {
+      "itemId": "pair_match:4c6bedf30954",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/4230714098",
+      "right": "osm_geofabrik_romania:node/4230853995"
+    },
+    {
+      "itemId": "pair_match:943fca7e3d18",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/2446523382",
+      "right": "osm_geofabrik_romania:node/2446524804"
+    },
+    {
+      "itemId": "pair_match:bdb859f8643b",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|likely|shared_tax_id",
+      "left": "osm_geofabrik_romania:node/12029886089",
+      "right": "osm_geofabrik_romania:node/3566082645"
+    },
+    {
+      "itemId": "pair_match:760dec1e9e82",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_email_domain",
+      "left": "osm_geofabrik_romania:way/163951226",
+      "right": "osm_geofabrik_romania:way/633562893"
+    },
+    {
+      "itemId": "pair_match:b9d2df02df8d",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_email_domain",
+      "left": "osm_geofabrik_romania:node/5833146785",
+      "right": "osm_geofabrik_romania:node/5833251486"
+    },
+    {
+      "itemId": "pair_match:719871e988c0",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_email_domain",
+      "left": "osm_geofabrik_romania:node/8686629113",
+      "right": "osm_geofabrik_romania:node/8686639778"
+    },
+    {
+      "itemId": "pair_match:8bc6acb8a279",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:node/11132836818",
+      "right": "osm_geofabrik_romania:way/1260551771"
+    },
+    {
+      "itemId": "pair_match:e568173ed88b",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:node/10304150009",
+      "right": "osm_geofabrik_romania:way/1260551771"
+    },
+    {
+      "itemId": "pair_match:17b9debafdc1",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:node/11132836818",
+      "right": "osm_geofabrik_romania:way/301228610"
+    },
+    {
+      "itemId": "pair_match:4a73b87e4c8a",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:node/11132836818",
+      "right": "osm_geofabrik_romania:way/1200632040"
+    },
+    {
+      "itemId": "pair_match:c42abac50b72",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:way/1542978378",
+      "right": "osm_geofabrik_romania:way/301228610"
+    },
+    {
+      "itemId": "pair_match:1f4574c4257e",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:node/10304150009",
+      "right": "osm_geofabrik_romania:way/301228610"
+    },
+    {
+      "itemId": "pair_match:9f4ad80cc79a",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:way/216525094",
+      "right": "osm_geofabrik_romania:way/216534797"
+    },
+    {
+      "itemId": "pair_match:0b20ed3ba7e5",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:node/2567617389",
+      "right": "osm_geofabrik_romania:node/3371403971"
+    },
+    {
+      "itemId": "pair_match:7957232f26da",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:way/207232964",
+      "right": "osm_geofabrik_romania:way/556275625"
+    },
+    {
+      "itemId": "pair_match:9c316d7b3219",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:way/26314111",
+      "right": "osm_geofabrik_romania:way/764534288"
+    },
+    {
+      "itemId": "pair_match:518e2c7438bc",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:way/1279724144",
+      "right": "osm_geofabrik_romania:way/1387741995"
+    },
+    {
+      "itemId": "pair_match:07fb79392dc9",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~osm_geofabrik_romania|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:way/1167313902",
+      "right": "osm_geofabrik_romania:way/128765415"
+    },
+    {
+      "itemId": "pair_match:e04289770dd6",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:node/2422983096",
+      "right": "situr_accommodation_register:cert:35511|2023-08-07|b7e556ef084d"
+    },
+    {
+      "itemId": "pair_match:7433217d3f98",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/230756270",
+      "right": "situr_accommodation_register:cert:13643|2010-08-12|98bad9df623b"
+    },
+    {
+      "itemId": "pair_match:2ccf1c963e2b",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:node/9417731098",
+      "right": "situr_accommodation_register:cert:22628|2021-01-14|6c98fc29bd4c"
+    },
+    {
+      "itemId": "pair_match:b75ac3a9b0b5",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/353275783",
+      "right": "situr_accommodation_register:cert:4128/1630A|2011-06-16|cf6837cb63fb"
+    },
+    {
+      "itemId": "pair_match:fe59f3d9620e",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/362741615",
+      "right": "situr_accommodation_register:cert:721/342|2019-04-04|ea47a616466e"
+    },
+    {
+      "itemId": "pair_match:0f2ae50360b0",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/232812561",
+      "right": "situr_accommodation_register:cert:8292/3939|2019-02-18|2588a2d2e35c"
+    },
+    {
+      "itemId": "pair_match:5e6845cfa8c8",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/4271565793",
+      "right": "situr_accommodation_register:cert:2971/927A|2011-05-05|157a7cfc036b"
+    },
+    {
+      "itemId": "pair_match:b8935d343ab2",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/14060070653",
+      "right": "situr_accommodation_register:cert:32005|2022-08-24|16da3bd0c0d8"
+    },
+    {
+      "itemId": "pair_match:65c40a181188",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/13751815916",
+      "right": "situr_accommodation_register:cert:46772|2026-06-19|8fca46efd7e8"
+    },
+    {
+      "itemId": "pair_match:6fe20c58e0c3",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/2937738459",
+      "right": "situr_accommodation_register:cert:11518/7361|2016-12-15|7bf0ecb36d68"
+    },
+    {
+      "itemId": "pair_match:bc8650d0e9e5",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:way/289911288",
+      "right": "situr_accommodation_register:cert:20134|2020-10-22|9364c74a8d43"
+    },
+    {
+      "itemId": "pair_match:f60346de8804",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:way/303527123",
+      "right": "situr_accommodation_register:cert:30408|2016-12-13|0d8a8b67459c"
+    },
+    {
+      "itemId": "pair_match:762fbb6cf6e6",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|same_listing_page",
+      "left": "osm_geofabrik_romania:way/985493526",
+      "right": "situr_accommodation_register:cert:30072|2016-08-23|740f2b6fca10"
+    },
+    {
+      "itemId": "pair_match:3cb6212423b7",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|likely|same_listing_page",
+      "left": "osm_geofabrik_romania:node/4537582714",
+      "right": "situr_accommodation_register:cert:16108|2011-11-02|20f57e946fc5"
+    },
+    {
+      "itemId": "pair_match:395c8f4d20ea",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/503521621",
+      "right": "situr_accommodation_register:cert:20916|2020-09-08|85091758c846"
+    },
+    {
+      "itemId": "pair_match:7a31bc4baa0a",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|address_match_similar_name",
+      "left": "osm_geofabrik_romania:node/10004013075",
+      "right": "situr_accommodation_register:cert:36903|2023-11-14|328eb81b7ce5"
+    },
+    {
+      "itemId": "pair_match:18478fd9a815",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/300789203",
+      "right": "situr_accommodation_register:cert:1945/756|2009-12-15|bec2b4f53cf3"
+    },
+    {
+      "itemId": "pair_match:1e9c14324de6",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|address_match_similar_name",
+      "left": "osm_geofabrik_romania:way/503521621",
+      "right": "situr_accommodation_register:cert:20647|2019-10-25|319ae7180d13"
+    },
+    {
+      "itemId": "pair_match:bbb81237fd36",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|address_match_similar_name",
+      "left": "osm_geofabrik_romania:node/2699857489",
+      "right": "situr_accommodation_register:cert:27730|2017-12-20|86551a931f53"
+    },
+    {
+      "itemId": "pair_match:8e63fa96d74d",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|address_match_similar_name",
+      "left": "osm_geofabrik_romania:node/13415994501",
+      "right": "situr_accommodation_register:cert:33585|2023-01-26|e2e1b30b0e91"
+    },
+    {
+      "itemId": "pair_match:639c2e15e2b2",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:way/673444323",
+      "right": "situr_accommodation_register:cert:12535/8361|2017-11-27|4b5efdb4cb88"
+    },
+    {
+      "itemId": "pair_match:bd2d7b305346",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:way/479027108",
+      "right": "situr_accommodation_register:cert:10333/6735|2013-07-23|cb9434438aee"
+    },
+    {
+      "itemId": "pair_match:76360be8c842",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/1734273058",
+      "right": "situr_accommodation_register:cert:10727/6654|2022-07-12|0ec4949fdce1"
+    },
+    {
+      "itemId": "pair_match:0f412f754663",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/2079501598",
+      "right": "situr_accommodation_register:cert:13033|2009-08-16|8ce93acb67de"
+    },
+    {
+      "itemId": "pair_match:7fcfd25ca1c0",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/5722789125",
+      "right": "situr_accommodation_register:cert:14510/8537|2017-08-09|d367fea79d66"
+    },
+    {
+      "itemId": "pair_match:a9c0a4c0df40",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/3145651681",
+      "right": "situr_accommodation_register:cert:38591|2024-06-06|dded60a3572c"
+    },
+    {
+      "itemId": "pair_match:5a48c93f3fff",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:way/1152227132",
+      "right": "situr_accommodation_register:cert:21194|2020-09-28|4465abde8cd7"
+    },
+    {
+      "itemId": "pair_match:9740c69ebb0f",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:node/7809984232",
+      "right": "situr_accommodation_register:cert:30963|2017-10-24|d22ad466c128"
+    },
+    {
+      "itemId": "pair_match:ecbb574f2f44",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:way/1087038574",
+      "right": "situr_accommodation_register:cert:15167|2011-07-19|6eff2d0e971f"
+    },
+    {
+      "itemId": "pair_match:23333bbb3e4c",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:way/230682012",
+      "right": "situr_accommodation_register:cert:31081|2025-07-01|f5bdafdceebd"
+    },
+    {
+      "itemId": "pair_match:9d77b2cb0afe",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:way/422253714",
+      "right": "situr_accommodation_register:cert:12274/8435|2011-11-29|99a8446ede2c"
+    },
+    {
+      "itemId": "pair_match:0fb5ed99e118",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|exact_core_name_with_caveats",
+      "left": "osm_geofabrik_romania:node/4163025876",
+      "right": "situr_accommodation_register:cert:7029/4076|2024-02-01|3a4140b789bf"
+    },
+    {
+      "itemId": "pair_match:38302e53a5d7",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|same_listing_page",
+      "left": "osm_geofabrik_romania:node/5196249390",
+      "right": "situr_accommodation_register:cert:9792/6933|2010-07-07|d55b8ed5c736"
+    },
+    {
+      "itemId": "pair_match:e349674dc6e8",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|same_listing_page",
+      "left": "osm_geofabrik_romania:node/5196249390",
+      "right": "situr_accommodation_register:cert:31385|2018-03-09|14860f8b2cb8"
+    },
+    {
+      "itemId": "pair_match:046695370a92",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/8987097125",
+      "right": "situr_accommodation_register:cert:48134|2026-09-07|0fbb6efc14fd"
+    },
+    {
+      "itemId": "pair_match:4031993f0219",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:way/1199479046",
+      "right": "situr_accommodation_register:cert:27301|2013-10-11|b6306a6377ef"
+    },
+    {
+      "itemId": "pair_match:8eed26340078",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:way/292300756",
+      "right": "situr_accommodation_register:cert:2366/232|2019-04-25|b6ba0f2f833b"
+    },
+    {
+      "itemId": "pair_match:a4effb4438ee",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/7854494587",
+      "right": "situr_accommodation_register:cert:41559|2025-03-06|a55e7c1404b2"
+    },
+    {
+      "itemId": "pair_match:cc57ce9e330b",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:way/291750215",
+      "right": "situr_accommodation_register:cert:42678|2025-05-20|2778afe367bb"
+    },
+    {
+      "itemId": "pair_match:f2a50449f3da",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_property|possible|similar_name_same_settlement",
+      "left": "osm_geofabrik_romania:node/5157140564",
+      "right": "situr_accommodation_register:cert:39448|2024-09-04|bcd5e3752e5d"
+    },
+    {
+      "itemId": "pair_match:fb1ab8737f7d",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|likely|shared_tax_id",
+      "left": "osm_geofabrik_romania:node/12029886089",
+      "right": "situr_accommodation_register:cert:19535|2019-04-03|31dc2d9b23c7"
+    },
+    {
+      "itemId": "pair_match:d296acfb4d6e",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|likely|shared_tax_id",
+      "left": "osm_geofabrik_romania:node/3566082645",
+      "right": "situr_accommodation_register:cert:19535|2019-04-03|31dc2d9b23c7"
+    },
+    {
+      "itemId": "pair_match:3006646ed14d",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|likely|shared_tax_id",
+      "left": "osm_geofabrik_romania:node/3566082645",
+      "right": "situr_accommodation_register:cert:12377|2022-01-04|0ede691a5f8b"
+    },
+    {
+      "itemId": "pair_match:3f9538925a86",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|likely|shared_tax_id",
+      "left": "osm_geofabrik_romania:node/12029886089",
+      "right": "situr_accommodation_register:cert:12377|2022-01-04|0ede691a5f8b"
+    },
+    {
+      "itemId": "pair_match:0b48276b05f5",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_email_domain",
+      "left": "osm_geofabrik_romania:way/203691139",
+      "right": "situr_accommodation_register:cert:5361/5101|2019-10-22|64fda20d221c"
+    },
+    {
+      "itemId": "pair_match:9e0bf282de09",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_email_domain",
+      "left": "osm_geofabrik_romania:node/9969443047",
+      "right": "situr_accommodation_register:cert:27901|2011-05-05|1ab54b0aba88"
+    },
+    {
+      "itemId": "pair_match:424b83e94ca6",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_email_domain",
+      "left": "osm_geofabrik_romania:way/633562893",
+      "right": "situr_accommodation_register:cert:20536|2024-11-14|b9801b0df37b"
+    },
+    {
+      "itemId": "pair_match:e3b860cbecf2",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_email_domain",
+      "left": "osm_geofabrik_romania:way/244741957",
+      "right": "situr_accommodation_register:cert:13900/8871|2013-12-04|130b5d514c33"
+    },
+    {
+      "itemId": "pair_match:05f2e2c6718a",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_email_domain",
+      "left": "osm_geofabrik_romania:way/206650895",
+      "right": "situr_accommodation_register:cert:none|none|dffe3912e064"
+    },
+    {
+      "itemId": "pair_match:4ef06e1aafa0",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_email_domain",
+      "left": "osm_geofabrik_romania:way/206650895",
+      "right": "situr_accommodation_register:cert:46313|2026-03-31|09f5301e04b2"
+    },
+    {
+      "itemId": "pair_match:102bae06298f",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:way/301228610",
+      "right": "situr_accommodation_register:cert:22484|2020-12-14|82cbc60f9bdc"
+    },
+    {
+      "itemId": "pair_match:3518792e345d",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:node/11132836818",
+      "right": "situr_accommodation_register:cert:13743|2010-11-03|282fbfc394d4"
+    },
+    {
+      "itemId": "pair_match:675d67ffb70a",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:node/10304150009",
+      "right": "situr_accommodation_register:cert:29569|2016-03-03|54ea7129f8a2"
+    },
+    {
+      "itemId": "pair_match:1e2a3b6ecd81",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:way/1200632040",
+      "right": "situr_accommodation_register:cert:7712/5365|2019-01-09|b4f84edff1b0"
+    },
+    {
+      "itemId": "pair_match:1199ba913656",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:node/11132836818",
+      "right": "situr_accommodation_register:cert:28341|2014-12-16|394cbf27ba2a"
+    },
+    {
+      "itemId": "pair_match:cb13d6fe4c1d",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_listing_page",
+      "left": "osm_geofabrik_romania:way/1200632040",
+      "right": "situr_accommodation_register:cert:28341|2014-12-16|394cbf27ba2a"
+    },
+    {
+      "itemId": "pair_match:6a138f3d89cc",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:node/12109969740",
+      "right": "situr_accommodation_register:cert:37402|2026-04-01|1b7a3c90a1bb"
+    },
+    {
+      "itemId": "pair_match:1b4574c30859",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:way/164369116",
+      "right": "situr_accommodation_register:cert:811/1341|2019-01-21|06f428ed7af0"
+    },
+    {
+      "itemId": "pair_match:8f1151f412b7",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:node/571243408",
+      "right": "situr_accommodation_register:cert:18106|2012-07-12|31a1bf5ba5bd"
+    },
+    {
+      "itemId": "pair_match:b2fb93188567",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:way/76985381",
+      "right": "situr_accommodation_register:cert:37401|2023-12-20|ff1e9b9f6962"
+    },
+    {
+      "itemId": "pair_match:398b16d15b07",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:way/737200089",
+      "right": "situr_accommodation_register:cert:27348|2013-10-21|22f3ebbc6f6d"
+    },
+    {
+      "itemId": "pair_match:d5ad1ef8a7ea",
+      "task": "pair_match",
+      "stratum": "pair_match|osm_geofabrik_romania~situr_accommodation_register|same_provider|possible|shared_website_domain",
+      "left": "osm_geofabrik_romania:node/259846675",
+      "right": "situr_accommodation_register:cert:13784|2010-12-02|aad15635edd2"
+    },
+    {
+      "itemId": "pair_match:fe93b3104ad9",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_certificate_and_name",
+      "left": "situr_accommodation_register:cert:39003|2024-07-19|79f3a1d00361",
+      "right": "situr_accommodation_register:cert:39003|2024-07-19|79f3a1d00361#2"
+    },
+    {
+      "itemId": "pair_match:bc79afd77a60",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_certificate_and_name",
+      "left": "situr_accommodation_register:cert:23863|2021-09-29|d3433edbcbe9",
+      "right": "situr_accommodation_register:cert:23863|2021-10-07|2b23d4120186"
+    },
+    {
+      "itemId": "pair_match:4e5a414deeb4",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_certificate_and_name",
+      "left": "situr_accommodation_register:cert:33705|2023-02-27|792a391a41bb",
+      "right": "situr_accommodation_register:cert:33705|2023-07-17|97ca7d1df433"
+    },
+    {
+      "itemId": "pair_match:c77b7229d86b",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_certificate_and_name",
+      "left": "situr_accommodation_register:cert:19975|2019-06-24|da6c5eba16cd",
+      "right": "situr_accommodation_register:cert:19975|2025-10-21|aa500223a303"
+    },
+    {
+      "itemId": "pair_match:a48b1b772ba8",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_certificate_and_name",
+      "left": "situr_accommodation_register:cert:15330|2023-01-10|d66e6e7ab248",
+      "right": "situr_accommodation_register:cert:15330|2026-07-27|58ab62aa6c59"
+    },
+    {
+      "itemId": "pair_match:b9ad1d8dccd0",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_certificate_and_name",
+      "left": "situr_accommodation_register:cert:24977|2022-06-08|a7f2f40b26fc",
+      "right": "situr_accommodation_register:cert:24977|2023-10-12|57660099ed8e"
+    },
+    {
+      "itemId": "pair_match:60c4c9b94b4a",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_name_address_capacity",
+      "left": "situr_accommodation_register:cert:45685|2026-02-12|3906d10d4ba4",
+      "right": "situr_accommodation_register:cert:45724|2026-02-13|b9559435322f"
+    },
+    {
+      "itemId": "pair_match:0fe70350f1c0",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_name_address_capacity",
+      "left": "situr_accommodation_register:cert:25168bis|2022-06-28|fd411872361b",
+      "right": "situr_accommodation_register:cert:25168|2022-06-28|e7a4e8d8ed36"
+    },
+    {
+      "itemId": "pair_match:bec2df629537",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_name_address_capacity",
+      "left": "situr_accommodation_register:cert:25184bis|2022-06-29|f9716390a7ce",
+      "right": "situr_accommodation_register:cert:25184|2022-06-29|7944e7e3910f"
+    },
+    {
+      "itemId": "pair_match:2cdba6a1fbf2",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_name_address_capacity",
+      "left": "situr_accommodation_register:cert:24404|2024-10-24|fadf19c2032e",
+      "right": "situr_accommodation_register:cert:24405|2024-10-24|5d51e1464ac3"
+    },
+    {
+      "itemId": "pair_match:21eba1423b34",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_name_address_capacity",
+      "left": "situr_accommodation_register:cert:25097bis|2022-06-22|20f2decb4a41",
+      "right": "situr_accommodation_register:cert:25097|2022-06-22|e5d6b5a920c2"
+    },
+    {
+      "itemId": "pair_match:3c5cf99bc66b",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|likely|same_name_address_capacity",
+      "left": "situr_accommodation_register:cert:32943|2022-12-08|aa52c18c626a",
+      "right": "situr_accommodation_register:cert:32944|2022-12-08|aab145ff27e2"
+    },
+    {
+      "itemId": "pair_match:aca2198d6b9d",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|near_identical_name_same_settlement",
+      "left": "situr_accommodation_register:cert:22317|2020-11-23|5c0d1f72db10",
+      "right": "situr_accommodation_register:cert:36112|2023-09-21|14c3473d6ed7"
+    },
+    {
+      "itemId": "pair_match:34fa00440cea",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|near_identical_name_same_settlement",
+      "left": "situr_accommodation_register:cert:10553A|2016-01-20|8bf5cff5ac4c",
+      "right": "situr_accommodation_register:cert:8256/6113A|2016-01-19|78ecf0f74178"
+    },
+    {
+      "itemId": "pair_match:f886c5264050",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|near_identical_name_same_settlement",
+      "left": "situr_accommodation_register:cert:25218bis|2022-07-07|f00f7c3c3537",
+      "right": "situr_accommodation_register:cert:25219bis|2022-07-07|eb13544ab1cd"
+    },
+    {
+      "itemId": "pair_match:acef266d1749",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|near_identical_name_same_settlement",
+      "left": "situr_accommodation_register:cert:34162|2023-04-03|029c077cd91a",
+      "right": "situr_accommodation_register:cert:45768|2026-02-17|a3354c3cd9cd"
+    },
+    {
+      "itemId": "pair_match:d2ed23d262ef",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|near_identical_name_same_settlement",
+      "left": "situr_accommodation_register:cert:24444|2022-02-07|14b403adbbee",
+      "right": "situr_accommodation_register:cert:43993|2025-09-15|269e97531205"
+    },
+    {
+      "itemId": "pair_match:1415b287d6b9",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|near_identical_name_same_settlement",
+      "left": "situr_accommodation_register:cert:21605|2020-10-14|926d822a1dba",
+      "right": "situr_accommodation_register:cert:31135|2020-10-14|82aaa8519b87"
+    },
+    {
+      "itemId": "pair_match:79d4d55ad929",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|same_name_same_settlement",
+      "left": "situr_accommodation_register:cert:27941|2018-12-20|88fa36c6f68b",
+      "right": "situr_accommodation_register:cert:6418/6080|2018-12-20|8a63f5717926"
+    },
+    {
+      "itemId": "pair_match:60a4b4722977",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|same_name_same_settlement",
+      "left": "situr_accommodation_register:cert:31734|2022-07-22|0676538c189c",
+      "right": "situr_accommodation_register:cert:32646|2022-11-08|518cf80299ce"
+    },
+    {
+      "itemId": "pair_match:aa93646e151f",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|same_name_same_settlement",
+      "left": "situr_accommodation_register:cert:23432|2021-07-20|26edf04d1b3e",
+      "right": "situr_accommodation_register:cert:47093|2026-06-04|d6b5df173831"
+    },
+    {
+      "itemId": "pair_match:d2d22d6beba7",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|same_name_same_settlement",
+      "left": "situr_accommodation_register:cert:21321|2020-09-30|d10531c23974",
+      "right": "situr_accommodation_register:cert:21323|2020-09-30|d8c53d773aab"
+    },
+    {
+      "itemId": "pair_match:2663f3338417",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|same_name_same_settlement",
+      "left": "situr_accommodation_register:cert:27153|2021-12-28|307054791ae5",
+      "right": "situr_accommodation_register:cert:39523|2024-09-10|96cb734a8994"
+    },
+    {
+      "itemId": "pair_match:d23615a93de8",
+      "task": "pair_match",
+      "stratum": "pair_match|situr_accommodation_register~situr_accommodation_register|same_property|possible|same_name_same_settlement",
+      "left": "situr_accommodation_register:cert:37778|2024-02-13|a16a7c4cd559",
+      "right": "situr_accommodation_register:cert:37779|2024-02-13|022b33de960b"
+    },
+    {
+      "itemId": "pair_match:7909a603bc1f",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:30947|2017-10-23|dc2cba2856ce",
+      "right": "osm_geofabrik_romania:way/234012990"
+    },
+    {
+      "itemId": "pair_match:cacc191f7492",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:41218|2025-02-03|a86172ea45c5",
+      "right": "osm_geofabrik_romania:node/5033932484"
+    },
+    {
+      "itemId": "pair_match:71b2479e6f9e",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:19187|2018-12-04|5233a7b72eb7",
+      "right": "osm_geofabrik_romania:way/466145214"
+    },
+    {
+      "itemId": "pair_match:b82b0b2c086e",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:7242/4933|2025-06-19|97679b913b65",
+      "right": "osm_geofabrik_romania:node/12092166169"
+    },
+    {
+      "itemId": "pair_match:79c87f884ca6",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:29962|2016-06-28|b04c4fdc1ead",
+      "right": "osm_geofabrik_romania:way/1426884155"
+    },
+    {
+      "itemId": "pair_match:0de748bacce7",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:25752|2016-03-28|2342a5b02e97",
+      "right": "osm_geofabrik_romania:way/478799097"
+    },
+    {
+      "itemId": "pair_match:5387db6859c5",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:11157/7413|2021-03-02|53a763a7d3a0",
+      "right": "osm_geofabrik_romania:node/4450036857"
+    },
+    {
+      "itemId": "pair_match:3bdeb444f4c5",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:29280|2015-12-08|14d16e8d8807",
+      "right": "osm_geofabrik_romania:node/4679537001"
+    },
+    {
+      "itemId": "pair_match:9ee60def8d6e",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:46018|2026-03-09|00410331591a",
+      "right": "osm_geofabrik_romania:node/3020635296"
+    },
+    {
+      "itemId": "pair_match:a07bfc9bf4d1",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:40757|2024-11-28|c447b7ed0212",
+      "right": "osm_geofabrik_romania:node/1384970837"
+    },
+    {
+      "itemId": "pair_match:eb93a214e0d5",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:20837|2020-10-01|9ee174f9d612",
+      "right": "osm_geofabrik_romania:way/154133429"
+    },
+    {
+      "itemId": "pair_match:d5446769d4be",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_name_different_settlement",
+      "left": "situr_accommodation_register:cert:30916|2017-10-16|be243262871a",
+      "right": "osm_geofabrik_romania:node/4443515143"
+    },
+    {
+      "itemId": "pair_match:e84d2ba7ea7e",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:20127|2019-07-22|7b679656face",
+      "right": "situr_accommodation_register:cert:20127|2022-07-06|31a48ff1d177"
+    },
+    {
+      "itemId": "pair_match:77c2ee3208c4",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:127/1243|2012-05-25|ad0f70eb1538",
+      "right": "situr_accommodation_register:cert:142/986|2012-05-25|2dadcb5ec1a8"
+    },
+    {
+      "itemId": "pair_match:81880416fbae",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:36735|2023-11-13|49669fce59a1",
+      "right": "situr_accommodation_register:cert:37920|2024-02-28|942dd5544ff0"
+    },
+    {
+      "itemId": "pair_match:425204b01c70",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:21223|2020-09-28|044dafdd853f",
+      "right": "situr_accommodation_register:cert:21224|2020-09-28|310e8a720a19"
+    },
+    {
+      "itemId": "pair_match:45c34aa41670",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:23594|2021-08-05|c57ca8f534a3",
+      "right": "situr_accommodation_register:cert:33786|2023-03-02|505e1df40602"
+    },
+    {
+      "itemId": "pair_match:5e93749adf4a",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:1103/444|2019-04-15|4195e8d884ca",
+      "right": "situr_accommodation_register:cert:811/1341|2019-01-21|06f428ed7af0"
+    },
+    {
+      "itemId": "pair_match:399e94f21d9f",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:14944C1A|2011-05-23|bd0202ae8163",
+      "right": "situr_accommodation_register:cert:93/429A|2021-09-27|dba5c2fe3cc2"
+    },
+    {
+      "itemId": "pair_match:7b4f510d783c",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:11409/7206|2010-12-02|17192c276948",
+      "right": "situr_accommodation_register:cert:26855|2013-07-18|7bc3eacafd1f"
+    },
+    {
+      "itemId": "pair_match:92c80404c6ea",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:14532A|2011-06-07|12411fa27aa8",
+      "right": "situr_accommodation_register:cert:16344|2011-12-20|5a01ae9dcb5b"
+    },
+    {
+      "itemId": "pair_match:c662cadc4988",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:28251|2014-11-20|dd977aad4a19",
+      "right": "situr_accommodation_register:cert:43253|2025-07-16|8a0ac249ed4f"
+    },
+    {
+      "itemId": "pair_match:77947d0912cf",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:17244|2012-04-19|cedeb1f1ba5c",
+      "right": "situr_accommodation_register:cert:17247|2012-04-19|d7840d5305e2"
+    },
+    {
+      "itemId": "pair_match:84ba902942b4",
+      "task": "pair_match",
+      "stratum": "pair_match|hard_case|same_operator_different_settlement",
+      "left": "situr_accommodation_register:cert:12875/8806|2012-07-12|add1c203716a",
+      "right": "situr_accommodation_register:cert:9176/6015|2012-07-12|15d04506acdb"
+    },
+    {
+      "itemId": "eligibility:988aaa06dcd7",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|ambiguous|rural",
+      "left": "osm_geofabrik_romania:node/6417647985",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:91b481d7691c",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|ambiguous|rural",
+      "left": "osm_geofabrik_romania:way/295818877",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:376fa1866235",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|ambiguous|rural",
+      "left": "osm_geofabrik_romania:way/754033120",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:ff17f05a7fa2",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|ambiguous|rural",
+      "left": "osm_geofabrik_romania:node/5299944821",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:9189544c31f4",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|ambiguous|rural",
+      "left": "osm_geofabrik_romania:node/4895924251",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:0e18b75d8e6f",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|ambiguous|urban",
+      "left": "osm_geofabrik_romania:node/8934955597",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:c6dc8d64ee56",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|ambiguous|urban",
+      "left": "osm_geofabrik_romania:way/271497500",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:24e81df0da29",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|ambiguous|urban",
+      "left": "osm_geofabrik_romania:node/8114978870",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:e681773ec404",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|ambiguous|urban",
+      "left": "osm_geofabrik_romania:node/5045170801",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:92f003205eae",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|ambiguous|urban",
+      "left": "osm_geofabrik_romania:way/242336285",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:25d5d6d9c200",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|out_of_scope|rural",
+      "left": "osm_geofabrik_romania:way/38704430",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:a1274c077181",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|out_of_scope|rural",
+      "left": "osm_geofabrik_romania:way/234085729",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:a4d6e9cba630",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|out_of_scope|rural",
+      "left": "osm_geofabrik_romania:node/5773577153",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:a4b774e0fe35",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|out_of_scope|rural",
+      "left": "osm_geofabrik_romania:way/653571996",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:5e2dbd833313",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|out_of_scope|rural",
+      "left": "osm_geofabrik_romania:way/365250617",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:54733a85016e",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|out_of_scope|urban",
+      "left": "osm_geofabrik_romania:node/5190587459",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:a0dad4e97815",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|out_of_scope|urban",
+      "left": "osm_geofabrik_romania:node/442568338",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:c3b0c3a18135",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|out_of_scope|urban",
+      "left": "osm_geofabrik_romania:way/420863567",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:b28e89036806",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|out_of_scope|urban",
+      "left": "osm_geofabrik_romania:node/4883988606",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:91b442673ac2",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|out_of_scope|urban",
+      "left": "osm_geofabrik_romania:node/2486324803",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:3176bc7a9916",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|plausible|rural",
+      "left": "osm_geofabrik_romania:way/1136455506",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:19f623af79ac",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|plausible|rural",
+      "left": "osm_geofabrik_romania:way/230581996",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:ac9e57c48c37",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|plausible|rural",
+      "left": "osm_geofabrik_romania:node/9972880219",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:a5b59ead6dd7",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|plausible|rural",
+      "left": "osm_geofabrik_romania:way/354485823",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:2d4ebacaf98a",
+      "task": "eligibility",
+      "stratum": "eligibility|osm_geofabrik_romania|plausible|rural",
+      "left": "osm_geofabrik_romania:node/13060053850",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:a5586551cde4",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|rural",
+      "left": "situr_accommodation_register:cert:29781|2021-12-28|0d24816bed94",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:335d6de5d8ac",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|rural",
+      "left": "situr_accommodation_register:cert:11651/7558|2023-05-02|d3e9d4c29df1",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:b841b8728abf",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|rural",
+      "left": "situr_accommodation_register:cert:20466|2024-10-09|050478025707",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:dfa0d0fe8f2e",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|rural",
+      "left": "situr_accommodation_register:cert:46671|2026-05-05|3c5a34f77c23",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:adc91374d481",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|rural",
+      "left": "situr_accommodation_register:cert:19087|2018-10-29|507dc8da526b",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:6387315f663d",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|unknown",
+      "left": "situr_accommodation_register:cert:19757|2025-05-19|6aeb56d49fbb",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:bd2842208b14",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|unknown",
+      "left": "situr_accommodation_register:cert:42219|2025-04-09|f99fc979f4e2",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:3f3627b8c6f1",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|unknown",
+      "left": "situr_accommodation_register:cert:42455|2025-10-02|ec213ccedd55",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:fb2b6b9d82a2",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|unknown",
+      "left": "situr_accommodation_register:cert:43221|2025-07-15|e5796e049cc8",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:c3f122504084",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|unknown",
+      "left": "situr_accommodation_register:cert:14509|2011-06-06|bcce7611ed08",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:ce32e4b0c12e",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|urban",
+      "left": "situr_accommodation_register:cert:20848|2020-09-07|1add876fe365",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:cfafad39500c",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|urban",
+      "left": "situr_accommodation_register:cert:16029|2011-10-21|b50c12a9e464",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:19ed21130712",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|urban",
+      "left": "situr_accommodation_register:cert:15304A|2011-08-01|ee1ad5fd282f",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:7aba778ef4c7",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|urban",
+      "left": "situr_accommodation_register:cert:14837A|2011-05-16|8026480f9cd2",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:55decf66acbb",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|ambiguous|urban",
+      "left": "situr_accommodation_register:cert:19217|2018-12-10|bdef59365874",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:832f44b55a41",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|rural",
+      "left": "situr_accommodation_register:cert:16489|2012-02-03|9d848850ad1e",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:df7166f05b4d",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|rural",
+      "left": "situr_accommodation_register:cert:11809/7600|2020-12-03|8511a59d8bf9",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:552e48ecca12",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|rural",
+      "left": "situr_accommodation_register:cert:43230|2025-07-15|b952cec573fa",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:70aefe469ebe",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|rural",
+      "left": "situr_accommodation_register:cert:45062|2025-11-24|02c26091d4e3",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:518df36b677c",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|rural",
+      "left": "situr_accommodation_register:cert:27120|2013-08-01|46cb28589606",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:e31ee9957fe9",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|unknown",
+      "left": "situr_accommodation_register:cert:34291|2023-04-26|345580d25154",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:04c1cdd9b864",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|unknown",
+      "left": "situr_accommodation_register:cert:30256|2016-10-20|c19fb8a28ad3",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:aa8545eef282",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|unknown",
+      "left": "situr_accommodation_register:cert:6354/3848|2019-06-03|3a0a401d7a75",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:9fae9a0a0a16",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|unknown",
+      "left": "situr_accommodation_register:cert:19863|none|86870924c809",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:9f9528836889",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|unknown",
+      "left": "situr_accommodation_register:cert:13613|2010-08-04|41ebf28a87c1",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:8a18af557ea5",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|urban",
+      "left": "situr_accommodation_register:cert:31006|2017-11-07|4d8d89e676ba",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:fbd02dea581d",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|urban",
+      "left": "situr_accommodation_register:cert:32857|2022-12-07|bea0fa14eff7",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:1153c4804ce5",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|urban",
+      "left": "situr_accommodation_register:cert:38389|2024-05-08|2f0b32e724c6",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:d47f8cd6c894",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|urban",
+      "left": "situr_accommodation_register:cert:39610|2024-09-19|cca77c9d08cd",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:2f6093d3827a",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|out_of_scope|urban",
+      "left": "situr_accommodation_register:cert:31218|2018-01-08|f8e1f9b1b8d2",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:9d7e54bdf732",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|plausible|rural",
+      "left": "situr_accommodation_register:cert:13131|2009-10-26|9167380e97ff",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:0516d9b94a58",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|plausible|rural",
+      "left": "situr_accommodation_register:cert:33721|2023-02-28|f4c86321c01b",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:9c8e7a3ba325",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|plausible|rural",
+      "left": "situr_accommodation_register:cert:34099|2023-03-22|52374169eeb6",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:52df62e18bc1",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|plausible|rural",
+      "left": "situr_accommodation_register:cert:13177|2009-11-09|9cdfb189d9c5",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:28d52fd1107c",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|plausible|rural",
+      "left": "situr_accommodation_register:cert:15949|2011-10-06|6f56fc75f776",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:b9e0f752cd33",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|plausible|unknown",
+      "left": "situr_accommodation_register:cert:39519|2024-09-10|5f1c393535f8",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:0d1efabe19f8",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|plausible|unknown",
+      "left": "situr_accommodation_register:cert:35769|2023-08-21|166fa1a75bb5",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:1b683d4610e3",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|plausible|unknown",
+      "left": "situr_accommodation_register:cert:15363A|2011-08-04|91fd44f87a8c",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:954c51a03818",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|plausible|unknown",
+      "left": "situr_accommodation_register:cert:37321|2023-12-18|b7276138cf97",
+      "right": null
+    },
+    {
+      "itemId": "eligibility:651fa0741307",
+      "task": "eligibility",
+      "stratum": "eligibility|situr_accommodation_register|plausible|unknown",
+      "left": "situr_accommodation_register:cert:44976|2025-11-28|56ca1b914d77",
+      "right": null
+    }
+  ]
+}

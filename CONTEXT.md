@@ -71,6 +71,11 @@ One recorded attempt to import, fetch, extract, discover, or detect change from
 a defined input and source.
 _Avoid_: Scrape when the acquisition stage is more specific
 
+**Source Artifact**:
+A versioned file obtained from a source, identified by checksum, from which an
+Acquisition Run reads Evidence.
+_Avoid_: Dump, raw file
+
 **Candidate**:
 A discovered possible provider, location, or offer that has not yet passed
 verification.
@@ -110,6 +115,16 @@ barbecue. Property type (`cabana`, `casa_de_vacanta`, `vila`, `complex`,
 Romanian label: _Cabane și case de închiriat_.
 _Avoid_: Cabin, House, Cottage as separate Categories; Pensiune, Hotel,
 short-term city Apartment (out of scope for this Category)
+
+**Duplicate Suggestion**:
+An explainable proposal that two Candidates describe the same property or share
+a Provider. It never merges records; resolution is a Curation decision.
+_Avoid_: Match (as a decision), merge
+
+**Population Screening**:
+An automated, inferred Claim classifying a Candidate against a Category's
+research population. It orders review work and never establishes eligibility.
+_Avoid_: Eligibility, qualification
 
 **Verification**:
 A human decision about whether collected claims are sufficiently supported for
