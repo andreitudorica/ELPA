@@ -5,9 +5,10 @@ The ELPA shared REST API — a NestJS + Fastify modular monolith
 TypeScript client (ADR 0012).
 
 **Status:** runnable POC with PostgreSQL persistence, simulated local
-Administrator identity, generated OpenAPI, and the first Research Campaign
-vertical slice. See ADRs 0020–0022 for the module, persistence, and API
-conventions.
+Administrator identity, generated OpenAPI, the first Research Campaign
+vertical slice, and the Group Rental Property acquisition baseline
+(`docs/research/group-rental-property-baseline/`). See ADRs 0020–0023 for the
+module, persistence, API, and Evidence conventions.
 
 ## Boundary and data ownership
 
@@ -16,6 +17,16 @@ and Audit modules. Research owns Research Campaigns and their investigated
 sources; Catalog owns Categories; Access owns Administrator membership; Audit
 owns immutable mutation history. Repositories use the shared Drizzle adapter,
 while multi-write use cases join the transaction stored in request CLS.
+
+Research also owns the acquisition baseline: Source Artifacts, Acquisition
+Runs, Evidence, per-run record outcomes, unverified Candidates, proposed
+Claims, and Duplicate Suggestions. Its pure parts live in
+`src/research/acquisition/` (source adapters, normalisation, OSM PBF and XLSX
+readers, population screening), `src/research/matching/` (duplicate matcher),
+and `src/research/evaluation/` (partition, sampling, scoring); none of them
+depend on NestJS or Drizzle. Nothing in Research writes Catalog records or
+verification state; the `candidate` and `claim` tables constrain their status
+to `unverified` and `proposed`.
 
 ## Local commands
 
@@ -29,10 +40,28 @@ while multi-write use cases join the transaction stored in request CLS.
 | `pnpm db:check`                              | Validate migration history                               |
 | `pnpm db:studio`                             | Inspect local data with Drizzle Studio                   |
 | `pnpm openapi:generate`                      | Build and regenerate `openapi.yaml`                      |
+| `pnpm research <command>`                    | Research CLI (requires `pnpm build`); see below          |
 | `pnpm typecheck`                             | TypeScript project check                                 |
 | `pnpm lint` / `lint:fix`                     | ESLint                                                   |
 | `pnpm test` / `test:watch` / `test:coverage` | Vitest unit tests                                        |
 | `pnpm validate`                              | `lint → typecheck → test → build`; run before every push |
+
+## Research CLI
+
+Acquisition is a long-running batch workload, so it runs from
+`src/research-cli.ts` with the same services, transactions, and audit trail as
+the API, never inside an HTTP request. It acts as the configured
+Administrator. Commands: `fetch`, `baseline-campaign`, `import`, `match`,
+`report`, `evaluation-sample`, `evaluation-score` (`pnpm research help`).
+Artifacts, reports, and evaluation exports go to the ignored `.data/`
+directory. Full workflow and expected outputs:
+`docs/research/group-rental-property-baseline/reproduction.md`.
+
+Two small parsing dependencies support the official register export:
+`fflate` (ZIP container of the XLSX workbook) and `saxes` (streaming XML for
+its 28 MB worksheet). The OSM PBF format is decoded by an in-repo protobuf
+reader (`src/research/acquisition/protobuf-reader.ts`) because the maintained
+`pbf` package is ESM-only and this workspace compiles to CommonJS.
 
 ## Environment
 
@@ -56,13 +85,18 @@ explicitly before administrative requests are usable.
 
 ## Endpoints
 
-| Route                                | Purpose                                            |
-| ------------------------------------ | -------------------------------------------------- |
-| `GET /api/healthz`                   | Process liveness; does not touch PostgreSQL.       |
-| `GET /api/readyz`                    | Readiness; confirms PostgreSQL is reachable.       |
-| `GET /api/me`                        | Resolve the configured Administrator membership.   |
-| `GET /api/admin/research-campaigns`  | List Research Campaigns, newest first.             |
-| `POST /api/admin/research-campaigns` | Create and audit a Group Rental Property campaign. |
+| Route                                                             | Purpose                                                                              |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `GET /api/healthz`                                                | Process liveness; does not touch PostgreSQL.                                         |
+| `GET /api/readyz`                                                 | Readiness; confirms PostgreSQL is reachable.                                         |
+| `GET /api/me`                                                     | Resolve the configured Administrator membership.                                     |
+| `GET /api/admin/research-campaigns`                               | List Research Campaigns, newest first.                                               |
+| `POST /api/admin/research-campaigns`                              | Create and audit a Group Rental Property campaign (county optional: national scope). |
+| `GET /api/admin/research-campaigns/{id}/acquisition-runs`         | Acquisition Runs with artifact, versions, statistics, and failures.                  |
+| `GET /api/admin/research-campaigns/{id}/acquisition-report`       | Data-quality, cross-source, and coverage report.                                     |
+| `GET /api/admin/research-campaigns/{id}/candidates`               | Unverified Candidates, filterable and paginated.                                     |
+| `GET /api/admin/research-campaigns/{id}/candidates/{candidateId}` | Claims, Evidence, run history, and duplicate suggestions.                            |
+| `GET /api/admin/research-campaigns/{id}/duplicate-suggestions`    | Explainable suggestions of the current matcher version.                              |
 
 Every response echoes `X-Correlation-Id`. Administrative routes fail closed
 and are guarded through the Access-owned identity resolver. Simulated identity

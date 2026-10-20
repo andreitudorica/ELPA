@@ -15,7 +15,8 @@ export const researchCampaigns = pgTable(
       .notNull()
       .references(() => categories.id, { onDelete: 'restrict' }),
     countryCode: text('country_code').notNull().default('RO'),
-    county: text('county').notNull(),
+    // Null means the whole country: a national Research Campaign.
+    county: text('county'),
     locality: text('locality'),
     minimumCriteria: text('minimum_criteria')
       .array()

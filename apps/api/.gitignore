@@ -12,3 +12,6 @@ coverage/
 # Logs
 *.log
 pnpm-debug.log*
+
+# Source artifacts and evaluation exports (licence/personal-data restricted; never commit)
+.data/

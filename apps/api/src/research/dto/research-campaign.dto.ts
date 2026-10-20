@@ -13,10 +13,23 @@ export const CreateResearchCampaignSchema = z
   .object({
     name: z.string().trim().min(3).max(160),
     eventNeed: trimmedRequiredText,
-    county: z.string().trim().min(2).max(100),
+    /** Omit for a national campaign covering all of Romania. */
+    county: z
+      .string()
+      .trim()
+      .max(100)
+      .optional()
+      .transform((value) => (value === '' ? undefined : value))
+      .refine((value) => value === undefined || value.length >= 2, {
+        message: 'County must contain at least 2 characters',
+      }),
     locality: optionalTrimmedText,
     minimumCriteria: z.array(trimmedRequiredText).min(1).max(20),
     investigatedSources: z.array(z.url()).min(1).max(50),
+  })
+  .refine((input) => input.locality === undefined || input.county !== undefined, {
+    message: 'A locality requires a county; locality names repeat across counties',
+    path: ['locality'],
   })
   .meta({ id: 'CreateResearchCampaign' });
 
@@ -29,7 +42,7 @@ export const ResearchCampaignSchema = z
     eventNeed: z.string(),
     category: z.literal('group_rental_property'),
     countryCode: z.literal('RO'),
-    county: z.string(),
+    county: z.string().nullable(),
     locality: z.string().nullable(),
     minimumCriteria: z.array(z.string()),
     investigatedSources: z.array(z.url()),

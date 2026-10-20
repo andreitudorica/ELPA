@@ -1,1 +1,11 @@
 export { ResearchModule } from './research.module';
+export { ResearchCampaignService } from './research-campaign.service';
+export { AcquisitionRunService, fileSha256, outputDigest } from './acquisition-run.service';
+export type { AcquisitionRunOutcome, ArtifactManifest } from './acquisition-run.service';
+export { AcquisitionReportService } from './acquisition-report.service';
+export { DuplicateSuggestionService } from './duplicate-suggestion.service';
+export { EvaluationService } from './evaluation.service';
+export { BASELINE_CAMPAIGN } from './baseline-campaign';
+export { SOURCE_DEFINITIONS } from './acquisition/sources';
+export { SOURCE_KEYS } from './acquisition/source-record';
+export type { SourceKey } from './acquisition/source-record';

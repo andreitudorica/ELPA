@@ -10,7 +10,7 @@ export interface NewResearchCampaignRecord {
   eventNeed: string;
   categoryId: string;
   countryCode: 'RO';
-  county: string;
+  county: string | null;
   locality: string | null;
   minimumCriteria: string[];
   createdByAdministratorId: string;
@@ -24,13 +24,20 @@ export interface ResearchCampaignRecord {
   name: string;
   eventNeed: string;
   countryCode: string;
-  county: string;
+  county: string | null;
   locality: string | null;
   minimumCriteria: string[];
   investigatedSources: string[];
   createdByAdministratorId: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface ResearchCampaignScopeRecord {
+  id: string;
+  name: string;
+  county: string | null;
+  locality: string | null;
 }
 
 @Injectable()
@@ -61,6 +68,19 @@ export class ResearchCampaignRepository {
         updatedAt: input.updatedAt,
       })),
     );
+  }
+
+  async findById(id: string): Promise<ResearchCampaignScopeRecord | undefined> {
+    const [campaign] = await this.database.executor
+      .select({
+        id: researchCampaigns.id,
+        name: researchCampaigns.name,
+        county: researchCampaigns.county,
+        locality: researchCampaigns.locality,
+      })
+      .from(researchCampaigns)
+      .where(eq(researchCampaigns.id, id));
+    return campaign;
   }
 
   async listByScope(categoryId: string, countryCode: 'RO'): Promise<ResearchCampaignRecord[]> {
