@@ -68,7 +68,7 @@ Never mirror server state into Zustand. Persisted Zustand slices go through
 `src/lib/storage`'s `createSafePersistStorage` to survive Safari private
 mode and quota errors.
 
-## Feature-based layout (target, empty at time of writing)
+## Feature-based layout (target shape)
 
 Domain modules will live in `src/features/<feature>/` when they land. Each
 feature owns its API calls, schemas, hooks, components, and route
@@ -79,15 +79,17 @@ components, and exposes a curated public surface via its `index.ts`. Rules:
 - Shared code that is _not_ domain-specific lives in `src/components`,
   `src/hooks`, `src/lib`, `src/utils`, or `src/theme`.
 
-`src/features/` is empty today (per AGENTS.md working rules — do not
-scaffold features preemptively). It grows lazily as work lands.
+`src/features/` grows lazily as work lands (do not scaffold features
+preemptively). Today it holds `research/` (Research Campaigns and the
+acquisition experiment), whose modules are imported by path; the `index.ts`
+public surface above is the target shape, not yet an enforced rule.
 
 ## Layering
 
 ```
 app (config, providers, router, store)
   ↓ imports
-features (empty; will hold domain modules)
+features (domain modules, e.g. research/)
   ↓ imports
 components / hooks / layouts / lib / theme / utils / i18n
 ```

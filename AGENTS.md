@@ -1,156 +1,215 @@
 # AGENTS.md
 
-## Mission
+Rules for AI coding agents working in this repository. This is the only
+agent-instruction file; it holds the rules that apply to every task. The
+documents in the scope table are ordinary files that are **not loaded
+automatically** — read the ones that match the paths you touch before editing.
 
-Build ELPA from the documented domain language and accepted decisions. Treat
-the repository documentation as part of the product: update it in the same
-change that alters a domain concept, architecture decision, workflow, or
-developer experience.
+## Repository at a glance
 
-## Repository language
+- A pnpm-workspace monorepo orchestrated by Turborepo, with two independently
+  runnable TypeScript applications and no shared packages yet:
+  - `apps/api` — the shared REST API: a NestJS + Fastify modular monolith on
+    PostgreSQL through Drizzle, publishing an OpenAPI contract, plus a research
+    CLI for batch acquisition work.
+  - `apps/web` — one React SPA hosting the anonymous Recommendation Product
+    (`/*`) and the Administrator-only Data Studio (`/studio/*`) (ADR 0015).
+- Toolchain versions are pinned by `.nvmrc` and `packageManager` in
+  `package.json`; use them rather than repeating version numbers elsewhere.
+- Applications never import each other's source; the generated API types are
+  the only bridge.
 
-Use English for all source code, identifiers, comments, tests, commit messages,
-and repository documentation. Source material may be in another language, but
-translate and normalize it into English before adding it to the repository.
-Preserve a source's original language only when quoting it is materially
-necessary, and label the quotation accordingly.
+## Scope table
 
-User-facing strings in `apps/web` are Romanian; the bilingual i18n
-infrastructure is preserved (typed keys, `en` locale files kept as skeletons)
-so other locales can be added without redesign. The repository-language rule
-above still applies to keys, code, and translator comments.
+| When you work on                                         | Read first                                                                                                                                                                                       |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Any task                                                 | [`CONTEXT.md`](./CONTEXT.md), [`UBIQUITOUS_LANGUAGE.md`](./UBIQUITOUS_LANGUAGE.md), [`docs/development/agentic-work.md`](./docs/development/agentic-work.md)                                     |
+| Architecture, persistence, or contracts                  | [`docs/adr/`](./docs/adr/), [`docs/architecture/`](./docs/architecture/)                                                                                                                         |
+| Product scope                                            | [`docs/product/`](./docs/product/)                                                                                                                                                               |
+| `apps/api/**`                                            | [`apps/api/README.md`](./apps/api/README.md), [`docs/development/database.md`](./docs/development/database.md)                                                                                   |
+| `apps/web/**`                                            | [`apps/web/README.md`](./apps/web/README.md), [`apps/web/docs/architecture.md`](./apps/web/docs/architecture.md), [`identity-boundary.md`](./apps/web/docs/identity-boundary.md)                 |
+| `apps/web/src/lib/apiClient/**`, `apps/web/src/mocks/**` | [`apiClient/README.md`](./apps/web/src/lib/apiClient/README.md), [`mocks/README.md`](./apps/web/src/mocks/README.md)                                                                             |
+| Research acquisition (`apps/api/src/research/**`)        | [`docs/research/group-rental-property-baseline/`](./docs/research/group-rental-property-baseline/README.md), [`data-acquisition-experiments.md`](./docs/product/data-acquisition-experiments.md) |
+| Tests, validation, or these instructions                 | [`docs/development/agentic-work.md`](./docs/development/agentic-work.md)                                                                                                                         |
 
-## Sources of truth
+Working hypotheses in external research or source documents are not
+requirements until a document in this repository accepts them.
 
-Read these before planning a material change:
+## Safety and scope
 
-1. `CONTEXT.md` for concise domain definitions.
-2. `UBIQUITOUS_LANGUAGE.md` for canonical terminology, relationships, and known
-   ambiguities.
-3. `docs/adr/` for accepted architectural decisions, when present.
-4. `docs/architecture/` for system boundaries and the conceptual data model.
-5. `docs/product/` for accepted scope and experiment definitions.
-6. The nearest application or package `README.md` for local constraints.
-7. The root `README.md` for repository-wide orientation.
+- Ask before committing, pushing, rewriting history, deleting branches,
+  merging, publishing, or deploying. Authorization already given for the same
+  piece of work does not need to be asked for again.
+- Preserve unrelated working-tree changes and stage only the files of your
+  task.
+- Write commits as Conventional Commits with a scope from
+  [`commitlint.config.mjs`](./commitlint.config.mjs) (`web`, `api`, `docs`,
+  `infra`, `deps`, `chore`). Husky runs `lint-staged` (Prettier) before each
+  commit and commitlint on the message; never bypass hooks or weaken a check
+  to obtain a pass.
+- Do not add AI-authorship credits or generated-by trailers to commits or pull
+  requests unless explicitly asked.
+- Never read, print, or commit secrets. `.env.local` files are ignored;
+  `.env.example` files are the sanitized reference. Every `VITE_*` variable is
+  embedded in the public web bundle, so never put a secret in one.
+- The GitHub repository is public. Never commit source artifacts, official
+  register rows, personal data, evaluation review sheets, or anything under
+  `apps/api/.data/`; commit only aggregates, key-only manifests, and synthetic
+  fixtures.
+- Keep changes focused and reversible. Report unrelated failures instead of
+  fixing them inside the task.
+- Write code, identifiers, comments, tests, commit messages, and repository
+  documentation in English; translate source material and label any necessary
+  quotation in another language.
 
-Do not turn working hypotheses from external research documents into product
-requirements or architectural facts without an explicit decision in this
-repository.
+## Architecture and data authority
 
-## Code discovery with Codebase Memory MCP
+- The API is a modular monolith (ADRs 0001, 0020). Domain modules are
+  `access`, `research`, `catalog`, `curation`, `recommendation`, and `audit`;
+  `common`, `database`, `config`, and `health` are infrastructure. Each domain
+  module exposes one barrel (`index.ts`), and other modules import only that
+  barrel (ESLint-enforced). Inside a module the flow is controller →
+  application service → repository → Drizzle schema.
+- Write each kind of data only through its owner:
 
-Prefer Codebase Memory MCP over filesystem search when discovering code or
-dependencies:
+  | Data                                                                                                                                                                      | Owner                    | Contract                                                                                          |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------- |
+  | `administrator`                                                                                                                                                           | Access                   | Membership; identity is resolved through Access only                                              |
+  | `category`, and later Providers, Operating Locations, Offers                                                                                                              | Catalog                  | Canonical catalog values                                                                          |
+  | `research_campaign`, `research_campaign_source`, `source_artifact`, `acquisition_run`, `evidence`, `acquisition_run_record`, `candidate`, `claim`, `duplicate_suggestion` | Research                 | Evidence and Claims are immutable; `candidate.verification_status` is constrained to `unverified` |
+  | `audit_event`                                                                                                                                                             | Audit                    | Append-only actor-attributed history                                                              |
+  | Verification decisions, canonical value selection, publication, duplicate resolution                                                                                      | Curation (not yet built) | Only Curation may turn Claims and suggestions into canonical or published data                    |
 
-1. Run `index_repository` when the repository is not indexed; use
-   `detect_changes` or re-index after material changes.
-2. Use `search_graph` to locate functions, classes, routes, variables, and
-   domain implementations.
-3. Use `trace_path` for callers, callees, data flow, and impact analysis.
-4. Use `get_code_snippet` only after resolving the exact symbol with
-   `search_graph`.
-5. Use `query_graph` for complex structural questions and `get_architecture`
-   for a high-level view.
-6. Fall back to `rg` for string literals, error messages, configuration,
-   documentation, and files not represented adequately in the graph.
+- Research proposes and Curation decides (ADR 0013). Never write observed
+  values onto canonical records, never mark Candidates verified or published
+  from Research, and keep the Recommendation Product on published projections
+  only.
+- Drizzle schemas live in their owning module. `apps/api/src/drizzle/schema.ts`
+  re-exports them for drizzle-kit only; application code never imports it.
+- Controllers translate HTTP and stay thin. Long-running work (imports,
+  duplicate detection, evaluation exports) runs through the research CLI
+  (`apps/api/src/research-cli.ts`), never inside a request. Do not add a
+  queue, worker, browser automation, scraper, or extraction vendor without an
+  experiment result and an accepted boundary (ADR 0014).
+- One CLS store per request or CLI command carries the correlation id, the
+  resolved Administrator, and the active transaction. Multi-write use cases
+  run inside `UnitOfWork.run`; repositories read `DatabaseService.executor`.
+  Never pass transaction handles through signatures (ADR 0021).
+- PostgreSQL is the only system of record (ADR 0005); add no other
+  authoritative store, search index, or vector database without an accepted
+  ADR and a measured requirement. Use Drizzle for schemas, migrations, and
+  typed access (ADR 0006), and reviewed SQL through Drizzle's `sql` where a
+  complex filter, aggregate, or bulk operation is clearer. Primary keys are
+  application-generated UUIDv7; vocabularies are `text` columns with `CHECK`
+  constraints, not PostgreSQL enums; JSONB values that may be top-level JSON
+  strings use `exactJsonb` (see `docs/development/database.md`).
+- Generate migrations with `pnpm db:generate` and commit them with the schema
+  change. Never edit a migration that has been applied anywhere — add a new
+  one — never use `drizzle-kit push`, and never run migrations on API boot.
+- Zod schemas are the single source of request and response validation
+  (ADR 0022). Expose a distinct DTO per projection (canonical versus
+  published); public routes never reference administrative schemas.
+- When an API contract changes, regenerate in the same change and update the
+  curated wrappers in `apps/web/src/lib/apiClient/index.ts`, their consumers,
+  and any MSW handlers.
+- Never hand-edit generated files:
 
-Keep `.codebase-memory/graph.db.zst` current when the shared index materially
-changes so other agents can bootstrap quickly.
+  | File                                               | Generator                                                     | Committed |
+  | -------------------------------------------------- | ------------------------------------------------------------- | --------- |
+  | `apps/api/openapi.yaml`                            | `pnpm openapi:generate` (root)                                | yes       |
+  | `apps/web/src/lib/apiClient/generated/schema.d.ts` | `pnpm --filter @elpa/web codegen` (run by `openapi:generate`) | yes       |
+  | `apps/api/drizzle/**`                              | `pnpm db:generate`, reviewed before the first apply           | yes       |
+  | `apps/web/src/app/router/routeTree.gen.ts`         | `tsr generate` (runs before `dev`, `build`, and `typecheck`)  | no        |
+  | `apps/web/public/mockServiceWorker.js`             | MSW                                                           | no        |
+  | `.codebase-memory/graph.db.zst`                    | Codebase Memory MCP `index_repository` with persistence       | yes       |
 
-## Working rules
-
-- Use the repository-pinned Node.js and `pnpm` versions.
-- Keep package-level scripts runnable directly; Turborepo orchestrates and
-  caches tasks but must not be the only way to execute them.
-- Use TypeScript as the primary implementation language across `apps/api` and
-  `apps/web`.
-- Introduce another runtime only behind an explicit application or worker
-  boundary and document the workload that justifies it.
-- Use the canonical terms from `UBIQUITOUS_LANGUAGE.md` in code and docs.
-- Flag a terminology conflict instead of silently introducing a synonym.
-- Keep application boundaries explicit; do not create cross-application imports
-  that bypass shared package contracts.
-- Treat the backend API as the shared system boundary for both the
-  Recommendation Product and Data Studio. The client must not connect
-  directly to persistence or create a client-specific backend without an
-  accepted architectural decision.
-- Treat anonymous Recommendation Product access and administrative Data Studio
-  access as distinct trust boundaries. Hosting both audiences in one client
-  application (ADR 0015) never implies shared authorization; the API
-  enforces authorization on every request, and the client separates the two
-  audiences by route family (`_public` versus `_studio`) and by
-  audience-scoped API namespaces.
-- During the Data Studio alpha, simulated identity and one Administrator role
-  are intentional. Keep the simulation isolated behind the authentication
-  boundary, visibly configured, and replaceable; do not spread fake-user logic
-  through domain modules or controllers.
-- Permit simulated identity only in local development or an infrastructure-
-  protected private alpha environment. The API must fail to start when
-  simulated authentication is enabled in a public production environment.
-- Use an external OpenID Connect provider to establish identity. Keep
-  invitations, Administrator membership, roles, authorization decisions, and
-  audit history in ELPA after alpha; do not treat identity-provider claims as
-  the domain authorization model.
-- Keep domain logic independent of UI frameworks and deployment adapters.
-- Keep persistence access explicit and suitable for relational constraints,
-  complex filters, transactions, bulk operations, and reviewed SQL escape
-  hatches; do not force important queries through an ORM abstraction that makes
-  them less correct or understandable.
-- Treat PostgreSQL as the system of record. Do not introduce another persistent
-  store, search index, or vector database as an authoritative source without an
-  accepted ADR and a measured requirement.
-- Use Drizzle ORM for schema definitions, migrations, and type-safe persistence
-  access. Keep domain rules independent of Drizzle through module-owned
-  repositories or equivalent ports.
-- Build the API with NestJS and the Fastify adapter. Controllers translate
-  transport concerns; they do not own domain rules, persistence queries, or
-  long-running data-processing workflows.
-- Treat the generated OpenAPI document as the REST contract authority. The
-  client consumes a generated TypeScript client inside
-  `apps/web/src/lib/apiClient/` and must not import DTOs or other
-  implementation types from `apps/api`.
-- Expose distinct DTOs per projection in the OpenAPI contract so that the
-  published-versus-canonical boundary from ADR 0013 is encoded in generated
-  types (`PublishedOffer` versus `Offer`, etc.). Do not import admin API
-  namespaces inside `recommendation/` or under the `_public` layout; the
-  ESLint `no-restricted-imports` boundary enforces this and must not be
-  weakened without an accepted architectural decision.
-- Regenerate and verify the OpenAPI document and client in the same change
-  that alters an API contract.
-- The client UI foundation is React 19 + TypeScript strict + Material UI 9 +
-  Vite 8 with TanStack Router/Query, Zustand, React Hook Form + Zod, and
-  i18next, adopted from the `react-enterprise-boilerplate` chassis. Follow
-  the state-ownership rules described in `apps/web/docs/architecture.md`
-  (server state in TanStack Query, URL state in the router, form state in
-  React Hook Form, global client state in Zustand, ephemeral state in
-  `useState`); do not mirror server data into Zustand.
-- Use the repository script for Drizzle Studio against local development data
-  only. Never expose it as an application feature or connect it casually to a
-  production database.
 - Package the API as a portable container and use Docker Compose for local
-  PostgreSQL and supporting services.
-- Keep hosting-provider integrations behind explicit infrastructure boundaries.
-  The provider is undecided, AWS and Google Cloud are shortlisted, and no agent
-  should introduce provider-specific coupling before that decision is accepted.
-- Do not introduce Kubernetes or a self-managed production database without an
-  accepted ADR backed by concrete operational requirements.
-- Separate verified, publishable data from candidates and unverified claims.
-- Preserve provenance and verification time for data used by recommendations.
-- Treat web discovery and extraction as experiments. Do not add a dedicated
-  scraper, queue, browser automation system, or extraction vendor without an
-  experiment result and a documented operational boundary.
-- Preserve fetched evidence before extraction, and write extracted values as
-  proposed Claims rather than canonical Provider or Offer fields.
-- Add or update tests with behavioral changes once implementation exists.
-- Record an ADR only for decisions that are costly to reverse, non-obvious, and
-  selected through a real trade-off.
+  PostgreSQL. The hosting provider is undecided (AWS and Google Cloud are
+  shortlisted): introduce no provider-specific coupling, Kubernetes, or
+  self-managed production database without an accepted ADR (ADR 0011).
+- Do not reintroduce a second client application without an ADR superseding
+  ADR 0015, and do not add another runtime except behind an explicit,
+  documented application or worker boundary.
 
-## Documentation expectations
+## Access and trust boundaries
 
-Every runnable application and reusable package must have a local `README.md`
-covering its purpose, boundary, dependencies, local commands, configuration,
-and ownership of data or domain concepts. Commands and stack-specific rules
-will be added after the stack is selected; do not invent them.
+- The API authorizes every request. Administrative controllers use
+  `@AdminController(...)`, which mounts them under `/api/admin/*` with
+  `AdministratorGuard`; the boot-time route verifier refuses to start
+  otherwise.
+- Simulated alpha identity (`API_SIMULATED_ADMINISTRATOR_EMAIL`) stays inside
+  the Access boundary and is permitted only for `local` or infrastructure-
+  protected `private` deployments; environment validation rejects it when
+  `API_DEPLOYMENT_VISIBILITY=public`. Do not spread fake-user logic into
+  domain modules or controllers.
+- After the alpha, an external OpenID Connect provider establishes identity;
+  ELPA keeps invitations, membership, roles, authorization, and audit history
+  (ADR 0009). Identity-provider claims are not the authorization model.
+- In the web app, the `_public` and `studio/_authenticated` route families are
+  UX separation, not security (ADR 0015). Today only `studio/_authenticated`
+  has a `beforeLoad` guard (`requireAdministrator`); `_public` is open by
+  design.
+- Keep code under `_public/**` and Recommendation features off the `studio`
+  namespace of `@/lib/apiClient`. ESLint blocks Studio routes and
+  `@/lib/identity` from `_public/**` but not that import, so check it in
+  review.
+- Record an audit event with the acting Administrator for every sensitive
+  mutation, using the Audit module.
+- Show raw Evidence only on Administrator-guarded Data Studio routes, after
+  retention-policy redaction; never on public routes. Drizzle Studio is local
+  development tooling, never an application surface.
 
-Follow `docs/development/agentic-work.md` for the repository workflow and update
-it when the actual scaffold changes commands or validation steps.
+## Implementation
+
+- Reuse what exists before adding abstractions: web components, hooks, and
+  utilities under `apps/web/src/{components,hooks,lib,utils}`, and the API's
+  `common` errors, guards, logger, and `UnitOfWork`. Add a dependency only for
+  a concrete reason, documented in the owning application's README.
+- Throw typed `AppError` subclasses from `apps/api/src/common/errors/`; the
+  exception filter maps them to RFC 7807 `application/problem+json` with a
+  `correlation_id`. A new subclass needs a matching filter case.
+- Keep the TypeScript strictness configured in each app's `tsconfig*.json`.
+  Do not hide type errors with `any`, broad casts, non-null assertions in
+  production code, or `eslint-disable`; validate external input with Zod.
+- Keep domain logic independent of NestJS, Drizzle, and transport. Pure
+  modules such as `apps/api/src/research/acquisition/` and `…/matching/`
+  must not import framework or persistence code.
+- Use the canonical terms from `UBIQUITOUS_LANGUAGE.md`. Flag a terminology
+  conflict instead of introducing a synonym.
+- Write comments for non-obvious constraints, decisions, and workarounds only.
+- Mind the known performance risks: batch database writes below PostgreSQL's
+  65,535 bind-parameter limit, use batch reads across module boundaries rather
+  than per-entity calls, stream large source artifacts instead of loading
+  them whole, bound pairwise comparisons with blocking, aggregate in SQL, and
+  never mirror server data into client stores.
+- Formatting and lint rules live in `.prettierrc.json` and each app's ESLint
+  config; follow them rather than restating them.
+
+## Product and operational contracts
+
+- User-facing web strings are Romanian, through i18next. Translation keys are
+  typed from the `en` resources, so add every key to both
+  `apps/web/src/i18n/locales/ro/` and `…/en/`; `en` is a skeleton locale that
+  keeps the bilingual infrastructure. Keys and translator comments are English.
+- Follow the web state-ownership rules in `apps/web/docs/architecture.md`:
+  server state in TanStack Query, URL state in the router, form state in React
+  Hook Form + Zod, global client state in Zustand, ephemeral state in
+  component state.
+- MSW runs only in development, tests, and Storybook (ADR 0016); type handlers
+  from the generated schema.
+- Use the existing loggers — `nestjs-pino` with correlation ids in the API,
+  `apps/web/src/lib/logger` in the web app. Never log secrets, tokens, or
+  personal data. There is no analytics or metrics pipeline; do not add one
+  without a decision.
+- Treat acquisition and extraction as experiments until they pass the
+  promotion rule in `docs/product/data-acquisition-experiments.md`: preserve
+  Evidence before Claims, keep provenance and observation time on every Claim,
+  version every extraction method, redact personal data per the source's
+  retention policy, never treat population screening as eligibility, and label
+  research figures as observed, estimated, or unverified.
+- Update documentation in the same change that alters a domain concept,
+  architecture decision, workflow, contract, or developer experience. Every
+  runnable application keeps a README covering its purpose, boundary,
+  dependencies, commands, configuration, and data ownership. Record an ADR
+  only for decisions that are costly to reverse, non-obvious, and chosen
+  through a real trade-off.
