@@ -10,6 +10,7 @@ import { AppCard } from '@/components/common/AppCard';
 import { EmptyState } from '@/components/feedback/EmptyState';
 import { ErrorState } from '@/components/feedback/ErrorState';
 import { LoadingState } from '@/components/feedback/LoadingState';
+import { ButtonLink } from '@/components/navigation/routerLinks';
 import { formatDateTime } from '@/utils/format';
 
 import { useResearchCampaigns } from './api';
@@ -49,14 +50,25 @@ export function ResearchCampaignList() {
             date: formatDateTime(campaign.createdAt),
             administrator: campaign.createdBy.displayName,
           })}
+          headerAction={
+            <ButtonLink
+              to="/studio/research-campaigns/$campaignId"
+              params={{ campaignId: campaign.id }}
+              size="small"
+            >
+              {t('researchCampaigns.list.openAcquisition')}
+            </ButtonLink>
+          }
         >
           <Stack spacing={2}>
             <Typography>{campaign.eventNeed}</Typography>
             <Typography variant="body2" color="text.secondary">
-              {t('researchCampaigns.list.location', {
-                county: campaign.county,
-                locality: campaign.locality ?? t('researchCampaigns.list.allLocalities'),
-              })}
+              {campaign.county === null
+                ? t('researchCampaigns.list.national')
+                : t('researchCampaigns.list.location', {
+                    county: campaign.county,
+                    locality: campaign.locality ?? t('researchCampaigns.list.allLocalities'),
+                  })}
             </Typography>
             <List dense disablePadding>
               {campaign.minimumCriteria.map((criterion) => (

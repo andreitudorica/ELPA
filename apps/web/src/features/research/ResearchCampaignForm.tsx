@@ -26,22 +26,35 @@ export function ResearchCampaignForm() {
   const { t } = useTranslation();
   const schema = useMemo(
     () =>
-      z.object({
-        name: z.string().trim().min(3, t('researchCampaigns.form.nameTooShort')).max(160),
-        eventNeed: z.string().trim().min(1, t('researchCampaigns.form.required')).max(500),
-        county: z.string().trim().min(2, t('researchCampaigns.form.countyTooShort')).max(100),
-        locality: z.string().trim().max(200),
-        minimumCriteria: z
-          .string()
-          .refine((value) => splitLines(value).length > 0, t('researchCampaigns.form.required')),
-        investigatedSources: z
-          .string()
-          .refine((value) => splitLines(value).length > 0, t('researchCampaigns.form.required'))
-          .refine(
-            (value) => splitLines(value).every((url) => z.url().safeParse(url).success),
-            t('researchCampaigns.form.invalidSource'),
-          ),
-      }),
+      z
+        .object({
+          name: z.string().trim().min(3, t('researchCampaigns.form.nameTooShort')).max(160),
+          eventNeed: z.string().trim().min(1, t('researchCampaigns.form.required')).max(500),
+          // Empty county means a national campaign (all of Romania).
+          county: z
+            .string()
+            .trim()
+            .max(100)
+            .refine(
+              (value) => value.length === 0 || value.length >= 2,
+              t('researchCampaigns.form.countyTooShort'),
+            ),
+          locality: z.string().trim().max(200),
+          minimumCriteria: z
+            .string()
+            .refine((value) => splitLines(value).length > 0, t('researchCampaigns.form.required')),
+          investigatedSources: z
+            .string()
+            .refine((value) => splitLines(value).length > 0, t('researchCampaigns.form.required'))
+            .refine(
+              (value) => splitLines(value).every((url) => z.url().safeParse(url).success),
+              t('researchCampaigns.form.invalidSource'),
+            ),
+        })
+        .refine((values) => values.locality.trim() === '' || values.county.trim() !== '', {
+          message: t('researchCampaigns.form.localityRequiresCounty'),
+          path: ['locality'],
+        }),
     [t],
   );
 
@@ -75,7 +88,7 @@ export function ResearchCampaignForm() {
       {
         name: values.name.trim(),
         eventNeed: values.eventNeed.trim(),
-        county: values.county.trim(),
+        ...(values.county.trim().length > 0 ? { county: values.county.trim() } : {}),
         ...(values.locality.trim().length > 0 ? { locality: values.locality.trim() } : {}),
         minimumCriteria: splitLines(values.minimumCriteria),
         investigatedSources: splitLines(values.investigatedSources),
@@ -133,8 +146,8 @@ export function ResearchCampaignForm() {
           control={control}
           name="county"
           label={t('researchCampaigns.form.county')}
+          helperText={t('researchCampaigns.form.countyHelp')}
           autoComplete="address-level1"
-          required
         />
         <FormTextField
           control={control}

@@ -115,7 +115,9 @@
       "countyTooShort": "The county must contain at least 2 characters.",
       "invalidSource": "Every source must be a valid complete URL.",
       "auditNotice": "Creation is attributed to the current Administrator and recorded in the audit history.",
-      "submit": "Create campaign"
+      "submit": "Create campaign",
+      "countyHelp": "Leave empty for a national campaign (all of Romania).",
+      "localityRequiresCounty": "A locality requires a county; locality names repeat across counties."
     },
     "list": {
       "loading": "Loading campaigns…",
@@ -124,12 +126,164 @@
       "created": "Created {{date}} by {{administrator}}",
       "location": "{{county}} County · {{locality}}",
       "allLocalities": "all localities",
-      "sources": "Investigated sources"
+      "sources": "Investigated sources",
+      "national": "National campaign · all of Romania",
+      "openAcquisition": "Acquisition experiment"
     },
     "feedback": {
       "created": "The Research Campaign was created.",
       "createError": "The Research Campaign could not be created.",
       "loadError": "Research Campaigns could not be loaded."
+    }
+  },
+  "acquisition": {
+    "title": "Acquisition experiment",
+    "documentTitle": "Acquisition experiment · ELPA Data Studio",
+    "description": "Import runs, Evidence, proposed Claims, Candidates, and duplicate suggestions for this campaign.",
+    "unverifiedNotice": "Everything here is unverified research data: Candidates, Claims, and suggestions are not published and are not used by the Recommendation Product.",
+    "tabsLabel": "Acquisition experiment sections",
+    "tabs": {
+      "runs": "Runs",
+      "report": "Quality report",
+      "candidates": "Candidates",
+      "suggestions": "Duplicate suggestions"
+    },
+    "sources": {
+      "situr_accommodation_register": "Official accommodation register (DGT / SITUR)",
+      "osm_geofabrik_romania": "OpenStreetMap (Geofabrik Romania extract)"
+    },
+    "sourcesShort": {
+      "situr_accommodation_register": "Official register",
+      "osm_geofabrik_romania": "OpenStreetMap"
+    },
+    "screening": {
+      "plausible": "Plausible",
+      "ambiguous": "Ambiguous",
+      "out_of_scope": "Out of scope",
+      "insufficient_data": "Insufficient data"
+    },
+    "runStatus": {
+      "running": "Running",
+      "succeeded": "Succeeded",
+      "completed_with_rejections": "Completed with rejections",
+      "failed": "Failed"
+    },
+    "relation": {
+      "same_property": "Same property",
+      "same_provider": "Same provider"
+    },
+    "strength": {
+      "likely": "likely",
+      "possible": "possible"
+    },
+    "filters": {
+      "all": "All"
+    },
+    "feedback": {
+      "loadError": "The experiment data could not be loaded."
+    },
+    "runs": {
+      "source": "Source",
+      "datasetVersion": "Dataset version: {{version}}",
+      "status": "Status",
+      "startedAt": "Started",
+      "records": "Records (read / rejected)",
+      "recordsValue": "{{read}} / {{rejected}}",
+      "evidence": "Evidence (new / unchanged)",
+      "createdUnchanged": "{{created}} / {{unchanged}}",
+      "claims": "Claims (new / unchanged)",
+      "artifact": "Artifact and versions",
+      "digest": "output digest",
+      "howToRunTitle": "How to execute a run",
+      "howToRun": "Imports are long-running jobs executed from the command line, not from this interface. Every run is recorded here, including failed ones.",
+      "caption": "Acquisition Runs for this campaign, newest first",
+      "emptyTitle": "No runs yet",
+      "emptyDescription": "Import an artifact from the command line to start the experiment."
+    },
+    "report": {
+      "loading": "Computing the report…",
+      "sourceSubheader": "Version {{version}} · terms {{terms}} · retention {{retention}}",
+      "records": "Records read {{read}}, parsed {{parsed}}, rejected {{rejected}}.",
+      "reproducibility": "{{runs}} runs; {{digests}} distinct output digest(s) for the same versions (1 = reproducible).",
+      "screening": "Automated screening: {{plausible}} plausible, {{ambiguous}} ambiguous, {{outOfScope}} out of scope.",
+      "missing": "Without identifier {{identifiers}} · without settlement {{settlement}} · without coordinates {{coordinates}}.",
+      "completenessCaption": "Field completeness (current Claims)",
+      "field": "Field",
+      "share": "Share",
+      "kpi": {
+        "registerReconciled": "Register reconciled with OSM (likely – any suggestion)",
+        "osmOnly": "In-scope OSM Candidates absent from the register",
+        "distinctEstimate": "Estimated distinct properties (range)",
+        "entityResolution": "Matching precision / recall"
+      },
+      "notMeasured": "Not measured",
+      "crossSourceTitle": "Cross-source value",
+      "registerWithOsm": "Register Candidates with an OSM counterpart: {{likely}} likely, {{any}} with any suggestion, of {{total}}.",
+      "osmWithRegister": "OSM Candidates with a register counterpart: {{likely}} likely, {{any}} with any suggestion, of {{total}}.",
+      "incremental": "In-scope Candidates only in the register: {{registerOnly}} · only in OSM: {{osmOnly}} · in both: {{both}}.",
+      "operatorGroups": "Register operators with several certificates: {{groups}} (covering {{candidates}} Candidates; the largest has {{largest}}).",
+      "coverageTitle": "Coverage against a defined reference population",
+      "coverageCaption": "Coverage by county",
+      "county": "County",
+      "population": "Reference population",
+      "reconciledLikely": "Reconciled (likely)",
+      "reconciledAny": "Reconciled (any suggestion)",
+      "unknownsTitle": "Declared unknowns",
+      "generatedAt": "Generated {{date}} · {{version}}"
+    },
+    "candidates": {
+      "name": "Candidate",
+      "source": "Source",
+      "place": "Settlement",
+      "screening": "Screening",
+      "suggestions": "Suggestions",
+      "search": "Search by name, settlement, or key",
+      "county": "County",
+      "matchStatus": "Matching",
+      "withSuggestions": "With duplicate suggestions",
+      "withoutSuggestions": "Without duplicate suggestions",
+      "caption": "Unverified Candidates of this campaign",
+      "emptyTitle": "No Candidates match the filters"
+    },
+    "suggestions": {
+      "left": "Record",
+      "right": "Possible counterpart",
+      "decision": "Proposed decision",
+      "signals": "Signals",
+      "explanation": "Suggestions never merge records. Likely means the rules found no contradiction; possible needs human review. Same provider does not mean same property.",
+      "relationFilter": "Relation",
+      "strengthFilter": "Strength",
+      "caption": "Duplicate suggestions ({{version}})",
+      "emptyTitle": "No suggestions match the filters"
+    },
+    "signals": {
+      "rules": "Rules: {{rules}}",
+      "nameSimilarity": "Name similarity: {{value}}",
+      "geo": "Geography: {{basis}} {{detail}}",
+      "contradictions": "Contradictions: {{values}}"
+    },
+    "candidate": {
+      "title": "Candidate",
+      "documentTitle": "Candidate · ELPA Data Studio",
+      "loading": "Loading the Candidate…",
+      "description": "{{source}} · key {{key}}",
+      "unverified": "Unverified · unpublished",
+      "openSource": "Open the original record",
+      "claimsTitle": "Proposed Claims (current)",
+      "claimsSubheader": "Each Claim points to the Evidence and field it comes from. {{superseded}} Claims from earlier versions are kept as history.",
+      "target": "Target",
+      "value": "Value",
+      "locator": "Evidence locator",
+      "method": "Method · confidence",
+      "suggestionsTitle": "Duplicate suggestions",
+      "noSuggestions": "No suggestions for this Candidate.",
+      "evidenceTitle": "Evidence (immutable source content)",
+      "evidenceSummary": "Version {{version}} · checksum {{checksum}}… · artifact {{artifact}}…",
+      "latest": "latest",
+      "redacted": "Fields withheld by the retention policy (personal data): {{fields}}",
+      "runHistoryTitle": "Run history",
+      "outcome": "Outcome",
+      "errors": "Errors"
     }
   }
 }

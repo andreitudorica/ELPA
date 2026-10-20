@@ -115,7 +115,9 @@
       "countyTooShort": "Județul trebuie să conțină cel puțin 2 caractere.",
       "invalidSource": "Fiecare sursă trebuie să fie un URL complet valid.",
       "auditNotice": "Crearea este atribuită Administratorului curent și înregistrată în istoricul de audit.",
-      "submit": "Creează campania"
+      "submit": "Creează campania",
+      "countyHelp": "Lasă gol pentru o campanie națională (toată România).",
+      "localityRequiresCounty": "Localitatea necesită un județ; numele localităților se repetă între județe."
     },
     "list": {
       "loading": "Se încarcă campaniile…",
@@ -124,12 +126,164 @@
       "created": "Creată la {{date}} de {{administrator}}",
       "location": "Județul {{county}} · {{locality}}",
       "allLocalities": "toate localitățile",
-      "sources": "Surse investigate"
+      "sources": "Surse investigate",
+      "national": "Campanie națională · toată România",
+      "openAcquisition": "Experiment de achiziție"
     },
     "feedback": {
       "created": "Campania de cercetare a fost creată.",
       "createError": "Campania nu a putut fi creată.",
       "loadError": "Campaniile de cercetare nu au putut fi încărcate."
+    }
+  },
+  "acquisition": {
+    "title": "Experiment de achiziție",
+    "documentTitle": "Experiment de achiziție · ELPA Data Studio",
+    "description": "Rulări de import, dovezi, afirmații propuse, candidați și sugestii de duplicate pentru această campanie.",
+    "unverifiedNotice": "Toate datele de aici sunt cercetare neverificată: candidații, afirmațiile și sugestiile nu sunt publicate și nu sunt folosite de produsul de recomandări.",
+    "tabsLabel": "Secțiunile experimentului de achiziție",
+    "tabs": {
+      "runs": "Rulări",
+      "report": "Raport de calitate",
+      "candidates": "Candidați",
+      "suggestions": "Sugestii de duplicate"
+    },
+    "sources": {
+      "situr_accommodation_register": "Registrul oficial al structurilor de cazare (DGT / SITUR)",
+      "osm_geofabrik_romania": "OpenStreetMap (extras Geofabrik România)"
+    },
+    "sourcesShort": {
+      "situr_accommodation_register": "Registrul oficial",
+      "osm_geofabrik_romania": "OpenStreetMap"
+    },
+    "screening": {
+      "plausible": "Plauzibil",
+      "ambiguous": "Ambiguu",
+      "out_of_scope": "În afara populației",
+      "insufficient_data": "Date insuficiente"
+    },
+    "runStatus": {
+      "running": "În desfășurare",
+      "succeeded": "Reușită",
+      "completed_with_rejections": "Finalizată cu respingeri",
+      "failed": "Eșuată"
+    },
+    "relation": {
+      "same_property": "Aceeași proprietate",
+      "same_provider": "Același furnizor"
+    },
+    "strength": {
+      "likely": "probabil",
+      "possible": "posibil"
+    },
+    "filters": {
+      "all": "Toate"
+    },
+    "feedback": {
+      "loadError": "Datele experimentului nu au putut fi încărcate."
+    },
+    "runs": {
+      "source": "Sursă",
+      "datasetVersion": "Versiunea setului de date: {{version}}",
+      "status": "Stare",
+      "startedAt": "Început la",
+      "records": "Înregistrări (citite / respinse)",
+      "recordsValue": "{{read}} / {{rejected}}",
+      "evidence": "Dovezi (noi / neschimbate)",
+      "createdUnchanged": "{{created}} / {{unchanged}}",
+      "claims": "Afirmații (noi / neschimbate)",
+      "artifact": "Artefact și versiuni",
+      "digest": "amprentă rezultat",
+      "howToRunTitle": "Cum se execută o rulare",
+      "howToRun": "Importurile sunt sarcini de lungă durată și se execută din linia de comandă, nu din interfață. Fiecare rulare este înregistrată aici, inclusiv cele eșuate.",
+      "caption": "Rulările de achiziție ale campaniei, cele mai recente primele",
+      "emptyTitle": "Nu există rulări",
+      "emptyDescription": "Importă un artefact din linia de comandă pentru a începe experimentul."
+    },
+    "report": {
+      "loading": "Se calculează raportul…",
+      "sourceSubheader": "Versiune {{version}} · condiții {{terms}} · păstrare {{retention}}",
+      "records": "Înregistrări citite {{read}}, analizate {{parsed}}, respinse {{rejected}}.",
+      "reproducibility": "{{runs}} rulări; {{digests}} amprentă(e) distincte pentru aceleași versiuni (1 = reproductibil).",
+      "screening": "Triere automată: {{plausible}} plauzibile, {{ambiguous}} ambigue, {{outOfScope}} în afara populației.",
+      "missing": "Fără identificator {{identifiers}} · fără localitate {{settlement}} · fără coordonate {{coordinates}}.",
+      "completenessCaption": "Completitudinea câmpurilor (afirmații curente)",
+      "field": "Câmp",
+      "share": "Pondere",
+      "kpi": {
+        "registerReconciled": "Registru reconciliat cu OSM (probabil – orice sugestie)",
+        "osmOnly": "Candidați OSM relevanți absenți din registru",
+        "distinctEstimate": "Proprietăți distincte estimate (interval)",
+        "entityResolution": "Precizie / recall potrivire"
+      },
+      "notMeasured": "Nemăsurat",
+      "crossSourceTitle": "Valoare între surse",
+      "registerWithOsm": "Candidați din registru cu un corespondent OSM: {{likely}} probabil, {{any}} cu orice sugestie, din {{total}}.",
+      "osmWithRegister": "Candidați OSM cu un corespondent în registru: {{likely}} probabil, {{any}} cu orice sugestie, din {{total}}.",
+      "incremental": "Candidați relevanți doar în registru: {{registerOnly}} · doar în OSM: {{osmOnly}} · în ambele: {{both}}.",
+      "operatorGroups": "Operatori din registru cu mai multe certificate: {{groups}} (acoperă {{candidates}} candidați; cel mai mare are {{largest}}).",
+      "coverageTitle": "Acoperire față de o populație de referință definită",
+      "coverageCaption": "Acoperire pe județe",
+      "county": "Județ",
+      "population": "Populație de referință",
+      "reconciledLikely": "Reconciliat (probabil)",
+      "reconciledAny": "Reconciliat (orice sugestie)",
+      "unknownsTitle": "Necunoscute declarate",
+      "generatedAt": "Generat la {{date}} · {{version}}"
+    },
+    "candidates": {
+      "name": "Candidat",
+      "source": "Sursă",
+      "place": "Localitate",
+      "screening": "Triere",
+      "suggestions": "Sugestii",
+      "search": "Caută după nume, localitate sau cheie",
+      "county": "Județ",
+      "matchStatus": "Potrivire",
+      "withSuggestions": "Cu sugestii de duplicate",
+      "withoutSuggestions": "Fără sugestii de duplicate",
+      "caption": "Candidații neverificați ai campaniei",
+      "emptyTitle": "Niciun candidat nu corespunde filtrelor"
+    },
+    "suggestions": {
+      "left": "Înregistrare",
+      "right": "Posibil corespondent",
+      "decision": "Decizie propusă",
+      "signals": "Semnale",
+      "explanation": "Sugestiile nu unesc înregistrări. „Probabil” înseamnă că regulile nu au găsit contradicții; „posibil” cere revizuire umană. Același furnizor nu înseamnă aceeași proprietate.",
+      "relationFilter": "Relație",
+      "strengthFilter": "Tărie",
+      "caption": "Sugestii de duplicate ({{version}})",
+      "emptyTitle": "Nicio sugestie nu corespunde filtrelor"
+    },
+    "signals": {
+      "rules": "Reguli: {{rules}}",
+      "nameSimilarity": "Similaritate nume: {{value}}",
+      "geo": "Geografie: {{basis}} {{detail}}",
+      "contradictions": "Contradicții: {{values}}"
+    },
+    "candidate": {
+      "title": "Candidat",
+      "documentTitle": "Candidat · ELPA Data Studio",
+      "loading": "Se încarcă candidatul…",
+      "description": "{{source}} · cheie {{key}}",
+      "unverified": "Neverificat · nepublicat",
+      "openSource": "Deschide înregistrarea originală",
+      "claimsTitle": "Afirmații propuse (curente)",
+      "claimsSubheader": "Fiecare afirmație indică dovada și câmpul din care provine. {{superseded}} afirmații din versiuni anterioare sunt păstrate ca istoric.",
+      "target": "Țintă",
+      "value": "Valoare",
+      "locator": "Proveniență în dovadă",
+      "method": "Metodă · încredere",
+      "suggestionsTitle": "Sugestii de duplicate",
+      "noSuggestions": "Nicio sugestie pentru acest candidat.",
+      "evidenceTitle": "Dovezi (conținut sursă imuabil)",
+      "evidenceSummary": "Versiune {{version}} · sumă de control {{checksum}}… · artefact {{artifact}}…",
+      "latest": "cea mai recentă",
+      "redacted": "Câmpuri reținute conform politicii de păstrare (date cu caracter personal): {{fields}}",
+      "runHistoryTitle": "Istoric rulări",
+      "outcome": "Rezultat",
+      "errors": "Erori"
     }
   }
 }

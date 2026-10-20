@@ -66,10 +66,19 @@ Set `VITE_ENABLE_MOCKS=false` in `apps/web/.env.local` to exercise the real
 identity call is simulated; unhandled Research Campaign requests bypass MSW
 and reach the API.
 
+The acquisition experiment of a campaign is at
+`/studio/research-campaigns/:campaignId` (runs, quality report, Candidates,
+duplicate suggestions; tab and filters live in the URL) and each Candidate at
+`/studio/research-campaigns/:campaignId/candidates/:candidateId`. These
+requests have no MSW handlers, so run them against the real API.
+
 ## Boundaries enforced by ESLint
 
-- `_public/**` may not import from `studio/**`, the identity boundary, or
-  admin API namespaces (ADR 0015).
+- `_public/**` may not import from `studio/**` or the identity boundary
+  (ADR 0015). The rule also lists `@/lib/apiClient/generated/studio/**`, a
+  path that does not exist: the admin operations are the `studio` export of
+  `@/lib/apiClient`, which ESLint does not block, so keep it out of `_public`
+  code in review.
 - `studio/_authenticated/**` may not import from `_public/**` (symmetric).
 - `import 'msw'` is permitted only inside `src/mocks/**` and `src/test/**`
   (ADR 0016).

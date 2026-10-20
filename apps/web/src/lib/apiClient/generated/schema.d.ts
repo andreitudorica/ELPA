@@ -36,6 +36,86 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/admin/research-campaigns/{campaignId}/acquisition-runs': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['AcquisitionController_listRuns'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/research-campaigns/{campaignId}/acquisition-report': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['AcquisitionController_report'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/research-campaigns/{campaignId}/candidates': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['AcquisitionController_listCandidates'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/research-campaigns/{campaignId}/candidates/{candidateId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['AcquisitionController_getCandidate'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/research-campaigns/{campaignId}/duplicate-suggestions': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['AcquisitionController_listSuggestions'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/healthz': {
     parameters: {
       query?: never;
@@ -88,7 +168,7 @@ export interface components {
       category: 'group_rental_property';
       /** @enum {string} */
       countryCode: 'RO';
-      county: string;
+      county: string | null;
       locality: string | null;
       minimumCriteria: string[];
       investigatedSources: string[];
@@ -108,10 +188,332 @@ export interface components {
     CreateResearchCampaign: {
       name: string;
       eventNeed: string;
-      county: string;
+      county?: string;
       locality?: string;
       minimumCriteria: string[];
       investigatedSources: string[];
+    };
+    AcquisitionRun_Output: {
+      /** Format: uuid */
+      id: string;
+      /** @enum {string} */
+      sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+      /** @enum {string} */
+      stage: 'import';
+      /** @enum {string} */
+      status: 'running' | 'succeeded' | 'completed_with_rejections' | 'failed';
+      parserVersion: string;
+      normalizerVersion: string;
+      /** Format: date-time */
+      startedAt: string;
+      /** Format: date-time */
+      completedAt: string | null;
+      outputDigest: string | null;
+      failure: {
+        code: string;
+        message: string;
+      } | null;
+      stats: {
+        [key: string]: unknown;
+      };
+      artifact: {
+        sha256: string;
+        datasetVersion: string | null;
+        originalUrl: string;
+        fileName: string;
+        byteSize: number;
+        /** Format: date-time */
+        retrievedAt: string;
+        reuseTerms: string;
+        retentionPolicy: string;
+      };
+    };
+    AcquisitionRunList_Output: components['schemas']['AcquisitionRun_Output'][];
+    AcquisitionReport_Output: {
+      reportVersion: string;
+      /** Format: date-time */
+      generatedAt: string;
+      campaign: {
+        /** Format: uuid */
+        id: string;
+        name: string;
+        county: string | null;
+        locality: string | null;
+      };
+      labelling: {
+        observed: string;
+        estimate: string;
+        notVerified: string;
+      };
+      sources: {
+        /** @enum {string} */
+        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+        label: string;
+        reuseTerms: string;
+        retentionPolicy: string;
+        attribution: string;
+        artifacts: {
+          sha256: string;
+          datasetVersion: string | null;
+          /** Format: date-time */
+          retrievedAt: string;
+          byteSize: number;
+          originalUrl: string;
+        }[];
+        latestRun: {
+          /** Format: uuid */
+          id: string;
+          status: string;
+          /** Format: date-time */
+          startedAt: string;
+          parserVersion: string;
+          normalizerVersion: string;
+          outputDigest: string | null;
+        } | null;
+        runsByStatus: {
+          [key: string]: number;
+        };
+        distinctOutputDigests: number;
+        records: {
+          read: number;
+          parsed: number;
+          rejected: number;
+          rejectionsByCode: {
+            [key: string]: number;
+          };
+          excludedBySource: {
+            [key: string]: number;
+          };
+        };
+        candidates: number;
+        screening: {
+          [key: string]: number;
+        };
+        missingIdentifiers: {
+          count: number;
+          definition: string;
+        };
+        derivedKeyCollisions: number;
+        missingLocation: {
+          withoutCounty: number;
+          withoutSettlement: number;
+          withoutCoordinates: number;
+        };
+        fieldCompleteness: {
+          target: string;
+          candidates: number;
+          share: number;
+        }[];
+      }[];
+      crossSource: {
+        matcherVersion: string;
+        suggestions: {
+          relation: string;
+          strength: string;
+          rule: string;
+          sources: string;
+          count: number;
+        }[];
+        registerWithOsmCounterpart: {
+          likely: number;
+          likelyOrPossible: number;
+          total: number;
+        };
+        osmWithRegisterCounterpart: {
+          likely: number;
+          likelyOrPossible: number;
+          total: number;
+        };
+        candidatesWithOnlyPossibleMatches: number;
+        distinctPropertyEstimate: {
+          candidates: number;
+          likelyClustersOnly: number;
+          likelyAndPossibleClusters: number;
+          definition: string;
+        };
+        incrementalInScopeCandidates: {
+          registerOnly: number;
+          osmOnly: number;
+          inBoth: number;
+          definition: string;
+        };
+        registerOperatorGroups: {
+          groups: number;
+          candidates: number;
+          largest: number;
+        };
+      };
+      coverage: {
+        referencePopulation: string;
+        size: number;
+        reconciledLikely: number;
+        reconciledLikelyOrPossible: number;
+        shareLikely: number;
+        shareLikelyOrPossible: number;
+        byCounty: {
+          countyCode: string;
+          countyName: string;
+          size: number;
+          reconciledLikely: number;
+          reconciledLikelyOrPossible: number;
+        }[];
+        caveat: string;
+      };
+      entityResolution: {
+        /** @enum {string} */
+        status: 'not_measured';
+        reason: string;
+        protocol: string;
+      };
+      unknowns: string[];
+    };
+    CandidateSummary_Output: {
+      /** Format: uuid */
+      id: string;
+      /** @enum {string} */
+      sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+      sourceRecordKey: string;
+      displayName: string;
+      countyCode: string | null;
+      settlementName: string | null;
+      /** @enum {string} */
+      screeningClass: 'plausible' | 'ambiguous' | 'out_of_scope' | 'insufficient_data';
+      /** @enum {string} */
+      verificationStatus: 'unverified';
+      suggestionCount: number;
+      /** Format: date-time */
+      updatedAt: string;
+    };
+    CandidatePage_Output: {
+      total: number;
+      page: number;
+      pageSize: number;
+      items: components['schemas']['CandidateSummary_Output'][];
+    };
+    DuplicateSuggestion_Output: {
+      /** Format: uuid */
+      id: string;
+      /** @enum {string} */
+      relation: 'same_property' | 'same_provider';
+      /** @enum {string} */
+      strength: 'likely' | 'possible';
+      score: number;
+      matcherVersion: string;
+      /** @enum {string} */
+      reviewStatus: 'unreviewed';
+      signals: {
+        [key: string]: unknown;
+      };
+      left: {
+        /** Format: uuid */
+        id: string;
+        /** @enum {string} */
+        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+        displayName: string;
+        settlementName: string | null;
+        countyCode: string | null;
+      };
+      right: {
+        /** Format: uuid */
+        id: string;
+        /** @enum {string} */
+        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+        displayName: string;
+        settlementName: string | null;
+        countyCode: string | null;
+      };
+    };
+    CandidateDetail_Output: {
+      candidate: {
+        /** Format: uuid */
+        id: string;
+        /** @enum {string} */
+        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+        sourceRecordKey: string;
+        displayName: string;
+        countyCode: string | null;
+        settlementName: string | null;
+        /** @enum {string} */
+        screeningClass: 'plausible' | 'ambiguous' | 'out_of_scope' | 'insufficient_data';
+        /** @enum {string} */
+        verificationStatus: 'unverified';
+        suggestionCount: number;
+        /** Format: date-time */
+        updatedAt: string;
+        /** @enum {string} */
+        kind: 'offer';
+        sourceRecordUrl: string | null;
+        /** Format: uuid */
+        latestEvidenceId: string;
+        /** Format: uuid */
+        firstSeenRunId: string;
+        /** Format: uuid */
+        lastSeenRunId: string;
+        /** Format: date-time */
+        createdAt: string;
+      };
+      claims: {
+        /** Format: uuid */
+        id: string;
+        target: string;
+        value: unknown;
+        evidenceLocator: {
+          [key: string]: unknown;
+        };
+        extractionMethod: string;
+        confidence: number;
+        /** @enum {string} */
+        reviewStatus: 'proposed';
+        /** Format: date-time */
+        observedAt: string;
+        /** Format: uuid */
+        evidenceId: string;
+        /** Format: uuid */
+        acquisitionRunId: string;
+        current: boolean;
+      }[];
+      evidence: {
+        /** Format: uuid */
+        id: string;
+        sourceRecordKey: string;
+        sourceRecordUrl: string | null;
+        contentSha256: string;
+        payload: {
+          [key: string]: unknown;
+        };
+        redactedFields: string[];
+        /** Format: date-time */
+        observedAt: string;
+        datasetVersion: string | null;
+        artifactSha256: string;
+        latest: boolean;
+      }[];
+      runRecords: {
+        /** Format: uuid */
+        acquisitionRunId: string;
+        /** Format: uuid */
+        evidenceId: string;
+        position: number;
+        /** @enum {string} */
+        evidenceOutcome: 'created' | 'unchanged';
+        /** @enum {string} */
+        extractionStatus: 'parsed' | 'rejected';
+        errors: {
+          code: string;
+          message: string;
+          field?: string;
+        }[];
+        /** Format: date-time */
+        startedAt: string;
+      }[];
+      suggestions: components['schemas']['DuplicateSuggestion_Output'][];
+    };
+    DuplicateSuggestionPage_Output: {
+      total: number;
+      page: number;
+      pageSize: number;
+      matcherVersion: string;
+      items: components['schemas']['DuplicateSuggestion_Output'][];
     };
     HealthStatus_Output: {
       /** @enum {string} */
@@ -186,6 +588,130 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['ResearchCampaign_Output'];
+        };
+      };
+    };
+  };
+  AcquisitionController_listRuns: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        campaignId: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Acquisition Runs, newest first. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AcquisitionRunList_Output'];
+        };
+      };
+    };
+  };
+  AcquisitionController_report: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        campaignId: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Data-quality, cross-source, and coverage report computed from stored records. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AcquisitionReport_Output'];
+        };
+      };
+    };
+  };
+  AcquisitionController_listCandidates: {
+    parameters: {
+      query?: {
+        source?: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+        screening?: 'plausible' | 'ambiguous' | 'out_of_scope' | 'insufficient_data';
+        county?: string;
+        search?: string;
+        match?: 'with_suggestions' | 'without_suggestions';
+        page?: number;
+        pageSize?: number;
+      };
+      header?: never;
+      path: {
+        campaignId: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Unverified Candidates. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CandidatePage_Output'];
+        };
+      };
+    };
+  };
+  AcquisitionController_getCandidate: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        campaignId: string;
+        candidateId: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description A Candidate with its Claims, Evidence, run history, and duplicate suggestions. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CandidateDetail_Output'];
+        };
+      };
+    };
+  };
+  AcquisitionController_listSuggestions: {
+    parameters: {
+      query?: {
+        relation?: 'same_property' | 'same_provider';
+        strength?: 'likely' | 'possible';
+        page?: number;
+        pageSize?: number;
+      };
+      header?: never;
+      path: {
+        campaignId: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Explainable duplicate suggestions from the current matcher version. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DuplicateSuggestionPage_Output'];
         };
       };
     };
