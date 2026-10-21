@@ -35,14 +35,14 @@ jobs:
       - name: Validate
         run: pnpm validate
 
-      # Codegen drift check. No-op until apps/api publishes an OpenAPI document
-      # and apps/web defines a `codegen` script; once both exist, this fails the
-      # build if the committed generated client is out of date.
-      - name: Codegen drift check
+      # Generation creates the Nest application without querying PostgreSQL.
+      # Use sanitized example configuration rather than CI secrets.
+      - name: API contract and generated client drift check
         run: |
-          pnpm turbo run codegen
-          git diff --exit-code apps || {
-            echo "::error::Generated code is out of date. Run 'pnpm codegen' and commit."
+          cp apps/api/.env.example apps/api/.env.local
+          pnpm openapi:generate
+          git diff --exit-code -- apps/api/openapi.yaml apps/web/src/lib/apiClient/generated/schema.d.ts || {
+            echo "::error::Generated API contract or client is out of date. Run 'pnpm openapi:generate' and commit."
             exit 1
           }
 

@@ -16,7 +16,7 @@ Data Studio chrome. It must **not** be imported from
 ## How identity is resolved
 
 `GET /api/me` is the single source of truth. The client caches the result in
-TanStack Query (`identityQueryKey`), and the `_studio/_authenticated`
+TanStack Query (`identityQueryKey`), and the `studio/_authenticated`
 `beforeLoad` awaits `ensureCurrentAdministrator` before permitting entry.
 
 - 401/403 → cached identity is `null`, guard redirects to `/studio/unauthorized`.

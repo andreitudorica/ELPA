@@ -22,8 +22,8 @@ flowchart LR
 ```
 
 The client uses the REST API through a generated OpenAPI client that lives
-inside `apps/web/src/lib/apiClient/`. Route-family separation and two
-`beforeLoad` policies enforce the audience split at the UX layer; the API
+inside `apps/web/src/lib/apiClient/`. Route-family separation and the Studio
+`beforeLoad` guard express the audience split at the UX layer; the API
 enforces authorization on every request. The client's authentication surface
 is confined to `apps/web/src/lib/identity/`, a boundary module that reads
 `GET /api/me` through TanStack Query — no login UI exists in alpha and no

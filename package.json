@@ -15,6 +15,7 @@
     "lint:fix": "turbo run lint:fix",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
+    "test:boundaries": "node --test scripts/boundaries.test.mjs",
     "test:coverage": "turbo run test:coverage",
     "test:e2e": "turbo run test:e2e",
     "storybook": "turbo run storybook",
@@ -30,7 +31,7 @@
     "openapi:check": "pnpm openapi:generate && git diff --exit-code -- apps/api/openapi.yaml apps/web/src/lib/apiClient/generated/schema.d.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate": "pnpm format:check && turbo run validate",
+    "validate": "pnpm format:check && pnpm test:boundaries && turbo run validate",
     "prepare": "husky"
   },
   "devDependencies": {

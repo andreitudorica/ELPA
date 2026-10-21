@@ -19,7 +19,7 @@ export default defineConfig({
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
     { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
     { name: 'webkit', use: { ...devices['Desktop Safari'] } },
-    // Mobile smoke coverage on the auth flow (drawer navigation, small viewport).
+    // Reserved for an auth-flow spec; the current alpha has no login UI or auth.spec.ts.
     {
       name: 'mobile-chrome',
       use: { ...devices['Pixel 7'] },

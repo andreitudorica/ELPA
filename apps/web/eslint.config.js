@@ -11,6 +11,23 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
+// Flat-config overrides replace a rule's options, so every route override
+// carries the same MSW restrictions alongside its own boundary restrictions.
+const mockImportRestrictions = [
+  {
+    name: 'msw',
+    message: 'Import from `msw` is restricted to src/mocks/** and src/test/** (ADR 0016).',
+  },
+  {
+    name: 'msw/browser',
+    message: 'Import from `msw/browser` is restricted to src/mocks/** (ADR 0016).',
+  },
+  {
+    name: 'msw/node',
+    message: 'Import from `msw/node` is restricted to src/mocks/** (ADR 0016).',
+  },
+];
+
 export default defineConfig(
   {
     ignores: [
@@ -127,23 +144,46 @@ export default defineConfig(
     },
   },
 
+  // MSW is a dev/test-only transport mock (ADR 0016). It must never appear
+  // in production code paths; keep imports inside the mocks and test scopes.
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    ignores: ['src/mocks/**', 'src/test/**', 'src/**/*.stories.tsx'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: mockImportRestrictions,
+        },
+      ],
+    },
+  },
+
   // Route family boundary (ADR 0015): the anonymous Recommendation Product
   // surface cannot depend on Data Studio route implementations, admin-scoped
   // API namespaces, or the identity boundary. The API is the enforcer of
   // authorization; this rule prevents accidental client-side coupling.
   {
-    files: ['src/app/router/routes/_public/**/*.{ts,tsx}'],
+    files: ['src/app/router/routes/_public.tsx', 'src/app/router/routes/_public/**/*.{ts,tsx}'],
     rules: {
       'no-restricted-imports': [
         'error',
         {
+          paths: [
+            ...mockImportRestrictions,
+            {
+              name: '@/lib/apiClient',
+              importNames: ['studio'],
+              message: 'Public routes must not use administrative API operations (ADR 0015).',
+            },
+          ],
           patterns: [
             {
               group: [
+                '@/app/router/routes/studio',
                 '@/app/router/routes/studio/**',
                 '@/lib/identity',
                 '@/lib/identity/**',
-                '@/lib/apiClient/generated/studio/**',
               ],
               message:
                 'Public (`_public`) routes may not depend on Data Studio routes, the identity boundary, or admin API namespaces (ADR 0015).',
@@ -157,45 +197,20 @@ export default defineConfig(
   // Symmetric boundary: guarded Data Studio routes must not depend on the
   // Recommendation Product surface. Keeps the two audiences cleanly separated.
   {
-    files: ['src/app/router/routes/studio/_authenticated/**/*.{ts,tsx}'],
+    files: [
+      'src/app/router/routes/studio/_authenticated.tsx',
+      'src/app/router/routes/studio/_authenticated/**/*.{ts,tsx}',
+    ],
     rules: {
       'no-restricted-imports': [
         'error',
         {
+          paths: mockImportRestrictions,
           patterns: [
             {
-              group: ['@/app/router/routes/_public/**'],
+              group: ['@/app/router/routes/_public', '@/app/router/routes/_public/**'],
               message:
                 'Data Studio routes must not depend on Recommendation Product route implementations (ADR 0015).',
-            },
-          ],
-        },
-      ],
-    },
-  },
-
-  // MSW is a dev/test-only transport mock (ADR 0016). It must never appear
-  // in production code paths; keep imports inside the mocks and test scopes.
-  {
-    files: ['src/**/*.{ts,tsx}'],
-    ignores: ['src/mocks/**', 'src/test/**', 'src/**/*.stories.tsx'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          paths: [
-            {
-              name: 'msw',
-              message:
-                'Import from `msw` is restricted to src/mocks/** and src/test/** (ADR 0016).',
-            },
-            {
-              name: 'msw/browser',
-              message: 'Import from `msw/browser` is restricted to src/mocks/** (ADR 0016).',
-            },
-            {
-              name: 'msw/node',
-              message: 'Import from `msw/node` is restricted to src/mocks/** (ADR 0016).',
             },
           ],
         },

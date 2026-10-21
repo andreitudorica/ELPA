@@ -6,8 +6,9 @@ Every entry references the ADR it derives from.
 
 ## Route families (ADR 0015)
 
-`apps/web` hosts two audiences in one client, separated by route family and
-two `beforeLoad` policies:
+`apps/web` hosts two audiences in one client, separated by route family. The
+Studio family has an Administrator `beforeLoad` guard; the public family is
+anonymous by design and has no guard:
 
 ```
 src/app/router/routes/

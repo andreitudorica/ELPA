@@ -58,7 +58,8 @@ monorepo uses `pnpm` workspaces and Turborepo:
 - `apps/web`: **scaffolded from `react-enterprise-boilerplate` and adapted
   to ELPA's ADR set** (ADR 0015/0016/0017). Hosts both the anonymous
   Recommendation Product (`/*`) and Administrator-guarded ELPA Data Studio
-  (`/studio/*`), separated by route family and by two `beforeLoad` policies.
+  (`/studio/*`), separated by route family. Studio has an Administrator
+  `beforeLoad` guard; the public family is anonymous by design.
   See [`apps/web/README.md`](./apps/web/README.md).
 
 Each application remains independently runnable, testable, buildable, and

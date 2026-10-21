@@ -25,9 +25,9 @@ function renderFatalError(message: string): void {
 }
 
 async function enableMocking(): Promise<void> {
-  // Defence in depth: MSW must never reach production. `import.meta.env.DEV`
-  // handles the local build, and VITE_APP_ENV catches deploys that identify as
-  // production even when DEV is misinterpreted. See ADR 0016.
+  // The current guard uses the configured application environment, not Vite's
+  // build mode. Production deployments must identify as production and disable
+  // mocks. See ADR 0016.
   if (!env.VITE_ENABLE_MOCKS) {
     return;
   }
@@ -38,7 +38,8 @@ async function enableMocking(): Promise<void> {
   // E2E escape hatch: tests that need to control `/api/*` responses at the
   // Playwright layer (via `page.route`) set this flag with `addInitScript`
   // before navigating so the MSW service worker never registers and cannot
-  // race the first request. Dev/test-only; production build ignores it.
+  // race the first request. The production application-environment guard above
+  // returns before this test flag is read.
   if (
     typeof window !== 'undefined' &&
     (window as unknown as { __ELPA_E2E_DISABLE_MOCKS__?: boolean }).__ELPA_E2E_DISABLE_MOCKS__ ===

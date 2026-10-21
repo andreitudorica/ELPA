@@ -9,6 +9,12 @@ import tseslint from 'typescript-eslint';
  * ESLint flat config for @elpa/api. Mirrors the strict + type-checked
  * posture from @elpa/web but omits browser/React plugins.
  */
+const domainModules = ['access', 'audit', 'catalog', 'curation', 'recommendation', 'research'];
+const toolingSchemaRestriction = {
+  group: ['**/drizzle/schema', '**/drizzle/schema.*'],
+  message: 'The aggregate schema is for drizzle-kit only; import tables from their owner.',
+};
+
 export default defineConfig(
   {
     ignores: ['dist', 'coverage', '.turbo', '*.tsbuildinfo'],
@@ -43,34 +49,35 @@ export default defineConfig(
   },
 
   {
-    files: ['src/{access,audit,catalog,curation,recommendation,research}/**/*.ts'],
+    files: ['src/**/*.ts'],
+    rules: { 'no-restricted-imports': ['error', { patterns: [toolingSchemaRestriction] }] },
+  },
+
+  ...domainModules.map((owner) => ({
+    files: [`src/${owner}/**/*.ts`],
     rules: {
       'no-restricted-imports': [
         'error',
         {
           patterns: [
-            {
-              group: [
-                '../access/*',
-                '../audit/*',
-                '../catalog/*',
-                '../curation/*',
-                '../recommendation/*',
-                '../research/*',
-              ],
-              message: 'Import another domain module through its public barrel.',
-            },
+            toolingSchemaRestriction,
+            ...domainModules
+              .filter((target) => target !== owner)
+              .map((target) => ({
+                group: [`**/${target}/**`, `!**/${target}/index`, `!**/${target}/index.ts`],
+                message: 'Import another domain module through its public barrel.',
+              })),
           ],
         },
       ],
     },
-  },
+  })),
 
   {
     files: ['src/{audit,research}/*.schema.ts'],
     rules: {
       // Drizzle needs the referenced table objects to declare physical foreign keys.
-      'no-restricted-imports': 'off',
+      'no-restricted-imports': ['error', { patterns: [toolingSchemaRestriction] }],
     },
   },
 

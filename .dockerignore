@@ -1,8 +1,9 @@
 .git
 .codebase-memory
 .turbo
-**/.env
-**/.env.local
+**/.env*
+!**/.env.example
+**/.data
 **/coverage
 **/dist
 **/node_modules

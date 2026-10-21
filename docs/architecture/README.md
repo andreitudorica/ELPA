@@ -8,8 +8,8 @@ from meaningful trade-offs will move into concise ADRs under `docs/adr/`.
 
 - The Recommendation Product and Data Studio share one client application,
   `apps/web`, split by route family: `/*` for anonymous public routes and
-  `/studio/*` for Administrator-guarded routes. Two pathless layouts encode
-  the two `beforeLoad` policies (ADR 0015).
+  `/studio/*` for Administrator-guarded routes. Two pathless layouts separate
+  the audiences; only Studio has an Administrator `beforeLoad` guard (ADR 0015).
 - The client consumes the shared backend API as its system boundary; trust
   boundaries are enforced by the API, not by the client (ADR 0008, ADR 0009).
 - The shared API is one backend application and one deployment, structured as
@@ -79,7 +79,7 @@ The Recommendation Product uses published data and user-facing recommendation
 workflows; those surfaces live under the `_public` route family and consume
 only published projections. Data Studio additionally uses research, claims,
 verification, publication, and administrative workflows; those surfaces live
-under the `_studio` route family and consume canonical, candidate, claim, and
+under the `studio/_authenticated` route family and consume canonical, candidate, claim, and
 evidence data. Internal module boundaries must remain explicit enough to
 permit later extraction of a separate client application or backend service if
 operational needs justify it, but independently deployed clients and services

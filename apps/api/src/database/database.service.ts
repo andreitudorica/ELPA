@@ -7,7 +7,6 @@ import { Pool } from 'pg';
 
 import type { AppClsStore } from '../common';
 import { loadEnv } from '../config/env';
-import * as schema from '../drizzle/schema';
 import type { AppDatabase, AppTransaction } from './database.types';
 
 @Injectable()
@@ -22,7 +21,7 @@ export class DatabaseService implements OnApplicationShutdown {
       max: env.DATABASE_POOL_MAX,
       connectionTimeoutMillis: 5_000,
     });
-    this.database = drizzle({ client: this.pool, schema });
+    this.database = drizzle({ client: this.pool });
   }
 
   /** Repositories transparently join the active unit-of-work transaction. */
