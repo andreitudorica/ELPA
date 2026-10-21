@@ -17,7 +17,9 @@ import { formatDateTime } from '@/utils/format';
 
 import { useCandidate } from '../acquisitionApi';
 
+import { ImageEvidence } from './ImageEvidence';
 import { formatClaimValue, screeningColor } from './labels';
+import { ReconciliationPanel } from './ReconciliationPanel';
 import { SuggestionSignals } from './SuggestionSignals';
 
 type Claim = CandidateDetail['claims'][number];
@@ -101,6 +103,8 @@ export function CandidateDetailPage({
             </Link>
           )}
         </Stack>
+
+        <ReconciliationPanel campaignId={campaignId} candidateId={candidateId} />
 
         {extractedClaims.length > 0 && (
           <AppCard title={t('acquisition.extraction.title')}>
@@ -268,6 +272,14 @@ export function CandidateDetailPage({
                       fields: item.redactedFields.join(', '),
                     })}
                   </Alert>
+                )}
+                {item.image !== null && (
+                  <ImageEvidence
+                    item={item}
+                    claims={claims}
+                    campaignId={campaignId}
+                    candidateId={candidateId}
+                  />
                 )}
                 <JsonBlock value={item.payload} />
               </Stack>

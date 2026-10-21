@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 import { foldText } from '../acquisition/text-normalization';
 import { canonicalJson, sha256Hex } from '../acquisition/source-record';
+import { UnionFind } from '../grouping/union-find';
 import { documentSchema } from './documents';
 import type { PrimaryDocument } from './documents';
 
@@ -48,24 +49,12 @@ export function sampleCorpus(
   const identity = (entry: FrameEntry) =>
     `${entry.document.sourceKey}:${entry.document.sourceRecordKey}`;
   const byCandidate = new Map(frame.map((entry) => [entry.document.candidateId, identity(entry)]));
-  const parents = new Map(frame.map((entry) => [identity(entry), identity(entry)]));
-  const root = (key: string): string => {
-    const parent = parents.get(key);
-    if (parent === undefined || parent === key) return key;
-    const result = root(parent);
-    parents.set(key, result);
-    return result;
-  };
-  const join = (left: string, right: string) => {
-    const a = root(left);
-    const b = root(right);
-    parents.set(a < b ? b : a, a < b ? a : b);
-  };
+  const groups = new UnionFind();
   for (const edge of edges) {
     const left = byCandidate.get(edge.left);
     const right = byCandidate.get(edge.right);
     if (edge.relation === 'same_property' && left !== undefined && right !== undefined)
-      join(left, right);
+      groups.union(left, right);
   }
   const texts = frame
     .map((entry) => ({ key: identity(entry), text: foldText(description(entry.document)) }))
@@ -73,7 +62,7 @@ export function sampleCorpus(
   const exact = new Map<string, string>();
   for (const entry of texts) {
     const previous = exact.get(entry.text);
-    if (previous !== undefined) join(previous, entry.key);
+    if (previous !== undefined) groups.union(previous, entry.key);
     else exact.set(entry.text, entry.key);
   }
   // At most the bounded descriptive subset, never pairwise national Candidate matching.
@@ -96,7 +85,7 @@ export function sampleCorpus(
         continue;
       const intersection = [...a].filter((token) => b.has(token)).length;
       if (intersection / (a.size + b.size - intersection) >= 0.8) {
-        join(left.key, right.key);
+        groups.union(left.key, right.key);
         nearDuplicateEdges += 1;
       }
     }
@@ -111,7 +100,7 @@ export function sampleCorpus(
             : entry.document.fields.length > 0
               ? 'structured_only'
               : 'empty';
-      const group = sha256Hex(root(identity(entry)));
+      const group = sha256Hex(groups.find(identity(entry)));
       const partition =
         Number.parseInt(sha256Hex(`${CORPUS_SEED}:partition:${group}`).slice(0, 2), 16) < 77
           ? ('development' as const)
@@ -126,13 +115,13 @@ export function sampleCorpus(
     })
     .sort((a, b) => a.rank.localeCompare(b.rank));
   const strata: Record<string, { population: number; selected: number }> = {};
-  const groups = new Set<string>();
+  const selectedGroups = new Set<string>();
   const selected: Corpus['entries'] = [];
   for (const entry of ranked) {
     const key = `${entry.partition}:${entry.stratum}`;
     const counts = strata[key] ?? { population: 0, selected: 0 };
     counts.population += 1;
-    if (!groups.has(entry.group) && counts.selected < 2) {
+    if (!selectedGroups.has(entry.group) && counts.selected < 2) {
       selected.push({
         partition: entry.partition,
         group: entry.group,
@@ -140,7 +129,7 @@ export function sampleCorpus(
         countyCode: entry.countyCode,
         document: entry.document,
       });
-      groups.add(entry.group);
+      selectedGroups.add(entry.group);
       counts.selected += 1;
     }
     strata[key] = counts;

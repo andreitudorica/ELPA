@@ -1,0 +1,113 @@
+{
+  "cases": 28,
+  "profiles": 53,
+  "pairs": 49,
+  "candidateAttributeCells": 53,
+  "support": {
+    "insufficient_evidence": 3,
+    "supported": 50
+  },
+  "corroboration": {
+    "none": 46,
+    "possible_correlation": 7
+  },
+  "temporal": {
+    "unknown": 53
+  },
+  "freshness": {
+    "uncertain": 53
+  },
+  "relations": {
+    "compatible": 1,
+    "equivalent": 15,
+    "unresolved": 33
+  },
+  "lineage": {
+    "common_origin": 30,
+    "unknown": 19
+  },
+  "conditionalCrossCandidatePairs": 19,
+  "inactiveMethodWarnings": 16,
+  "byAttribute": {
+    "beds_count": {
+      "profiles": 10,
+      "support": {
+        "supported": 10
+      },
+      "pairs": {
+        "equivalent": 2,
+        "unresolved": 4
+      }
+    },
+    "hot_tub": {
+      "profiles": 1,
+      "support": {
+        "supported": 1
+      },
+      "pairs": {
+        "unresolved": 1
+      }
+    },
+    "lawn": {
+      "profiles": 1,
+      "support": {
+        "supported": 1
+      },
+      "pairs": {
+        "unresolved": 1
+      }
+    },
+    "outdoor_grill": {
+      "profiles": 1,
+      "support": {
+        "supported": 1
+      },
+      "pairs": {
+        "unresolved": 1
+      }
+    },
+    "pool": {
+      "profiles": 1,
+      "support": {
+        "supported": 1
+      },
+      "pairs": {
+        "unresolved": 1
+      }
+    },
+    "recreation": {
+      "profiles": 2,
+      "support": {
+        "supported": 2
+      },
+      "pairs": {
+        "compatible": 1,
+        "unresolved": 6
+      }
+    },
+    "sauna": {
+      "profiles": 1,
+      "support": {
+        "supported": 1
+      },
+      "pairs": {
+        "unresolved": 1
+      }
+    },
+    "sleeps_persons": {
+      "profiles": 36,
+      "support": {
+        "insufficient_evidence": 3,
+        "supported": 33
+      },
+      "pairs": {
+        "equivalent": 13,
+        "unresolved": 18
+      }
+    }
+  },
+  "independentlyConfirmedConclusions": null,
+  "independentReviewers": 0,
+  "verifiedOrPublished": 0,
+  "label": "Observed rule outputs, not semantic accuracy or independently confirmed property knowledge"
+}

@@ -1,0 +1,29 @@
+{
+  "version": "grp-image-integrity@1",
+  "attempts": 3,
+  "successes": 3,
+  "elapsedMs": 3183.147625,
+  "retainedOriginalBytes": 768909,
+  "duplicatePairs": 0,
+  "nearDuplicatePairs": 0,
+  "externalModelCalls": 0,
+  "observedPaidAcquisitionCost": {
+    "amount": 0,
+    "currency": "EUR"
+  },
+  "modelCost": {
+    "amount": 0,
+    "currency": "EUR"
+  },
+  "computeStorageAndEngineeringCost": null,
+  "corpusManifestSha256": "e19e8ecf092bac7b35a276fdfa7066dd1914e99baeaf5dc9aa0593d443aa7a55",
+  "failedAcquisitions": 0,
+  "previewBytes": 5734637,
+  "distinctCounties": 1,
+  "developmentImages": 1,
+  "holdoutImages": 2,
+  "independentReviewers": 0,
+  "costPerIndependentlySupportedNewAttribute": null,
+  "productionCostProjection": null,
+  "engineeringEffortEstimate": "Not time-billed; bounded adapter, validation, review harness and existing Studio extension. No production estimate."
+}

@@ -16,6 +16,8 @@ export const SOURCE_KEYS = [
   'overture_places',
 ] as const;
 export type SourceKey = (typeof SOURCE_KEYS)[number];
+export const EVIDENCE_SOURCE_KEYS = [...SOURCE_KEYS, 'wikimedia_commons_images'] as const;
+export type EvidenceSourceKey = (typeof EVIDENCE_SOURCE_KEYS)[number];
 
 export type JsonValue =
   string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
@@ -23,6 +25,24 @@ export type JsonObject = Record<string, JsonValue>;
 
 /** Where in the Evidence a Claim value comes from (see data-acquisition-experiments.md). */
 export type EvidenceLocator =
+  | {
+      type: 'image_annotation';
+      imageSha256: string;
+      specificationVersion: string;
+      model: string;
+      modelVersion: string;
+      promptVersion: string;
+      processingVersion: string;
+      processingTimestamp: string;
+      region: JsonObject | null;
+      visibility: string;
+      uncertainty: string;
+      propertyAttribution: string;
+      propertyAssertion: false;
+      evaluationStatus: 'independent_review_pending';
+      scene: string;
+      sourceEvidenceId: string;
+    }
   | { type: 'structured_field'; fields: string[] }
   | { type: 'inferred'; policyId: string; rationale: string; inputs: JsonObject }
   | {

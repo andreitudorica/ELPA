@@ -23,6 +23,8 @@ import {
   DuplicateSuggestionService,
   EvaluationService,
   ExtractionService,
+  ReconciliationService,
+  VisualService,
   fileSha256,
   ResearchCampaignService,
   SOURCE_DEFINITIONS,
@@ -41,6 +43,15 @@ import {
 const USAGE = `Usage: node dist/research-cli.js <command> [options]
 
 Commands:
+  reconciliation-corpus --campaign <id> --out <dir> Seal a bounded existing-Claim corpus
+  reconciliation-run --sample <dir>              Persist immutable research assessments
+  reconciliation-score --sample <dir> [--labels <json>...] [--adjudication <json>]
+                                                 Score independent holdout reviews; missing labels stay unknown
+  visual-corpus --campaign <id> --out <dir>       Acquire and seal the three-file authorized image frame
+  visual-replay --sample <dir>                   Reprocess pinned originals without network access
+  visual-ai-import --sample <dir> --artifact <json> Validate captured vision results and propose image observations
+  visual-score --sample <dir> [--labels <json>...] [--artifact <vision-capture.json>]
+                                                 Report independent evaluation, text comparison and missing results
   extraction-corpus --campaign <id> --out <dir>   Seal a stratified primary-Evidence sample
   extraction-run --campaign <id> --sample <dir>  Propose grounded attribute Claims from pinned Evidence
   extraction-score --sample <dir> [--labels <json>...] [--artifact <ai-capture.json>]
@@ -123,6 +134,7 @@ async function main(): Promise<void> {
       labels: { type: 'string', multiple: true },
       frame: { type: 'string' },
       metadata: { type: 'string' },
+      adjudication: { type: 'string' },
     },
   });
 
@@ -188,6 +200,39 @@ async function runCommand(
   app: Awaited<ReturnType<typeof NestFactory.createApplicationContext>>,
 ): Promise<unknown> {
   switch (command) {
+    case 'reconciliation-corpus':
+      return app
+        .get(ReconciliationService)
+        .exportCorpus(required(values, 'campaign'), resolve(required(values, 'out')));
+    case 'reconciliation-run':
+      return app.get(ReconciliationService).run(resolve(required(values, 'sample')));
+    case 'reconciliation-score':
+      return app
+        .get(ReconciliationService)
+        .score(
+          resolve(required(values, 'sample')),
+          Array.isArray(values.labels) ? values.labels.map(String) : [],
+          typeof values.adjudication === 'string' ? resolve(values.adjudication) : undefined,
+        );
+
+    case 'visual-corpus':
+      return app
+        .get(VisualService)
+        .acquire(required(values, 'campaign'), resolve(required(values, 'out')));
+    case 'visual-replay':
+      return app.get(VisualService).replay(resolve(required(values, 'sample')));
+    case 'visual-ai-import':
+      return app
+        .get(VisualService)
+        .importAi(resolve(required(values, 'sample')), resolve(required(values, 'artifact')));
+    case 'visual-score':
+      return app
+        .get(VisualService)
+        .score(
+          resolve(required(values, 'sample')),
+          Array.isArray(values.labels) ? values.labels.map(String) : [],
+          typeof values.artifact === 'string' ? resolve(values.artifact) : undefined,
+        );
     case 'extraction-corpus':
       return app
         .get(ExtractionService)

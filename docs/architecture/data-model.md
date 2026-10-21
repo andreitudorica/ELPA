@@ -68,6 +68,18 @@ quotes, source/document/ontology versions, scope, ambiguity and temporality.
 Extraction does not change Candidate identity, latest Evidence, verification,
 or Catalog data. A new method version adds history rather than overwriting it.
 
+The [visual experiment](../research/visual-intelligence/README.md) reuses these
+tables for three authorized image artifacts and image Evidence associated with
+existing Candidates through run records. `wikimedia_commons_images` is allowed
+for Evidence/artifacts/runs, but not Candidate discovery. Per-file licence,
+original and preview hashes, source version, dimensions, capture/retrieval dates
+and explicitly unreviewed attribution stay in immutable Evidence. Original bytes
+and previews are private fingerprint-addressed attachments; PostgreSQL owns
+their identity and association. No new authoritative store is introduced.
+Image locators retain model/prompt/processing versions, region, uncertainty and
+parent Evidence. Their targets are `image.visible.*`, never automatic property
+facts. Observation fingerprints also preserve image history and idempotency.
+
 The acquisition baseline (`docs/research/group-rental-property-baseline/`)
 made the research side physical, all owned by the Research module:
 
@@ -91,6 +103,18 @@ made the research side physical, all owned by the Research module:
   suggestion between two Candidates, per matcher version; never a merge.
 
 `research_campaign.county` is nullable: a null county is a national campaign.
+
+### Research reconciliation assessments
+
+The [reconciliation experiment](../research/reconciliation/README.md) adds an
+immutable `reconciliation_assessment` snapshot containing input Claim projections,
+rule version, input fingerprint, reference/assessment times, explanation and
+result. A unique campaign/input/version key prevents duplicate results.
+Reprocessing adds history and Audit events; it does not modify source Claims or
+Evidence. Support, corroboration, temporal applicability and freshness remain
+separate. Different Candidate identities are unresolved, so cross-Candidate
+comparisons are explicitly conditional. See ADR 0024. There is no automatic
+canonical selection, verification or publication.
 
 ## Canonical catalog
 

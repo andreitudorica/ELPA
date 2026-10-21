@@ -194,3 +194,9 @@ An experiment becomes supported product behavior only when it reduces total
 curation effort without lowering provenance or verification quality, has an
 identified owner, includes observable failure handling, and has a documented
 legal and operational posture.
+
+The [reconciliation experiment](../research/reconciliation/README.md) compares
+existing proposed Claims and stores reversible Research assessments. It separates
+same-source repetition from independent corroboration, keeps identity and temporal
+uncertainty explicit, and leaves independent quality evaluation incomplete.
+Reconciliation support does not satisfy Verification or this promotion rule.

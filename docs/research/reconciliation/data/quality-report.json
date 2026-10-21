@@ -1,0 +1,2289 @@
+{
+  "status": "independent_evaluation_incomplete",
+  "corpusDigest": "198a008db0c56424de0fc76378fa1b7a3e317dd6f8e5cfd17a1da8ed808597a6",
+  "holdoutCases": 11,
+  "reviewers": 0,
+  "doubleReviewed": 0,
+  "disagreements": 0,
+  "adjudicated": 0,
+  "scoredCases": 0,
+  "scoredPairs": 0,
+  "byRelation": {
+    "equivalent": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "missedRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "compatible": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "missedRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "conflicting": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "missedRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "not_comparable": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "missedRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "unresolved": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "missedRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    }
+  },
+  "byAttribute": {
+    "sleeps_persons": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "beds_count": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "exclusive_rental": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "yard_area_m2": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "lawn": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "outdoor_grill": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "pool": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "hot_tub": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "sauna": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "recreation": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "parties_allowed": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "max_daytime_guests": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "pool_availability": {
+      "n": 0,
+      "byRelation": {
+        "equivalent": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "compatible": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "conflicting": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "not_comparable": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        },
+        "unresolved": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "recall": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falsePositiveRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "missedRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          }
+        }
+      },
+      "correct": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    }
+  },
+  "entityScopeErrors": {
+    "successes": 0,
+    "trials": 0,
+    "value": null,
+    "interval": null
+  },
+  "temporalErrors": {
+    "successes": 0,
+    "trials": 0,
+    "value": null,
+    "interval": null
+  },
+  "correlatedEvidenceErrors": {
+    "successes": 0,
+    "trials": 0,
+    "value": null,
+    "interval": null
+  },
+  "unsupportedConclusions": {
+    "successes": 0,
+    "trials": 0,
+    "value": null,
+    "interval": null
+  },
+  "correctAbstention": {
+    "successes": 0,
+    "trials": 0,
+    "value": null,
+    "interval": null
+  },
+  "uncertainty": "Wilson intervals are descriptive; pairs share properties and are not independent national samples."
+}

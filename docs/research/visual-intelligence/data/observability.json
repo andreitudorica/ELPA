@@ -1,0 +1,152 @@
+{
+  "version": "grp-visual-observability@1",
+  "direct": [
+    {
+      "feature": "pool",
+      "meaning": "A clearly visible pool basin in this image",
+      "textTarget": "offer.pool",
+      "textValue": true,
+      "counterexample": "A blue roof, covered basin or nearby public pool does not establish a guest pool.",
+      "entityLevel": "image",
+      "absence": "Not visible is not absent from the property."
+    },
+    {
+      "feature": "gazebo",
+      "meaning": "A visible freestanding gazebo or pavilion",
+      "textTarget": "offer.outdoor_covered_area",
+      "textValue": "gazebo",
+      "counterexample": "A generic terrace or tree canopy is not a gazebo.",
+      "entityLevel": "image",
+      "absence": "Not visible is not absent from the property."
+    },
+    {
+      "feature": "outdoor_grill",
+      "meaning": "A visible barbecue structure or appliance",
+      "textTarget": "offer.outdoor_grill",
+      "textValue": true,
+      "counterexample": "A chimney or outdoor fireplace can be ambiguous.",
+      "entityLevel": "image",
+      "absence": "Not visible is not absent from the property."
+    },
+    {
+      "feature": "lawn",
+      "meaning": "A visible area of grass or lawn",
+      "textTarget": "offer.lawn",
+      "textValue": true,
+      "counterexample": "Grass does not establish flatness, usability, area or property boundaries.",
+      "entityLevel": "image",
+      "absence": "Not visible is not absent from the property."
+    },
+    {
+      "feature": "outdoor_seating",
+      "meaning": "Visible outdoor chairs, benches or seating",
+      "textTarget": null,
+      "textValue": null,
+      "counterexample": "Visible chairs do not establish maximum event attendance.",
+      "entityLevel": "image",
+      "absence": "Not visible is not absent from the property."
+    },
+    {
+      "feature": "trampoline",
+      "meaning": "A visible trampoline",
+      "textTarget": null,
+      "textValue": null,
+      "counterexample": "A round pool, covered object or stock image can resemble a trampoline.",
+      "entityLevel": "image",
+      "absence": "Not visible is not absent from the property."
+    },
+    {
+      "feature": "sports_court",
+      "meaning": "A visible marked sports court",
+      "textTarget": null,
+      "textValue": null,
+      "counterexample": "A paved parking area is not necessarily a sports court.",
+      "entityLevel": "image",
+      "absence": "Not visible is not absent from the property."
+    },
+    {
+      "feature": "table_tennis",
+      "meaning": "A visible table-tennis table",
+      "textTarget": "offer.recreation",
+      "textValue": "table_tennis",
+      "counterexample": "A dining table or table in an adjacent property does not establish a guest facility.",
+      "entityLevel": "image",
+      "absence": "Not visible is not absent from the property."
+    },
+    {
+      "feature": "parking_area",
+      "meaning": "A visible area used or marked for parking",
+      "textTarget": null,
+      "textValue": null,
+      "counterexample": "Cars on a public road do not establish private guest parking.",
+      "entityLevel": "image",
+      "absence": "Not visible is not absent from the property."
+    }
+  ],
+  "uncertain": [
+    {
+      "feature": "yard_terrain",
+      "rule": "Suggestion only; no numeric measurement or property-level fact."
+    },
+    {
+      "feature": "usable_outdoor_space",
+      "rule": "Suggestion only; no numeric measurement or property-level fact."
+    },
+    {
+      "feature": "group_activity_suitability",
+      "rule": "Suggestion only; no numeric measurement or property-level fact."
+    },
+    {
+      "feature": "privacy",
+      "rule": "Suggestion only; no numeric measurement or property-level fact."
+    },
+    {
+      "feature": "neighbor_distance",
+      "rule": "Suggestion only; no numeric measurement or property-level fact."
+    },
+    {
+      "feature": "pool_property_relationship",
+      "rule": "Suggestion only; no numeric measurement or property-level fact."
+    },
+    {
+      "feature": "seating_capacity_impression",
+      "rule": "Suggestion only; no numeric measurement or property-level fact."
+    }
+  ],
+  "prohibited": [
+    "private_event_permission",
+    "loud_music_permission",
+    "legal_event_capacity",
+    "yard_area_m2",
+    "property_boundaries",
+    "current_seasonal_availability",
+    "guest_exclusivity",
+    "current_operation"
+  ],
+  "examplesLanguage": "ro",
+  "examples": [
+    {
+      "sourceContext": "Piscină publică la 300 m de pensiune.",
+      "visible": "pool",
+      "attribution": "nearby",
+      "propertyClaimAllowed": false
+    },
+    {
+      "sourceContext": "Fotografie de prezentare a foișorului.",
+      "visible": "gazebo",
+      "attribution": "unknown without reviewed property association",
+      "propertyClaimAllowed": false
+    },
+    {
+      "sourceContext": "Piscina este închisă iarna.",
+      "image": "A summer photograph of a pool",
+      "interpretation": "Compatible evidence, not a contradiction or current availability."
+    },
+    {
+      "sourceContext": "Curte în pantă.",
+      "image": "A small level patch of lawn",
+      "interpretation": "Potentially different areas; never overwrite the terrain Claim."
+    }
+  ],
+  "promotion": "Research proposes image observations only. Curation remains responsible for verification and publication."
+}

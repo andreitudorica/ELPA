@@ -17,6 +17,10 @@ import { ExtractionRepository } from './extraction.repository';
 import { ResearchCampaignController } from './research-campaign.controller';
 import { ResearchCampaignRepository } from './research-campaign.repository';
 import { ResearchCampaignService } from './research-campaign.service';
+import { VisualRepository } from './visual.repository';
+import { VisualService } from './visual.service';
+import { ReconciliationRepository } from './reconciliation.repository';
+import { ReconciliationService } from './reconciliation.service';
 
 @Module({
   imports: [AccessModule, CatalogModule, AuditModule],
@@ -34,6 +38,10 @@ import { ResearchCampaignService } from './research-campaign.service';
     EvaluationService,
     ExtractionService,
     ExtractionRepository,
+    VisualRepository,
+    ReconciliationRepository,
+    VisualService,
+    ReconciliationService,
   ],
   exports: [
     ResearchCampaignService,
@@ -42,6 +50,8 @@ import { ResearchCampaignService } from './research-campaign.service';
     DuplicateSuggestionService,
     EvaluationService,
     ExtractionService,
+    VisualService,
+    ReconciliationService,
   ],
 })
 export class ResearchModule {}

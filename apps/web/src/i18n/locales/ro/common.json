@@ -151,7 +151,8 @@
     "sources": {
       "situr_accommodation_register": "Registrul oficial al structurilor de cazare (DGT / SITUR)",
       "osm_geofabrik_romania": "OpenStreetMap (extras Geofabrik România)",
-      "overture_places": "Overture Places (experiment limitat)"
+      "overture_places": "Overture Places (experiment limitat)",
+      "wikimedia_commons_images": "Wikimedia Commons — imagini autorizate"
     },
     "sourcesShort": {
       "situr_accommodation_register": "Registrul oficial",
@@ -295,6 +296,84 @@
       "method": "Metodă: {{method}} · Ontologie: {{ontology}} · încredere necalibrată",
       "qualifiers": "Dovadă: {{explicitness}} · Ambiguitate: {{ambiguity}} · Timp: {{temporal}}",
       "conflicts": "Alte {{count}} afirmații curente propun valori diferite. Compară afirmațiile și dovezile originale de mai jos."
+    },
+    "visual": {
+      "pending": "Asocierea imaginii cu proprietatea nu este verificată. Un obiect vizibil nu confirmă accesul oaspeților sau disponibilitatea actuală.",
+      "previewError": "Previzualizarea autorizată nu poate fi încărcată.",
+      "previewAlt": "Fotografie sursă pentru examinare administrativă",
+      "context": "Context: {{sourceContext}} · Captură: {{captured}} · Preluare: {{retrieved}}",
+      "permission": "Retenție și analiză locală conform licenței; transferul către servicii AI și publicarea necesită autorizare separată pentru acest experiment.",
+      "noModel": "Analiza vizuală AI nu a fost executată. Adnotarea independentă este în așteptare.",
+      "textClaims": "Afirmații text propuse — păstrate pentru comparație și examinarea conflictelor",
+      "observation": "Model: {{model}} {{version}} · Vizibilitate: {{visibility}} · Asociere: {{attribution}} · Incertitudine: {{uncertainty}}"
+    }
+  },
+  "reconciliation": {
+    "title": "Reconcilierea experimentală a afirmațiilor",
+    "open": "Inspectează evaluările de cercetare",
+    "loading": "Se încarcă evaluările",
+    "loadError": "Istoricul reconcilierii nu poate fi încărcat",
+    "pending": "Doar cercetare. Afirmațiile surselor și legăturile de identitate sunt neverificate; evaluarea independentă a reconcilierii este în așteptare. Niciun rezultat nu verifică sau publică o proprietate.",
+    "empty": "Nu există o evaluare salvată pentru acest Candidat. Rulează mai întâi experimentul de cercetare.",
+    "historyLimit": "Sunt afișate cel mult 20 de evaluări recente, imuabile.",
+    "attribute": "Atribut",
+    "allAttributes": "Toate atributele",
+    "asOf": "Moment de referință: {{date}} · Amprenta intrărilor: {{digest}}",
+    "uncertainty": "Incertitudine rămasă: {{values}}",
+    "noPassage": "Nu există un pasaj justificativ reținut",
+    "evidence": "Dovadă {{id}} · {{source}} · {{version}}",
+    "timestamps": "Versiunea sursei observată: {{observed}} · Achiziție: {{acquired}} · Publicarea sursei: {{published}} · Extragere: {{extracted}}",
+    "validity": "Valabilitate afirmată [de la, până la): {{from}} — {{until}}; ? înseamnă necunoscut.",
+    "identityConditional": "Comparație condiționată: nu s-a stabilit independent că acești Candidați reprezintă aceeași proprietate. Profilurile rămân separate.",
+    "support": {
+      "supported": "Afirmație susținută a sursei",
+      "conflicted": "Afirmații în conflict",
+      "insufficient_evidence": "Dovezi insuficiente",
+      "not_applicable": "Nu se aplică"
+    },
+    "corroboration": {
+      "none": "Fără coroborare independentă stabilită",
+      "independent": "Coroborare independentă explicită",
+      "possible_correlation": "Dovezi repetate sau corelate"
+    },
+    "temporal": {
+      "historical": "Interval istoric",
+      "bounded_current": "Interval explicit care include momentul evaluării",
+      "future": "Interval viitor",
+      "unknown": "Valabilitate necunoscută",
+      "mixed": "Contexte temporale diferite"
+    },
+    "freshness": {
+      "within_review_window": "În intervalul experimental de revizuire",
+      "stale": "Observația sursei depășește intervalul de revizuire",
+      "uncertain": "Aplicabilitate actuală incertă"
+    },
+    "relation": {
+      "equivalent": "Afirmații echivalente",
+      "compatible": "Afirmații compatibile",
+      "conflicting": "Afirmații în conflict",
+      "not_comparable": "Propoziții diferite",
+      "unresolved": "Comparație nerezolvată"
+    },
+    "lineage": {
+      "common_origin": "Origine comună",
+      "possibly_common_origin": "Posibilă origine comună",
+      "independent": "Independență documentată explicit",
+      "unknown": "Independență necunoscută"
+    },
+    "rules": {
+      "scope": "Atributele sau domeniile de entitate diferite nu se contrazic.",
+      "invalid": "O intrare invalidă, ambiguă sau inactivă nu poate stabili o concluzie.",
+      "qualifiers": "Definițiile diferite ale capacității sau accesului descriu propoziții diferite.",
+      "capacity": "Definiția capacității este necunoscută.",
+      "periods": "Intervalele explicite de valabilitate nu se suprapun.",
+      "seasons": "Sezoanele indicate explicit nu se suprapun.",
+      "seasonUnknown": "Contextele sezoniere diferă și necesită revizuire.",
+      "equivalent": "Afirmațiile normalizate coincid; aceasta nu stabilește disponibilitatea actuală.",
+      "nonexclusive": "Mai multe facilități de recreere pot coexista.",
+      "access": "Accesul la facilitate este necunoscut; diferența necesită revizuire.",
+      "conflict": "Afirmații incompatibile, cu același context și intervale explicite suprapuse.",
+      "validity": "Valorile diferă, dar suprapunerea valabilității nu este stabilită."
     }
   }
 }

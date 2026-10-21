@@ -5,6 +5,7 @@ import type { components, operations } from './generated/schema';
 export type ResearchCampaign = components['schemas']['ResearchCampaign_Output'];
 export type CreateResearchCampaign = components['schemas']['CreateResearchCampaign'];
 export type Administrator = components['schemas']['Administrator_Output'];
+export type ReconciliationList = components['schemas']['ReconciliationList_Output'];
 export type AcquisitionRun = components['schemas']['AcquisitionRun_Output'];
 export type AcquisitionReport = components['schemas']['AcquisitionReport_Output'];
 export type CandidateSummary = components['schemas']['CandidateSummary_Output'];
@@ -35,6 +36,21 @@ export const studio = {
       api.post<ResearchCampaign>('/admin/research-campaigns', { body: input }),
   },
   acquisition: {
+    reconciliation: (campaignId: string, candidateId: string, signal?: AbortSignal) =>
+      api.get<ReconciliationList>(
+        `${campaignPath(campaignId)}/candidates/${encodeURIComponent(candidateId)}/reconciliation`,
+        withSignal(signal),
+      ),
+    imagePreview: (
+      campaignId: string,
+      candidateId: string,
+      evidenceId: string,
+      signal?: AbortSignal,
+    ) =>
+      api.getBlob(
+        `${campaignPath(campaignId)}/candidates/${encodeURIComponent(candidateId)}/images/${encodeURIComponent(evidenceId)}/preview`,
+        withSignal(signal),
+      ),
     runs: (campaignId: string, signal?: AbortSignal) =>
       api.get<AcquisitionRun[]>(`${campaignPath(campaignId)}/acquisition-runs`, withSignal(signal)),
     report: (campaignId: string, signal?: AbortSignal) =>

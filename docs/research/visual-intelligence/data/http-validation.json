@@ -1,0 +1,11 @@
+{
+  "candidateStatus": 200,
+  "authorizedImageProjections": 1,
+  "previewStatus": 200,
+  "previewFingerprintMatches": true,
+  "contentType": "image/png",
+  "cacheControl": "private, no-store",
+  "nosniff": "nosniff",
+  "wrongCandidateStatus": 404,
+  "publicRouteStatus": 404
+}

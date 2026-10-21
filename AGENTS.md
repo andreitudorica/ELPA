@@ -72,13 +72,13 @@ requirements until a document in this repository accepts them.
   application service → repository → Drizzle schema.
 - Write each kind of data only through its owner:
 
-  | Data                                                                                                                                                                      | Owner                    | Contract                                                                                          |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------- |
-  | `administrator`                                                                                                                                                           | Access                   | Membership; identity is resolved through Access only                                              |
-  | `category`, and later Providers, Operating Locations, Offers                                                                                                              | Catalog                  | Canonical catalog values                                                                          |
-  | `research_campaign`, `research_campaign_source`, `source_artifact`, `acquisition_run`, `evidence`, `acquisition_run_record`, `candidate`, `claim`, `duplicate_suggestion` | Research                 | Evidence and Claims are immutable; `candidate.verification_status` is constrained to `unverified` |
-  | `audit_event`                                                                                                                                                             | Audit                    | Append-only actor-attributed history                                                              |
-  | Verification decisions, canonical value selection, publication, duplicate resolution                                                                                      | Curation (not yet built) | Only Curation may turn Claims and suggestions into canonical or published data                    |
+  | Data                                                                                                                                                                                                   | Owner                    | Contract                                                                                          |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | ------------------------------------------------------------------------------------------------- |
+  | `administrator`                                                                                                                                                                                        | Access                   | Membership; identity is resolved through Access only                                              |
+  | `category`, and later Providers, Operating Locations, Offers                                                                                                                                           | Catalog                  | Canonical catalog values                                                                          |
+  | `research_campaign`, `research_campaign_source`, `source_artifact`, `acquisition_run`, `evidence`, `acquisition_run_record`, `candidate`, `claim`, `duplicate_suggestion`, `reconciliation_assessment` | Research                 | Evidence and Claims are immutable; `candidate.verification_status` is constrained to `unverified` |
+  | `audit_event`                                                                                                                                                                                          | Audit                    | Append-only actor-attributed history                                                              |
+  | Verification decisions, canonical value selection, publication, duplicate resolution                                                                                                                   | Curation (not yet built) | Only Curation may turn Claims and suggestions into canonical or published data                    |
 
 - Research proposes and Curation decides (ADR 0013). Never write observed
   values onto canonical records, never mark Candidates verified or published
@@ -150,9 +150,8 @@ requirements until a document in this repository accepts them.
   has a `beforeLoad` guard (`requireAdministrator`); `_public` is open by
   design.
 - Keep code under `_public/**` and Recommendation features off the `studio`
-  namespace of `@/lib/apiClient`. ESLint blocks Studio routes and
-  `@/lib/identity` from `_public/**` but not that import, so check it in
-  review.
+  namespace of `@/lib/apiClient`. ESLint blocks that named import, Studio
+  routes, and `@/lib/identity` from `_public.tsx` and `_public/**`.
 - Record an audit event with the acting Administrator for every sensitive
   mutation, using the Audit module.
 - Show raw Evidence only on Administrator-guarded Data Studio routes, after

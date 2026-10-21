@@ -24,6 +24,12 @@ handler, timeout, and RFC 7807 normalization). The curated `identity` and
 come from the generated contract. This preserves observability and the
 identity-boundary hooks without shipping a second fetch abstraction.
 
+`studio.acquisition.imagePreview` uses the same transport's `getBlob` mode for
+Administrator-only PNG previews. Bearer headers, cancellation, timeout, 401 and
+problem responses retain the JSON client's behavior. Components create temporary
+blob URLs and revoke them on cleanup; original remote image URLs are provenance
+links, not browser image sources.
+
 ## MSW handlers
 
 Per ADR 0016, `src/mocks/handlers/**` must type its request and response

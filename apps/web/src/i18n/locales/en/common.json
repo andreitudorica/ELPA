@@ -151,7 +151,8 @@
     "sources": {
       "situr_accommodation_register": "Official accommodation register (DGT / SITUR)",
       "osm_geofabrik_romania": "OpenStreetMap (Geofabrik Romania extract)",
-      "overture_places": "Overture Places (bounded experiment)"
+      "overture_places": "Overture Places (bounded experiment)",
+      "wikimedia_commons_images": "Wikimedia Commons — authorized images"
     },
     "sourcesShort": {
       "situr_accommodation_register": "Official register",
@@ -295,6 +296,84 @@
       "method": "Method: {{method}} · Ontology: {{ontology}} · confidence is uncalibrated",
       "qualifiers": "Evidence: {{explicitness}} · Ambiguity: {{ambiguity}} · Time: {{temporal}}",
       "conflicts": "{{count}} other current Claims propose different values. Review the Claims and original Evidence below."
+    },
+    "visual": {
+      "pending": "The image-to-property association is unreviewed. A visible object does not confirm guest access or current availability.",
+      "previewError": "The authorized preview could not be loaded.",
+      "previewAlt": "Source photograph for Administrator inspection",
+      "context": "Context: {{sourceContext}} · Captured: {{captured}} · Retrieved: {{retrieved}}",
+      "permission": "Retention and local analysis follow the licence; transfer to AI services and publication require separate authorization for this experiment.",
+      "noModel": "Visual AI analysis has not been executed. Independent annotation is pending.",
+      "textClaims": "Proposed text Claims — retained for comparison and conflict review",
+      "observation": "Model: {{model}} {{version}} · Visibility: {{visibility}} · Attribution: {{attribution}} · Uncertainty: {{uncertainty}}"
+    }
+  },
+  "reconciliation": {
+    "title": "Experimental Claim reconciliation",
+    "open": "Inspect research assessments",
+    "loading": "Loading assessments",
+    "loadError": "Unable to load reconciliation history",
+    "pending": "Research only. Source assertions and identity links are unverified; independent reconciliation evaluation is pending. No result verifies or publishes a property.",
+    "empty": "No stored assessment for this Candidate. Run the bounded research experiment first.",
+    "historyLimit": "Showing up to 20 most recent immutable assessments.",
+    "attribute": "Attribute",
+    "allAttributes": "All attributes",
+    "asOf": "Assessment reference time: {{date}} · Input fingerprint: {{digest}}",
+    "uncertainty": "Remaining uncertainty: {{values}}",
+    "noPassage": "No retained supporting passage",
+    "evidence": "Evidence {{id}} · {{source}} · {{version}}",
+    "timestamps": "Observed source snapshot: {{observed}} · Acquired: {{acquired}} · Source publication: {{published}} · Extracted: {{extracted}}",
+    "validity": "Asserted validity [from, until): {{from}} — {{until}}; ? means unknown.",
+    "identityConditional": "This comparison is conditional: the Candidates have not been independently established as the same property. Their profiles remain separate.",
+    "support": {
+      "supported": "Supported source assertion",
+      "conflicted": "Conflicting assertions",
+      "insufficient_evidence": "Insufficient evidence",
+      "not_applicable": "Not applicable"
+    },
+    "corroboration": {
+      "none": "No established independent corroboration",
+      "independent": "Explicit independent corroboration",
+      "possible_correlation": "Repeated or correlated Evidence"
+    },
+    "temporal": {
+      "historical": "Historical interval",
+      "bounded_current": "Explicit interval includes assessment time",
+      "future": "Future interval",
+      "unknown": "Validity unknown",
+      "mixed": "Different validity contexts"
+    },
+    "freshness": {
+      "within_review_window": "Within experimental review window",
+      "stale": "Source observation older than review window",
+      "uncertain": "Current applicability uncertain"
+    },
+    "relation": {
+      "equivalent": "Equivalent assertions",
+      "compatible": "Compatible assertions",
+      "conflicting": "Conflicting assertions",
+      "not_comparable": "Different propositions",
+      "unresolved": "Unresolved comparison"
+    },
+    "lineage": {
+      "common_origin": "Common origin",
+      "possibly_common_origin": "Possible common origin",
+      "independent": "Independence explicitly documented",
+      "unknown": "Independence unknown"
+    },
+    "rules": {
+      "scope": "Different attributes or entity scopes cannot contradict each other.",
+      "invalid": "Invalid, ambiguous or inactive input cannot establish a conclusion.",
+      "qualifiers": "Different capacity definitions or facility access describe different propositions.",
+      "capacity": "The capacity definition is unknown.",
+      "periods": "The explicit validity periods do not overlap.",
+      "seasons": "The explicitly stated seasons do not overlap.",
+      "seasonUnknown": "The seasonal contexts differ and require review.",
+      "equivalent": "The normalized assertions agree; this does not establish current availability.",
+      "nonexclusive": "Different recreation facilities may coexist.",
+      "access": "Facility access is unknown; the disagreement requires review.",
+      "conflict": "Incompatible assertions have matching context and explicit overlapping validity periods.",
+      "validity": "Values differ, but overlapping validity has not been established."
     }
   }
 }

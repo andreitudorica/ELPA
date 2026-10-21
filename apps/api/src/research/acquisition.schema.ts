@@ -27,6 +27,8 @@ import { researchCampaigns } from './research.schema';
 
 const sourceKeyCheck = (column: unknown) =>
   sql`${column} in ('situr_accommodation_register', 'osm_geofabrik_romania', 'overture_places')`;
+const evidenceSourceKeyCheck = (column: unknown) =>
+  sql`${column} in ('situr_accommodation_register', 'osm_geofabrik_romania', 'overture_places', 'wikimedia_commons_images')`;
 
 /**
  * A versioned file obtained from a source. Identified by checksum; the
@@ -51,10 +53,10 @@ export const sourceArtifacts = pgTable(
   },
   (table) => [
     uniqueIndex('source_artifact_source_sha256_unique').on(table.sourceKey, table.sha256),
-    check('source_artifact_source_key_check', sourceKeyCheck(table.sourceKey)),
+    check('source_artifact_source_key_check', evidenceSourceKeyCheck(table.sourceKey)),
     check(
       'source_artifact_reuse_terms_check',
-      sql`${table.reuseTerms} in ('odbl_1_0', 'ro_public_register_no_explicit_licence', 'cdla_permissive_2_0')`,
+      sql`${table.reuseTerms} in ('odbl_1_0', 'ro_public_register_no_explicit_licence', 'cdla_permissive_2_0', 'per_file_licence')`,
     ),
     check(
       'source_artifact_retention_policy_check',
@@ -91,7 +93,7 @@ export const acquisitionRuns = pgTable(
   },
   (table) => [
     index('acquisition_run_campaign_started_index').on(table.researchCampaignId, table.startedAt),
-    check('acquisition_run_source_key_check', sourceKeyCheck(table.sourceKey)),
+    check('acquisition_run_source_key_check', evidenceSourceKeyCheck(table.sourceKey)),
     check('acquisition_run_stage_check', sql`${table.stage} in ('import', 'extract')`),
     check(
       'acquisition_run_status_check',
@@ -129,7 +131,7 @@ export const evidence = pgTable(
       table.sourceRecordKey,
       table.contentSha256,
     ),
-    check('evidence_source_key_check', sourceKeyCheck(table.sourceKey)),
+    check('evidence_source_key_check', evidenceSourceKeyCheck(table.sourceKey)),
   ],
 );
 

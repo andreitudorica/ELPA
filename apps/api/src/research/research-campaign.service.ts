@@ -12,6 +12,7 @@ import {
 } from './dto/research-campaign.dto';
 import {
   type ResearchCampaignRecord,
+  type NewResearchCampaignRecord,
   ResearchCampaignRepository,
 } from './research-campaign.repository';
 
@@ -37,7 +38,7 @@ export class ResearchCampaignService {
       const now = new Date();
       const id = uuidV7();
 
-      await this.campaigns.create({
+      const campaign: NewResearchCampaignRecord = {
         id,
         name: input.name,
         eventNeed: input.eventNeed,
@@ -50,7 +51,8 @@ export class ResearchCampaignService {
         investigatedSources: [...new Set(input.investigatedSources)],
         createdAt: now,
         updatedAt: now,
-      });
+      };
+      await this.campaigns.create(campaign);
 
       await this.audit.record({
         action: 'research_campaign.created',
@@ -63,20 +65,7 @@ export class ResearchCampaignService {
         },
       });
 
-      return {
-        id,
-        name: input.name,
-        eventNeed: input.eventNeed,
-        category: GROUP_RENTAL_PROPERTY_CATEGORY_KEY,
-        countryCode: 'RO',
-        county: input.county ?? null,
-        locality: input.locality ?? null,
-        minimumCriteria: input.minimumCriteria,
-        investigatedSources: [...new Set(input.investigatedSources)],
-        createdBy: administrator,
-        createdAt: now.toISOString(),
-        updatedAt: now.toISOString(),
-      };
+      return this.toDto(campaign, administrator);
     });
   }
 

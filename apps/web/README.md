@@ -85,13 +85,28 @@ qualifications, differing current values and an independent-review warning.
 Historical extraction Claims remain inspectable. Evidence links stay within the
 Administrator-only page; this is inspection, not verification or publication.
 
+Candidates with authorized image Evidence also display private retained previews,
+credit/licence, source relationship, capture/retrieval context, pending review,
+visual observations/regions when present, and related proposed text Claims.
+Previews are fetched through the authenticated API client as blobs; the page
+never hotlinks original image URLs or sends images to a model. The backend checks
+the campaign/Candidate/Evidence relationship on every preview. No independent
+visual benchmark or live vision run has been completed; see the
+[bounded visual experiment](../../docs/research/visual-intelligence/README.md).
+
+Candidate detail can lazily inspect the 20 most recent immutable reconciliation
+assessments. The attribute selector, source links, time/qualifier context,
+common-origin warnings and applied rules explain proposed research conclusions.
+Cross-Candidate comparisons remain conditional; no verification/publication
+controls are added. See the
+[reconciliation experiment](../../docs/research/reconciliation/README.md).
+
 ## Boundaries enforced by ESLint
 
 - `_public/**` may not import from `studio/**` or the identity boundary
-  (ADR 0015). The rule also lists `@/lib/apiClient/generated/studio/**`, a
-  path that does not exist: the admin operations are the `studio` export of
-  `@/lib/apiClient`, which ESLint does not block, so keep it out of `_public`
-  code in review.
+  (ADR 0015), or import the `studio` operations from `@/lib/apiClient`.
+  The same restrictions apply to the `_public.tsx` layout. Route overrides
+  retain the shared MSW restrictions; flat-config rule options are not additive.
 - `studio/_authenticated/**` may not import from `_public/**` (symmetric).
 - `import 'msw'` is permitted only inside `src/mocks/**` and `src/test/**`
   (ADR 0016).

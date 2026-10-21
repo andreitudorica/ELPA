@@ -4,6 +4,7 @@ import { and, eq, inArray, sql } from 'drizzle-orm';
 import { DatabaseService, uuidV7 } from '../database';
 import type {
   EvidenceLocator,
+  EvidenceSourceKey,
   JsonObject,
   JsonValue,
   RecordError,
@@ -27,14 +28,14 @@ const BATCH_SIZE = 1000;
 export type AcquisitionRunStatus = 'running' | 'succeeded' | 'completed_with_rejections' | 'failed';
 
 export interface RegisterArtifactInput {
-  sourceKey: SourceKey;
+  sourceKey: EvidenceSourceKey;
   originalUrl: string;
   fileName: string;
   mediaType: string;
   byteSize: number;
   sha256: string;
   retrievedAt: Date;
-  reuseTerms: SourceDefinition['reuseTerms'];
+  reuseTerms: SourceDefinition['reuseTerms'] | 'per_file_licence';
   retentionPolicy: 'full_record' | 'personal_data_redacted';
 }
 
@@ -133,7 +134,7 @@ export class AcquisitionRepository {
   async createRun(input: {
     id: string;
     researchCampaignId: string;
-    sourceKey: SourceKey;
+    sourceKey: EvidenceSourceKey;
     sourceArtifactId: string;
     parserVersion: string;
     normalizerVersion: string;
@@ -178,7 +179,7 @@ export class AcquisitionRepository {
    * record, flagged as created or unchanged.
    */
   async storeEvidence(
-    sourceKey: SourceKey,
+    sourceKey: EvidenceSourceKey,
     artifactId: string,
     observedAt: Date,
     records: NewEvidence[],
@@ -296,10 +297,9 @@ export class AcquisitionRepository {
           batch.map((claim) => ({
             id: uuidV7(),
             ...claim,
-            observationKey:
-              claim.evidenceLocator.type === 'text_span'
-                ? sha256Hex(canonicalJson({ value: claim.value, locator: claim.evidenceLocator }))
-                : '',
+            observationKey: ['text_span', 'image_annotation'].includes(claim.evidenceLocator.type)
+              ? sha256Hex(canonicalJson({ value: claim.value, locator: claim.evidenceLocator }))
+              : '',
             acquisitionRunId: runId,
             observedAt,
             createdAt: now,

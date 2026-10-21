@@ -7,6 +7,7 @@ import { renderWithRouter } from '@/test/testUtils';
 import { CandidateDetailPage } from './CandidateDetailPage';
 
 vi.mock('../acquisitionApi', () => ({
+  useReconciliation: () => ({ isPending: false, isError: false, data: [] }),
   useCandidate: () => ({ isPending: false, isError: false, data: detail }),
 }));
 
@@ -42,6 +43,7 @@ const detail: CandidateDetail = {
       evidenceId: 'synthetic-evidence',
       acquisitionRunId: 'run',
       current: false,
+      visual: null,
       extraction: {
         quote: 'Piscina este închisă iarna',
         fieldPath: ['tags', 'description'],
@@ -67,6 +69,7 @@ const detail: CandidateDetail = {
       sourceRecordUrl: null,
       contentSha256: 'synthetic-checksum',
       payload: { tags: { description: 'Piscina este închisă iarna' } },
+      image: null,
       redactedFields: [],
       observedAt: '2026-01-01T00:00:00Z',
       datasetVersion: 'synthetic-version',

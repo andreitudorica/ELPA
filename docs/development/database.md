@@ -7,6 +7,10 @@ development dependency, so contributors and agents receive the migration CLI
 and Drizzle Studio through the normal repository installation; no global
 installation is required.
 
+Repositories use Drizzle's explicit query builder with their owning module's
+schema tables. The shared runtime adapter does not load the aggregate schema;
+`src/drizzle/schema.ts` is the migration tooling entry point only.
+
 The root workspace exposes stable scripts that delegate to `apps/api`:
 
 ```text
@@ -51,6 +55,11 @@ into the number `123`. Columns whose top-level value may be a JSON string
 Acquisition artifacts, reports, and evaluation exports are written to the
 ignored `apps/api/.data/` directory. They may contain licence-restricted or
 personal data and must never be committed.
+
+The root `.dockerignore` also excludes `.data/` and local environment files
+from image build contexts while allowing sanitized `.env.example` files.
+Private experiment artifacts must be supplied separately when a local research
+command needs them; they are not part of the distributable API image.
 
 The formatter excludes this directory: source bytes and checksums are experiment
 inputs, so formatting them would invalidate pinned acquisition manifests.

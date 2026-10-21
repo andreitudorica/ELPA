@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 import { NotFoundError } from '../common';
-import type { ScreeningClass, SourceKey } from './acquisition/source-record';
+import type { EvidenceSourceKey, ScreeningClass, SourceKey } from './acquisition/source-record';
 import {
   AcquisitionQueryRepository,
   type CandidateRow,
@@ -18,6 +18,7 @@ import type {
 import { MATCHER_VERSION } from './matching/duplicate-matcher';
 import { ResearchCampaignRepository } from './research-campaign.repository';
 import { canonicalJson } from './acquisition/source-record';
+import { imageAnnotationLocatorSchema, imageSchema } from './visual/contracts';
 
 /** Read models that make the acquisition experiment inspectable in Data Studio. */
 @Injectable()
@@ -38,7 +39,7 @@ export class AcquisitionStudioService {
     const runs = await this.queries.listRuns(campaignId);
     return runs.map((run) => ({
       id: run.id,
-      sourceKey: run.sourceKey as SourceKey,
+      sourceKey: run.sourceKey as EvidenceSourceKey,
       stage: run.stage === 'extract' ? 'extract' : 'import',
       status: run.status as AcquisitionRunListDto[number]['status'],
       parserVersion: run.parserVersion,
@@ -114,6 +115,7 @@ export class AcquisitionStudioService {
         evidenceId: claim.evidenceId,
         acquisitionRunId: claim.acquisitionRunId,
         current: claim.current,
+        visual: imageAnnotationLocatorSchema.safeParse(claim.evidenceLocator).data ?? null,
         extraction:
           claim.evidenceLocator.type === 'text_span'
             ? {
@@ -137,6 +139,7 @@ export class AcquisitionStudioService {
         sourceRecordUrl: row.sourceRecordUrl,
         contentSha256: row.contentSha256,
         payload: row.payload,
+        image: imageSchema.safeParse(row.payload).data ?? null,
         redactedFields: row.redactedFields,
         observedAt: row.observedAt.toISOString(),
         datasetVersion: row.datasetVersion,

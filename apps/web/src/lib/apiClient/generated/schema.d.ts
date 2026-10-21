@@ -36,6 +36,38 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/admin/research-campaigns/{campaignId}/candidates/{candidateId}/images/{evidenceId}/preview': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['AcquisitionController_imagePreview'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/research-campaigns/{campaignId}/candidates/{candidateId}/reconciliation': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['AcquisitionController_reconciliationHistory'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/admin/research-campaigns/{campaignId}/acquisition-runs': {
     parameters: {
       query?: never;
@@ -193,11 +225,196 @@ export interface components {
       minimumCriteria: string[];
       investigatedSources: string[];
     };
+    ReconciliationList_Output: {
+      /** Format: uuid */
+      id: string;
+      /** Format: date-time */
+      assessedAt: string;
+      input: {
+        id: string;
+        /** Format: uuid */
+        anchorCandidateId: string;
+        group: string;
+        /** @enum {string} */
+        partition: 'development' | 'holdout';
+        /** @enum {string} */
+        stratum: 'reprocessed' | 'cross_candidate' | 'single_source';
+        candidateIds: string[];
+        /** @enum {string} */
+        identity: 'candidate_scoped_unresolved_cross_candidate';
+        identitySuggestionIds: string[];
+        propositions: {
+          /** Format: uuid */
+          claimId: string;
+          /** Format: uuid */
+          candidateId: string;
+          /** Format: uuid */
+          evidenceId: string;
+          /** @enum {string} */
+          entityLevel: 'offer' | 'provider' | 'operating_location' | 'image';
+          /** @enum {string} */
+          scope: 'advertised_accommodation' | 'shared_facility' | 'image_visible' | 'unknown';
+          /** @enum {string} */
+          attribute:
+            | 'sleeps_persons'
+            | 'beds_count'
+            | 'exclusive_rental'
+            | 'yard_area_m2'
+            | 'lawn'
+            | 'outdoor_grill'
+            | 'pool'
+            | 'hot_tub'
+            | 'sauna'
+            | 'recreation'
+            | 'parties_allowed'
+            | 'max_daytime_guests'
+            | 'pool_availability';
+          value: string | number | boolean;
+          /** @enum {string|null} */
+          unit: 'persons' | 'beds' | 'm2' | 'ha' | null;
+          qualifiers: {
+            /** @enum {string} */
+            capacityBasis:
+              | 'official_classified'
+              | 'advertised_overnight'
+              | 'event_attendance'
+              | 'beds'
+              | 'unknown';
+            /** @enum {string} */
+            access: 'private' | 'shared' | 'unknown';
+            months: number[] | null;
+            approximate: boolean;
+            ambiguous: boolean;
+          };
+          validity: {
+            /** Format: date-time */
+            from: string | null;
+            /** Format: date-time */
+            until: string | null;
+          };
+          /** Format: date-time */
+          observedAt: string;
+          /** Format: date-time */
+          acquiredAt: string;
+          /** Format: date-time */
+          sourcePublishedAt: string | null;
+          /** Format: date-time */
+          extractedAt: string;
+          method: string;
+          /** @enum {string} */
+          methodStatus: 'current' | 'superseded' | 'unknown';
+          /** @enum {string} */
+          explicitness: 'explicit' | 'inferred' | 'unknown';
+          evidence: {
+            /** @enum {string} */
+            sourceKey:
+              | 'situr_accommodation_register'
+              | 'osm_geofabrik_romania'
+              | 'overture_places'
+              | 'wikimedia_commons_images';
+            sourceRecordKey: string;
+            sourceVersion: string;
+            contentSha256: string;
+            originalId: string;
+            passageFingerprint: string | null;
+            quote: string | null;
+            locator: {
+              [key: string]: unknown;
+            };
+            /** @enum {string} */
+            grounding: 'valid' | 'invalid' | 'unvalidated';
+          };
+        }[];
+        lineage: {
+          /** Format: uuid */
+          leftEvidenceId: string;
+          /** Format: uuid */
+          rightEvidenceId: string;
+          /** @enum {string} */
+          relation: 'common_origin' | 'possibly_common_origin' | 'independent';
+          basis: string;
+          evidenceReferences: string[];
+        }[];
+      };
+      result: {
+        ruleVersion: string;
+        /** Format: date-time */
+        asOf: string;
+        inputDigest: string;
+        caseId: string;
+        /** @enum {string} */
+        status: 'research_only';
+        /** @enum {string} */
+        evaluationStatus: 'independent_review_pending';
+        pairs: {
+          /** Format: uuid */
+          leftClaimId: string;
+          /** Format: uuid */
+          rightClaimId: string;
+          /** @enum {string} */
+          attribute:
+            | 'sleeps_persons'
+            | 'beds_count'
+            | 'exclusive_rental'
+            | 'yard_area_m2'
+            | 'lawn'
+            | 'outdoor_grill'
+            | 'pool'
+            | 'hot_tub'
+            | 'sauna'
+            | 'recreation'
+            | 'parties_allowed'
+            | 'max_daytime_guests'
+            | 'pool_availability';
+          /** @enum {string} */
+          relation: 'equivalent' | 'compatible' | 'conflicting' | 'not_comparable' | 'unresolved';
+          rule: string;
+          /** @enum {string} */
+          lineage: 'common_origin' | 'possibly_common_origin' | 'independent' | 'unknown';
+          identityConditional: boolean;
+          warnings: string[];
+        }[];
+        profiles: {
+          /** Format: uuid */
+          candidateId: string;
+          /** @enum {string} */
+          attribute:
+            | 'sleeps_persons'
+            | 'beds_count'
+            | 'exclusive_rental'
+            | 'yard_area_m2'
+            | 'lawn'
+            | 'outdoor_grill'
+            | 'pool'
+            | 'hot_tub'
+            | 'sauna'
+            | 'recreation'
+            | 'parties_allowed'
+            | 'max_daytime_guests'
+            | 'pool_availability';
+          claimIds: string[];
+          /** @enum {string} */
+          support: 'supported' | 'conflicted' | 'insufficient_evidence' | 'not_applicable';
+          /** @enum {string} */
+          corroboration: 'none' | 'independent' | 'possible_correlation';
+          /** @enum {string} */
+          temporal: 'historical' | 'bounded_current' | 'future' | 'unknown' | 'mixed';
+          /** @enum {string} */
+          freshness: 'within_review_window' | 'stale' | 'uncertain';
+          supportedValues: (string | number | boolean)[];
+          uncertainties: string[];
+        }[];
+      };
+    }[];
     AcquisitionRun_Output: {
       /** Format: uuid */
       id: string;
       /** @enum {string} */
-      sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania' | 'overture_places';
+      sourceKey:
+        | 'situr_accommodation_register'
+        | 'osm_geofabrik_romania'
+        | 'overture_places'
+        | 'wikimedia_commons_images';
       /** @enum {string} */
       stage: 'import' | 'extract';
       /** @enum {string} */
@@ -471,6 +688,36 @@ export interface components {
         /** Format: uuid */
         acquisitionRunId: string;
         current: boolean;
+        visual: {
+          /** @enum {string} */
+          type: 'image_annotation';
+          imageSha256: string;
+          specificationVersion: string;
+          model: string;
+          modelVersion: string;
+          promptVersion: string;
+          processingVersion: string;
+          /** Format: date-time */
+          processingTimestamp: string;
+          region: {
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+          } | null;
+          /** @enum {string} */
+          visibility: 'clear' | 'partial' | 'uncertain';
+          uncertainty: string;
+          /** @enum {string} */
+          propertyAttribution: 'unknown' | 'nearby' | 'shared' | 'unrelated';
+          /** @enum {boolean} */
+          propertyAssertion: false;
+          /** @enum {string} */
+          evaluationStatus: 'independent_review_pending';
+          scene: string;
+          /** Format: uuid */
+          sourceEvidenceId: string;
+        } | null;
         extraction: {
           quote: string;
           fieldPath: string[];
@@ -502,6 +749,61 @@ export interface components {
         payload: {
           [key: string]: unknown;
         };
+        image: {
+          /** @enum {string} */
+          kind: 'authorized_image@1';
+          title: string;
+          /** Format: uri */
+          sourcePage: string;
+          /** Format: uri */
+          imageUrl: string;
+          sourceVersion: string;
+          sourceSha1: string;
+          sha256: string;
+          byteSize: number;
+          width: number;
+          height: number;
+          /** @enum {string} */
+          format: 'jpeg' | 'png' | 'webp';
+          dHash: string;
+          previewSha256: string;
+          /** @enum {string} */
+          processingVersion: 'grp-image-integrity@1';
+          /** Format: date-time */
+          retrievedAt: string;
+          captureDate: string | null;
+          caption: string;
+          relationshipContext: string;
+          /** @enum {string} */
+          relationship: 'source_tag_reference';
+          /** @enum {string} */
+          attributionReview: 'unreviewed';
+          /** @enum {string} */
+          privacyReview: 'not_cleared_for_external_processing';
+          rights: {
+            /** @enum {boolean} */
+            access: true;
+            /** @enum {boolean} */
+            download: true;
+            /** @enum {boolean} */
+            retain: true;
+            /** @enum {boolean} */
+            localAnalysis: true;
+            /** @enum {string} */
+            thirdPartyAnalysis: 'requires_explicit_authorization';
+            /** @enum {string} */
+            publication: 'not_authorized_by_experiment';
+            /** @enum {string} */
+            licence: 'CC BY-SA 4.0';
+            /** @enum {string} */
+            licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/';
+            credit: string;
+            /** Format: uri */
+            permissionSource: string;
+            /** Format: date-time */
+            checkedAt: string;
+          };
+        } | null;
         redactedFields: string[];
         /** Format: date-time */
         observedAt: string;
@@ -609,6 +911,53 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['ResearchCampaign_Output'];
+        };
+      };
+    };
+  };
+  AcquisitionController_imagePreview: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        campaignId: string;
+        candidateId: string;
+        evidenceId: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Administrator-only, metadata-stripped retained image preview. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'image/png': string;
+        };
+      };
+    };
+  };
+  AcquisitionController_reconciliationHistory: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        campaignId: string;
+        candidateId: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Immutable research assessments; never verification or publication. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ReconciliationList_Output'];
         };
       };
     };

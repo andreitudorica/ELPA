@@ -1,0 +1,425 @@
+{
+  "version": "grp-reconciliation-corpus@2",
+  "campaignId": "01a15d8d-edc4-7a6d-bc18-26af6cccfdf3",
+  "asOf": "2026-10-21T22:32:43.484Z",
+  "frameDigest": "ddbe68bb7902e1fcc6e78fbd48e364033297f45074095b4170c19e8c0818b7ba",
+  "corpusDigest": "198a008db0c56424de0fc76378fa1b7a3e317dd6f8e5cfd17a1da8ed808597a6",
+  "cases": [
+    {
+      "id": "bc1bff5d34f729d97856e04b7dfd38e24adb73edf657248ffec7b40ef9a6a52f",
+      "group": "967176baa30bb8ccc5d2536fc633b08a4f6888b579ff094bf851b42f49a4e014",
+      "partition": "development",
+      "stratum": "cross_candidate",
+      "candidateIds": [
+        "01a15d8e-392d-7045-88e0-06321f00361d",
+        "01a15d8e-392d-729d-bf96-543b063b684f"
+      ],
+      "claimIds": ["01a15d8e-b4d3-7d2e-a687-30a3c2346b93", "01a15d8e-b4d3-7ffb-9933-246131da9350"],
+      "evidenceIds": [
+        "01a15b8d-1dd1-7bfa-b1ec-c617006f27b2",
+        "01a15b8d-1dd1-7ca5-a718-3b6f19047c92"
+      ]
+    },
+    {
+      "id": "14e4febaad63e862af54a4c7738106a603d386d0703a411dab33ca0264e24f2c",
+      "group": "b5f108a1c72b91cd7d183aa8c3d217d91974466b4b98bb11efa4eac4d4d80dde",
+      "partition": "development",
+      "stratum": "single_source",
+      "candidateIds": ["01a15d8e-2f29-78a4-b9fe-70fa23c6a347"],
+      "claimIds": ["01a15d8e-474b-7f51-88af-69ea57d4650d"],
+      "evidenceIds": ["01a15b8d-1631-7f0a-aaf5-9d6281061cf4"]
+    },
+    {
+      "id": "07c357aac06803f9f8f64f2248bd5e60b6dea8608a820db33a544c27957a0163",
+      "group": "158b1f1489517646c0e35f9918fe70b5da052db2f369810bc3a036360806a1b1",
+      "partition": "holdout",
+      "stratum": "single_source",
+      "candidateIds": ["01a15d8e-3b52-721a-825a-9e154c0af396"],
+      "claimIds": ["01a15d8e-c8d4-7564-a048-1b011bd29bde"],
+      "evidenceIds": ["01a15b8d-1f64-7be4-91aa-602611d50b9b"]
+    },
+    {
+      "id": "51a183cb5f0d76e01b46ef3834f945b0d32707f385439eb837bc84fcfc29f421",
+      "group": "33bff98f597d9a7d706400c6db1239bf0feb605ede8d6b4be622670b0ff86df0",
+      "partition": "development",
+      "stratum": "single_source",
+      "candidateIds": ["01a15d8e-3764-7358-a28f-02a95a578620"],
+      "claimIds": ["01a15d8e-a013-7dbf-8aed-3d0b19e3c32a"],
+      "evidenceIds": ["01a15b8d-1c88-7757-b164-87d2f78e1099"]
+    },
+    {
+      "id": "6b81d865d372624a0cb23c717b69e699fbfdfdead123c8d0e3a6d06a491e6384",
+      "group": "d1348e6ecd7c9358b65479a65c5666a2a3fb4b3af78f4a0faacac894bd448309",
+      "partition": "holdout",
+      "stratum": "single_source",
+      "candidateIds": ["01a15d8e-2f29-7f3d-af51-026c1f78f427"],
+      "claimIds": ["01a15d8e-474b-7012-b3bd-bc2f8745d1a8"],
+      "evidenceIds": ["01a15b8d-1631-7e66-a371-a00be316bdfa"]
+    },
+    {
+      "id": "90bb57d05440dbde373a4c27bfa8610fcc7b8c92db92ca3a46e2b6d1d4890543",
+      "group": "ab3e236983291e5025d26eeb2ffc4cbf0708c1e0370b9863a5b4ac0275dc1a8e",
+      "partition": "holdout",
+      "stratum": "cross_candidate",
+      "candidateIds": [
+        "01a15d8e-3217-7505-a7ef-5e20d584cb3c",
+        "01a15d8e-3217-7bf0-8ed6-030a16de1ab5",
+        "01a15d8e-3217-7d62-95f7-5165619dccb9",
+        "01a15d8e-3217-7e24-8ba8-c9fc63f66418",
+        "01a15d8e-3217-7efb-acce-9f8c51c09e71"
+      ],
+      "claimIds": [
+        "01a15d8e-67b7-7177-ad3b-65d153840250",
+        "01a15d8e-67b7-75c2-93b3-27dfc5c08c10",
+        "01a15d8e-67b7-75e6-b90a-d98cf3c07e85",
+        "01a15d8e-67b7-78f4-93df-7f31411a23ff",
+        "01a15d8e-67b7-7c2a-a5c4-809bcea891e7"
+      ],
+      "evidenceIds": [
+        "01a15b8d-1874-78e0-982b-82f6d297f4c5",
+        "01a15b8d-1874-72d3-a27f-5b1ca31386d8",
+        "01a15b8d-1874-77aa-a167-32e09f4b6340",
+        "01a15b8d-1874-7397-87cb-a74851556e55",
+        "01a15b8d-1874-7d2d-9da5-87ef502b06ac"
+      ]
+    },
+    {
+      "id": "de41b793de96548dd256eb48b9b14a8f51eff87596b195c4154d9d3427d961c7",
+      "group": "d35fc772dea92ea4318c45cbb92e51271683e4ab76121bfe9b95664e0dae5555",
+      "partition": "development",
+      "stratum": "cross_candidate",
+      "candidateIds": [
+        "01a15d8e-2ffe-7441-bf94-289991320f44",
+        "01a15d8e-3069-7b25-b940-9238dd0ed0d8"
+      ],
+      "claimIds": ["01a15d8e-52ad-7ebc-80b2-98dbcf09ed78", "01a15d8e-5482-78aa-8b86-9fb12a0b878c"],
+      "evidenceIds": [
+        "01a15b8d-172b-74d0-a605-fee6bd101362",
+        "01a15b8d-172c-7deb-ab16-93db6ee075a1"
+      ]
+    },
+    {
+      "id": "76212612b7fc6448225e80ba61bc71d729d2d462e463ef41bc930b4738e4c748",
+      "group": "cf894bf1e70a53df461a85a73b781a8ce8b9524f17382e034ebdba2e5508858c",
+      "partition": "holdout",
+      "stratum": "cross_candidate",
+      "candidateIds": [
+        "01a15d8e-33b9-7289-ae47-3fa407f6fe54",
+        "01a15d8e-33b9-750c-ba8b-c5c1d5abed24",
+        "01a15d8e-33b9-7f8b-a6e8-0c05d36cbdf3"
+      ],
+      "claimIds": [
+        "01a15d8e-794a-762a-a0fd-30cda6c09ec9",
+        "01a15d8e-794a-76db-b9e0-b23dae7ba109",
+        "01a15d8e-794a-79e2-b3cf-b630795f1cd7"
+      ],
+      "evidenceIds": [
+        "01a15b8d-19b4-7754-b611-2444f7db2aa7",
+        "01a15b8d-19b4-76a7-a9c4-0367c7d55f57",
+        "01a15b8d-19b4-70fc-b1b4-0bce579ed74d"
+      ]
+    },
+    {
+      "id": "82a6ae6447135576fcadbf206125fbf71220ba5d0d54ec9c873bcaa4de73e674",
+      "group": "9da20b3ac2e79c250b382f2d11931b6a557baa1fbf53022c73dc2befb6c23dee",
+      "partition": "development",
+      "stratum": "cross_candidate",
+      "candidateIds": [
+        "01a15d8e-3ae3-7c31-bf63-4ca81ceedcf3",
+        "01a15d90-e835-764d-b710-ab3a151b40a5"
+      ],
+      "claimIds": ["01a15d8e-c38c-7529-83e1-45c77650fdfc", "01a15d90-ef0d-712c-bcb1-239abcf02c5d"],
+      "evidenceIds": [
+        "01a15b8d-1f11-7b46-9f87-658f157186d8",
+        "01a15b8e-3cfe-7d93-b6cd-8286bdc14cbf"
+      ]
+    },
+    {
+      "id": "402f9c89f9ded3ffacd3b91bb84bbb590e4a3bb509a5d02a1818294546b8dede",
+      "group": "379da55d6a736034f9f9a702c5bfd82b1061053563083e4a82a1d7c67a3001d8",
+      "partition": "development",
+      "stratum": "reprocessed",
+      "candidateIds": [
+        "01a15d8e-3ae3-7b2c-bf4c-e4c10f0bf1be",
+        "01a15d8e-3ae3-7d5c-84c4-173282c372ba",
+        "01a15d90-e835-70b1-ba7f-742141eb93aa"
+      ],
+      "claimIds": [
+        "01a15d8e-c38b-737e-bc0c-4e6369428adb",
+        "01a15d8e-c38c-7cd6-a5ed-3d47de379ec5",
+        "01a15d90-ef0d-7bcb-bb9e-21d299fc55aa",
+        "01a15e17-3116-7acd-95f6-1fd8545ad3fd",
+        "01a15edf-74a6-7528-81fc-b86e50118ed5"
+      ],
+      "evidenceIds": [
+        "01a15b8d-1f11-7bbd-b9ac-dde1ce470318",
+        "01a15b8d-1f11-7ded-8ae9-604fc4163fad",
+        "01a15b8e-3cfe-795d-bde1-a6e476a7ef32"
+      ]
+    },
+    {
+      "id": "f0d498ed0e98ad073ce7e9abe632866d722067fc02599f78e9d406c4a704ae79",
+      "group": "07c23f1e839880c53b7159a90c0b05c99eb27ae9e8a36b647dcb2d0ad7042b2f",
+      "partition": "development",
+      "stratum": "single_source",
+      "candidateIds": ["01a15d90-e835-7bc8-9cb7-c2a5ebe38583"],
+      "claimIds": ["01a15d90-ef6f-7bee-adc9-c3afa37c341d"],
+      "evidenceIds": ["01a15b8e-3cfe-7374-8ca6-5bb3d82cbae5"]
+    },
+    {
+      "id": "49c74cbbb2c1d1f0ef76bcccc4b733e62d25f37301f7a455e974d8183c768a94",
+      "group": "0fb17047ebbf8b1bcbfc8bd9a30ef789073d1083866cef52546613db45a6568e",
+      "partition": "holdout",
+      "stratum": "cross_candidate",
+      "candidateIds": [
+        "01a15d8e-3142-7940-bd29-147b2dd2a5bc",
+        "01a15d90-e8a0-740c-befb-656c517986fd"
+      ],
+      "claimIds": ["01a15d8e-5efe-75e9-a2d4-d978219da214", "01a15d90-f2df-7845-8111-5177d80828b2"],
+      "evidenceIds": [
+        "01a15b8d-17d3-740b-a2dc-46a62ccea38b",
+        "01a15b8e-3d4d-7e00-bdba-eb3f0b07dcb8"
+      ]
+    },
+    {
+      "id": "fb8fc347268c923037d14c8d96f4378467e16ff86ad35ed19cec843bc8965398",
+      "group": "4a3a76ed924ae99a8421a6a16ebae78721af1d81f7c86a746ec1240d275dfe81",
+      "partition": "development",
+      "stratum": "cross_candidate",
+      "candidateIds": [
+        "01a15d8e-31ac-7457-8e20-9170aa93ff3d",
+        "01a15d90-eb2d-7949-a11e-36a29f2bb372"
+      ],
+      "claimIds": ["01a15d8e-6126-7733-b0f3-59e0dbefc58f", "01a15d91-0257-7ba4-961e-a5c309536a86"],
+      "evidenceIds": [
+        "01a15b8d-1824-7aaa-a37c-a1ca7d84570f",
+        "01a15b8e-3f0d-73f2-8dc2-8d42c9a27fd1"
+      ]
+    },
+    {
+      "id": "8caf40ffb5f40a51fc963d910668bd85af52fec25b33632d5c82a65ea0ff7c70",
+      "group": "cb66bab84080a462a14ded61f3d6ad310609c3887ebc5c7e6041a7616ee35f64",
+      "partition": "development",
+      "stratum": "reprocessed",
+      "candidateIds": ["01a15d8e-2e4b-7a06-8a38-07e5d820890b"],
+      "claimIds": [
+        "01a15d8e-3d14-7f79-a6ed-5a9f4baac668",
+        "01a15e17-3138-7d8d-92bb-da29b0a98a38",
+        "01a15edf-74bf-76a2-85f3-83f6a0d291f9"
+      ],
+      "evidenceIds": ["01a15b8d-1574-7567-9800-7f9d1c4cf820"]
+    },
+    {
+      "id": "7faeeb3c28348b56e6769b582034e0eec6766596159631aadc777f77c8ca9d38",
+      "group": "15543c9d579075be3b4a6ada845948f8eb627bce92f174aa13ae1fd68341d519",
+      "partition": "holdout",
+      "stratum": "single_source",
+      "candidateIds": ["01a15d90-e7c3-71d1-8755-137c9315818f"],
+      "claimIds": ["01a15d90-ede1-7bb6-8587-7d9d6d2cea86"],
+      "evidenceIds": ["01a15b8e-3ca2-726f-8bd6-c8a6fc4bafa9"]
+    },
+    {
+      "id": "51c86aca367014fbbc9dfbfde7f3e3a1433783b7f0e81a2e565fa11db01a66bf",
+      "group": "3cbf21ea6ec1d37661d10d32411ba1a11c96db5d7d3f7c0b6f6ac73a18ba02fc",
+      "partition": "holdout",
+      "stratum": "cross_candidate",
+      "candidateIds": [
+        "01a15d8e-2e4c-7233-904f-c2727a5941cc",
+        "01a15d90-ec07-7fc4-9295-f42d01b9e54d"
+      ],
+      "claimIds": ["01a15d8e-3f34-77c6-933d-f11b3f138f7f", "01a15d91-05ec-76de-b63e-b4b9b0ec0b73"],
+      "evidenceIds": [
+        "01a15b8d-1575-7361-bba1-74a25747863f",
+        "01a15b8e-3fb4-7a91-a93b-30bba30e9438"
+      ]
+    },
+    {
+      "id": "89b8106333a59fdb8eec002b1cbc19b0e5187222f66872d21cfea353959fe745",
+      "group": "ad0f8b267d085ae43afdbfbe1d84e1c3cc29fc9abc85275963b852793cbafb8b",
+      "partition": "development",
+      "stratum": "single_source",
+      "candidateIds": ["01a15d90-e835-7526-a166-da57faacbf71"],
+      "claimIds": ["01a15d90-ef6f-7ef0-b533-0cba925bf78c"],
+      "evidenceIds": ["01a15b8e-3cfe-7bd2-8136-6555bbe7c17a"]
+    },
+    {
+      "id": "27cce3d97122c5fdcbc22759fbdc7d393127f8962b826e131c1981d6deab4b09",
+      "group": "7a00bcb6773d715f3731f501215eecbb6ae0991a9bc99f79dc4fa0fc54dc80b6",
+      "partition": "holdout",
+      "stratum": "single_source",
+      "candidateIds": ["01a15d90-e835-7cf8-a747-83c2e6c16c52"],
+      "claimIds": ["01a15d90-ef6f-7c23-b893-e84ede7b9e99"],
+      "evidenceIds": ["01a15b8e-3cfe-744d-8555-e43682436028"]
+    },
+    {
+      "id": "4e0e9be86d09491659ca9b24cbb7d16db08cdcf415e90417b786fe728ff7c693",
+      "group": "685ca6372267db3d55cb7083cda794c5ce566427007a7b090039448a9446746f",
+      "partition": "holdout",
+      "stratum": "reprocessed",
+      "candidateIds": ["01a15d8e-3352-7c60-9eb5-b59d7907c6ae"],
+      "claimIds": [
+        "01a15d8e-72f7-7657-87cb-5ebd805cf77d",
+        "01a15e17-313a-7248-ad01-437d1dac4dfe",
+        "01a15edf-74c1-78c2-be51-5da9ac7c132d"
+      ],
+      "evidenceIds": ["01a15b8d-1965-7ce9-9293-112a3a880a57"]
+    },
+    {
+      "id": "159214f123f712f8b086b14511f43dac37125f5b27102e7a68d1f18e8508e54d",
+      "group": "169d0fa979c7f9d2193a8e9e17e7fb3cdc02af36bbb4c5b0ae4cf638ed43c77b",
+      "partition": "development",
+      "stratum": "reprocessed",
+      "candidateIds": [
+        "01a15d8e-34ec-7866-aca7-526079330a78",
+        "01a15d8e-34ec-7a8f-89f2-5ae3db4c3dd1",
+        "01a15d90-e835-7a51-9dfc-5d8097c28bbc"
+      ],
+      "claimIds": [
+        "01a15d8e-8504-718e-8e38-edea373d00b4",
+        "01a15d8e-8504-76d6-8c84-a00e107d6052",
+        "01a15d90-ef6f-7c74-9161-f77371b3e78f",
+        "01a15e17-3120-72b9-b7e7-cd58a57b08fa",
+        "01a15e17-3120-782d-aaba-76bd1507e145",
+        "01a15edf-74ab-73da-8cdc-29a8bfab2f9f",
+        "01a15edf-74ab-7b49-82ba-bd0839132c46"
+      ],
+      "evidenceIds": [
+        "01a15b8d-1aa2-776c-b4e7-6d31ebbfd42b",
+        "01a15b8d-1aa2-75d6-940b-b471358665b6",
+        "01a15b8e-3cfe-76b9-a294-42b890663839"
+      ]
+    },
+    {
+      "id": "58ee695913f24dccb8b31d7f5ce7bf6fc4f0f744d54e594286ba84554e3de36c",
+      "group": "362b40edae88868a337f5f35be784fa76a38d595ce4ed73d5c8ce4f3cd62de4a",
+      "partition": "development",
+      "stratum": "reprocessed",
+      "candidateIds": ["01a15d8e-2f29-7737-a449-e1a2c68db45e"],
+      "claimIds": [
+        "01a15d8e-48c9-7a7b-8d9f-fbe5186afa47",
+        "01a15e17-3137-777e-a995-74693bee0576",
+        "01a15edf-74bd-7625-8639-dfc468e1b0a8"
+      ],
+      "evidenceIds": ["01a15b8d-1632-740e-8006-31bb6a8e0d07"]
+    },
+    {
+      "id": "e71951c47bb06a39178d9ac4725d04ebc4f131f0032e386f8b747c35e09388c5",
+      "group": "9e00cec79ea8c69e6b3f1bf00aab5344ba212b6b1b1d80380db5de62eebb6243",
+      "partition": "holdout",
+      "stratum": "reprocessed",
+      "candidateIds": ["01a15d8e-33b9-7f07-ac82-520970123faf"],
+      "claimIds": [
+        "01a15d8e-78ec-7ec4-82ac-80b82f257548",
+        "01a15e17-3139-7148-86a4-3765a139a881",
+        "01a15edf-74bf-7243-9945-53f7b320f2a8"
+      ],
+      "evidenceIds": ["01a15b8d-19b4-7b48-9e62-00e1d400cba8"]
+    },
+    {
+      "id": "21cd568e660bdd3bb8190b60f6255ec2580887529177300dd98eabc514b9bd6d",
+      "group": "213681ffe8ffa00626ff72507d32b429d0a1d5e9b8587aab45b09fe5c543f08b",
+      "partition": "development",
+      "stratum": "reprocessed",
+      "candidateIds": [
+        "01a15d8e-3554-7f3b-bca0-4710c82cbaaf",
+        "01a15d90-eabf-74e0-9f92-01fd8dcc5255"
+      ],
+      "claimIds": [
+        "01a15d8e-8cec-7ef9-a80d-39173db2aecf",
+        "01a15e17-311a-75f0-8045-07b22fccb319",
+        "01a15e17-311a-7f24-ad76-0a71401e8896",
+        "01a15edf-74a9-73d4-99d9-add609e628f5",
+        "01a15edf-74a9-7fe5-b2aa-c52c99418572"
+      ],
+      "evidenceIds": [
+        "01a15b8d-1af2-79d2-9d98-c060918813e4",
+        "01a15b8e-3ebb-7c5f-b9c0-6b4c2c7549ee"
+      ]
+    },
+    {
+      "id": "c037bb3d0e38c7ec038ecc9c32354ceedb26dd30503cbefce3c1b9471ad855ab",
+      "group": "af0ea2636242c265c683b4f1d33c578c19389cade91800515cc43b788047c414",
+      "partition": "development",
+      "stratum": "reprocessed",
+      "candidateIds": [
+        "01a15d8e-3bc4-7135-86b1-d4ff5d3ece18",
+        "01a15d90-e835-7c3a-8a2e-6848d741b9de"
+      ],
+      "claimIds": [
+        "01a15d8e-cc4d-7adc-bf8d-de3ea9eb2bd7",
+        "01a15e17-3118-7b06-8361-2fa96baeebe9",
+        "01a15e17-3118-7bae-acc8-54584a2b19d7",
+        "01a15edf-74a8-727a-b5a8-c3679bb34781",
+        "01a15edf-74a8-7ae1-9f69-afb72c671f4e"
+      ],
+      "evidenceIds": [
+        "01a15b8d-1fb9-7944-b073-7dab932e07d0",
+        "01a15b8e-3cfe-7184-b240-4d223f707d49"
+      ]
+    },
+    {
+      "id": "33544d82d3bd67ce857d6bb87be01bf6118173afcbf97f9a8c555c53f5a30041",
+      "group": "76bf6de66e815f5de169e7fe52479d4e0c47ee5099887c12d41b1013f10befe2",
+      "partition": "development",
+      "stratum": "reprocessed",
+      "candidateIds": ["01a15d90-eb2d-7f7c-9630-09e0d2c7f59b"],
+      "claimIds": [
+        "01a15e17-311e-7925-8de6-b13bcb8f2852",
+        "01a15e17-311e-7d9c-a5fd-b88bd510bf01",
+        "01a15e17-311e-7e73-a524-5d2705b81178",
+        "01a15edf-74aa-7373-bd91-32e8eb8af5f2",
+        "01a15edf-74aa-7df3-9297-2d1f2bfe032a"
+      ],
+      "evidenceIds": ["01a15b8e-3f0d-7da7-b118-04ef5318c4ee"]
+    },
+    {
+      "id": "e323974e044d9ff721e3cd9346d14df3c9ed06332fc1c409f74cd112a13181a0",
+      "group": "0aa8bb78e0b05745d0abccc75bb25cd549ff2047cc0baa022f7c19159b0764c4",
+      "partition": "development",
+      "stratum": "reprocessed",
+      "candidateIds": [
+        "01a15d8e-3ae4-7480-8261-ac5b2d40903d",
+        "01a15d90-eb2c-78ff-ae5d-e30ca6b6dd41"
+      ],
+      "claimIds": [
+        "01a15d8e-c633-7e0e-be4b-c777067286d9",
+        "01a15e17-3121-7789-9507-5c353fd832e1",
+        "01a15edf-74ad-79ac-95f3-d00cddaab4ed"
+      ],
+      "evidenceIds": [
+        "01a15b8d-1f12-73c5-8625-6d3ef4a12922",
+        "01a15b8e-3f0c-73f5-95ad-de8b4aeb2111"
+      ]
+    },
+    {
+      "id": "43f12730311435e8e685071718ca666462a61fb0be113742d61640a4fc3261a1",
+      "group": "a6d3f23c304d46b278a25fe37712b06afe8bbb35c795744acca038104b0584c5",
+      "partition": "development",
+      "stratum": "cross_candidate",
+      "candidateIds": [
+        "01a15d8e-3b52-7665-8033-58a0ba06e2b6",
+        "01a15d90-e835-7297-aefc-faecad010edb"
+      ],
+      "claimIds": ["01a15d8e-c731-7822-99b4-f8d135906099", "01a15e17-311d-7570-b720-22c6f045ed6c"],
+      "evidenceIds": [
+        "01a15b8d-1f64-7c3e-8a2d-26777aedd4ff",
+        "01a15b8e-3cfe-7f90-b5e0-7f66e8e78a1a"
+      ]
+    },
+    {
+      "id": "09d33d8c1dd043c191d6d1e95d8d5a5f5d9f44bb15cb1b04f9bf92b0f7e26d3d",
+      "group": "2fcf036a3d0bd26795d92827105bc797c159ba56dea1b0a27d585a8609140eb7",
+      "partition": "holdout",
+      "stratum": "cross_candidate",
+      "candidateIds": [
+        "01a15d8e-2ebe-702d-8506-eb067b47062e",
+        "01a15d90-e7c2-7d87-a765-7f4e32eb96a1"
+      ],
+      "claimIds": ["01a15d8e-411e-7ced-8d3a-2b5715c4bc4e", "01a15e17-311c-7739-be2e-0e7365e86aa6"],
+      "evidenceIds": [
+        "01a15b8d-15da-78a4-bc8b-506d157a4b9b",
+        "01a15b8e-3ca1-7b72-8516-d88551a7d051"
+      ]
+    }
+  ]
+}

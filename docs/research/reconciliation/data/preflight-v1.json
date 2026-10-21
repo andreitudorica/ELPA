@@ -1,0 +1,98 @@
+{
+  "note": "Preflight retained; replaced as primary evaluation corpus by metadata-balanced sampling v2 before independent annotation. No holdout passages inspected.",
+  "manifest": {
+    "version": "grp-reconciliation-corpus@1",
+    "campaignId": "01a15d8d-edc4-7a6d-bc18-26af6cccfdf3",
+    "asOf": "2026-10-21T22:27:47.052Z",
+    "frameDigest": "beec034a5e8c8c2900b461fcf5c3a71f91582d22dd05d741102bc5d308554349",
+    "corpusDigest": "2648d072fd82a3060db2db13d755890ba0fb528a2759a05bdc9ab4fdfe7d5382"
+  },
+  "execution": {
+    "corpusDigest": "2648d072fd82a3060db2db13d755890ba0fb528a2759a05bdc9ab4fdfe7d5382",
+    "outputDigest": "d9747051ff8103d493983bbafb793fdff75409ad26f8436c1abb12e384038858",
+    "created": 24,
+    "unchanged": 0,
+    "processingMs": 3.8382080000000087,
+    "externalCalls": 0,
+    "externalCost": 0,
+    "currency": null,
+    "storageBytes": 37760,
+    "note": "Observed local rule time excludes corpus export, database writes and human review; no monetary infrastructure estimate."
+  },
+  "observed": {
+    "cases": 24,
+    "profiles": 40,
+    "pairs": 47,
+    "candidateAttributeCells": 40,
+    "support": {
+      "insufficient_evidence": 1,
+      "supported": 39
+    },
+    "corroboration": {
+      "none": 33,
+      "possible_correlation": 7
+    },
+    "temporal": {
+      "unknown": 40
+    },
+    "freshness": {
+      "uncertain": 40
+    },
+    "relations": {
+      "compatible": 1,
+      "equivalent": 9,
+      "unresolved": 37
+    },
+    "lineage": {
+      "common_origin": 26,
+      "unknown": 21
+    },
+    "conditionalCrossCandidatePairs": 21,
+    "inactiveMethodWarnings": 10,
+    "byAttribute": {
+      "hot_tub": {
+        "profiles": 1,
+        "support": {
+          "supported": 1
+        },
+        "pairs": {
+          "unresolved": 1
+        }
+      },
+      "pool": {
+        "profiles": 1,
+        "support": {
+          "supported": 1
+        },
+        "pairs": {
+          "unresolved": 1
+        }
+      },
+      "recreation": {
+        "profiles": 1,
+        "support": {
+          "supported": 1
+        },
+        "pairs": {
+          "compatible": 1,
+          "unresolved": 5
+        }
+      },
+      "sleeps_persons": {
+        "profiles": 37,
+        "support": {
+          "insufficient_evidence": 1,
+          "supported": 36
+        },
+        "pairs": {
+          "equivalent": 9,
+          "unresolved": 30
+        }
+      }
+    },
+    "independentlyConfirmedConclusions": null,
+    "independentReviewers": 0,
+    "verifiedOrPublished": 0,
+    "label": "Observed rule outputs, not semantic accuracy or independently confirmed property knowledge"
+  }
+}

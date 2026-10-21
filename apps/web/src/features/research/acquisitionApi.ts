@@ -59,3 +59,17 @@ export function useDuplicateSuggestions(
     meta: { errorMessage },
   });
 }
+
+export function useReconciliation(
+  campaignId: string,
+  candidateId: string,
+  errorMessage: string,
+  enabled: boolean,
+) {
+  return useQuery({
+    queryKey: [...acquisitionKeys.candidate(campaignId, candidateId), 'reconciliation'],
+    queryFn: ({ signal }) => studio.acquisition.reconciliation(campaignId, candidateId, signal),
+    enabled,
+    meta: { errorMessage },
+  });
+}

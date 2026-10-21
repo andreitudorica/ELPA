@@ -25,6 +25,7 @@ export interface ApiRequestOptions<TResponse> {
   signal?: AbortSignal;
   timeoutMs?: number;
   headers?: Record<string, string>;
+  responseType?: 'json' | 'blob';
 }
 
 /**
@@ -119,7 +120,10 @@ export async function apiRequest<TResponse>(
       signal: combineSignals(timeoutMs, signal),
     });
 
-    const responseBody = await parseJsonBody(response);
+    const responseBody =
+      response.ok && options.responseType === 'blob'
+        ? await response.blob()
+        : await parseJsonBody(response);
 
     if (!response.ok) {
       if (response.status === 401) {
@@ -140,6 +144,8 @@ export async function apiRequest<TResponse>(
 type WithoutMethodAndPath<T> = Omit<ApiRequestOptions<T>, 'method' | 'path'>;
 
 export const api = {
+  getBlob: (path: string, options: WithoutMethodAndPath<Blob> = {}) =>
+    apiRequest<Blob>({ ...options, path, method: 'GET', responseType: 'blob' }),
   get: <T>(path: string, options: WithoutMethodAndPath<T> = {}) =>
     apiRequest<T>({ ...options, path, method: 'GET' }),
   post: <T>(path: string, options: WithoutMethodAndPath<T> = {}) =>

@@ -1,0 +1,560 @@
+{
+  "reportVersion": "grp-visual-evaluation@1",
+  "corpusManifestSha256": "e19e8ecf092bac7b35a276fdfa7066dd1914e99baeaf5dc9aa0593d443aa7a55",
+  "images": 3,
+  "holdoutImages": 2,
+  "annotationStatus": "incomplete_independent_annotation",
+  "independentReviewers": 0,
+  "doubleReviewedHoldoutCells": 0,
+  "disagreements": 0,
+  "agreement": {
+    "pairedCells": 0,
+    "kappa": null
+  },
+  "visionStatus": "not_executed",
+  "scoredCells": 0,
+  "perFeature": [
+    {
+      "feature": "pool",
+      "independentlyAgreedCells": 0,
+      "truePositive": 0,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "f1": null,
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falseNegativeRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "abstentionRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unsupportedClearObservationRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unresolvedPositivePredictions": 0,
+      "difficultCases": 0,
+      "difficultUnsupportedPositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "promotion": "not_established"
+    },
+    {
+      "feature": "gazebo",
+      "independentlyAgreedCells": 0,
+      "truePositive": 0,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "f1": null,
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falseNegativeRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "abstentionRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unsupportedClearObservationRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unresolvedPositivePredictions": 0,
+      "difficultCases": 0,
+      "difficultUnsupportedPositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "promotion": "not_established"
+    },
+    {
+      "feature": "outdoor_grill",
+      "independentlyAgreedCells": 0,
+      "truePositive": 0,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "f1": null,
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falseNegativeRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "abstentionRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unsupportedClearObservationRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unresolvedPositivePredictions": 0,
+      "difficultCases": 0,
+      "difficultUnsupportedPositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "promotion": "not_established"
+    },
+    {
+      "feature": "lawn",
+      "independentlyAgreedCells": 0,
+      "truePositive": 0,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "f1": null,
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falseNegativeRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "abstentionRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unsupportedClearObservationRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unresolvedPositivePredictions": 0,
+      "difficultCases": 0,
+      "difficultUnsupportedPositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "promotion": "not_established"
+    },
+    {
+      "feature": "outdoor_seating",
+      "independentlyAgreedCells": 0,
+      "truePositive": 0,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "f1": null,
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falseNegativeRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "abstentionRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unsupportedClearObservationRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unresolvedPositivePredictions": 0,
+      "difficultCases": 0,
+      "difficultUnsupportedPositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "promotion": "not_established"
+    },
+    {
+      "feature": "trampoline",
+      "independentlyAgreedCells": 0,
+      "truePositive": 0,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "f1": null,
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falseNegativeRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "abstentionRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unsupportedClearObservationRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unresolvedPositivePredictions": 0,
+      "difficultCases": 0,
+      "difficultUnsupportedPositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "promotion": "not_established"
+    },
+    {
+      "feature": "sports_court",
+      "independentlyAgreedCells": 0,
+      "truePositive": 0,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "f1": null,
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falseNegativeRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "abstentionRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unsupportedClearObservationRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unresolvedPositivePredictions": 0,
+      "difficultCases": 0,
+      "difficultUnsupportedPositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "promotion": "not_established"
+    },
+    {
+      "feature": "table_tennis",
+      "independentlyAgreedCells": 0,
+      "truePositive": 0,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "f1": null,
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falseNegativeRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "abstentionRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unsupportedClearObservationRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unresolvedPositivePredictions": 0,
+      "difficultCases": 0,
+      "difficultUnsupportedPositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "promotion": "not_established"
+    },
+    {
+      "feature": "parking_area",
+      "independentlyAgreedCells": 0,
+      "truePositive": 0,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "f1": null,
+      "falsePositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "falseNegativeRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "abstentionRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unsupportedClearObservationRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "unresolvedPositivePredictions": 0,
+      "difficultCases": 0,
+      "difficultUnsupportedPositiveRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "promotion": "not_established"
+    }
+  ],
+  "grounding": {
+    "attemptedOutputs": 0,
+    "acceptedOutputs": 0,
+    "structuredOutputValidity": {
+      "successes": 0,
+      "trials": 0,
+      "value": null,
+      "interval": null
+    },
+    "rejectedOutputs": 0,
+    "errors": []
+  },
+  "attribution": {
+    "correct": {
+      "successes": 0,
+      "trials": 0,
+      "value": null,
+      "interval": null
+    },
+    "wrong": {
+      "successes": 0,
+      "trials": 0,
+      "value": null,
+      "interval": null
+    },
+    "sharedFacilityAgreedCells": 0,
+    "unsupportedPropertyAssertionsRejected": 0,
+    "propertyClaimsWritten": 0
+  },
+  "textBaseline": {
+    "claims": 22,
+    "authority": "proposed_unverified_not_independent_ground_truth",
+    "visualModelCalls": 0,
+    "visualFacts": 0
+  },
+  "comparisons": {},
+  "incrementalKnowledge": {
+    "independentlyValidatedNewPropertyAttributes": null,
+    "validatedGainPerEvaluatedProperty": null
+  },
+  "economics": {
+    "observedModelCalls": 0,
+    "latencyMs": null,
+    "costs": [],
+    "costPerValidatedNewAttribute": null,
+    "reason": "No comparable observed currency cost and independently validated gain established"
+  },
+  "decision": "investigate_further",
+  "automation": [],
+  "limitations": [
+    "Tiny source-linked convenience census, not representative national coverage",
+    "No property assertions are permitted by the adapter",
+    "Text Claims are proposed, not independently verified",
+    "Disagreements require separate adjudication and a versioned annotation revision; they are never silently accepted",
+    "No feature can advance without at least 20 independent positive and 20 negative holdout examples and accepted risk thresholds"
+  ]
+}

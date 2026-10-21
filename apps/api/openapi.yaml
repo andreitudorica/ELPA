@@ -44,6 +44,68 @@ paths:
                 $ref: '#/components/schemas/ResearchCampaign_Output'
       tags:
         - studio-research
+  /api/admin/research-campaigns/{campaignId}/candidates/{candidateId}/images/{evidenceId}/preview:
+    get:
+      operationId: AcquisitionController_imagePreview
+      parameters:
+        - name: campaignId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            type: string
+        - name: candidateId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            type: string
+        - name: evidenceId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            type: string
+      responses:
+        '200':
+          description: Administrator-only, metadata-stripped retained image preview.
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+      tags:
+        - studio-research
+  /api/admin/research-campaigns/{campaignId}/candidates/{candidateId}/reconciliation:
+    get:
+      operationId: AcquisitionController_reconciliationHistory
+      parameters:
+        - name: campaignId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            type: string
+        - name: candidateId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            type: string
+      responses:
+        '200':
+          description: Immutable research assessments; never verification or publication.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReconciliationList_Output'
+      tags:
+        - studio-research
   /api/admin/research-campaigns/{campaignId}/acquisition-runs:
     get:
       operationId: AcquisitionController_listRuns
@@ -410,6 +472,504 @@ components:
         - eventNeed
         - minimumCriteria
         - investigatedSources
+    ReconciliationList_Output:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+            pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+          assessedAt:
+            type: string
+            format: date-time
+            pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+          input:
+            type: object
+            properties:
+              id:
+                type: string
+                pattern: ^[a-f0-9]{64}$
+              anchorCandidateId:
+                type: string
+                format: uuid
+                pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+              group:
+                type: string
+                pattern: ^[a-f0-9]{64}$
+              partition:
+                type: string
+                enum:
+                  - development
+                  - holdout
+              stratum:
+                type: string
+                enum:
+                  - reprocessed
+                  - cross_candidate
+                  - single_source
+              candidateIds:
+                minItems: 1
+                maxItems: 100
+                type: array
+                items:
+                  type: string
+                  format: uuid
+                  pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+              identity:
+                type: string
+                enum:
+                  - candidate_scoped_unresolved_cross_candidate
+              identitySuggestionIds:
+                type: array
+                items:
+                  type: string
+                  format: uuid
+                  pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+              propositions:
+                maxItems: 200
+                type: array
+                items:
+                  type: object
+                  properties:
+                    claimId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    candidateId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    evidenceId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    entityLevel:
+                      type: string
+                      enum:
+                        - offer
+                        - provider
+                        - operating_location
+                        - image
+                    scope:
+                      type: string
+                      enum:
+                        - advertised_accommodation
+                        - shared_facility
+                        - image_visible
+                        - unknown
+                    attribute:
+                      type: string
+                      enum:
+                        - sleeps_persons
+                        - beds_count
+                        - exclusive_rental
+                        - yard_area_m2
+                        - lawn
+                        - outdoor_grill
+                        - pool
+                        - hot_tub
+                        - sauna
+                        - recreation
+                        - parties_allowed
+                        - max_daytime_guests
+                        - pool_availability
+                    value:
+                      anyOf:
+                        - type: string
+                        - type: number
+                        - type: boolean
+                    unit:
+                      type: string
+                      enum:
+                        - persons
+                        - beds
+                        - m2
+                        - ha
+                        - null
+                      nullable: true
+                    qualifiers:
+                      type: object
+                      properties:
+                        capacityBasis:
+                          type: string
+                          enum:
+                            - official_classified
+                            - advertised_overnight
+                            - event_attendance
+                            - beds
+                            - unknown
+                        access:
+                          type: string
+                          enum:
+                            - private
+                            - shared
+                            - unknown
+                        months:
+                          minItems: 1
+                          maxItems: 12
+                          type: array
+                          items:
+                            type: integer
+                            minimum: 1
+                            maximum: 12
+                          nullable: true
+                        approximate:
+                          type: boolean
+                        ambiguous:
+                          type: boolean
+                      required:
+                        - capacityBasis
+                        - access
+                        - months
+                        - approximate
+                        - ambiguous
+                      additionalProperties: false
+                    validity:
+                      type: object
+                      properties:
+                        from:
+                          type: string
+                          format: date-time
+                          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+                          nullable: true
+                        until:
+                          type: string
+                          format: date-time
+                          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+                          nullable: true
+                      required:
+                        - from
+                        - until
+                      additionalProperties: false
+                    observedAt:
+                      type: string
+                      format: date-time
+                      pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+                    acquiredAt:
+                      type: string
+                      format: date-time
+                      pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+                    sourcePublishedAt:
+                      type: string
+                      format: date-time
+                      pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+                      nullable: true
+                    extractedAt:
+                      type: string
+                      format: date-time
+                      pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+                    method:
+                      type: string
+                      minLength: 1
+                    methodStatus:
+                      type: string
+                      enum:
+                        - current
+                        - superseded
+                        - unknown
+                    explicitness:
+                      type: string
+                      enum:
+                        - explicit
+                        - inferred
+                        - unknown
+                    evidence:
+                      type: object
+                      properties:
+                        sourceKey:
+                          type: string
+                          enum:
+                            - situr_accommodation_register
+                            - osm_geofabrik_romania
+                            - overture_places
+                            - wikimedia_commons_images
+                        sourceRecordKey:
+                          type: string
+                        sourceVersion:
+                          type: string
+                        contentSha256:
+                          type: string
+                          pattern: ^[a-f0-9]{64}$
+                        originalId:
+                          type: string
+                        passageFingerprint:
+                          type: string
+                          pattern: ^[a-f0-9]{64}$
+                          nullable: true
+                        quote:
+                          type: string
+                          nullable: true
+                        locator:
+                          type: object
+                          additionalProperties: {}
+                        grounding:
+                          type: string
+                          enum:
+                            - valid
+                            - invalid
+                            - unvalidated
+                      required:
+                        - sourceKey
+                        - sourceRecordKey
+                        - sourceVersion
+                        - contentSha256
+                        - originalId
+                        - passageFingerprint
+                        - quote
+                        - locator
+                        - grounding
+                      additionalProperties: false
+                  required:
+                    - claimId
+                    - candidateId
+                    - evidenceId
+                    - entityLevel
+                    - scope
+                    - attribute
+                    - value
+                    - unit
+                    - qualifiers
+                    - validity
+                    - observedAt
+                    - acquiredAt
+                    - sourcePublishedAt
+                    - extractedAt
+                    - method
+                    - methodStatus
+                    - explicitness
+                    - evidence
+                  additionalProperties: false
+              lineage:
+                maxItems: 200
+                type: array
+                items:
+                  type: object
+                  properties:
+                    leftEvidenceId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    rightEvidenceId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    relation:
+                      type: string
+                      enum:
+                        - common_origin
+                        - possibly_common_origin
+                        - independent
+                    basis:
+                      type: string
+                      minLength: 1
+                    evidenceReferences:
+                      minItems: 1
+                      type: array
+                      items:
+                        type: string
+                        minLength: 1
+                  required:
+                    - leftEvidenceId
+                    - rightEvidenceId
+                    - relation
+                    - basis
+                    - evidenceReferences
+                  additionalProperties: false
+            required:
+              - id
+              - anchorCandidateId
+              - group
+              - partition
+              - stratum
+              - candidateIds
+              - identity
+              - identitySuggestionIds
+              - propositions
+              - lineage
+            additionalProperties: false
+          result:
+            type: object
+            properties:
+              ruleVersion:
+                type: string
+              asOf:
+                type: string
+                format: date-time
+                pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+              inputDigest:
+                type: string
+                pattern: ^[a-f0-9]{64}$
+              caseId:
+                type: string
+                pattern: ^[a-f0-9]{64}$
+              status:
+                type: string
+                enum:
+                  - research_only
+              evaluationStatus:
+                type: string
+                enum:
+                  - independent_review_pending
+              pairs:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    leftClaimId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    rightClaimId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    attribute:
+                      type: string
+                      enum:
+                        - sleeps_persons
+                        - beds_count
+                        - exclusive_rental
+                        - yard_area_m2
+                        - lawn
+                        - outdoor_grill
+                        - pool
+                        - hot_tub
+                        - sauna
+                        - recreation
+                        - parties_allowed
+                        - max_daytime_guests
+                        - pool_availability
+                    relation:
+                      type: string
+                      enum:
+                        - equivalent
+                        - compatible
+                        - conflicting
+                        - not_comparable
+                        - unresolved
+                    rule:
+                      type: string
+                    lineage:
+                      type: string
+                      enum:
+                        - common_origin
+                        - possibly_common_origin
+                        - independent
+                        - unknown
+                    identityConditional:
+                      type: boolean
+                    warnings:
+                      type: array
+                      items:
+                        type: string
+                  required:
+                    - leftClaimId
+                    - rightClaimId
+                    - attribute
+                    - relation
+                    - rule
+                    - lineage
+                    - identityConditional
+                    - warnings
+                  additionalProperties: false
+              profiles:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    candidateId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    attribute:
+                      type: string
+                      enum:
+                        - sleeps_persons
+                        - beds_count
+                        - exclusive_rental
+                        - yard_area_m2
+                        - lawn
+                        - outdoor_grill
+                        - pool
+                        - hot_tub
+                        - sauna
+                        - recreation
+                        - parties_allowed
+                        - max_daytime_guests
+                        - pool_availability
+                    claimIds:
+                      type: array
+                      items:
+                        type: string
+                        format: uuid
+                        pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    support:
+                      type: string
+                      enum:
+                        - supported
+                        - conflicted
+                        - insufficient_evidence
+                        - not_applicable
+                    corroboration:
+                      type: string
+                      enum:
+                        - none
+                        - independent
+                        - possible_correlation
+                    temporal:
+                      type: string
+                      enum:
+                        - historical
+                        - bounded_current
+                        - future
+                        - unknown
+                        - mixed
+                    freshness:
+                      type: string
+                      enum:
+                        - within_review_window
+                        - stale
+                        - uncertain
+                    supportedValues:
+                      type: array
+                      items:
+                        anyOf:
+                          - type: string
+                          - type: number
+                          - type: boolean
+                    uncertainties:
+                      type: array
+                      items:
+                        type: string
+                  required:
+                    - candidateId
+                    - attribute
+                    - claimIds
+                    - support
+                    - corroboration
+                    - temporal
+                    - freshness
+                    - supportedValues
+                    - uncertainties
+                  additionalProperties: false
+            required:
+              - ruleVersion
+              - asOf
+              - inputDigest
+              - caseId
+              - status
+              - evaluationStatus
+              - pairs
+              - profiles
+            additionalProperties: false
+        required:
+          - id
+          - assessedAt
+          - input
+          - result
+        additionalProperties: false
     AcquisitionRun_Output:
       type: object
       properties:
@@ -423,6 +983,7 @@ components:
             - situr_accommodation_register
             - osm_geofabrik_romania
             - overture_places
+            - wikimedia_commons_images
         stage:
           type: string
           enum:
@@ -1294,6 +1855,106 @@ components:
                 pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
               current:
                 type: boolean
+              visual:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - image_annotation
+                  imageSha256:
+                    type: string
+                    pattern: ^[a-f0-9]{64}$
+                  specificationVersion:
+                    type: string
+                  model:
+                    type: string
+                  modelVersion:
+                    type: string
+                  promptVersion:
+                    type: string
+                  processingVersion:
+                    type: string
+                  processingTimestamp:
+                    type: string
+                    format: date-time
+                    pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+                  region:
+                    type: object
+                    properties:
+                      x:
+                        type: number
+                        minimum: 0
+                        maximum: 1
+                      y:
+                        type: number
+                        minimum: 0
+                        maximum: 1
+                      width:
+                        type: number
+                        exclusiveMinimum: true
+                        maximum: 1
+                        minimum: 0
+                      height:
+                        type: number
+                        exclusiveMinimum: true
+                        maximum: 1
+                        minimum: 0
+                    required:
+                      - x
+                      - y
+                      - width
+                      - height
+                    additionalProperties: false
+                    nullable: true
+                  visibility:
+                    type: string
+                    enum:
+                      - clear
+                      - partial
+                      - uncertain
+                  uncertainty:
+                    type: string
+                  propertyAttribution:
+                    type: string
+                    enum:
+                      - unknown
+                      - nearby
+                      - shared
+                      - unrelated
+                  propertyAssertion:
+                    type: boolean
+                    enum:
+                      - false
+                  evaluationStatus:
+                    type: string
+                    enum:
+                      - independent_review_pending
+                  scene:
+                    type: string
+                  sourceEvidenceId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                required:
+                  - type
+                  - imageSha256
+                  - specificationVersion
+                  - model
+                  - modelVersion
+                  - promptVersion
+                  - processingVersion
+                  - processingTimestamp
+                  - region
+                  - visibility
+                  - uncertainty
+                  - propertyAttribution
+                  - propertyAssertion
+                  - evaluationStatus
+                  - scene
+                  - sourceEvidenceId
+                additionalProperties: false
+                nullable: true
               extraction:
                 type: object
                 properties:
@@ -1378,6 +2039,7 @@ components:
               - evidenceId
               - acquisitionRunId
               - current
+              - visual
               - extraction
             additionalProperties: false
         evidence:
@@ -1399,6 +2061,167 @@ components:
               payload:
                 type: object
                 additionalProperties: {}
+              image:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                    enum:
+                      - authorized_image@1
+                  title:
+                    type: string
+                    pattern: ^File:.*
+                  sourcePage:
+                    type: string
+                    format: uri
+                  imageUrl:
+                    type: string
+                    format: uri
+                  sourceVersion:
+                    type: string
+                  sourceSha1:
+                    type: string
+                    pattern: ^[a-f0-9]{40}$
+                  sha256:
+                    type: string
+                    pattern: ^[a-f0-9]{64}$
+                  byteSize:
+                    type: integer
+                    exclusiveMinimum: true
+                    maximum: 9007199254740991
+                    minimum: 0
+                  width:
+                    type: integer
+                    exclusiveMinimum: true
+                    maximum: 9007199254740991
+                    minimum: 0
+                  height:
+                    type: integer
+                    exclusiveMinimum: true
+                    maximum: 9007199254740991
+                    minimum: 0
+                  format:
+                    type: string
+                    enum:
+                      - jpeg
+                      - png
+                      - webp
+                  dHash:
+                    type: string
+                    pattern: ^[a-f0-9]{16}$
+                  previewSha256:
+                    type: string
+                    pattern: ^[a-f0-9]{64}$
+                  processingVersion:
+                    type: string
+                    enum:
+                      - grp-image-integrity@1
+                  retrievedAt:
+                    type: string
+                    format: date-time
+                    pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+                  captureDate:
+                    type: string
+                    nullable: true
+                  caption:
+                    type: string
+                  relationshipContext:
+                    type: string
+                  relationship:
+                    type: string
+                    enum:
+                      - source_tag_reference
+                  attributionReview:
+                    type: string
+                    enum:
+                      - unreviewed
+                  privacyReview:
+                    type: string
+                    enum:
+                      - not_cleared_for_external_processing
+                  rights:
+                    type: object
+                    properties:
+                      access:
+                        type: boolean
+                        enum:
+                          - true
+                      download:
+                        type: boolean
+                        enum:
+                          - true
+                      retain:
+                        type: boolean
+                        enum:
+                          - true
+                      localAnalysis:
+                        type: boolean
+                        enum:
+                          - true
+                      thirdPartyAnalysis:
+                        type: string
+                        enum:
+                          - requires_explicit_authorization
+                      publication:
+                        type: string
+                        enum:
+                          - not_authorized_by_experiment
+                      licence:
+                        type: string
+                        enum:
+                          - CC BY-SA 4.0
+                      licenceUrl:
+                        type: string
+                        enum:
+                          - https://creativecommons.org/licenses/by-sa/4.0/
+                      credit:
+                        type: string
+                        minLength: 1
+                      permissionSource:
+                        type: string
+                        format: uri
+                      checkedAt:
+                        type: string
+                        format: date-time
+                        pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+                    required:
+                      - access
+                      - download
+                      - retain
+                      - localAnalysis
+                      - thirdPartyAnalysis
+                      - publication
+                      - licence
+                      - licenceUrl
+                      - credit
+                      - permissionSource
+                      - checkedAt
+                    additionalProperties: false
+                required:
+                  - kind
+                  - title
+                  - sourcePage
+                  - imageUrl
+                  - sourceVersion
+                  - sourceSha1
+                  - sha256
+                  - byteSize
+                  - width
+                  - height
+                  - format
+                  - dHash
+                  - previewSha256
+                  - processingVersion
+                  - retrievedAt
+                  - captureDate
+                  - caption
+                  - relationshipContext
+                  - relationship
+                  - attributionReview
+                  - privacyReview
+                  - rights
+                additionalProperties: false
+                nullable: true
               redactedFields:
                 type: array
                 items:
@@ -1420,6 +2243,7 @@ components:
               - sourceRecordUrl
               - contentSha256
               - payload
+              - image
               - redactedFields
               - observedAt
               - datasetVersion

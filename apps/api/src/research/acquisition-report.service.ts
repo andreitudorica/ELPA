@@ -5,6 +5,7 @@ import { ROMANIAN_COUNTIES } from './acquisition/romania-geography';
 import { SOURCE_DEFINITIONS } from './acquisition/sources';
 import { SCREENING_CLASSES, SOURCE_KEYS, type SourceKey } from './acquisition/source-record';
 import { AcquisitionQueryRepository, type RunRow } from './acquisition-query.repository';
+import { UnionFind } from './grouping/union-find';
 import { MATCHER_VERSION } from './matching/duplicate-matcher';
 import { ResearchCampaignRepository } from './research-campaign.repository';
 
@@ -132,37 +133,6 @@ export interface AcquisitionReport {
     protocol: string;
   };
   unknowns: string[];
-}
-
-class UnionFind {
-  private readonly parent = new Map<string, string>();
-
-  find(id: string): string {
-    let root = id;
-    while (this.parent.has(root) && this.parent.get(root) !== root)
-      root = this.parent.get(root) ?? root;
-    let current = id;
-    while (current !== root) {
-      const next = this.parent.get(current) ?? root;
-      this.parent.set(current, root);
-      current = next;
-    }
-    return root;
-  }
-
-  union(left: string, right: string): void {
-    const leftRoot = this.find(left);
-    const rightRoot = this.find(right);
-    if (leftRoot !== rightRoot)
-      this.parent.set(
-        leftRoot < rightRoot ? rightRoot : leftRoot,
-        leftRoot < rightRoot ? leftRoot : rightRoot,
-      );
-  }
-
-  count(ids: string[]): number {
-    return new Set(ids.map((id) => this.find(id))).size;
-  }
 }
 
 function share(part: number, whole: number): number {

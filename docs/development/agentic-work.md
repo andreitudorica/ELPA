@@ -42,7 +42,7 @@ handing off.
 
 | Check                          | Command                                                                | Notes                                                                                                                                             |
 | ------------------------------ | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Everything CI validates        | `pnpm validate`                                                        | `prettier --check .`, then per app `lint → typecheck → test → build` through Turborepo                                                            |
+| Everything CI validates        | `pnpm validate`                                                        | `prettier --check .`, boundary regression probes, then per app `lint → typecheck → test → build` through Turborepo                                |
 | Formatting (includes Markdown) | `pnpm format:check`                                                    | Enough on its own for documentation- or instruction-only changes                                                                                  |
 | One app                        | `pnpm --filter @elpa/api validate`, `pnpm --filter @elpa/web validate` | Or a single script such as `lint`, `typecheck`, `test`                                                                                            |
 | API contract and client        | `pnpm openapi:generate`, then confirm it produced no new diff          | `pnpm openapi:check` runs the generator and `git diff --exit-code` against the index, so stage your own changes first or it reports them as drift |
@@ -51,12 +51,23 @@ handing off.
 | Whitespace                     | `git diff --check`                                                     | Before handoff                                                                                                                                    |
 
 What CI actually enforces ([`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)):
-`pnpm validate`; `pnpm turbo run codegen` followed by `git diff --exit-code
-apps` (regenerates web types from the **committed** `openapi.yaml`); and the
-Chromium Playwright project. A nightly workflow runs the full browser matrix.
-CI does **not** regenerate `openapi.yaml` from API code, does not run
-`db:check`, has no PostgreSQL, and does not build Storybook — run those
-locally when your change touches them.
+`pnpm validate`; `pnpm openapi:generate` followed by a diff check of the API
+contract and generated web types; and the Chromium Playwright project. Contract
+generation uses sanitized example configuration and does not query PostgreSQL.
+A nightly workflow runs the full browser matrix. CI does not run `db:check`,
+has no PostgreSQL, and does not build Storybook — run those locally when your
+change touches them.
+
+Each app's `validate` script owns its sequential lint/typecheck/test/build steps.
+The root Turbo `validate` task does not also depend on those tasks: doing both
+repeats the work and can race route generation. Cached tasks include default
+tracked inputs, including app-specific config/scripts; build and test tasks also
+hash local environment files without printing their contents.
+
+`pnpm test:boundaries` runs Node regression probes against both apps' actual
+ESLint configurations. It checks allowed and forbidden imports at route roots,
+nested routes and nested API domain paths. These probes disable type-aware
+rules only for their in-memory snippets; normal application lint stays strict.
 
 If a check cannot run (Docker not started, browsers not installed, a missing
 environment file), report it as not run rather than as passing.
@@ -76,9 +87,9 @@ environment file), report it as not run rather than as passing.
 There is no API integration or contract-test tier yet. `apps/api` reserves the
 `*.int.test.ts` and `*.e2e.test.ts` names (excluded from its build), but no
 harness, database setup, or CI job exists; adding one is a deliberate change
-with its own setup, not something to assume. The acquisition slice currently
-has no automated tests by decision (recorded in the
-[baseline README](../research/group-rental-property-baseline/README.md)).
+with its own setup, not something to assume. The initial register/OSM adapters
+still lack direct automated coverage; the later Overture, text extraction,
+visual integrity/evaluation and grouping modules have synthetic unit tests.
 
 ### Harness facts
 

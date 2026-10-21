@@ -1,0 +1,26 @@
+{
+  "first": {
+    "corpusDigest": "198a008db0c56424de0fc76378fa1b7a3e317dd6f8e5cfd17a1da8ed808597a6",
+    "outputDigest": "acfcb8ec7e17e72979843e5c659265fbe744fbebb816f344d1ac781bde17550f",
+    "created": 28,
+    "unchanged": 0,
+    "processingMs": 4.80966699999999,
+    "externalCalls": 0,
+    "externalCost": 0,
+    "currency": null,
+    "storageBytes": 44570,
+    "note": "Observed local rule time excludes corpus export, database writes and human review; no monetary infrastructure estimate."
+  },
+  "repeat": {
+    "corpusDigest": "198a008db0c56424de0fc76378fa1b7a3e317dd6f8e5cfd17a1da8ed808597a6",
+    "outputDigest": "acfcb8ec7e17e72979843e5c659265fbe744fbebb816f344d1ac781bde17550f",
+    "created": 0,
+    "unchanged": 28,
+    "processingMs": 4.568916999999999,
+    "externalCalls": 0,
+    "externalCost": 0,
+    "currency": null,
+    "storageBytes": 44570,
+    "note": "Observed local rule time excludes corpus export, database writes and human review; no monetary infrastructure estimate."
+  }
+}

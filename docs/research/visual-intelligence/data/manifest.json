@@ -1,0 +1,51 @@
+{
+  "version": "grp-visual-corpus@1",
+  "seed": "elpa-visual-primary-2026-10",
+  "campaignId": "01a15d8d-edc4-7a6d-bc18-26af6cccfdf3",
+  "frame": 3,
+  "successfulImages": 3,
+  "failures": [],
+  "exclusions": {
+    "categoryReferences": 6,
+    "otherImageHosts": 41
+  },
+  "groupCount": 3,
+  "exactDuplicates": 0,
+  "nearDuplicatePairs": 0,
+  "items": [
+    {
+      "sourceRecordKey": "way/568313205",
+      "imageKey": "File:Pensiune Munții Anineii in Steierdorf, Anina.jpg",
+      "imageSha256": "d60d226a0726ab0768b427a015313e5cca4e7766ab296955f1ead55297c0a90d",
+      "sourceVersion": "2023-05-05T16:16:36Z:c35594fd412b579dfb2e7bb10380c89a1842ffbc",
+      "group": "c50dfd6f5a89742a79e432984b0195d50262e2d94444d44b7ff2fcd81437637e",
+      "partition": "holdout",
+      "entrySha256": "465c6b8225325fa4738a7ff011e99f90e452647a855f16831d8c99314adb4323"
+    },
+    {
+      "sourceRecordKey": "way/595512647",
+      "imageKey": "File:Pensiune Artarul in Poiana Marului.jpg",
+      "imageSha256": "33708410a5c666d10a515df073d577c927a8703b9a4ef2c9fc06116bd9666662",
+      "sourceVersion": "2023-05-05T16:16:28Z:50558a48d958e19a9f59d1ba53749d5e24424dff",
+      "group": "69c9c844a91cd17b09d2c0e199314bae0559fc8520091e50332ecee8f3b3f3d5",
+      "partition": "development",
+      "entrySha256": "13fb974744bed6ef0ead34220b4f95b9903e69b34ad055232c117feba9a1bd3e"
+    },
+    {
+      "sourceRecordKey": "way/673907755",
+      "imageKey": "File:Pensiune Mimi din Bucova.jpg",
+      "imageSha256": "2f524c08c9a2299404999dfd29fc2750bb2ea22e5f53b51b3d601be8121e9fe1",
+      "sourceVersion": "2023-04-14T15:48:00Z:f226947229d71f5dc74449606087da315b2548fe",
+      "group": "9b6f8b884f3917224c0b0d43ddb8a18bccde95f5e5cdbefec5c4422be843ae70",
+      "partition": "holdout",
+      "entrySha256": "e5323906eb73c00b8ebf57b6fbdf2ea9d4fb88bd2f2aef87e277b92695fc4b88"
+    }
+  ],
+  "amendments": [
+    {
+      "id": "selection-integrity-1",
+      "priorManifestSha256": "eebe32fa9c5638ab67799b24b73a0380749cbec5b53fbc3df66fb074132b1fec",
+      "reason": "Correct exclusion label: 44 image tags include three Commons URLs; other hosts = 41. Add complete entry fingerprints to bind Candidate, parent Evidence and permissions. No image selection, split, source bytes, Evidence or labels changed."
+    }
+  ]
+}

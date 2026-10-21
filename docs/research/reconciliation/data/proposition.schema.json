@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "claimId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+    },
+    "candidateId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+    },
+    "evidenceId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+    },
+    "entityLevel": {
+      "type": "string",
+      "enum": ["offer", "provider", "operating_location", "image"]
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["advertised_accommodation", "shared_facility", "image_visible", "unknown"]
+    },
+    "attribute": {
+      "type": "string",
+      "enum": [
+        "sleeps_persons",
+        "beds_count",
+        "exclusive_rental",
+        "yard_area_m2",
+        "lawn",
+        "outdoor_grill",
+        "pool",
+        "hot_tub",
+        "sauna",
+        "recreation",
+        "parties_allowed",
+        "max_daytime_guests",
+        "pool_availability"
+      ]
+    },
+    "value": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
+    },
+    "unit": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["persons", "beds", "m2", "ha"]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "qualifiers": {
+      "type": "object",
+      "properties": {
+        "capacityBasis": {
+          "type": "string",
+          "enum": [
+            "official_classified",
+            "advertised_overnight",
+            "event_attendance",
+            "beds",
+            "unknown"
+          ]
+        },
+        "access": {
+          "type": "string",
+          "enum": ["private", "shared", "unknown"]
+        },
+        "months": {
+          "anyOf": [
+            {
+              "minItems": 1,
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 12
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "approximate": {
+          "type": "boolean"
+        },
+        "ambiguous": {
+          "type": "boolean"
+        }
+      },
+      "required": ["capacityBasis", "access", "months", "approximate", "ambiguous"],
+      "additionalProperties": false
+    },
+    "validity": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "until": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": ["from", "until"],
+      "additionalProperties": false
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+    },
+    "acquiredAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+    },
+    "sourcePublishedAt": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "extractedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "methodStatus": {
+      "type": "string",
+      "enum": ["current", "superseded", "unknown"]
+    },
+    "explicitness": {
+      "type": "string",
+      "enum": ["explicit", "inferred", "unknown"]
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "sourceKey": {
+          "type": "string",
+          "enum": [
+            "situr_accommodation_register",
+            "osm_geofabrik_romania",
+            "overture_places",
+            "wikimedia_commons_images"
+          ]
+        },
+        "sourceRecordKey": {
+          "type": "string"
+        },
+        "sourceVersion": {
+          "type": "string"
+        },
+        "contentSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "originalId": {
+          "type": "string"
+        },
+        "passageFingerprint": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quote": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "locator": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
+        },
+        "grounding": {
+          "type": "string",
+          "enum": ["valid", "invalid", "unvalidated"]
+        }
+      },
+      "required": [
+        "sourceKey",
+        "sourceRecordKey",
+        "sourceVersion",
+        "contentSha256",
+        "originalId",
+        "passageFingerprint",
+        "quote",
+        "locator",
+        "grounding"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "claimId",
+    "candidateId",
+    "evidenceId",
+    "entityLevel",
+    "scope",
+    "attribute",
+    "value",
+    "unit",
+    "qualifiers",
+    "validity",
+    "observedAt",
+    "acquiredAt",
+    "sourcePublishedAt",
+    "extractedAt",
+    "method",
+    "methodStatus",
+    "explicitness",
+    "evidence"
+  ],
+  "additionalProperties": false
+}

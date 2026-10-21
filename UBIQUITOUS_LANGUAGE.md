@@ -38,6 +38,12 @@ resolved.
 | **Duplicate Suggestion** | An explainable, versioned proposal that two **Candidates** describe the same property or share a **Provider**. It never merges records; resolving it is a Curation decision.                                           | Match (as a decision), merge                       |
 | **Population Screening** | An automated, inferred **Claim** that classifies a **Candidate** against a Category's research population (plausible, ambiguous, out of scope, insufficient data). It orders review and never establishes eligibility. | Eligibility, qualification                         |
 
+**Reconciliation Assessment** is a versioned, immutable Research comparison of
+proposed Claims with explicit scope, temporal context, evidence-origin warnings
+and uncertainty. It preserves inputs and rationale; it is not a Verification
+Decision, canonical value or duplicate resolution. A supported source assertion
+remains unverified and may have unknown current applicability.
+
 ## Catalog
 
 | Term                   | Definition                                                                                                | Aliases to avoid                     |
@@ -85,7 +91,7 @@ resolved.
 ### Stepper structure
 
 - The stepper that fills the **Event Brief** has a **universal head** (event type, guests, dates, region, budget) and one **Category-specific tail** per Category the User's plan touches. Tails render only when their Category is relevant to the plan.
-- The POC ships the universal head plus the **Group Rental Property** tail (setting, must-haves, nice-to-haves, freeform context). Only `event_type` and `guest_count_total` are required; everything else is skippable.
+- The planned POC stepper has the universal head plus the **Group Rental Property** tail (setting, must-haves, nice-to-haves, freeform context). Only `event_type` and `guest_count_total` are planned as required; everything else is skippable. The current Recommendation Product is a landing placeholder; this stepper is not implemented.
 - Contextual prompts inside Steps 1–8 ("have you thought about a backup generator?") are **rule-based** functions of the Event Brief so far — deterministic and testable. The LLM enters only at the final freeform-context step, to produce up to three clarifying questions before recommendations render.
 
 ## Relationships
@@ -94,6 +100,10 @@ resolved.
 - An **Acquisition Run** may produce zero or more **Candidates**, **Evidence**
   records, and proposed **Claims**.
 - A **Candidate** accumulates one or more **Claims** supported by **Evidence**.
+- A visual observation is an image-level proposed **Claim** (for example,
+  `image.visible.pool`), not a verified property attribute. The image's source
+  association and facility attribution require separate Evidence and review;
+  visibility does not establish guest access, current operation or permissions.
 - An **Acquisition Run** reads one **Source Artifact**; each distinct source
   record content becomes one immutable **Evidence** row, reused when the same
   content is read again.

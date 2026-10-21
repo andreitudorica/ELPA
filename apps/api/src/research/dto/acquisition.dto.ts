@@ -1,7 +1,8 @@
 import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
 
-import { SCREENING_CLASSES, SOURCE_KEYS } from '../acquisition/source-record';
+import { EVIDENCE_SOURCE_KEYS, SCREENING_CLASSES, SOURCE_KEYS } from '../acquisition/source-record';
+import { imageAnnotationLocatorSchema, imageSchema } from '../visual/contracts';
 
 /**
  * Administrative projections of the acquisition experiment. Every Candidate,
@@ -19,11 +20,14 @@ export class CampaignParamsDto extends createZodDto(CampaignParamsSchema) {}
 
 export const CandidateParamsSchema = z.object({ campaignId: z.uuid(), candidateId: z.uuid() });
 export class CandidateParamsDto extends createZodDto(CandidateParamsSchema) {}
+export class ImageParamsDto extends createZodDto(
+  CandidateParamsSchema.extend({ evidenceId: z.uuid() }),
+) {}
 
 export const AcquisitionRunSchema = z
   .object({
     id: z.uuid(),
-    sourceKey: SourceKeySchema,
+    sourceKey: z.enum(EVIDENCE_SOURCE_KEYS),
     stage: z.enum(['import', 'extract']),
     status: z.enum(['running', 'succeeded', 'completed_with_rejections', 'failed']),
     parserVersion: z.string(),
@@ -157,6 +161,7 @@ export const CandidateDetailSchema = z
         evidenceId: z.uuid(),
         acquisitionRunId: z.uuid(),
         current: z.boolean(),
+        visual: imageAnnotationLocatorSchema.nullable(),
         extraction: z
           .object({
             quote: z.string(),
@@ -184,6 +189,7 @@ export const CandidateDetailSchema = z
         sourceRecordUrl: z.string().nullable(),
         contentSha256: z.string(),
         payload: JsonObjectSchema,
+        image: imageSchema.nullable(),
         redactedFields: z.array(z.string()),
         observedAt: isoDateTime,
         datasetVersion: z.string().nullable(),

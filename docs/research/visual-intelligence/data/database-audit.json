@@ -1,0 +1,66 @@
+{
+  "campaigns": [
+    {
+      "campaign": "01a02184-799d-707f-9eeb-65c63bc9883c",
+      "candidates": 960,
+      "verified": 0
+    },
+    {
+      "campaign": "01a15b79-0b3e-7d4f-9601-f041d7248ee8",
+      "candidates": 42861,
+      "verified": 0
+    },
+    {
+      "campaign": "01a15d8d-edc4-7a6d-bc18-26af6cccfdf3",
+      "candidates": 42878,
+      "verified": 0
+    }
+  ],
+  "claims": [
+    {
+      "campaign": "01a02184-799d-707f-9eeb-65c63bc9883c",
+      "claims": 10947,
+      "image_claims": 0,
+      "approved": 0
+    },
+    {
+      "campaign": "01a15b79-0b3e-7d4f-9601-f041d7248ee8",
+      "claims": 468223,
+      "image_claims": 0,
+      "approved": 0
+    },
+    {
+      "campaign": "01a15d8d-edc4-7a6d-bc18-26af6cccfdf3",
+      "claims": 468502,
+      "image_claims": 0,
+      "approved": 0
+    }
+  ],
+  "images": [
+    {
+      "evidence": 3,
+      "artifacts": 3
+    }
+  ],
+  "runs": [
+    {
+      "status": "succeeded",
+      "runs": 9,
+      "created": 3,
+      "claims_created": 0
+    }
+  ],
+  "references": [
+    {
+      "image_tags": 44,
+      "commons_tags": 9,
+      "commons_image_urls": 3
+    }
+  ],
+  "audit": [
+    {
+      "action": "visual_image.imported",
+      "events": 9
+    }
+  ]
+}

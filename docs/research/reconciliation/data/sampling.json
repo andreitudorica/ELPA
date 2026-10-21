@@ -1,0 +1,24 @@
+{
+  "frameClaims": 32305,
+  "frameCandidates": 32264,
+  "leakageGroups": 29237,
+  "descriptiveRecords": 31,
+  "nearTextEdges": 0,
+  "strata": {
+    "cross_candidate:situr_accommodation_register:offer.sleeps_persons": 1773,
+    "single_source:situr_accommodation_register:offer.sleeps_persons": 27370,
+    "cross_candidate:osm_geofabrik_romania+situr_accommodation_register:offer.beds_count+offer.sleeps_persons": 47,
+    "reprocessed:osm_geofabrik_romania+situr_accommodation_register:offer.beds_count+offer.sleeps_persons": 1,
+    "single_source:osm_geofabrik_romania:offer.beds_count": 27,
+    "reprocessed:situr_accommodation_register:offer.sleeps_persons": 12,
+    "reprocessed:osm_geofabrik_romania+situr_accommodation_register:offer.beds_count+offer.recreation+offer.sleeps_persons": 1,
+    "reprocessed:osm_geofabrik_romania+situr_accommodation_register:offer.outdoor_grill+offer.sauna+offer.sleeps_persons": 1,
+    "reprocessed:osm_geofabrik_romania+situr_accommodation_register:offer.hot_tub+offer.pool+offer.sleeps_persons": 1,
+    "reprocessed:osm_geofabrik_romania:offer.recreation+offer.sleeps_persons": 1,
+    "reprocessed:osm_geofabrik_romania+situr_accommodation_register:offer.lawn+offer.sleeps_persons": 1,
+    "cross_candidate:osm_geofabrik_romania+situr_accommodation_register:offer.sleeps_persons": 2
+  },
+  "exclusions": [],
+  "selectedGroups": 28,
+  "seed": "elpa-reconciliation-2026-10-22-v2"
+}
