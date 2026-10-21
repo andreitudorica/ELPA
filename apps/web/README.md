@@ -72,6 +72,19 @@ duplicate suggestions; tab and filters live in the URL) and each Candidate at
 `/studio/research-campaigns/:campaignId/candidates/:candidateId`. These
 requests have no MSW handlers, so run them against the real API.
 
+The existing source filter also supports the bounded Overture Places experiment.
+Its runs, quality report, source-native Evidence, proposed Claims and duplicate
+suggestions use these same Administrator-only pages. The source is experimental;
+unmatched Candidates and extra website identities are not verified new properties
+or event-suitability facts. See the
+[incremental source experiment](../../docs/research/next-source-value/README.md).
+
+Candidate detail also shows experimental attribute Claims with verbatim source
+passages, field selectors and offsets, source/method/ontology versions,
+qualifications, differing current values and an independent-review warning.
+Historical extraction Claims remain inspectable. Evidence links stay within the
+Administrator-only page; this is inspection, not verification or publication.
+
 ## Boundaries enforced by ESLint
 
 - `_public/**` may not import from `studio/**` or the identity boundary

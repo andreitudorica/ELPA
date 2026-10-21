@@ -1,0 +1,25 @@
+{
+  "holdoutRecords": 11,
+  "labels": 0,
+  "nonIndependentLabels": 0,
+  "resolvedDoubleReviewed": 0,
+  "disputed": 0,
+  "singleReviewer": 0,
+  "unresolved": 0,
+  "confirmedNewInReviewedSample": 0,
+  "discoveryPrecision": {
+    "successes": 0,
+    "trials": 0,
+    "value": null,
+    "interval": null
+  },
+  "likelyRecordExistingPrecision": {
+    "successes": 0,
+    "trials": 0,
+    "value": null,
+    "interval": null
+  },
+  "agreementKappa": null,
+  "h1GatePassed": false,
+  "caveat": "Unweighted reviewed-sample metrics. Existing-property classification does not establish correctness of a particular suggested pair; pair false-merge rate requires pair-specific review. No national yield extrapolation."
+}

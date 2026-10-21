@@ -57,6 +57,25 @@ Artifacts, reports, and evaluation exports go to the ignored `.data/`
 directory. Full workflow and expected outputs:
 `docs/research/group-rental-property-baseline/reproduction.md`.
 
+The bounded Overture follow-up adds `sample-overture`, `next-source-campaign`,
+`incremental-report`, and `incremental-score`. It uses the same Research
+Evidence/Claim and matching boundaries, keeps the original baseline separate,
+and does not promote a source to production. Its fixed-release export uses
+DuckDB as optional one-off experiment tooling; the API has no DuckDB or Python
+runtime dependency. Protocol, permissions, private input requirements, expected
+results, and the **investigate further** decision are in
+[`next-source-value`](../../docs/research/next-source-value/README.md).
+
+The attribute-extraction CLI adds `extraction-corpus`, `extraction-run`,
+`extraction-score`, `extraction-report` and `extraction-ai-import`. It reprocesses
+existing immutable Evidence, records `extract` Acquisition Runs and acting
+Administrator audit events, and proposes span-grounded Claims only. Contradictory
+observations survive alongside earlier methods; repeated identical processing
+does not duplicate Claims. Pure ontology/projection/rules/scoring modules live in
+`src/research/extraction/`. No model SDK, paid call, queue or new runtime is
+introduced. Independent annotations and AI execution remain incomplete; see
+the [protocol, results and reproduction commands](../../docs/research/attribute-extraction/README.md).
+
 Two small parsing dependencies support the official register export:
 `fflate` (ZIP container of the XLSX workbook) and `saxes` (streaming XML for
 its 28 MB worksheet). The OSM PBF format is decoded by an in-repo protobuf

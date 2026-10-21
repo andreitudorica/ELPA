@@ -150,11 +150,13 @@
     },
     "sources": {
       "situr_accommodation_register": "Official accommodation register (DGT / SITUR)",
-      "osm_geofabrik_romania": "OpenStreetMap (Geofabrik Romania extract)"
+      "osm_geofabrik_romania": "OpenStreetMap (Geofabrik Romania extract)",
+      "overture_places": "Overture Places (bounded experiment)"
     },
     "sourcesShort": {
       "situr_accommodation_register": "Official register",
-      "osm_geofabrik_romania": "OpenStreetMap"
+      "osm_geofabrik_romania": "OpenStreetMap",
+      "overture_places": "Overture Places"
     },
     "screening": {
       "plausible": "Plausible",
@@ -284,6 +286,15 @@
       "runHistoryTitle": "Run history",
       "outcome": "Outcome",
       "errors": "Errors"
+    },
+    "extraction": {
+      "title": "Experimental attribute extraction",
+      "pending": "Proposed Claims only. Source references and spans passed technical checks; semantic accuracy has not been independently reviewed. Nothing is verified or published.",
+      "historical": "Historical method or Evidence",
+      "source": "Evidence version {{version}} · {{field}} · offsets {{start}}–{{end}}",
+      "method": "Method: {{method}} · Ontology: {{ontology}} · confidence is uncalibrated",
+      "qualifiers": "Evidence: {{explicitness}} · Ambiguity: {{ambiguity}} · Time: {{temporal}}",
+      "conflicts": "{{count}} other current Claims propose different values. Review the Claims and original Evidence below."
     }
   }
 }

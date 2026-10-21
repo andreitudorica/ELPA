@@ -7,7 +7,11 @@ import { z } from 'zod';
 export const acquisitionTabs = ['runs', 'report', 'candidates', 'suggestions'] as const;
 export type AcquisitionTab = (typeof acquisitionTabs)[number];
 
-export const sourceKeys = ['situr_accommodation_register', 'osm_geofabrik_romania'] as const;
+export const sourceKeys = [
+  'situr_accommodation_register',
+  'osm_geofabrik_romania',
+  'overture_places',
+] as const;
 export const screeningClasses = [
   'plausible',
   'ambiguous',

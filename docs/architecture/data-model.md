@@ -58,6 +58,16 @@ publish a Claim automatically.
 
 ### Acquisition baseline physical model
 
+The bounded [text extraction experiment](../research/attribute-extraction/README.md)
+extends Acquisition Runs with an `extract` stage over already-retained Evidence.
+Claim uniqueness includes an observation fingerprint: legacy adapter Claims use
+an empty fingerprint, while text observations hash value and locator. This
+preserves same-document contradictions and idempotency without changing data
+authority. Text-span locators retain original field paths, UTF-16 offsets,
+quotes, source/document/ontology versions, scope, ambiguity and temporality.
+Extraction does not change Candidate identity, latest Evidence, verification,
+or Catalog data. A new method version adds history rather than overwriting it.
+
 The acquisition baseline (`docs/research/group-rental-property-baseline/`)
 made the research side physical, all owned by the Research module:
 

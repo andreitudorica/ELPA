@@ -22,10 +22,13 @@ import {
   BASELINE_CAMPAIGN,
   DuplicateSuggestionService,
   EvaluationService,
+  ExtractionService,
   fileSha256,
   ResearchCampaignService,
   SOURCE_DEFINITIONS,
   SOURCE_KEYS,
+  createOvertureSampleArtifact,
+  scoreIncrementalReviewFiles,
   type SourceKey,
 } from './research';
 
@@ -38,11 +41,22 @@ import {
 const USAGE = `Usage: node dist/research-cli.js <command> [options]
 
 Commands:
+  extraction-corpus --campaign <id> --out <dir>   Seal a stratified primary-Evidence sample
+  extraction-run --campaign <id> --sample <dir>  Propose grounded attribute Claims from pinned Evidence
+  extraction-score --sample <dir> [--labels <json>...] [--artifact <ai-capture.json>]
+                                                   Score the same independent holdout annotations for both methods
+  extraction-ai-import --sample <dir> --artifact <json> Validate captured model results; no live calls
+  extraction-report --sample <dir>                Aggregate observed extraction and prior Claim coverage
   fetch --source <key> --out <dir> [--url <url>]   Download an artifact and write its manifest
+  sample-overture --frame <json> --metadata <json> --out <dir>
+                                                   Draw the frozen bounded Overture sample
   baseline-campaign                                Create or find the national baseline campaign
+  next-source-campaign                             Create or find the isolated source experiment
   import --campaign <id> --artifact <path>         Import an artifact (manifest: <path>.manifest.json)
   match --campaign <id>                            Generate duplicate suggestions
   report --campaign <id> [--out <file>]            Build the data-quality report (JSON)
+  incremental-report --campaign <id> --out <dir>  Compare Overture with A+B and export blind review pack
+  incremental-score --sample <dir> [--labels <csv>...]  Score independent holdout discovery reviews
   evaluation-sample --campaign <id> --out <dir>    Export the blind review sample
   evaluation-score --campaign <id> --sample <dir> --labels <csv>...
                                                    Score the matcher against reviewer labels
@@ -107,6 +121,8 @@ async function main(): Promise<void> {
       artifact: { type: 'string' },
       sample: { type: 'string' },
       labels: { type: 'string', multiple: true },
+      frame: { type: 'string' },
+      metadata: { type: 'string' },
     },
   });
 
@@ -116,9 +132,37 @@ async function main(): Promise<void> {
   }
   if (command === 'fetch') {
     const source = required(values, 'source');
+    if (source === 'overture_places')
+      throw new Error(
+        'Use the documented fixed-release SQL export, then sample-overture; direct web crawling is unsupported.',
+      );
     if (!(SOURCE_KEYS as readonly string[]).includes(source))
       throw new Error(`Unknown source ${source}`);
     await fetchArtifact(source as SourceKey, resolve(required(values, 'out')), values.url);
+    return;
+  }
+  if (command === 'sample-overture') {
+    console.log(
+      JSON.stringify(
+        await createOvertureSampleArtifact(
+          resolve(required(values, 'frame')),
+          resolve(required(values, 'metadata')),
+          resolve(required(values, 'out')),
+        ),
+        null,
+        2,
+      ),
+    );
+    return;
+  }
+  if (command === 'incremental-score') {
+    console.log(
+      JSON.stringify(
+        await scoreIncrementalReviewFiles(resolve(required(values, 'sample')), values.labels ?? []),
+        null,
+        2,
+      ),
+    );
     return;
   }
 
@@ -144,12 +188,49 @@ async function runCommand(
   app: Awaited<ReturnType<typeof NestFactory.createApplicationContext>>,
 ): Promise<unknown> {
   switch (command) {
-    case 'baseline-campaign': {
+    case 'extraction-corpus':
+      return app
+        .get(ExtractionService)
+        .exportCorpus(required(values, 'campaign'), resolve(required(values, 'out')));
+    case 'extraction-run':
+      return app
+        .get(ExtractionService)
+        .run(required(values, 'campaign'), resolve(required(values, 'sample')));
+    case 'extraction-score':
+      return app
+        .get(ExtractionService)
+        .score(
+          resolve(required(values, 'sample')),
+          Array.isArray(values.labels) ? values.labels.map(String) : [],
+          typeof values.artifact === 'string' ? resolve(values.artifact) : undefined,
+        );
+    case 'extraction-ai-import':
+      return app
+        .get(ExtractionService)
+        .importAi(resolve(required(values, 'sample')), resolve(required(values, 'artifact')));
+    case 'extraction-report':
+      return app.get(ExtractionService).report(resolve(required(values, 'sample')));
+    case 'baseline-campaign':
+    case 'next-source-campaign': {
       const campaigns = app.get(ResearchCampaignService);
+      const definition =
+        command === 'baseline-campaign'
+          ? BASELINE_CAMPAIGN
+          : {
+              name: 'Experiment incremental Overture — eșantion controlat v1',
+              eventNeed: BASELINE_CAMPAIGN.eventNeed,
+              county: undefined,
+              locality: undefined,
+              minimumCriteria: BASELINE_CAMPAIGN.minimumCriteria,
+              investigatedSources: [
+                ...BASELINE_CAMPAIGN.investigatedSources,
+                'https://docs.overturemaps.org/guides/places/',
+              ],
+            };
       const existing = (await campaigns.list()).find(
-        (campaign) => campaign.name === BASELINE_CAMPAIGN.name,
+        (campaign) => campaign.name === definition.name,
       );
-      return existing ?? campaigns.create(BASELINE_CAMPAIGN);
+      return existing ?? campaigns.create(definition);
     }
     case 'import': {
       const artifactPath = resolve(required(values, 'artifact'));
@@ -174,6 +255,13 @@ async function runCommand(
       }
       return report;
     }
+    case 'incremental-report':
+      return app
+        .get(EvaluationService)
+        .exportIncrementalComparison(
+          required(values, 'campaign'),
+          resolve(required(values, 'out')),
+        );
     case 'evaluation-sample':
       return app
         .get(EvaluationService)

@@ -19,6 +19,7 @@ export const MATCH_CLAIM_TARGETS = [
   'offer.registry_certificate',
   'offer.registry_structure_type',
   'offer.osm_tourism_type',
+  'offer.overture_categories',
   'offer.sleeps_persons',
   'offer.capacity_persons',
   'provider_hint.tax_id',
@@ -51,7 +52,8 @@ export function matchFeaturesFromClaims(
   const settlementKeys =
     candidate.sourceKey === 'situr_accommodation_register'
       ? [text(locality.settlementName), text(locality.uatName)]
-      : locality.settlementSource === 'address_tag'
+      : locality.settlementSource === 'address_tag' ||
+          locality.settlementSource === 'source_address'
         ? [text(locality.settlementName)]
         : [];
 
@@ -85,6 +87,7 @@ export function matchFeaturesFromClaims(
     : [];
   const registerType = text(record(claims['offer.registry_structure_type']).key);
   const tourism = text(record(claims['offer.osm_tourism_type']).tourism);
+  const overtureCategory = text(record(claims['offer.overture_categories']).primary);
 
   const primarySettlement = settlementKeys[0] ?? null;
   return {
@@ -111,7 +114,13 @@ export function matchFeaturesFromClaims(
     taxId: text(claims['provider_hint.tax_id']),
     certificateNumber: text(record(claims['offer.registry_certificate']).number),
     structureType:
-      registerType !== null ? `situr:${registerType}` : tourism !== null ? `osm:${tourism}` : null,
+      registerType !== null
+        ? `situr:${registerType}`
+        : tourism !== null
+          ? `osm:${tourism}`
+          : overtureCategory !== null
+            ? `overture:${overtureCategory}`
+            : null,
     sleepsPersons: count(claims['offer.sleeps_persons']) ?? count(claims['offer.capacity_persons']),
   };
 }

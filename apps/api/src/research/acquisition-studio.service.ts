@@ -17,6 +17,7 @@ import type {
 } from './dto/acquisition.dto';
 import { MATCHER_VERSION } from './matching/duplicate-matcher';
 import { ResearchCampaignRepository } from './research-campaign.repository';
+import { canonicalJson } from './acquisition/source-record';
 
 /** Read models that make the acquisition experiment inspectable in Data Studio. */
 @Injectable()
@@ -38,7 +39,7 @@ export class AcquisitionStudioService {
     return runs.map((run) => ({
       id: run.id,
       sourceKey: run.sourceKey as SourceKey,
-      stage: 'import',
+      stage: run.stage === 'extract' ? 'extract' : 'import',
       status: run.status as AcquisitionRunListDto[number]['status'],
       parserVersion: run.parserVersion,
       normalizerVersion: run.normalizerVersion,
@@ -113,6 +114,22 @@ export class AcquisitionStudioService {
         evidenceId: claim.evidenceId,
         acquisitionRunId: claim.acquisitionRunId,
         current: claim.current,
+        extraction:
+          claim.evidenceLocator.type === 'text_span'
+            ? {
+                ...claim.evidenceLocator,
+                conflictingClaimIds: claimRows
+                  .filter(
+                    (other) =>
+                      other.id !== claim.id &&
+                      other.current &&
+                      other.target === claim.target &&
+                      !['offer.recreation', 'offer.outdoor_covered_area'].includes(claim.target) &&
+                      canonicalJson(other.value) !== canonicalJson(claim.value),
+                  )
+                  .map((other) => other.id),
+              }
+            : null,
       })),
       evidence: evidenceRows.map((row) => ({
         id: row.id,

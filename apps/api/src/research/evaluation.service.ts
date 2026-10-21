@@ -23,6 +23,7 @@ import { DECISIONS, type LabelRow, scoreEvaluation } from './evaluation/scoring'
 import { MATCHER_VERSION, prepareCandidate } from './matching/duplicate-matcher';
 import { MATCH_CLAIM_TARGETS, matchFeaturesFromClaims } from './matching/match-features';
 import { ResearchCampaignRepository } from './research-campaign.repository';
+import { compareIncrementalSource, PRIORITY_TARGETS } from './next-source/comparison';
 
 const REVIEW_COLUMNS = [
   'item_id',
@@ -81,6 +82,140 @@ export class EvaluationService {
     private readonly candidateClaims: CandidateClaimsRepository,
     private readonly queries: AcquisitionQueryRepository,
   ) {}
+
+  async exportIncrementalComparison(researchCampaignId: string, outDir: string) {
+    const campaign = await this.campaigns.findById(researchCampaignId);
+    if (campaign === undefined)
+      throw new NotFoundError(`Research Campaign ${researchCampaignId} does not exist`);
+    const [claimSets, members, edges, runs] = await Promise.all([
+      this.candidateClaims.loadLatestClaims(campaign.id, [
+        ...MATCH_CLAIM_TARGETS,
+        ...PRIORITY_TARGETS,
+      ]),
+      this.queries.candidatesForClustering(campaign.id),
+      this.queries.suggestionEdges(campaign.id, MATCHER_VERSION),
+      this.queries.listRuns(campaign.id),
+    ]);
+    const result = compareIncrementalSource(claimSets, members, edges);
+    if (result.predictions.length === 0)
+      throw new PreconditionError('Import the Overture sample before comparison');
+    const reviewIds = [
+      ...new Set(result.predictions.flatMap((row) => [row.candidateId, ...row.counterpartIds])),
+    ];
+    const retainedEvidence = await this.candidateClaims.loadLatestEvidenceForCandidates(reviewIds);
+    const link = (id: string) =>
+      `http://localhost:5273/studio/research-campaigns/${campaign.id}/candidates/${id}`;
+    const holdout = result.predictions.filter((row) => row.partition === 'evaluation');
+    await mkdir(outDir, { recursive: true });
+    const latestRuns = [...new Set(runs.map((run) => run.sourceKey))].flatMap((sourceKey) => {
+      const run = runs.find(
+        (entry) =>
+          entry.sourceKey === sourceKey &&
+          ['succeeded', 'completed_with_rejections'].includes(entry.status),
+      );
+      return run === undefined ? [] : [run];
+    });
+    const recordsRead = (sourceRuns: typeof latestRuns) =>
+      sourceRuns.reduce(
+        (sum, run) => sum + (typeof run.stats.recordsRead === 'number' ? run.stats.recordsRead : 0),
+        0,
+      );
+    const report = {
+      ...result.report,
+      before: {
+        ...result.report.before,
+        sourceRecordsRead: recordsRead(
+          latestRuns.filter((run) => run.sourceKey !== 'overture_places'),
+        ),
+      },
+      after: { ...result.report.after, sourceRecordsRead: recordsRead(latestRuns) },
+      campaignId: campaign.id,
+      matcherVersion: MATCHER_VERSION,
+      artifactChecksums: [...new Set(runs.map((run) => run.artifact.sha256))].sort(),
+      acquisitionRuns: runs.map((run) => ({
+        id: run.id,
+        sourceKey: run.sourceKey,
+        parserVersion: run.parserVersion,
+        normalizerVersion: run.normalizerVersion,
+        startedAt: run.startedAt.toISOString(),
+        status: run.status,
+        stats: run.stats,
+      })),
+    };
+    await writeFile(
+      join(outDir, 'incremental-report.json'),
+      `${JSON.stringify(report, null, 2)}\n`,
+    );
+    await writeFile(
+      join(outDir, 'prediction-key.private.json'),
+      `${JSON.stringify(result.predictions, null, 2)}\n`,
+    );
+    await writeFile(
+      join(outDir, 'evidence.private.json'),
+      `${JSON.stringify(
+        {
+          retainedEvidence,
+          extractedClaims: claimSets.filter((row) => reviewIds.includes(row.id)),
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    await writeFile(
+      join(outDir, 'holdout-review.csv'),
+      toCsv(
+        [
+          'source_record_key',
+          'candidate_link',
+          'baseline_search_link',
+          'baseline_candidate_links',
+          'evidence_file',
+          'discovery_decision',
+          'pair_decision',
+          'counterpart_source_keys',
+          'attribute_target',
+          'attribute_decision',
+          'evidence_locator',
+          'evidence_urls',
+          'ambiguity',
+          'notes',
+          'reviewer_id',
+          'reviewer_type',
+          'reviewed_at',
+        ],
+        holdout.map((row) => ({
+          source_record_key: row.sourceRecordKey,
+          candidate_link: link(row.candidateId),
+          baseline_search_link: `http://localhost:5273/studio/research-campaigns/${campaign.id}?tab=candidates`,
+          baseline_candidate_links: row.counterpartIds.map(link).join(' | '),
+          evidence_file: 'evidence.private.json',
+        })),
+      ),
+    );
+    await writeFile(
+      join(outDir, 'review-manifest.json'),
+      `${JSON.stringify(
+        {
+          experimentVersion: report.experimentVersion,
+          matcherVersion: MATCHER_VERSION,
+          items: holdout.map((row) => ({
+            sourceRecordKey: row.sourceRecordKey,
+            partition: row.partition,
+          })),
+          reviewStatus: 'not_started',
+          labels: 0,
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    return {
+      outDir,
+      report: 'incremental-report.json',
+      holdoutRecords: holdout.length,
+      reviewStatus: 'not_started',
+    };
+  }
 
   async exportSample(researchCampaignId: string, outDir: string) {
     const campaign = await this.campaigns.findById(researchCampaignId);

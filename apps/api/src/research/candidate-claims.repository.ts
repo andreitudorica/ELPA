@@ -4,7 +4,7 @@ import { and, eq, inArray, sql } from 'drizzle-orm';
 import { DatabaseService, uuidV7 } from '../database';
 import { CURRENT_EXTRACTION_METHODS } from './acquisition/sources';
 import type { JsonValue, SourceKey } from './acquisition/source-record';
-import { candidates, claims, duplicateSuggestions } from './acquisition.schema';
+import { candidates, claims, duplicateSuggestions, evidence } from './acquisition.schema';
 import type { DuplicateSuggestionDraft } from './matching/duplicate-matcher';
 
 export interface CandidateClaimSet {
@@ -19,6 +19,25 @@ export interface CandidateClaimSet {
 @Injectable()
 export class CandidateClaimsRepository {
   constructor(private readonly database: DatabaseService) {}
+
+  /** Bounded review-pack export; retained Evidence has already been redacted. */
+  async loadLatestEvidenceForCandidates(ids: string[]) {
+    if (ids.length === 0) return [];
+    return this.database.executor
+      .select({
+        candidateId: candidates.id,
+        sourceKey: candidates.sourceKey,
+        sourceRecordKey: candidates.sourceRecordKey,
+        sourceRecordUrl: evidence.sourceRecordUrl,
+        payload: evidence.payload,
+        contentSha256: evidence.contentSha256,
+        observedAt: evidence.observedAt,
+        artifactId: evidence.firstSourceArtifactId,
+      })
+      .from(candidates)
+      .innerJoin(evidence, eq(evidence.id, candidates.latestEvidenceId))
+      .where(inArray(candidates.id, ids));
+  }
 
   /**
    * Each Candidate with the current Claims of its latest Evidence for the

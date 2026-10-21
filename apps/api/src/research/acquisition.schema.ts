@@ -26,7 +26,7 @@ import type {
 import { researchCampaigns } from './research.schema';
 
 const sourceKeyCheck = (column: unknown) =>
-  sql`${column} in ('situr_accommodation_register', 'osm_geofabrik_romania')`;
+  sql`${column} in ('situr_accommodation_register', 'osm_geofabrik_romania', 'overture_places')`;
 
 /**
  * A versioned file obtained from a source. Identified by checksum; the
@@ -54,7 +54,7 @@ export const sourceArtifacts = pgTable(
     check('source_artifact_source_key_check', sourceKeyCheck(table.sourceKey)),
     check(
       'source_artifact_reuse_terms_check',
-      sql`${table.reuseTerms} in ('odbl_1_0', 'ro_public_register_no_explicit_licence')`,
+      sql`${table.reuseTerms} in ('odbl_1_0', 'ro_public_register_no_explicit_licence', 'cdla_permissive_2_0')`,
     ),
     check(
       'source_artifact_retention_policy_check',
@@ -92,7 +92,7 @@ export const acquisitionRuns = pgTable(
   (table) => [
     index('acquisition_run_campaign_started_index').on(table.researchCampaignId, table.startedAt),
     check('acquisition_run_source_key_check', sourceKeyCheck(table.sourceKey)),
-    check('acquisition_run_stage_check', sql`${table.stage} in ('import')`),
+    check('acquisition_run_stage_check', sql`${table.stage} in ('import', 'extract')`),
     check(
       'acquisition_run_status_check',
       sql`${table.status} in ('running', 'succeeded', 'completed_with_rejections', 'failed')`,
@@ -237,17 +237,19 @@ export const claims = pgTable(
     value: exactJsonb('value').$type<JsonValue>().notNull(),
     evidenceLocator: jsonb('evidence_locator').$type<EvidenceLocator>().notNull(),
     extractionMethod: text('extraction_method').notNull(),
+    observationKey: text('observation_key').notNull().default(''),
     confidence: doublePrecision('confidence').notNull(),
     reviewStatus: text('review_status').notNull().default('proposed'),
     observedAt: timestamp('observed_at', { withTimezone: true }).notNull(),
     ...timestampColumns(),
   },
   (table) => [
-    uniqueIndex('claim_candidate_evidence_target_method_unique').on(
+    uniqueIndex('claim_candidate_evidence_target_method_observation_unique').on(
       table.candidateId,
       table.evidenceId,
       table.target,
       table.extractionMethod,
+      table.observationKey,
     ),
     index('claim_evidence_index').on(table.evidenceId),
     check('claim_confidence_check', sql`${table.confidence} >= 0 and ${table.confidence} <= 1`),

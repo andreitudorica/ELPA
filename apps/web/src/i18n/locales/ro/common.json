@@ -150,11 +150,13 @@
     },
     "sources": {
       "situr_accommodation_register": "Registrul oficial al structurilor de cazare (DGT / SITUR)",
-      "osm_geofabrik_romania": "OpenStreetMap (extras Geofabrik România)"
+      "osm_geofabrik_romania": "OpenStreetMap (extras Geofabrik România)",
+      "overture_places": "Overture Places (experiment limitat)"
     },
     "sourcesShort": {
       "situr_accommodation_register": "Registrul oficial",
-      "osm_geofabrik_romania": "OpenStreetMap"
+      "osm_geofabrik_romania": "OpenStreetMap",
+      "overture_places": "Overture Places"
     },
     "screening": {
       "plausible": "Plauzibil",
@@ -284,6 +286,15 @@
       "runHistoryTitle": "Istoric rulări",
       "outcome": "Rezultat",
       "errors": "Erori"
+    },
+    "extraction": {
+      "title": "Extragere experimentală de atribute",
+      "pending": "Doar afirmații propuse. Referințele și pasajele au trecut verificările tehnice; corectitudinea semantică nu a fost evaluată independent. Datele nu sunt verificate sau publicate.",
+      "historical": "Metodă sau dovadă istorică",
+      "source": "Versiunea dovezii {{version}} · {{field}} · pozițiile {{start}}–{{end}}",
+      "method": "Metodă: {{method}} · Ontologie: {{ontology}} · încredere necalibrată",
+      "qualifiers": "Dovadă: {{explicitness}} · Ambiguitate: {{ambiguity}} · Timp: {{temporal}}",
+      "conflicts": "Alte {{count}} afirmații curente propun valori diferite. Compară afirmațiile și dovezile originale de mai jos."
     }
   }
 }

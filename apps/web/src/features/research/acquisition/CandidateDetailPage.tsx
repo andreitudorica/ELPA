@@ -65,6 +65,7 @@ export function CandidateDetailPage({
   const { candidate, claims, evidence, runRecords, suggestions } = detail.data;
   const currentClaims = claims.filter((claim) => claim.current);
   const supersededClaims = claims.length - currentClaims.length;
+  const extractedClaims = claims.filter((claim) => claim.extraction !== null);
 
   return (
     <>
@@ -100,6 +101,70 @@ export function CandidateDetailPage({
             </Link>
           )}
         </Stack>
+
+        {extractedClaims.length > 0 && (
+          <AppCard title={t('acquisition.extraction.title')}>
+            <Stack spacing={2}>
+              <Alert severity="warning">{t('acquisition.extraction.pending')}</Alert>
+              {extractedClaims.map((claim) => {
+                const extraction = claim.extraction;
+                if (extraction === null) return null;
+                return (
+                  <Stack key={claim.id} id={`claim-${claim.id}`} spacing={1}>
+                    <Typography variant="subtitle2">
+                      {claim.target} · {formatClaimValue(claim.value)}
+                      {!claim.current ? ` · ${t('acquisition.extraction.historical')}` : ''}
+                    </Typography>
+                    <Typography
+                      component="blockquote"
+                      variant="body2"
+                      sx={{
+                        m: 0,
+                        pl: 2,
+                        borderLeft: 3,
+                        borderColor: 'divider',
+                        whiteSpace: 'pre-wrap',
+                      }}
+                    >
+                      {extraction.quote}
+                    </Typography>
+                    <Link href={`#evidence-${claim.evidenceId}`} variant="caption">
+                      {t('acquisition.extraction.source', {
+                        version: extraction.sourceVersion,
+                        field: extraction.fieldPath.join(' → '),
+                        start: extraction.start,
+                        end: extraction.end,
+                      })}
+                    </Link>
+                    <Typography variant="caption" color="text.secondary">
+                      {t('acquisition.extraction.method', {
+                        method: claim.extractionMethod,
+                        ontology: extraction.ontologyVersion,
+                      })}
+                    </Typography>
+                    <Typography variant="caption">
+                      {t('acquisition.extraction.qualifiers', {
+                        explicitness: extraction.explicitness,
+                        ambiguity: extraction.ambiguity,
+                        temporal: extraction.temporal.kind,
+                      })}
+                    </Typography>
+                    {extraction.temporal.text !== null && (
+                      <Typography variant="body2">{extraction.temporal.text}</Typography>
+                    )}
+                    {extraction.conflictingClaimIds.length > 0 && (
+                      <Alert severity="info">
+                        {t('acquisition.extraction.conflicts', {
+                          count: extraction.conflictingClaimIds.length,
+                        })}
+                      </Alert>
+                    )}
+                  </Stack>
+                );
+              })}
+            </Stack>
+          </AppCard>
+        )}
 
         <AppCard
           title={t('acquisition.candidate.claimsTitle')}
@@ -188,7 +253,7 @@ export function CandidateDetailPage({
         <AppCard title={t('acquisition.candidate.evidenceTitle')}>
           <Stack spacing={2}>
             {evidence.map((item) => (
-              <Stack key={item.id} spacing={1}>
+              <Stack key={item.id} id={`evidence-${item.id}`} spacing={1}>
                 <Typography variant="body2">
                   {t('acquisition.candidate.evidenceSummary', {
                     version: item.datasetVersion ?? '—',

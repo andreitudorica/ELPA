@@ -24,7 +24,7 @@ export const AcquisitionRunSchema = z
   .object({
     id: z.uuid(),
     sourceKey: SourceKeySchema,
-    stage: z.literal('import'),
+    stage: z.enum(['import', 'extract']),
     status: z.enum(['running', 'succeeded', 'completed_with_rejections', 'failed']),
     parserVersion: z.string(),
     normalizerVersion: z.string(),
@@ -157,6 +157,24 @@ export const CandidateDetailSchema = z
         evidenceId: z.uuid(),
         acquisitionRunId: z.uuid(),
         current: z.boolean(),
+        extraction: z
+          .object({
+            quote: z.string(),
+            fieldPath: z.array(z.string()),
+            start: z.number().int(),
+            end: z.number().int(),
+            documentId: z.string(),
+            sourceVersion: z.string(),
+            explicitness: z.string(),
+            ambiguity: z.string(),
+            scope: z.string(),
+            temporal: z.object({ kind: z.string(), text: z.string().nullable() }),
+            ontologyVersion: z.string(),
+            evaluationStatus: z.literal('independent_review_pending'),
+            grounding: z.literal('technically_validated'),
+            conflictingClaimIds: z.array(z.uuid()),
+          })
+          .nullable(),
       }),
     ),
     evidence: z.array(

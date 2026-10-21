@@ -1,0 +1,524 @@
+{
+  "version": "grp-attributes@1",
+  "attributes": [
+    {
+      "id": "sleeps_persons",
+      "target": "offer.sleeps_persons",
+      "entityLevel": "offer",
+      "meaning": "Maximum stated overnight accommodation capacity",
+      "unit": "persons",
+      "rule": "Lodging guests only; not seats, events, beds or tents.",
+      "positive": "Cazare pentru maximum 12 persoane.",
+      "negative": "Numeric counts have no negative value; zero is not absence.",
+      "ambiguous": "Capacitate 30 without lodging context.",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 100000
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "bedrooms_count",
+      "target": "offer.bedrooms_count",
+      "entityLevel": "offer",
+      "meaning": "Number of sleeping bedrooms",
+      "unit": "bedrooms",
+      "rule": "Dormitoare/bedrooms only; rooms may include other spaces.",
+      "positive": "6 dormitoare",
+      "negative": "No negative count.",
+      "ambiguous": "6 camere; 6 rooms",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 100000
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "bathrooms_count",
+      "target": "offer.bathrooms_count",
+      "entityLevel": "offer",
+      "meaning": "Number of bathrooms for the advertised accommodation",
+      "unit": "bathrooms",
+      "rule": "Do not count toilets or shared public facilities as bathrooms.",
+      "positive": "3 băi",
+      "negative": "No negative count.",
+      "ambiguous": "Baie comună without count",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 100000
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "exclusive_rental",
+      "target": "offer.exclusive_rental",
+      "entityLevel": "offer",
+      "meaning": "Whole accommodation can be booked exclusively",
+      "unit": null,
+      "rule": "Requires an explicit rental statement; a villa name is insufficient.",
+      "positive": "Cabana se închiriază integral.",
+      "negative": "Nu se închiriază integral.",
+      "ambiguous": "Booking rooms does not exclude a separate whole-property offer.",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "yard",
+      "target": "offer.yard",
+      "entityLevel": "offer",
+      "meaning": "Yard belonging to the accommodation",
+      "unit": null,
+      "rule": "Do not derive from lawn, photographs or nearby parks.",
+      "positive": "Proprietatea are curte.",
+      "negative": "Fără curte.",
+      "ambiguous": "Curtea vecinului",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "yard_area_m2",
+      "target": "offer.yard_area_m2",
+      "entityLevel": "offer",
+      "meaning": "Explicitly stated total yard area",
+      "unit": "m2",
+      "rule": "Normalize mp/m²/ha; not building, plot or usable event area. Preserve approximations.",
+      "positive": "Curte de 2.000 mp",
+      "negative": "No negative area.",
+      "ambiguous": "Teren de 2.000 mp does not establish yard area.",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 100000000
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "terrain",
+      "target": "offer.terrain",
+      "entityLevel": "offer",
+      "meaning": "Explicit yard terrain shape",
+      "unit": null,
+      "rule": "Large does not mean flat; preserve conflicting descriptions.",
+      "positive": "Curte plană; curte în pantă; curte terasată; curte cu teren mixt.",
+      "negative": "Not flat does not establish sloped.",
+      "ambiguous": "Curte mare",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "string",
+        "enum": ["flat", "sloped", "terraced", "mixed"]
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "lawn",
+      "target": "offer.lawn",
+      "entityLevel": "offer",
+      "meaning": "Grass or lawn on the property",
+      "unit": null,
+      "rule": "Requires grass/lawn evidence on the property.",
+      "positive": "Curte cu gazon.",
+      "negative": "Fără gazon.",
+      "ambiguous": "Pajiște în apropiere",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "enclosed_yard",
+      "target": "offer.enclosed_yard",
+      "entityLevel": "offer",
+      "meaning": "Yard is enclosed",
+      "unit": null,
+      "rule": "An enclosure statement does not establish child safety.",
+      "positive": "Curte împrejmuită.",
+      "negative": "Curte neîmprejmuită.",
+      "ambiguous": "Gard appears in a photograph",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "outdoor_grill",
+      "target": "offer.outdoor_grill",
+      "entityLevel": "offer",
+      "meaning": "Barbecue available at the property",
+      "unit": null,
+      "rule": "Not a nearby restaurant or a ban on lighting fires.",
+      "positive": "Grătar în curte.",
+      "negative": "Fără grătar.",
+      "ambiguous": "Restaurant grill în apropiere",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "outdoor_covered_area",
+      "target": "offer.outdoor_covered_area",
+      "entityLevel": "offer",
+      "meaning": "Gazebo or explicitly covered outdoor seating",
+      "unit": null,
+      "rule": "A generic terrace is not a gazebo or covered space.",
+      "positive": "Foișor; terasă acoperită.",
+      "negative": "Fără foișor is a negative passage, not a positive enum value.",
+      "ambiguous": "Terasă without roof statement",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "string",
+        "enum": ["gazebo", "covered_seating"]
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "outdoor_kitchen",
+      "target": "offer.outdoor_kitchen",
+      "entityLevel": "offer",
+      "meaning": "Outdoor kitchen at the property",
+      "unit": null,
+      "rule": "Indoor/shared kitchen does not establish outdoor kitchen.",
+      "positive": "Bucătărie de vară.",
+      "negative": "Fără bucătărie de vară.",
+      "ambiguous": "Bucătărie complet utilată",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "fire_pit",
+      "target": "offer.fire_pit",
+      "entityLevel": "offer",
+      "meaning": "Dedicated outdoor fire pit",
+      "unit": null,
+      "rule": "Indoor fireplace and barbecue are separate.",
+      "positive": "Vatră de foc în curte.",
+      "negative": "Fără vatră de foc.",
+      "ambiguous": "Șemineu",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "pool",
+      "target": "offer.pool",
+      "entityLevel": "offer",
+      "meaning": "Pool belonging to or explicitly offered by the accommodation",
+      "unit": null,
+      "rule": "Nearby public pools are excluded; closure in winter is not absence.",
+      "positive": "Piscină în curte.",
+      "negative": "Nu avem piscină.",
+      "ambiguous": "Piscină publică la 500 m",
+      "temporal": "Existence and operating season are separate attributes.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "hot_tub",
+      "target": "offer.hot_tub",
+      "entityLevel": "offer",
+      "meaning": "Hot tub or ciubăr offered at the property",
+      "unit": null,
+      "rule": "Nearby spas do not qualify; do not infer heating or year-round use.",
+      "positive": "Ciubăr; hot tub.",
+      "negative": "Fără ciubăr.",
+      "ambiguous": "Centru spa în apropiere",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "sauna",
+      "target": "offer.sauna",
+      "entityLevel": "offer",
+      "meaning": "Sauna offered at the property",
+      "unit": null,
+      "rule": "Do not infer from spa alone.",
+      "positive": "Saună.",
+      "negative": "Nu avem saună.",
+      "ambiguous": "Acces la spa în oraș",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "recreation",
+      "target": "offer.recreation",
+      "entityLevel": "offer",
+      "meaning": "Explicitly listed recreational facility",
+      "unit": null,
+      "rule": "One fact per listed allowed facility; no inferred event suitability.",
+      "positive": "Masă de ping-pong; teren de tenis.",
+      "negative": "Negative facility passages are annotated but not positive enum facts.",
+      "ambiguous": "Football stadium nearby",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "string",
+        "enum": ["table_tennis", "tennis", "football", "basketball", "billiards", "playground"]
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "parties_allowed",
+      "target": "offer.parties_allowed",
+      "entityLevel": "offer",
+      "meaning": "Explicit permission or refusal for private parties/events",
+      "unit": null,
+      "rule": "Silence, facilities, team-building and marketing photos do not imply permission.",
+      "positive": "Acceptăm evenimente private.; Petreceri doar cu acord prealabil.",
+      "negative": "Nu organizăm petreceri.",
+      "ambiguous": "Ideal pentru grupuri",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "string",
+        "enum": ["yes", "no", "by_arrangement"]
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "team_building",
+      "target": "offer.team_building",
+      "entityLevel": "offer",
+      "meaning": "Team-building explicitly advertised",
+      "unit": null,
+      "rule": "This is an advertisement, not proof of capacity or event permission.",
+      "positive": "Organizăm team-building.",
+      "negative": "Nu acceptăm team-building.",
+      "ambiguous": "Ideal pentru echipe without activity statement",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "max_daytime_guests",
+      "target": "offer.max_daytime_guests",
+      "entityLevel": "offer",
+      "meaning": "Maximum stated event attendance",
+      "unit": "persons",
+      "rule": "Requires event/party attendance context; never reuse overnight capacity.",
+      "positive": "Evenimente pentru maximum 50 persoane.",
+      "negative": "No negative count.",
+      "ambiguous": "Capacitate 50 without event context",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 100000
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "music_policy",
+      "target": "offer.music_policy",
+      "entityLevel": "offer",
+      "meaning": "Explicit music restriction or permission",
+      "unit": null,
+      "rule": "Keep restriction text; permission does not imply private-event permission.",
+      "positive": "Muzica este permisă.",
+      "negative": "Muzica este interzisă.; Fără muzică amplificată.",
+      "ambiguous": "Zonă liniștită",
+      "temporal": "Retain hours/season in the supporting passage.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "string",
+        "enum": ["prohibited", "amplified_prohibited", "restricted", "permitted"]
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "outdoor_events",
+      "target": "offer.outdoor_events",
+      "entityLevel": "offer",
+      "meaning": "Explicitly advertised outdoor event hosting",
+      "unit": null,
+      "rule": "Yard/gazebo does not establish event suitability or permission.",
+      "positive": "Organizăm evenimente în aer liber.",
+      "negative": "Nu acceptăm evenimente în aer liber.",
+      "ambiguous": "Curte mare pentru relaxare",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "boolean"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "quiet_hours",
+      "target": "offer.quiet_hours",
+      "entityLevel": "offer",
+      "meaning": "Explicit daily quiet-hours interval",
+      "unit": "local clock time",
+      "rule": "Normalize an interval to HH:mm-HH:mm; may cross midnight. No timezone conversion.",
+      "positive": "Ore de liniște 22:00-08:00.",
+      "negative": "Absence of an interval is unknown.",
+      "ambiguous": "Liniște după apus",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "string",
+        "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "pool_availability",
+      "target": "offer.pool_availability",
+      "entityLevel": "offer",
+      "meaning": "Explicit pool operating season",
+      "unit": null,
+      "rule": "Separate from pool existence; a seasonal closure cannot become pool=false.",
+      "positive": "Piscină deschisă tot anul.; Piscina este închisă iarna.",
+      "negative": "Negative seasonal closure maps seasonal, not absence.",
+      "ambiguous": "Piscină încălzită does not mean year-round.",
+      "temporal": "year_round or seasonal; exact source qualification retained.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "string",
+        "enum": ["seasonal", "year_round"]
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    },
+    {
+      "id": "beds_count",
+      "target": "offer.beds_count",
+      "entityLevel": "offer",
+      "meaning": "Number of accommodation beds",
+      "unit": "beds",
+      "rule": "Beds are not persons or bedrooms; exclude camp pitches.",
+      "positive": "8 paturi",
+      "negative": "No negative count.",
+      "ambiguous": "8 locuri without bed context",
+      "temporal": "Observation time only unless the passage states a restriction.",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 100000
+      },
+      "examplesLanguage": "ro",
+      "unknown": "No supported statement; emit no Claim. Never convert silence into false.",
+      "notApplicable": "Annotator judgment with rationale; emit no Claim. Do not infer from property type.",
+      "negativeSemantics": "Boolean false or parties_allowed=no where defined. For positive-only enums/counts, annotate explicit negative without a normalized positive fact."
+    }
+  ]
+}

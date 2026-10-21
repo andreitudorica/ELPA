@@ -55,6 +55,11 @@ Product reads. No Candidate becomes Verified or Published.
 
 ## Results in one paragraph
 
+The next-source follow-up is recorded separately in
+[`next-source-value`](../next-source-value/README.md): one bounded Overture
+experiment, with an inconclusive investment result and independent review
+pending. The baseline measurements below remain the original two-source result.
+
 Both priority sources were imported end to end: 32,231 register certificates
 (15 rejected) and 10,645 OSM accommodation objects, with stable digests
 across repeated runs and byte-different downloads. The matcher compared

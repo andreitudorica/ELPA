@@ -1,0 +1,138 @@
+{
+  "corpusManifestSha256": "6e492e4a7a447c896e686685403fb86d6259a0a39624b21357fa85c0afd06b43",
+  "method": "grp-text-rules@2",
+  "documents": 48,
+  "proposedFacts": 22,
+  "processingMs": 7.2490830000000415,
+  "externalCalls": 0,
+  "observedExternalCost": {
+    "amount": 0,
+    "currency": "EUR"
+  },
+  "localComputeAndStorageCost": null,
+  "engineeringCost": null,
+  "ai": "not_executed",
+  "outcomes": [
+    {
+      "runId": "01a15edf-76c9-750e-b859-823330c28b74",
+      "stats": {
+        "corpusManifestSha256": "6e492e4a7a447c896e686685403fb86d6259a0a39624b21357fa85c0afd06b43",
+        "recordsRead": 32,
+        "recordsParsed": 32,
+        "recordsRejected": 0,
+        "claimsCreated": 0,
+        "claimsUnchanged": 10,
+        "proposedFacts": 10,
+        "evidenceCreated": 0,
+        "candidatesCreated": 0,
+        "evaluationStatus": "independent_review_pending",
+        "externalCalls": 0
+      },
+      "outputDigest": "a8d2ad64a885a8b312eea6b3fa622b18d6ed4d60ef202c62543afba9dd86fb6a"
+    },
+    {
+      "runId": "01a15edf-76e3-70ea-93e6-996a63c123bd",
+      "stats": {
+        "corpusManifestSha256": "6e492e4a7a447c896e686685403fb86d6259a0a39624b21357fa85c0afd06b43",
+        "recordsRead": 4,
+        "recordsParsed": 4,
+        "recordsRejected": 0,
+        "claimsCreated": 0,
+        "claimsUnchanged": 0,
+        "proposedFacts": 0,
+        "evidenceCreated": 0,
+        "candidatesCreated": 0,
+        "evaluationStatus": "independent_review_pending",
+        "externalCalls": 0
+      },
+      "outputDigest": "7decb25b84fa8a717de03b8c12e65d76d320f663d345eb7f637d6d35dd22f937"
+    },
+    {
+      "runId": "01a15edf-76e8-7896-9aff-0376f20c6f9c",
+      "stats": {
+        "corpusManifestSha256": "6e492e4a7a447c896e686685403fb86d6259a0a39624b21357fa85c0afd06b43",
+        "recordsRead": 12,
+        "recordsParsed": 12,
+        "recordsRejected": 0,
+        "claimsCreated": 0,
+        "claimsUnchanged": 12,
+        "proposedFacts": 12,
+        "evidenceCreated": 0,
+        "candidatesCreated": 0,
+        "evaluationStatus": "independent_review_pending",
+        "externalCalls": 0
+      },
+      "outputDigest": "68c80a6f0fe3fabe4c929f540aeafa713ab5f25419812a06790b5f687a83a326"
+    }
+  ],
+  "privateArtifactSizes": [
+    {
+      "name": "acquisition-after.json",
+      "bytes": 28865
+    },
+    {
+      "name": "ai-protocol.json",
+      "bytes": 11211
+    },
+    {
+      "name": "annotation-schema.json",
+      "bytes": 10587
+    },
+    {
+      "name": "annotation-template.private.json",
+      "bytes": 209980
+    },
+    {
+      "name": "corpus.private.json",
+      "bytes": 67165
+    },
+    {
+      "name": "deterministic-output.private.json",
+      "bytes": 135547
+    },
+    {
+      "name": "deterministic-score.json",
+      "bytes": 38887
+    },
+    {
+      "name": "execution.json",
+      "bytes": 2220
+    },
+    {
+      "name": "manifest.json",
+      "bytes": 31437
+    },
+    {
+      "name": "method-comparison.json",
+      "bytes": 43087
+    },
+    {
+      "name": "observed-report.json",
+      "bytes": 6872
+    },
+    {
+      "name": "ontology.json",
+      "bytes": 26883
+    },
+    {
+      "name": "prediction-review.private.json",
+      "bytes": 25666
+    },
+    {
+      "name": "sample.lock",
+      "bytes": 0
+    }
+  ],
+  "history": {
+    "grp-text-rules@1": {
+      "storedClaims": 25,
+      "proposedFacts": 25,
+      "status": "superseded; aggregate snapshot retained in data/v1"
+    },
+    "grp-text-rules@2": {
+      "storedClaims": 22,
+      "proposedFacts": 22,
+      "status": "current; independent evaluation incomplete"
+    }
+  }
+}

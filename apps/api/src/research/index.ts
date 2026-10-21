@@ -5,7 +5,9 @@ export type { AcquisitionRunOutcome, ArtifactManifest } from './acquisition-run.
 export { AcquisitionReportService } from './acquisition-report.service';
 export { DuplicateSuggestionService } from './duplicate-suggestion.service';
 export { EvaluationService } from './evaluation.service';
+export { ExtractionService } from './extraction.service';
 export { BASELINE_CAMPAIGN } from './baseline-campaign';
 export { SOURCE_DEFINITIONS } from './acquisition/sources';
 export { SOURCE_KEYS } from './acquisition/source-record';
 export type { SourceKey } from './acquisition/source-record';
+export { createOvertureSampleArtifact, scoreIncrementalReviewFiles } from './next-source/artifacts';

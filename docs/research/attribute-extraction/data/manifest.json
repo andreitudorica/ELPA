@@ -1,0 +1,652 @@
+{
+  "version": "grp-text-corpus@1",
+  "seed": "elpa-primary-text-2026-10",
+  "campaignId": "01a15d8d-edc4-7a6d-bc18-26af6cccfdf3",
+  "frameSize": 42878,
+  "groupCount": 34362,
+  "nearDuplicateEdges": 1,
+  "selected": 48,
+  "strata": {
+    "development:osm_geofabrik_romania:rural:empty": {
+      "population": 1531,
+      "selected": 2
+    },
+    "development:osm_geofabrik_romania:rural:long_description": {
+      "population": 25,
+      "selected": 2
+    },
+    "development:osm_geofabrik_romania:rural:short_description": {
+      "population": 31,
+      "selected": 2
+    },
+    "development:osm_geofabrik_romania:rural:structured_only": {
+      "population": 70,
+      "selected": 2
+    },
+    "development:osm_geofabrik_romania:urban:empty": {
+      "population": 1400,
+      "selected": 2
+    },
+    "development:osm_geofabrik_romania:urban:long_description": {
+      "population": 26,
+      "selected": 2
+    },
+    "development:osm_geofabrik_romania:urban:short_description": {
+      "population": 21,
+      "selected": 2
+    },
+    "development:osm_geofabrik_romania:urban:structured_only": {
+      "population": 58,
+      "selected": 2
+    },
+    "development:overture_places:unknown:empty": {
+      "population": 5,
+      "selected": 2
+    },
+    "development:situr_accommodation_register:rural:structured_only": {
+      "population": 3712,
+      "selected": 2
+    },
+    "development:situr_accommodation_register:unknown:structured_only": {
+      "population": 640,
+      "selected": 2
+    },
+    "development:situr_accommodation_register:urban:structured_only": {
+      "population": 5216,
+      "selected": 2
+    },
+    "holdout:osm_geofabrik_romania:rural:empty": {
+      "population": 3715,
+      "selected": 2
+    },
+    "holdout:osm_geofabrik_romania:rural:long_description": {
+      "population": 32,
+      "selected": 2
+    },
+    "holdout:osm_geofabrik_romania:rural:short_description": {
+      "population": 75,
+      "selected": 2
+    },
+    "holdout:osm_geofabrik_romania:rural:structured_only": {
+      "population": 165,
+      "selected": 2
+    },
+    "holdout:osm_geofabrik_romania:urban:empty": {
+      "population": 3199,
+      "selected": 2
+    },
+    "holdout:osm_geofabrik_romania:urban:long_description": {
+      "population": 54,
+      "selected": 2
+    },
+    "holdout:osm_geofabrik_romania:urban:short_description": {
+      "population": 55,
+      "selected": 2
+    },
+    "holdout:osm_geofabrik_romania:urban:structured_only": {
+      "population": 188,
+      "selected": 2
+    },
+    "holdout:overture_places:unknown:empty": {
+      "population": 12,
+      "selected": 2
+    },
+    "holdout:situr_accommodation_register:rural:structured_only": {
+      "population": 8875,
+      "selected": 2
+    },
+    "holdout:situr_accommodation_register:unknown:structured_only": {
+      "population": 1477,
+      "selected": 2
+    },
+    "holdout:situr_accommodation_register:urban:structured_only": {
+      "population": 12296,
+      "selected": 2
+    }
+  },
+  "artifacts": [
+    {
+      "sha256": "9eff756d49a9a77ff354a98c2b0b5674eaed9cbd88e24399464248b69cfb948a",
+      "version": "2026-10-19T20:21:11.000Z"
+    },
+    {
+      "sha256": "d4854cff79bc1d92508d7845591e2041351f0d98c247b13437b9cf8824a9433b",
+      "version": "2026-10-21"
+    },
+    {
+      "sha256": "c71f14ddf0612f15c5b2e890658624d5efa0690bc1554acd5a9eb6ae0428af60",
+      "version": "2026-09-23.1"
+    }
+  ],
+  "excludedFields": 4,
+  "items": [
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/1455981747",
+      "documentId": "007ff78ed28b5f2f9ca52dc2dd05729a98f4942d312fc72b90c477b3501e9190",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "ac78fdf8bf2e869f3ebf2691b6ad20c5e726dfc9bf630e097d5965af711f8fbe",
+      "group": "c7e4be9513fb6c6eb417741afd2b50c53888c5ee6663226ccb3f0517ac4bbf10",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:rural:empty",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "overture_places",
+      "sourceRecordKey": "a55c0bd6-6909-4d45-ba5d-d336b50fcf5e",
+      "documentId": "07510e34cee0f0f45cf4b5046d13bf71b090763ee12f0da77af4b70248fb958e",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "5d2d0b97d7acb9c965b19436775f7ceffc8798c954da451b6c9f81309b0b839e",
+      "group": "0ba282a233d99a09cd277cc367c9385af31ad337f94f2f0953e97262ff8c8b40",
+      "partition": "holdout",
+      "stratum": "overture_places:unknown:empty",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/5291662939",
+      "documentId": "1318f7a6884d85f7ed9b3fa96a60888c54829c2388bded9152015f73929c2c73",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "72d8f3533c4d5339e1953de65333ed2b2a46bc8b6cbc890e1cccf4b3e398e542",
+      "group": "c72bf79ec74028a0f1a696f9c1457d20fa9288af45e8877b9971e14b516d2862",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:rural:empty",
+      "countyCode": "RO-AB"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/8203085117",
+      "documentId": "293accce0daa9b00e78decd155807840187d2c56ccbdf7663512a12ea7a65056",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "785631f1feacb0750a58a0e637f2cb77a77eebf656567f15043acb693c7d320f",
+      "group": "8782a610a7eb38d44ceb41d7ac6ebe306134f0a121656708bf94d1f935bdf7c5",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:urban:empty",
+      "countyCode": "RO-BR"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "way/653401951",
+      "documentId": "2a7527533a183d43c24ff1bdb1a1ef3291b801e821618fc4d9e9e7db40462319",
+      "textSha256": "5e34501f92244de27eccca292b378bf80ad6efba1a298132388c99d820f45036",
+      "evidenceSha256": "70aa953fed0f497a7306e50c1c90b93f54fb527fcf9b1b4182703fb2f9fc85ec",
+      "group": "422db904973bb66ec06f20451d40bae64ca82d01a8c23ae040eba157c698f43d",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:urban:short_description",
+      "countyCode": "RO-CS"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:14057|2011-03-21|1df66d08a7bf",
+      "documentId": "2b6840166dea888296c2bd41c9f9b08cf0ead05e2f184021b7819e47ce2282e1",
+      "textSha256": "bad4d0429e6a8540d18d8b6379caa5b1556f15ecde427976795bed15d24bb9a7",
+      "evidenceSha256": "9a2fd0d0d9ce5dc0b5c9ea3d07de451acb2bff5bc038bb246dfecd507305d011",
+      "group": "362b40edae88868a337f5f35be784fa76a38d595ce4ed73d5c8ce4f3cd62de4a",
+      "partition": "development",
+      "stratum": "situr_accommodation_register:rural:structured_only",
+      "countyCode": "RO-BH"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "way/1182259647",
+      "documentId": "2d1037812dfbd9130232790e6e94c6882e2f8543a7d849a71bb6288fca66aa1b",
+      "textSha256": "085f29bc27a8dfd10d5b9b8f89230a3189b9865c9f1d4a2e2b6d70c5b4c73e24",
+      "evidenceSha256": "4fc3d8ac17539f7a2d2c390271b6e147b652d55312ac4a1d6c0f5ce66a8750d5",
+      "group": "f9c1c1dba4e29c8da34ed8db69bac34cb746af6d0429beeaa2f97f97a60cfcdd",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:rural:structured_only",
+      "countyCode": "RO-AG"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/13822397493",
+      "documentId": "2e355e989b258f4507a9e6767d4ecaf84bcb90aa4e50280e8ad447dd59bd34a5",
+      "textSha256": "8b112f69579c44585f5156e420bcd2908494eafc87a64d7a451f7257abf8e691",
+      "evidenceSha256": "ad7448c4e7e83ddaaefcb0c9f6ad00cf1b3cc7f9f2198da18ddbf3a889fd4957",
+      "group": "0a36d85beec45db60d00aa7c6d90a922466ae51d9e018d21be292d13672ac468",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:urban:structured_only",
+      "countyCode": "RO-AG"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:48121|2026-09-04|ad07774d4bb0",
+      "documentId": "31e2bcabda1420aad25770f0a4d434628442e3c99bbf2c97c85a3b2cb88dbd03",
+      "textSha256": "af59771dbdf34b9ced6cec0f523877f2ff00169ea362b53f5078b1fedf2c7858",
+      "evidenceSha256": "3ecc7d49bbe5e2febee85bc28710fe004d9135d516e4835a432fabd7bb3b5889",
+      "group": "d5e675e0af494c91de72f86be6f8b7ab08173758ea48684925d25e4a7bb58990",
+      "partition": "development",
+      "stratum": "situr_accommodation_register:unknown:structured_only",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/8599869844",
+      "documentId": "32ea39de5ded154fa67ed139b7ee16c888052471f6be8be63703a2536cbdfb6e",
+      "textSha256": "6c7e39fd5ceee6fd027b29dd50ca40a89a5c7ed4aa81c5d7665f038881859e55",
+      "evidenceSha256": "13f365e9d476bd2658be6c589e99ec0b57b827705874db16ac688782cf6f1165",
+      "group": "c51200c21a9409a01bd6edd0adf9f6b915ae1da88d73bc54aa8870029ca8d7b6",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:rural:structured_only",
+      "countyCode": "RO-BZ"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/12122792572",
+      "documentId": "3ff745b224d6d66bc4af40c7f509fe37ee04cc2c2271f3effb24631af0838830",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "4b9d22e279870a16801dc6cfc4862a9a84f6334eb42b6fd161e1abd68a1ca4e2",
+      "group": "82262648a009d92fe63aad2b4f2fe18340905ff78ae7218bb4e9344dae903d94",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:rural:empty",
+      "countyCode": "RO-SB"
+    },
+    {
+      "sourceKey": "overture_places",
+      "sourceRecordKey": "d595e73b-47ef-4fb4-8288-2ad200dbe044",
+      "documentId": "45eda676a63624a424c813de6d233f5179728a59085480f9700e11d52d3d012f",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "8c751170a9389962392ed43aa2c88e2260cc1cd5e9072cca91b8a366b96c4c00",
+      "group": "60acd5561301049da281425e82f51bf3cf4563b6ec7e39edb63a8f2ec3c67963",
+      "partition": "development",
+      "stratum": "overture_places:unknown:empty",
+      "countyCode": "RO-HR"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/8499788502",
+      "documentId": "4842b2439fef95ef932a72c29a0dacd68e648efb88d5d22d359da05929182fb1",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "47296d132821790adff7b98a85d5878e935510f75d9dc40e9e0702a6db990391",
+      "group": "424e593a4a6285d2133b3f2fcce253b275dd4e3842fe2225fb4e5e457306e1de",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:rural:empty",
+      "countyCode": "RO-NT"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:41838|2025-03-12|45f88248b318",
+      "documentId": "4a6f3583d57f74db16f9c35f188c4681ea43f9d992a5e6e81e2ec252c4d2eaa2",
+      "textSha256": "3d979a01e46925d119500d37e6aaf05b9a561eed3f0f6c2aac61145990a9cd1f",
+      "evidenceSha256": "7c07e21c7c4735a4f05ffa3f19b015a0cfe530c0ded229f356934eeef656965d",
+      "group": "f9ec7e13bfec7d46d1b312db83f2065d620f3f2dd3547c8357abd726760c2e13",
+      "partition": "development",
+      "stratum": "situr_accommodation_register:urban:structured_only",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:23192|2021-05-27|4b84d2a66f3a",
+      "documentId": "4ae6a9e0271100426748a4eebf05a93cab4a94b80eb37d98fbade73df13e87b9",
+      "textSha256": "66cc48bfe81aa7c0a699a1bd58f45e4148c4b9f410c22d3a099384d2fce30341",
+      "evidenceSha256": "89d0b417359e41c0aeb380d9323d12350bc043e12ace580a7c5dc2efc5e79182",
+      "group": "cb66bab84080a462a14ded61f3d6ad310609c3887ebc5c7e6041a7616ee35f64",
+      "partition": "development",
+      "stratum": "situr_accommodation_register:rural:structured_only",
+      "countyCode": "RO-AB"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/2525594462",
+      "documentId": "4ceb244df20a84d0bc87df9f2ef9739231538c656c7589942c0ad914f03be396",
+      "textSha256": "7ebe4ef6b77afa21245c93da8040ca7daf875cd79c63a1ba66c3659e7df579bc",
+      "evidenceSha256": "33d837d37f3c4bb092d1ac2426b8c0fb9888dcc5f781df8db29763c1bd272a5a",
+      "group": "379da55d6a736034f9f9a702c5bfd82b1061053563083e4a82a1d7c67a3001d8",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:urban:structured_only",
+      "countyCode": "RO-TM"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:43075|2025-07-04|9e5cfc10f237",
+      "documentId": "4e59ccdd58f825fdd7b6a2b7ef4e0287392bfe30cd621fda047945439024aa34",
+      "textSha256": "3d979a01e46925d119500d37e6aaf05b9a561eed3f0f6c2aac61145990a9cd1f",
+      "evidenceSha256": "31612b6326a815b68c612151f4d2af39cea42d4f458b67a8d6fed70dc06005e7",
+      "group": "9e00cec79ea8c69e6b3f1bf00aab5344ba212b6b1b1d80380db5de62eebb6243",
+      "partition": "holdout",
+      "stratum": "situr_accommodation_register:urban:structured_only",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/2577034345",
+      "documentId": "4f820887c4834c8538eeeef81e08b95298c4d739fc4f7e471ec6cf399aa06b31",
+      "textSha256": "5ae2f2d7774015063f6651e4097d98ea2038480df39a73f2419800da9e4a701f",
+      "evidenceSha256": "b4710880336c9e9a7c4d06dd7aefd020181142ae7c89d25b798acc6d2a889092",
+      "group": "68a8cb8bb74f00f00b13eaac3e1678ec08f1881355f60a7c6b46b73e73f0ca57",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:rural:short_description",
+      "countyCode": "RO-TL"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/2624388862",
+      "documentId": "564010c3362f5b16479fa87660d54043c86525aa4ba6294fde8624ea813541eb",
+      "textSha256": "e00cec97d64d5a5d8a69fcdaeb8fe8ff2e916ca1a60f8c8f18800278d75aa926",
+      "evidenceSha256": "8f92341dc20f2d1dc76b7cae25b04a882bf49ce081beb2e0c75ef709bb0d29a2",
+      "group": "af0ea2636242c265c683b4f1d33c578c19389cade91800515cc43b788047c414",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:urban:long_description",
+      "countyCode": "RO-VN"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:34127|2023-03-28|a4045635c070",
+      "documentId": "59ce72d8c2399c9ae6c118ce370cd506c9bff1411b3244a59db6d1b52bea0cbd",
+      "textSha256": "b9db626ed5e9929b493d9bb0c23a1ff359044882135d613adb8a7db36792527f",
+      "evidenceSha256": "57ba705d8b328f55bc133f1bfd2435804f9fc511f11544a1ba2f98387ba1f423",
+      "group": "43fcbf70600e5ba746bbb72a3d488f427680438e536a309986cb80a4029afa26",
+      "partition": "holdout",
+      "stratum": "situr_accommodation_register:unknown:structured_only",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/3239741233",
+      "documentId": "5b80f70e393dff63f18a7c0a01c15b44a1536353c9a879b11610b24249ae29ef",
+      "textSha256": "61edecd09368ba5612652950a98187b37d363930dfdb4ebf455cb6d4dac06ea3",
+      "evidenceSha256": "749551359185559d7eed478d6a38c06f83d1093faf90bb08160e5b8c2b2bce8b",
+      "group": "0f021d22b522c026b0133a890e7fc7d705225bc92d64eb822d61773f04a13a59",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:urban:long_description",
+      "countyCode": "RO-CJ"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "way/272868313",
+      "documentId": "61bf2ba072f9b0821b2c093483ece333e24d361bebf079ee123b00e5b6bf0d81",
+      "textSha256": "c924f5fec36237217d9f140fabd90a919d4dc3c3a91781316dfdf9db67e56a46",
+      "evidenceSha256": "b4a6fa7dd7f84e01c4e3fdc5d7b03ff6edd78575719d5daa74f05ab3c25ea3b6",
+      "group": "6966ec74091e7f813f911984b2954cd5c3758c3473aba0e5d4a8fc6268caab1c",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:urban:long_description",
+      "countyCode": "RO-BV"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:14168/8781|2014-09-02|7796dbb5af6e",
+      "documentId": "63bef1d3d260afbd1bbb549332d449287069136bac5bdad99a298833925f3121",
+      "textSha256": "e1866e6dced72a144aacaef22eccd31d462e0f3ad5595a40b124a588cd830872",
+      "evidenceSha256": "de063a87d511518093631bdadcbf4c72708d31b1094fb2c8621020815b336254",
+      "group": "dfbd6541ca59d66999b4ca6f6f48333e2da220eadada814d1a01031b9e4b1a8b",
+      "partition": "holdout",
+      "stratum": "situr_accommodation_register:rural:structured_only",
+      "countyCode": "RO-TL"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "way/262401757",
+      "documentId": "823cfb808c4c0ac9d15900be9a9283d95740a50896705cb2f25fbdb2113cfc3e",
+      "textSha256": "7a5ca6adf93ca5f2e8160d71ca79c3409d00116554a2612c5f78577fe4b28203",
+      "evidenceSha256": "73bdd20569c8df81a517c3aeb622614515201e924eaa6a1fb638db9d15f50b6d",
+      "group": "213681ffe8ffa00626ff72507d32b429d0a1d5e9b8587aab45b09fe5c543f08b",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:urban:short_description",
+      "countyCode": "RO-HD"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "way/193872513",
+      "documentId": "873bdd5efdf1fb1a05cf344e2c8f45e71b800f624991623924aee604baef9ff6",
+      "textSha256": "0c405152a37512e6a1d1c14e3b4cb07538c8f1ce22f182a017f3d841b82ba06b",
+      "evidenceSha256": "3e851391f75545662b37bc4415912e21a8d22a88086500c7364587e795a0ae09",
+      "group": "9a81aaec77bdfc91ee0222cfafa3de2e508e548bfa9f8d3e7bb173b99617cece",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:urban:structured_only",
+      "countyCode": "RO-B"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:15398|2011-08-10|16dab4df253c",
+      "documentId": "87e72a11e0d339d4e18efea3b0ce2515ba66939bf371f7ecf1bdcfe3b4d50615",
+      "textSha256": "927db31ef6b0c2c2c5ff94327d68958b39466e5259858b03aa694bdf4fd0ee8b",
+      "evidenceSha256": "83753073d69c932deaec55af3d4dcac99e810aa18f6c10a0c228886a11d15870",
+      "group": "685ca6372267db3d55cb7083cda794c5ce566427007a7b090039448a9446746f",
+      "partition": "holdout",
+      "stratum": "situr_accommodation_register:unknown:structured_only",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/2505948812",
+      "documentId": "881e3ea8ba1737d0ca4a7e6b0371207d06bc80d126b3c9a7229329f79dcb6844",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "d7c9f5e338949458fe73177baffb3c4150f1a5759aa0c5188b19a900a5af72fa",
+      "group": "30fbf65f526536bfe4f226ac1faaccfae0ab2e2e0d791c6f0ef24dfa318c10f3",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:urban:empty",
+      "countyCode": "RO-AG"
+    },
+    {
+      "sourceKey": "overture_places",
+      "sourceRecordKey": "22b9b163-2091-4887-8106-25c6e833ab80",
+      "documentId": "8eaf7967817b000d64203822debb67c4c0ac52ff60369c6d0b5df3d7cc90fa8e",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "48dcae2650539abb2a102c5f63d739b050914422aa5edf3870b8d084183e00ff",
+      "group": "1f9ccd91b5d9eca34c892bee16c58154398825a2dfe8c07cce4ed8e7bfdce2ca",
+      "partition": "holdout",
+      "stratum": "overture_places:unknown:empty",
+      "countyCode": "RO-CJ"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/471225575",
+      "documentId": "90f84dd665befec8455daa2f4438d1ca6d4b8791ddf475fe01d39cd259d1b21c",
+      "textSha256": "e7e21d63ab66a478732f860da7d8bee6490973465ecd31844330561f5cbc51cd",
+      "evidenceSha256": "99438627df099ce040eda5f1412458adff9e7fd0d34cf9054bd5867f87d72fac",
+      "group": "2fcf036a3d0bd26795d92827105bc797c159ba56dea1b0a27d585a8609140eb7",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:rural:short_description",
+      "countyCode": "RO-AG"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:31863|2022-08-04|6db275cbf0c2",
+      "documentId": "a38a51e4d5a1d70a8ef0775a60eb1599c64795bafc280347de009febaf8498e4",
+      "textSha256": "d131a59f41aa527958cdd7bf01b968a2444eafa14dc6d491bfed8101ef5a0d31",
+      "evidenceSha256": "ccb166be4dcc130f0d1b2edbf09a4c393ba61661c9cde3443574f0fd94b7cc77",
+      "group": "3e97192a3b71d6ff4df32f67fb3891058441f320bf749d43f7bc4c2f8a60194d",
+      "partition": "holdout",
+      "stratum": "situr_accommodation_register:rural:structured_only",
+      "countyCode": "RO-AB"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "way/241785507",
+      "documentId": "a94b8a98fa8aec09c44a70b8e83e6d53f7ad65117cf604bdf238cf5d41d1c7c9",
+      "textSha256": "510b0e85c1e0579415c527e1c9975e0e54811241a2200ec9e96a936a745d1031",
+      "evidenceSha256": "31fe06f230b749e17c920db28988f97606eb8ee57dc5bff638bc5243579bdac7",
+      "group": "797b392769371d2fb7cad91a846f3e58f737674e515a93d92b198bf07fee1491",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:rural:long_description",
+      "countyCode": "RO-PH"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/2690884671",
+      "documentId": "ae1e2784b1ae491ce7ff064ac9c72cf226ca4f6abfe97cc316618fbaeef47474",
+      "textSha256": "bb6ff5a18aae2b11cc34c78638ce98fac4407b0ea0acf9c7e679b3e85f5f14f8",
+      "evidenceSha256": "040fb88dfc99bcdb37dac3808cc9571fa67ff77d4bd4dbf0d1bd965a46938f19",
+      "group": "a6d3f23c304d46b278a25fe37712b06afe8bbb35c795744acca038104b0584c5",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:urban:long_description",
+      "countyCode": "RO-TL"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:14244|2017-12-04|e0757c439862",
+      "documentId": "b7435616b13d8b9c756cf1467eb91d7c7e2a24ca7631015182e5e246e4eeac07",
+      "textSha256": "f991a9df6ccb77c2c0d40fbdd57f35050cba23df7810f60f1b5038fb228bd511",
+      "evidenceSha256": "e7526ffdc9a13a3fe56ed73bf03d3aa1ef53fc373a1416d4ef563f00d4381c88",
+      "group": "8a6e41e69d0abddf9975421395bdf7a41ce29903a8b45342c8b977e68a20cc1d",
+      "partition": "development",
+      "stratum": "situr_accommodation_register:urban:structured_only",
+      "countyCode": "RO-BV"
+    },
+    {
+      "sourceKey": "overture_places",
+      "sourceRecordKey": "92469c52-adac-4a18-bdf4-2874ba9ab960",
+      "documentId": "ba38b101a80d0bd0b1065885c80bfd1142656d056c4b801e458bf5c7b57f85a8",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "1b5748bec9687041a11f396fb9fcf9e0b0e95d545d2f074dd4db6e0cafb35070",
+      "group": "1849a910f8e2a55aa7199ebee32a8f72948360ab8a6d4949082a89f971c9ef0b",
+      "partition": "development",
+      "stratum": "overture_places:unknown:empty",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/442553986",
+      "documentId": "bf17a7c65c1b1c4cdb6da6e718b14deb343448b55fbc7363c46e1f3c61fd4033",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "7d6dd0ce022491724cf9db3e583d9e3fb543a54def0a40dd699501c5ea94a37e",
+      "group": "bffa7d5668027e426bfb192f74122fb73f9718a46382621ace9194e7cb0424a3",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:urban:empty",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/8467884888",
+      "documentId": "c26d47ffa9701e1c848b00652b8df8f23373d3b83c43f4c62efb9e15e7de7a8a",
+      "textSha256": "60664a75fa1ff030af5b0484d1f39f6e80117acb2449f85c62b9fdb389376b76",
+      "evidenceSha256": "d0bc4ed361251d5241f83b0deab4785288c7f83e7f28833ba477e5d62052c1c4",
+      "group": "df75addde7551b750a960e702b84476d39f04d329fca4ee86630becf611454d4",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:rural:structured_only",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/13950004837",
+      "documentId": "c2a90f8c2ec79e8c94165a9b1f52c09f93f6c76dcb0c5b9732dfd7ade9a03dd1",
+      "textSha256": "fd3f719ebd8cbf6162e544a3b91d15009a83cdccde9f2015169f9a0c8736f15a",
+      "evidenceSha256": "dc374533b013f51cdad575da58aa0c1153fe038c1b0b9f1c72c3401f89866fea",
+      "group": "f26a27ca7c8d3c6bd468371652d10954356a7310e72b129cfad3127eb838f615",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:rural:long_description",
+      "countyCode": "RO-SV"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "way/420788475",
+      "documentId": "c674153512880a1cf08ad6196714cc18762b3ac462797d44eb3f0a62cb550ca4",
+      "textSha256": "155804cbacf19a2f7cbc0ab1955712eb19a517379bfdc9284e9f15289b8155b4",
+      "evidenceSha256": "593a2746916d6eb9f6c5e967686daaa7e5cb9d67ab582f8f96f688c877b72a2b",
+      "group": "76bf6de66e815f5de169e7fe52479d4e0c47ee5099887c12d41b1013f10befe2",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:rural:long_description",
+      "countyCode": "RO-PH"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/11091415196",
+      "documentId": "cd8440a955465c7af1214ae5a98ed77e5bfe5e1105f674141c0eeed74040ea65",
+      "textSha256": "4b04e6861095d3ef86a339e4c8973075e531bed174f3bdc673f563a76e078f39",
+      "evidenceSha256": "dbe6d60d2b2d3b4ad8676b89aa0445a5a04250ca2668c0bfdc5d28d2691f89e5",
+      "group": "9bd46cf1128683f422c92ad97587733dd43b81cec91812faf608304e0660ee09",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:urban:short_description",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/12887124099",
+      "documentId": "cef02b955f49c593ef2700e41a8c8617c74fafcf4ad1daa83e7514c6d35b7afa",
+      "textSha256": "f84326b5f42e1fcb13fd974269219e783040472f0fcb2ce1f9e3d48974a604d1",
+      "evidenceSha256": "511e8da4376b69492bc2c455d9fc08058d8baeeb5c84373de5fc3e40f37b2da4",
+      "group": "1951a36528ddbcb2886d828a398bd98a05f1f2106a0e8b8339713c94b42664ba",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:rural:structured_only",
+      "countyCode": "RO-CV"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/3779954301",
+      "documentId": "d44b6162e6c28edd1749283268fc538caa2e89be8bbb8a83b445c2eea0e81f1f",
+      "textSha256": "6c7e39fd5ceee6fd027b29dd50ca40a89a5c7ed4aa81c5d7665f038881859e55",
+      "evidenceSha256": "fc4b251a6d965cc4a419c1aaa5508bc517dc2c22caaf2a374bfc79b0b4270349",
+      "group": "b537938a9fe599b1bdeadf11c524935e1d5dec0227e8f7a5a6b022ad69fbea69",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:urban:structured_only",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/2576678770",
+      "documentId": "d7e8f9ac0e153961284f830e32ad21a0263a1f249bf53735bcdc2a5c990f9f80",
+      "textSha256": "048b9c0152f78d74e08ae8e2f3470b4e03ef0e282778e9a6eabe8ef90e8c88a5",
+      "evidenceSha256": "15216d67c105a9c5e425746925ba7da0285874a50b9363d56b830e73952e3c65",
+      "group": "169d0fa979c7f9d2193a8e9e17e7fb3cdc02af36bbb4c5b0ae4cf638ed43c77b",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:urban:short_description",
+      "countyCode": "RO-GJ"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "way/1393902073",
+      "documentId": "dc3420b6b99ce0497635d7a46c8d5b1d95d5348f45709e706509d925f4326db8",
+      "textSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidenceSha256": "2152310eb4bb68d761800a8f2802ce3b982d68e3a08392cbadd91dcd939fe769",
+      "group": "b66f2a7cb201e5d865902d032f159e161709bea6c31855718219997b4df87f3a",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:urban:empty",
+      "countyCode": "RO-AG"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:22904|2026-09-03|6564f2ea5d2e",
+      "documentId": "e574e19381f8ad3d6bbafa2fc05bd8cfe8862d346e7c666d01e1ce0253fa8a67",
+      "textSha256": "75d960d86a8d84cafc8195676182e763bc88af9e2a934e0a942762e3a17a7bc3",
+      "evidenceSha256": "472e4c4c7197f01ea079befa3a862544f21982498940b5f3de282f5d788cf25b",
+      "group": "3a32e6355893721083cba619a3678831bddff38fb9857b5cc2b0c5902389c2aa",
+      "partition": "holdout",
+      "stratum": "situr_accommodation_register:urban:structured_only",
+      "countyCode": "RO-CT"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/1326929346",
+      "documentId": "e83196b71e2ef58a62eecb403a853eff79f7781739d6be0d2b5d1565beaf2800",
+      "textSha256": "56ba316cd2af852564275959fb730ceccf94cdcc6caa490ab90801935a095577",
+      "evidenceSha256": "d5dbedf1274025d79cd0e31af3380731558380e5fde3f5c8707a31961b9bbc4b",
+      "group": "ab5f24ce3d50c00f151a344e6258f26072da8e6224675515ed9e19465dd9f7ca",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:rural:short_description",
+      "countyCode": "RO-AB"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "way/303527123",
+      "documentId": "e98c613cc2240f8730dd035d44fba16f389ca319e436dced1dd2ca271597a38e",
+      "textSha256": "cb932c76c76efecb5225601553f1448e005ef10102591f5c35025c87e6bd0180",
+      "evidenceSha256": "48569874390d81315bf028c73e898f6aa9d320ba4dc21495e0e9d35239f5282b",
+      "group": "0aa8bb78e0b05745d0abccc75bb25cd549ff2047cc0baa022f7c19159b0764c4",
+      "partition": "development",
+      "stratum": "osm_geofabrik_romania:rural:long_description",
+      "countyCode": "RO-TL"
+    },
+    {
+      "sourceKey": "osm_geofabrik_romania",
+      "sourceRecordKey": "node/13736718068",
+      "documentId": "f27305c19d77505f8e59288ba8a6ab2509ca6cf3cff9f7a625b239447247d15d",
+      "textSha256": "55bbb6d7a9098b0229f93d41d24e0517757189d52cbf1634108e480bed37fabb",
+      "evidenceSha256": "48ccc66b27685e39de58692357eb820be0651e26bbd29418bbcc15a6c017cad4",
+      "group": "3c2b7425dbd83fb832c32c5effad5988764604ec2025fb2728ff3a1f199c7340",
+      "partition": "holdout",
+      "stratum": "osm_geofabrik_romania:rural:short_description",
+      "countyCode": "RO-VL"
+    },
+    {
+      "sourceKey": "situr_accommodation_register",
+      "sourceRecordKey": "cert:43301|2025-07-17|7354994ba9c6",
+      "documentId": "f46df7c106c4b5d816dd5351f8e42f5b19aca51c81f5306dd5744b4abbe4e361",
+      "textSha256": "579ac6ec8130cc94f05b437f9ea9274445283a2a294d06df29bfab77cd85490c",
+      "evidenceSha256": "8816ac977ed204d3da58cd3292739c7a285cd8d29a503d5e1571351427096374",
+      "group": "ddef275f3b2301894bc48cfbc5ab03fc42ca6118ad8e5b7de3dffcc0402053e4",
+      "partition": "development",
+      "stratum": "situr_accommodation_register:unknown:structured_only",
+      "countyCode": "RO-CT"
+    }
+  ]
+}

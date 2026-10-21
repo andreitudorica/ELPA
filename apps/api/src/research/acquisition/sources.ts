@@ -1,5 +1,7 @@
 import { readFile } from 'node:fs/promises';
 
+import { DETERMINISTIC_VERSION } from '../extraction/deterministic';
+
 import {
   OSM_LOCALITY_POLICY_ID,
   OSM_NORMALIZER_VERSION,
@@ -7,6 +9,13 @@ import {
   readOsmAccommodationArtifact,
 } from './osm-accommodation-source';
 import { SCREENING_POLICY_ID } from './population-screening';
+import {
+  readOverturePlacesArtifact,
+  OVERTURE_PARSER_VERSION,
+  OVERTURE_NORMALIZER_VERSION,
+  OVERTURE_SCREENING_VERSION,
+  OVERTURE_GEOMETRY_VERSION,
+} from './overture-places-source';
 import {
   readSiturAccommodationArtifact,
   SITUR_NORMALIZER_VERSION,
@@ -27,7 +36,7 @@ export interface SourceDefinition {
   mediaType: string;
   parserVersion: string;
   normalizerVersion: string;
-  reuseTerms: 'odbl_1_0' | 'ro_public_register_no_explicit_licence';
+  reuseTerms: 'odbl_1_0' | 'ro_public_register_no_explicit_licence' | 'cdla_permissive_2_0';
   retentionPolicy: 'full_record' | 'personal_data_redacted';
   attribution: string;
   /** A larger share of rejected records fails the run instead of importing it. */
@@ -36,6 +45,19 @@ export interface SourceDefinition {
 }
 
 export const SOURCE_DEFINITIONS: Record<SourceKey, SourceDefinition> = {
+  overture_places: {
+    key: 'overture_places',
+    label: 'Overture Places — bounded experiment (Meta / Microsoft)',
+    canonicalUrl: 'https://docs.overturemaps.org/getting-data/duckdb/',
+    mediaType: 'application/json',
+    parserVersion: OVERTURE_PARSER_VERSION,
+    normalizerVersion: OVERTURE_NORMALIZER_VERSION,
+    reuseTerms: 'cdla_permissive_2_0',
+    retentionPolicy: 'personal_data_redacted',
+    attribution: 'Overture Maps Foundation; Meta / Microsoft; CDLA-Permissive-2.0',
+    maxRejectedRatio: 0.02,
+    read: async (path) => readOverturePlacesArtifact(JSON.parse(await readFile(path, 'utf8'))),
+  },
   situr_accommodation_register: {
     key: 'situr_accommodation_register',
     label: 'Registrul structurilor de primire turistice cu funcțiuni de cazare (DGT / SITUR)',
@@ -70,8 +92,12 @@ export const SOURCE_DEFINITIONS: Record<SourceKey, SourceDefinition> = {
  * Claims from superseded versions stay stored as history but are not read.
  */
 export const CURRENT_EXTRACTION_METHODS = [
+  DETERMINISTIC_VERSION,
   SITUR_NORMALIZER_VERSION,
   OSM_NORMALIZER_VERSION,
   OSM_LOCALITY_POLICY_ID,
   SCREENING_POLICY_ID,
+  OVERTURE_NORMALIZER_VERSION,
+  OVERTURE_SCREENING_VERSION,
+  OVERTURE_GEOMETRY_VERSION,
 ] as const;

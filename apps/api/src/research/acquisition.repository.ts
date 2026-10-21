@@ -10,6 +10,8 @@ import type {
   ScreeningClass,
   SourceKey,
 } from './acquisition/source-record';
+import type { SourceDefinition } from './acquisition/sources';
+import { canonicalJson, sha256Hex } from './acquisition/source-record';
 import {
   acquisitionRunRecords,
   acquisitionRuns,
@@ -32,7 +34,7 @@ export interface RegisterArtifactInput {
   byteSize: number;
   sha256: string;
   retrievedAt: Date;
-  reuseTerms: 'odbl_1_0' | 'ro_public_register_no_explicit_licence';
+  reuseTerms: SourceDefinition['reuseTerms'];
   retentionPolicy: 'full_record' | 'personal_data_redacted';
 }
 
@@ -137,13 +139,14 @@ export class AcquisitionRepository {
     normalizerVersion: string;
     administratorId: string;
     startedAt: Date;
+    stage?: 'import' | 'extract';
   }): Promise<void> {
     await this.database.executor.insert(acquisitionRuns).values({
       id: input.id,
       researchCampaignId: input.researchCampaignId,
       sourceKey: input.sourceKey,
       sourceArtifactId: input.sourceArtifactId,
-      stage: 'import',
+      stage: input.stage ?? 'import',
       parserVersion: input.parserVersion,
       normalizerVersion: input.normalizerVersion,
       status: 'running',
@@ -293,6 +296,10 @@ export class AcquisitionRepository {
           batch.map((claim) => ({
             id: uuidV7(),
             ...claim,
+            observationKey:
+              claim.evidenceLocator.type === 'text_span'
+                ? sha256Hex(canonicalJson({ value: claim.value, locator: claim.evidenceLocator }))
+                : '',
             acquisitionRunId: runId,
             observedAt,
             createdAt: now,
@@ -300,7 +307,13 @@ export class AcquisitionRepository {
           })),
         )
         .onConflictDoNothing({
-          target: [claims.candidateId, claims.evidenceId, claims.target, claims.extractionMethod],
+          target: [
+            claims.candidateId,
+            claims.evidenceId,
+            claims.target,
+            claims.extractionMethod,
+            claims.observationKey,
+          ],
         })
         .returning({ id: claims.id });
       created += rows.length;

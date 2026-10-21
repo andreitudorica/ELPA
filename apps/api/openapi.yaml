@@ -104,6 +104,7 @@ paths:
             enum:
               - situr_accommodation_register
               - osm_geofabrik_romania
+              - overture_places
         - name: screening
           required: false
           in: query
@@ -421,10 +422,12 @@ components:
           enum:
             - situr_accommodation_register
             - osm_geofabrik_romania
+            - overture_places
         stage:
           type: string
           enum:
             - import
+            - extract
         status:
           type: string
           enum:
@@ -569,6 +572,7 @@ components:
                 enum:
                   - situr_accommodation_register
                   - osm_geofabrik_romania
+                  - overture_places
               label:
                 type: string
               reuseTerms:
@@ -1005,6 +1009,7 @@ components:
           enum:
             - situr_accommodation_register
             - osm_geofabrik_romania
+            - overture_places
         sourceRecordKey:
           type: string
         displayName:
@@ -1111,6 +1116,7 @@ components:
               enum:
                 - situr_accommodation_register
                 - osm_geofabrik_romania
+                - overture_places
             displayName:
               type: string
             settlementName:
@@ -1138,6 +1144,7 @@ components:
               enum:
                 - situr_accommodation_register
                 - osm_geofabrik_romania
+                - overture_places
             displayName:
               type: string
             settlementName:
@@ -1179,6 +1186,7 @@ components:
               enum:
                 - situr_accommodation_register
                 - osm_geofabrik_romania
+                - overture_places
             sourceRecordKey:
               type: string
             displayName:
@@ -1286,6 +1294,78 @@ components:
                 pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
               current:
                 type: boolean
+              extraction:
+                type: object
+                properties:
+                  quote:
+                    type: string
+                  fieldPath:
+                    type: array
+                    items:
+                      type: string
+                  start:
+                    type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  end:
+                    type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  documentId:
+                    type: string
+                  sourceVersion:
+                    type: string
+                  explicitness:
+                    type: string
+                  ambiguity:
+                    type: string
+                  scope:
+                    type: string
+                  temporal:
+                    type: object
+                    properties:
+                      kind:
+                        type: string
+                      text:
+                        type: string
+                        nullable: true
+                    required:
+                      - kind
+                      - text
+                    additionalProperties: false
+                  ontologyVersion:
+                    type: string
+                  evaluationStatus:
+                    type: string
+                    enum:
+                      - independent_review_pending
+                  grounding:
+                    type: string
+                    enum:
+                      - technically_validated
+                  conflictingClaimIds:
+                    type: array
+                    items:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                required:
+                  - quote
+                  - fieldPath
+                  - start
+                  - end
+                  - documentId
+                  - sourceVersion
+                  - explicitness
+                  - ambiguity
+                  - scope
+                  - temporal
+                  - ontologyVersion
+                  - evaluationStatus
+                  - grounding
+                  - conflictingClaimIds
+                additionalProperties: false
+                nullable: true
             required:
               - id
               - target
@@ -1298,6 +1378,7 @@ components:
               - evidenceId
               - acquisitionRunId
               - current
+              - extraction
             additionalProperties: false
         evidence:
           type: array

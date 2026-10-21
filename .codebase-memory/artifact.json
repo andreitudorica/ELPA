@@ -1,12 +1,11 @@
 {
     "schema_version": 2,
-    "commit": "e77a4400f3e3d5e75b6fb361c4f918a69217896c",
-    "indexed_at": "2026-10-20T23:32:13Z",
+    "commit": "2d65663a4e7d5863e9651027a7f0ef738a88f5fc",
+    "indexed_at": "2026-10-21T14:36:49Z",
     "project": "Users-alinseras-WebstormProjects-ELPA",
-    "nodes": 2992,
-    "edges": 5961,
-    "original_size": 11993088,
-    "compressed_size": 1842776,
-    "compression_level": 3,
-    "reconcile_basis": "git-clean-head"
+    "nodes": 4310,
+    "edges": 8180,
+    "original_size": 17432576,
+    "compressed_size": 2203637,
+    "compression_level": 3
 }

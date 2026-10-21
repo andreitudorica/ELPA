@@ -114,10 +114,10 @@ Rules that follow from this shape:
   render each variant differently: `text_span` shows the verbatim quote;
   `inferred` shows the rationale and cited policy so the Administrator sees
   _why_ the value was proposed.
-- **`inferred` Claims are Claims proper.** A rule such as "silent listing
-  on a direct-owner site → `parties_allowed = by_arrangement`" produces a
-  low-confidence `inferred` Claim citing a versioned `policy_id`. It is
-  still verified, still auditable, still overridable.
+- **`inferred` Claims require a justified, versioned policy.** They remain
+  proposed, auditable and overridable. Silence never establishes private-event
+  permission or whole-property rental. `parties_allowed = by_arrangement`
+  requires an explicit source statement about prior agreement.
 - **The extractor never returns canonical values.** It returns Claims. The
   Verification Decision selects canonical values, per ADR 0013.
 - **Multiple extractors may target the same field.** Two Claims for the
@@ -176,6 +176,19 @@ the evaluation protocol, and the next-source recommendation are in
 `docs/research/group-rental-property-baseline/`.
 
 ## Promotion rule
+
+The [attribute extraction experiment](../research/attribute-extraction/README.md)
+adds a 25-attribute ontology, pinned primary-field documents, exact text spans,
+deterministic rules, independent annotation/scoring and a captured-AI-output
+boundary. Its initial execution is not independent semantic evaluation. It
+retains contradictory proposed Claims and leaves AI and production promotion
+pending evidence.
+
+The [incremental source experiment](../research/next-source-value/README.md)
+applies this rule to one bounded Overture Places sample. Its successful import
+did not establish priority-attribute enrichment or independently confirmed new
+properties; the source remains experimental with an **investigate further**
+decision. The review pack and missing independent labels are explicit.
 
 An experiment becomes supported product behavior only when it reduces total
 curation effort without lowering provenance or verification quality, has an

@@ -1,0 +1,1814 @@
+{
+  "version": "grp-method-comparison@1",
+  "corpusManifestSha256": "6e492e4a7a447c896e686685403fb86d6259a0a39624b21357fa85c0afd06b43",
+  "deterministic": {
+    "version": "grp-extraction-score@1",
+    "status": "independent_ground_truth_incomplete",
+    "independentReviewers": 0,
+    "invalidLabels": [],
+    "singleAnnotatedCells": 0,
+    "disputedCells": 0,
+    "ambiguousCells": 0,
+    "adjudicatedCells": 0,
+    "agreement": {
+      "pairedCells": 0,
+      "kappa": null,
+      "disagreements": 0
+    },
+    "holdoutDocuments": 24,
+    "holdoutPredictionsMissing": 0,
+    "scoredHoldoutCells": 0,
+    "correctFactIds": [],
+    "grounding": {
+      "facts": 22,
+      "failures": 0,
+      "errors": [],
+      "semanticCorrectness": "requires independent human annotation"
+    },
+    "aggregate": {
+      "correctSupportedFacts": 0,
+      "incorrectClaims": 0,
+      "missedFacts": 0,
+      "precision": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "recall": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "f1": null,
+      "unsupportedClaimRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "missedFactRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "correctNormalizationRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "correctScopeRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "correctValueRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "negationAccuracy": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "temporalAccuracy": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      },
+      "abstentionRate": {
+        "successes": 0,
+        "trials": 0,
+        "value": null,
+        "interval": null
+      }
+    },
+    "perAttribute": [
+      {
+        "attribute": "sleeps_persons",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "bedrooms_count",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "bathrooms_count",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "exclusive_rental",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "yard",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "yard_area_m2",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "terrain",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "lawn",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "enclosed_yard",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "outdoor_grill",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "outdoor_covered_area",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "outdoor_kitchen",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "fire_pit",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "pool",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "hot_tub",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "sauna",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "recreation",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "parties_allowed",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "team_building",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "max_daytime_guests",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "music_policy",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "outdoor_events",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "quiet_hours",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "pool_availability",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      },
+      {
+        "attribute": "beds_count",
+        "labeledDocumentAttributes": 0,
+        "correctSupportedFacts": 0,
+        "incorrectClaims": 0,
+        "missedFacts": 0,
+        "precision": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "recall": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "f1": null,
+        "unsupportedClaimRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "missedFactRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctValueRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctNormalizationRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "correctScopeRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "negationAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "temporalAccuracy": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        },
+        "abstentionRate": {
+          "successes": 0,
+          "trials": 0,
+          "value": null,
+          "interval": null
+        }
+      }
+    ]
+  },
+  "ai": null,
+  "aiStatus": "not_executed",
+  "aiStructuredOutputValidity": {
+    "successes": 0,
+    "trials": 0,
+    "value": null,
+    "interval": null
+  },
+  "aiLatencyMs": null,
+  "observedAiCost": null,
+  "additionalCorrectFacts": null,
+  "costPerAdditionalCorrectFact": null,
+  "hybrid": {
+    "status": "not_executed",
+    "reason": "No independently evaluated AI advantage justifies selecting hybrid rules."
+  },
+  "decision": "investigate_further"
+}

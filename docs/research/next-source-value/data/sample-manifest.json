@@ -1,0 +1,169 @@
+{
+  "experimentVersion": "grp-next-source@1",
+  "seed": "elpa-next-source-2026-10",
+  "frameRecords": 21716,
+  "frameContentSha256": "6f17d3187cbeccb5ab9229ea73aaf5add749ea388665fb44788e65f7231a06ed",
+  "selectedRecords": 17,
+  "excluded": {
+    "unresolved_county": 21582,
+    "unapproved_licence": 105,
+    "outside_selected_counties": 10
+  },
+  "strata": {
+    "RO-BH|county_seat|dwelling_hint|web_present": {
+      "population": 1,
+      "sampled": 1,
+      "inclusionProbability": 1
+    },
+    "RO-BH|county_seat|hotel_like|web_present": {
+      "population": 1,
+      "sampled": 1,
+      "inclusionProbability": 1
+    },
+    "RO-BH|county_seat|other|web_present": {
+      "population": 1,
+      "sampled": 1,
+      "inclusionProbability": 1
+    },
+    "RO-BV|county_seat|other|web_present": {
+      "population": 1,
+      "sampled": 1,
+      "inclusionProbability": 1
+    },
+    "RO-CJ|county_seat|hotel_like|web_present": {
+      "population": 2,
+      "sampled": 2,
+      "inclusionProbability": 1
+    },
+    "RO-CJ|county_seat|other|web_present": {
+      "population": 1,
+      "sampled": 1,
+      "inclusionProbability": 1
+    },
+    "RO-CJ|other_or_unknown|other|web_present": {
+      "population": 1,
+      "sampled": 1,
+      "inclusionProbability": 1
+    },
+    "RO-CT|county_seat|hotel_like|web_present": {
+      "population": 2,
+      "sampled": 2,
+      "inclusionProbability": 1
+    },
+    "RO-CT|county_seat|other|web_present": {
+      "population": 1,
+      "sampled": 1,
+      "inclusionProbability": 1
+    },
+    "RO-CT|other_or_unknown|hotel_like|web_present": {
+      "population": 3,
+      "sampled": 2,
+      "inclusionProbability": 0.6666666666666666
+    },
+    "RO-CT|other_or_unknown|other|web_present": {
+      "population": 1,
+      "sampled": 1,
+      "inclusionProbability": 1
+    },
+    "RO-HR|other_or_unknown|hotel_like|web_present": {
+      "population": 3,
+      "sampled": 2,
+      "inclusionProbability": 0.6666666666666666
+    },
+    "RO-MM|other_or_unknown|other|web_present": {
+      "population": 1,
+      "sampled": 1,
+      "inclusionProbability": 1
+    }
+  },
+  "items": [
+    {
+      "sourceRecordKey": "1f5c42e2-d0e9-4241-816b-4c43db2868d0",
+      "stratum": "RO-BH|county_seat|dwelling_hint|web_present",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "e094c712-1694-4700-bd25-f90493441a25",
+      "stratum": "RO-BH|county_seat|hotel_like|web_present",
+      "partition": "tuning"
+    },
+    {
+      "sourceRecordKey": "41da9315-249e-4cab-934a-0ea8524dd677",
+      "stratum": "RO-BH|county_seat|other|web_present",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "b2e5d913-601d-49a3-adea-b17a4cea757d",
+      "stratum": "RO-BV|county_seat|other|web_present",
+      "partition": "tuning"
+    },
+    {
+      "sourceRecordKey": "1ae369c4-29ef-49c2-97f9-1b3230f37f34",
+      "stratum": "RO-CJ|county_seat|hotel_like|web_present",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "22b9b163-2091-4887-8106-25c6e833ab80",
+      "stratum": "RO-CJ|county_seat|hotel_like|web_present",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "e047b9c3-7ccb-43b9-8216-8e04506f77fd",
+      "stratum": "RO-CJ|county_seat|other|web_present",
+      "partition": "tuning"
+    },
+    {
+      "sourceRecordKey": "eefb540c-3f97-4c0d-9cd3-c0883bdcbf5e",
+      "stratum": "RO-CJ|other_or_unknown|other|web_present",
+      "partition": "tuning"
+    },
+    {
+      "sourceRecordKey": "a55c0bd6-6909-4d45-ba5d-d336b50fcf5e",
+      "stratum": "RO-CT|county_seat|hotel_like|web_present",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "a5ea4734-d699-4c7c-9031-63333b3b9ad3",
+      "stratum": "RO-CT|county_seat|hotel_like|web_present",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "04a809d8-de75-4ea8-bc79-fa9561adff6e",
+      "stratum": "RO-CT|county_seat|other|web_present",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "3df58795-9736-454a-a031-7168c0f8b28a",
+      "stratum": "RO-CT|other_or_unknown|hotel_like|web_present",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "92469c52-adac-4a18-bdf4-2874ba9ab960",
+      "stratum": "RO-CT|other_or_unknown|hotel_like|web_present",
+      "partition": "tuning"
+    },
+    {
+      "sourceRecordKey": "3e65738b-b315-4db8-97d2-de0353859334",
+      "stratum": "RO-CT|other_or_unknown|other|web_present",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "d105035f-7fc8-4836-a404-061e48357bc0",
+      "stratum": "RO-HR|other_or_unknown|hotel_like|web_present",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "d595e73b-47ef-4fb4-8288-2ad200dbe044",
+      "stratum": "RO-HR|other_or_unknown|hotel_like|web_present",
+      "partition": "tuning"
+    },
+    {
+      "sourceRecordKey": "795513fe-2099-415e-b344-362530559475",
+      "stratum": "RO-MM|other_or_unknown|other|web_present",
+      "partition": "evaluation"
+    }
+  ],
+  "artifactSha256": "c71f14ddf0612f15c5b2e890658624d5efa0690bc1554acd5a9eb6ae0428af60",
+  "frameFileSha256": "9e08aedd8c590f9ce8f7690df461e590c0fec26eb3ce174fd802e5a3dbab5ddd",
+  "release": "2026-09-23.1"
+}

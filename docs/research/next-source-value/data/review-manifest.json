@@ -1,0 +1,52 @@
+{
+  "experimentVersion": "grp-next-source@1",
+  "matcherVersion": "grp-duplicate-matcher@1",
+  "items": [
+    {
+      "sourceRecordKey": "1f5c42e2-d0e9-4241-816b-4c43db2868d0",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "41da9315-249e-4cab-934a-0ea8524dd677",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "1ae369c4-29ef-49c2-97f9-1b3230f37f34",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "22b9b163-2091-4887-8106-25c6e833ab80",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "a55c0bd6-6909-4d45-ba5d-d336b50fcf5e",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "a5ea4734-d699-4c7c-9031-63333b3b9ad3",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "04a809d8-de75-4ea8-bc79-fa9561adff6e",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "3df58795-9736-454a-a031-7168c0f8b28a",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "3e65738b-b315-4db8-97d2-de0353859334",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "d105035f-7fc8-4836-a404-061e48357bc0",
+      "partition": "evaluation"
+    },
+    {
+      "sourceRecordKey": "795513fe-2099-415e-b344-362530559475",
+      "partition": "evaluation"
+    }
+  ],
+  "reviewStatus": "not_started",
+  "labels": 0
+}

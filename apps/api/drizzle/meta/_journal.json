@@ -15,6 +15,20 @@
       "when": 1792535662065,
       "tag": "0001_cultured_angel",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792570778144,
+      "tag": "0002_next_star_brand",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792579725658,
+      "tag": "0003_fast_iron_monger",
+      "breakpoints": true
     }
   ]
 }

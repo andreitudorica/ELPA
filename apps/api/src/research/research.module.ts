@@ -12,6 +12,8 @@ import { AcquisitionStudioService } from './acquisition-studio.service';
 import { CandidateClaimsRepository } from './candidate-claims.repository';
 import { DuplicateSuggestionService } from './duplicate-suggestion.service';
 import { EvaluationService } from './evaluation.service';
+import { ExtractionService } from './extraction.service';
+import { ExtractionRepository } from './extraction.repository';
 import { ResearchCampaignController } from './research-campaign.controller';
 import { ResearchCampaignRepository } from './research-campaign.repository';
 import { ResearchCampaignService } from './research-campaign.service';
@@ -30,6 +32,8 @@ import { ResearchCampaignService } from './research-campaign.service';
     CandidateClaimsRepository,
     DuplicateSuggestionService,
     EvaluationService,
+    ExtractionService,
+    ExtractionRepository,
   ],
   exports: [
     ResearchCampaignService,
@@ -37,6 +41,7 @@ import { ResearchCampaignService } from './research-campaign.service';
     AcquisitionReportService,
     DuplicateSuggestionService,
     EvaluationService,
+    ExtractionService,
   ],
 })
 export class ResearchModule {}

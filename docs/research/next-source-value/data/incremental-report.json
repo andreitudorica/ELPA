@@ -1,0 +1,345 @@
+{
+  "experimentVersion": "grp-next-source@1",
+  "status": "independent_review_pending",
+  "before": {
+    "candidateRecords": 42861,
+    "screenedPlausibleOrAmbiguous": 20573,
+    "independentlyConfirmedNewProperties": null,
+    "sourceRecordsRead": 42876
+  },
+  "after": {
+    "candidateRecords": 42878,
+    "addedCandidateRecords": 17,
+    "classifications": {
+      "likely_existing_unreviewed": 2,
+      "potential_existing": 2,
+      "apparent_discovery_unreviewed": 4,
+      "out_of_scope": 9,
+      "unresolvable": 0
+    },
+    "holdoutClassifications": {
+      "likely_existing_unreviewed": 2,
+      "potential_existing": 2,
+      "apparent_discovery_unreviewed": 1,
+      "out_of_scope": 6,
+      "unresolvable": 0
+    },
+    "screenedPlausibleOrAmbiguous": 20581,
+    "sourceRecordsRead": 42893
+  },
+  "priorityAttributes": [
+    {
+      "target": "offer.sleeps_persons",
+      "baselineCandidateObservations": 32182,
+      "newSourceObservations": 0,
+      "conditionalNewObservations": 0,
+      "independentlySupportedNewFacts": null
+    },
+    {
+      "target": "offer.max_daytime_guests",
+      "baselineCandidateObservations": 0,
+      "newSourceObservations": 0,
+      "conditionalNewObservations": 0,
+      "independentlySupportedNewFacts": null
+    },
+    {
+      "target": "offer.parties_allowed",
+      "baselineCandidateObservations": 0,
+      "newSourceObservations": 0,
+      "conditionalNewObservations": 0,
+      "independentlySupportedNewFacts": null
+    },
+    {
+      "target": "offer.quiet_hours_start",
+      "baselineCandidateObservations": 0,
+      "newSourceObservations": 0,
+      "conditionalNewObservations": 0,
+      "independentlySupportedNewFacts": null
+    },
+    {
+      "target": "offer.quiet_hours_end",
+      "baselineCandidateObservations": 0,
+      "newSourceObservations": 0,
+      "conditionalNewObservations": 0,
+      "independentlySupportedNewFacts": null
+    },
+    {
+      "target": "offer.music_policy",
+      "baselineCandidateObservations": 0,
+      "newSourceObservations": 0,
+      "conditionalNewObservations": 0,
+      "independentlySupportedNewFacts": null
+    },
+    {
+      "target": "offer.outdoor_grill",
+      "baselineCandidateObservations": 0,
+      "newSourceObservations": 0,
+      "conditionalNewObservations": 0,
+      "independentlySupportedNewFacts": null
+    },
+    {
+      "target": "offer.outdoor_covered_area",
+      "baselineCandidateObservations": 0,
+      "newSourceObservations": 0,
+      "conditionalNewObservations": 0,
+      "independentlySupportedNewFacts": null
+    },
+    {
+      "target": "offer.pool",
+      "baselineCandidateObservations": 0,
+      "newSourceObservations": 0,
+      "conditionalNewObservations": 0,
+      "independentlySupportedNewFacts": null
+    },
+    {
+      "target": "offer.hot_tub",
+      "baselineCandidateObservations": 0,
+      "newSourceObservations": 0,
+      "conditionalNewObservations": 0,
+      "independentlySupportedNewFacts": null
+    }
+  ],
+  "identityEnrichment": {
+    "additionalWebsiteIdentitiesConditionalOnUnreviewedMatches": 3,
+    "caveat": "Candidate-level identity hints, not deduplicated property facts or independent corroboration."
+  },
+  "geographicDistribution": [
+    {
+      "county": "RO-BH",
+      "baselineRecords": 1341,
+      "addedRecords": 3,
+      "likely_existing_unreviewed": 1,
+      "potential_existing": 1,
+      "apparent_discovery_unreviewed": 0,
+      "out_of_scope": 1,
+      "unresolvable": 0
+    },
+    {
+      "county": "RO-BV",
+      "baselineRecords": 4243,
+      "addedRecords": 1,
+      "likely_existing_unreviewed": 0,
+      "potential_existing": 0,
+      "apparent_discovery_unreviewed": 1,
+      "out_of_scope": 0,
+      "unresolvable": 0
+    },
+    {
+      "county": "RO-CJ",
+      "baselineRecords": 1948,
+      "addedRecords": 4,
+      "likely_existing_unreviewed": 0,
+      "potential_existing": 0,
+      "apparent_discovery_unreviewed": 2,
+      "out_of_scope": 2,
+      "unresolvable": 0
+    },
+    {
+      "county": "RO-CT",
+      "baselineRecords": 7115,
+      "addedRecords": 6,
+      "likely_existing_unreviewed": 0,
+      "potential_existing": 1,
+      "apparent_discovery_unreviewed": 1,
+      "out_of_scope": 4,
+      "unresolvable": 0
+    },
+    {
+      "county": "RO-HR",
+      "baselineRecords": 1351,
+      "addedRecords": 2,
+      "likely_existing_unreviewed": 0,
+      "potential_existing": 0,
+      "apparent_discovery_unreviewed": 0,
+      "out_of_scope": 2,
+      "unresolvable": 0
+    },
+    {
+      "county": "RO-MM",
+      "baselineRecords": 1648,
+      "addedRecords": 1,
+      "likely_existing_unreviewed": 1,
+      "potential_existing": 0,
+      "apparent_discovery_unreviewed": 0,
+      "out_of_scope": 0,
+      "unresolvable": 0
+    }
+  ],
+  "independentEvaluation": {
+    "reviewed": 0,
+    "confirmedNew": null,
+    "falseMerges": null,
+    "precision": null,
+    "recall": null,
+    "confidenceInterval": null,
+    "disagreements": null
+  },
+  "investmentDecision": "investigate_further",
+  "limitations": [
+    "Unmatched records are not confirmed new properties; whole-rental eligibility is unknown.",
+    "County metadata restricts the sampling frame; no national extrapolation is valid.",
+    "Source-record counts and screening counts are not unique or verified property counts.",
+    "No priority attribute can be inferred from an Overture category or website pointer.",
+    "No independent labels were available; precision, false-merge risk, and ROI are not measured."
+  ],
+  "campaignId": "01a15d8d-edc4-7a6d-bc18-26af6cccfdf3",
+  "matcherVersion": "grp-duplicate-matcher@1",
+  "artifactChecksums": [
+    "9eff756d49a9a77ff354a98c2b0b5674eaed9cbd88e24399464248b69cfb948a",
+    "c71f14ddf0612f15c5b2e890658624d5efa0690bc1554acd5a9eb6ae0428af60",
+    "d4854cff79bc1d92508d7845591e2041351f0d98c247b13437b9cf8824a9433b"
+  ],
+  "acquisitionRuns": [
+    {
+      "id": "01a15d9e-ee86-7670-8c84-c3017053eb7a",
+      "sourceKey": "overture_places",
+      "parserVersion": "overture-places-snapshot@2",
+      "normalizerVersion": "overture-places-normalizer@2",
+      "startedAt": "2026-10-21T08:40:59.270Z",
+      "status": "succeeded",
+      "stats": {
+        "durationMs": 38,
+        "recordsRead": 17,
+        "claimsCreated": 0,
+        "recordsParsed": 17,
+        "datasetVersion": "2026-09-23.1",
+        "claimsUnchanged": 116,
+        "evidenceCreated": 0,
+        "recordsRejected": 0,
+        "excludedBySource": {},
+        "rejectionsByCode": {},
+        "candidatesCreated": 0,
+        "candidatesUpdated": 17,
+        "evidenceUnchanged": 17,
+        "recordsInCampaignScope": 17
+      }
+    },
+    {
+      "id": "01a15d9e-ec47-74cc-b2d7-e851d9a7a514",
+      "sourceKey": "overture_places",
+      "parserVersion": "overture-places-snapshot@2",
+      "normalizerVersion": "overture-places-normalizer@2",
+      "startedAt": "2026-10-21T08:40:58.695Z",
+      "status": "succeeded",
+      "stats": {
+        "durationMs": 44,
+        "recordsRead": 17,
+        "claimsCreated": 116,
+        "recordsParsed": 17,
+        "datasetVersion": "2026-09-23.1",
+        "claimsUnchanged": 0,
+        "evidenceCreated": 17,
+        "recordsRejected": 0,
+        "excludedBySource": {},
+        "rejectionsByCode": {},
+        "candidatesCreated": 0,
+        "candidatesUpdated": 17,
+        "evidenceUnchanged": 0,
+        "recordsInCampaignScope": 17
+      }
+    },
+    {
+      "id": "01a15d94-547b-74b6-a037-80b176389d94",
+      "sourceKey": "overture_places",
+      "parserVersion": "overture-places-snapshot@1",
+      "normalizerVersion": "overture-places-normalizer@1",
+      "startedAt": "2026-10-21T08:29:24.475Z",
+      "status": "succeeded",
+      "stats": {
+        "durationMs": 36,
+        "recordsRead": 17,
+        "claimsCreated": 0,
+        "recordsParsed": 17,
+        "datasetVersion": "2026-09-23.1",
+        "claimsUnchanged": 116,
+        "evidenceCreated": 0,
+        "recordsRejected": 0,
+        "excludedBySource": {},
+        "rejectionsByCode": {},
+        "candidatesCreated": 0,
+        "candidatesUpdated": 17,
+        "evidenceUnchanged": 17,
+        "recordsInCampaignScope": 17
+      }
+    },
+    {
+      "id": "01a15d93-f0a4-7336-997d-b9b2ce6036a0",
+      "sourceKey": "overture_places",
+      "parserVersion": "overture-places-snapshot@1",
+      "normalizerVersion": "overture-places-normalizer@1",
+      "startedAt": "2026-10-21T08:28:58.916Z",
+      "status": "succeeded",
+      "stats": {
+        "durationMs": 49,
+        "recordsRead": 17,
+        "claimsCreated": 116,
+        "recordsParsed": 17,
+        "datasetVersion": "2026-09-23.1",
+        "claimsUnchanged": 0,
+        "evidenceCreated": 17,
+        "recordsRejected": 0,
+        "excludedBySource": {},
+        "rejectionsByCode": {},
+        "candidatesCreated": 17,
+        "candidatesUpdated": 0,
+        "evidenceUnchanged": 0,
+        "recordsInCampaignScope": 17
+      }
+    },
+    {
+      "id": "01a15d90-6ab0-7a3d-941c-5cc970b4c4ce",
+      "sourceKey": "osm_geofabrik_romania",
+      "parserVersion": "osm-pbf-accommodation@1",
+      "normalizerVersion": "osm-accommodation-normalizer@1",
+      "startedAt": "2026-10-21T08:25:08.016Z",
+      "status": "succeeded",
+      "stats": {
+        "durationMs": 40750,
+        "recordsRead": 10645,
+        "claimsCreated": 70732,
+        "recordsParsed": 10645,
+        "datasetVersion": "2026-10-19T20:21:11.000Z",
+        "claimsUnchanged": 0,
+        "evidenceCreated": 0,
+        "recordsRejected": 0,
+        "excludedBySource": {
+          "outside_romania": 170,
+          "tourism_camp_pitch": 80,
+          "tourism_caravan_site": 20,
+          "tourism_wilderness_hut": 84
+        },
+        "rejectionsByCode": {},
+        "candidatesCreated": 10645,
+        "candidatesUpdated": 0,
+        "evidenceUnchanged": 10645,
+        "recordsInCampaignScope": 10645
+      }
+    },
+    {
+      "id": "01a15d8e-1e85-7e41-8f58-1eff376b5a0e",
+      "sourceKey": "situr_accommodation_register",
+      "parserVersion": "situr-accommodation-xlsx@1",
+      "normalizerVersion": "situr-accommodation-normalizer@1",
+      "startedAt": "2026-10-21T08:22:37.445Z",
+      "status": "completed_with_rejections",
+      "stats": {
+        "durationMs": 46947,
+        "recordsRead": 32231,
+        "claimsCreated": 397491,
+        "recordsParsed": 32216,
+        "datasetVersion": "2026-10-21",
+        "claimsUnchanged": 0,
+        "evidenceCreated": 0,
+        "recordsRejected": 15,
+        "excludedBySource": {},
+        "rejectionsByCode": {
+          "unknown_county": 15
+        },
+        "candidatesCreated": 32216,
+        "candidatesUpdated": 0,
+        "evidenceUnchanged": 32231,
+        "recordsInCampaignScope": 32216
+      }
+    }
+  ]
+}

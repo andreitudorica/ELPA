@@ -1,0 +1,296 @@
+{
+  "version": "grp-extraction-observed@1",
+  "corpusManifestSha256": "6e492e4a7a447c896e686685403fb86d6259a0a39624b21357fa85c0afd06b43",
+  "labeling": "Observed proposed Claims and technical checks; no independent semantic accuracy or verified property counts.",
+  "documents": 48,
+  "partitions": {
+    "development": 24,
+    "holdout": 24
+  },
+  "sources": {
+    "osm_geofabrik_romania": 32,
+    "overture_places": 4,
+    "situr_accommodation_register": 12
+  },
+  "counties": {
+    "RO-AB": 4,
+    "RO-AG": 5,
+    "RO-B": 1,
+    "RO-BH": 1,
+    "RO-BR": 1,
+    "RO-BV": 2,
+    "RO-BZ": 1,
+    "RO-CJ": 2,
+    "RO-CS": 1,
+    "RO-CT": 14,
+    "RO-CV": 1,
+    "RO-GJ": 1,
+    "RO-HD": 1,
+    "RO-HR": 1,
+    "RO-NT": 1,
+    "RO-PH": 2,
+    "RO-SB": 1,
+    "RO-SV": 1,
+    "RO-TL": 4,
+    "RO-TM": 1,
+    "RO-VL": 1,
+    "RO-VN": 1
+  },
+  "fieldsExcluded": 0,
+  "descriptions": 16,
+  "documentsWithDiacritics": 16,
+  "documentsWithoutDiacritics": 20,
+  "documentsWithMixedTerminology": 4,
+  "proposedFacts": 22,
+  "structuredOutputValidity": {
+    "successes": 48,
+    "trials": 48,
+    "value": 1,
+    "interval": [0.9259, 1]
+  },
+  "alreadyProposedSameEvidenceValue": 14,
+  "newlyProposedObservations": 8,
+  "newlyPopulatedCandidateAttributes": 7,
+  "proposedAttributeCompleteness": {
+    "denominator": 1200,
+    "baselinePopulated": 14,
+    "afterPopulated": 21,
+    "baselineShare": 0.011666666666666667,
+    "afterShare": 0.0175,
+    "independentlySupportedCompleteness": null
+  },
+  "technicalGroundingFailureRate": {
+    "successes": 0,
+    "trials": 22,
+    "value": 0,
+    "interval": [0, 0.1487]
+  },
+  "documentsWithNoClaims": 30,
+  "perAttribute": [
+    {
+      "attribute": "sleeps_persons",
+      "proposedFacts": 12,
+      "holdoutProposedFacts": 6,
+      "previouslyKnown": 12,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "bedrooms_count",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "bathrooms_count",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "exclusive_rental",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "yard",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "yard_area_m2",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "terrain",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "lawn",
+      "proposedFacts": 1,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "enclosed_yard",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "outdoor_grill",
+      "proposedFacts": 1,
+      "holdoutProposedFacts": 1,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "outdoor_covered_area",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "outdoor_kitchen",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "fire_pit",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "pool",
+      "proposedFacts": 1,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "hot_tub",
+      "proposedFacts": 1,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "sauna",
+      "proposedFacts": 1,
+      "holdoutProposedFacts": 1,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "recreation",
+      "proposedFacts": 3,
+      "holdoutProposedFacts": 3,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "parties_allowed",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "team_building",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "max_daytime_guests",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "music_policy",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "outdoor_events",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "quiet_hours",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "pool_availability",
+      "proposedFacts": 0,
+      "holdoutProposedFacts": 0,
+      "previouslyKnown": 0,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    },
+    {
+      "attribute": "beds_count",
+      "proposedFacts": 2,
+      "holdoutProposedFacts": 1,
+      "previouslyKnown": 2,
+      "explicitNegative": 0,
+      "qualified": 0,
+      "ambiguous": 0
+    }
+  ]
+}

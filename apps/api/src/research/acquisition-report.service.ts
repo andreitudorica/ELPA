@@ -191,10 +191,14 @@ export class AcquisitionReportService {
       this.queries.registerOperatorGroups(campaign.id),
     ]);
 
-    const sources = SOURCE_KEYS.map((sourceKey) =>
+    const sources = SOURCE_KEYS.filter(
+      (sourceKey) =>
+        runs.some((run) => run.sourceKey === sourceKey) ||
+        counts.some((row) => row.sourceKey === sourceKey),
+    ).map((sourceKey) =>
       this.sourceQuality(
         sourceKey,
-        runs.filter((run) => run.sourceKey === sourceKey),
+        runs.filter((run) => run.sourceKey === sourceKey && run.stage === 'import'),
         counts.filter((row) => row.sourceKey === sourceKey),
         coverageRows.filter((row) => row.sourceKey === sourceKey),
       ),
@@ -206,7 +210,12 @@ export class AcquisitionReportService {
       const matched = new Set<string>();
       for (const edge of sameProperty) {
         if (!strengths.includes(edge.strength)) continue;
-        if (sourceOf.get(edge.left) === sourceOf.get(edge.right)) continue;
+        const pair = [sourceOf.get(edge.left), sourceOf.get(edge.right)];
+        if (
+          !pair.includes('situr_accommodation_register') ||
+          !pair.includes('osm_geofabrik_romania')
+        )
+          continue;
         matched.add(edge.left);
         matched.add(edge.right);
       }
@@ -438,7 +447,7 @@ export class AcquisitionReportService {
             }
           : {
               count: 0,
-              definition: 'Every OpenStreetMap object has a native type and id.',
+              definition: 'Every accepted source record has a native identifier.',
             },
       derivedKeyCollisions: counts.reduce((sum, row) => sum + row.derivedKeyCollisions, 0),
       missingLocation: {

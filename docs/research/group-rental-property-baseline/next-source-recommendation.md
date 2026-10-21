@@ -4,6 +4,10 @@ Status: recommendation for the next **investigation**, not authorisation to
 build an adapter or scraper. Every claim about a new source below is a
 hypothesis that its own experiment must measure.
 
+Follow-up: the [controlled Overture experiment](../next-source-value/README.md)
+now records actual sample results and an **investigate further** decision.
+The expectations below are the original hypotheses, not established gains.
+
 ## What the baseline showed
 
 Figures are from the [quality report](./quality-report.md) (observed,

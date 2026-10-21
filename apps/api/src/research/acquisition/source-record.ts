@@ -10,7 +10,11 @@ import type { CountyCode } from './romania-geography';
  * or published values (ADR 0013).
  */
 
-export const SOURCE_KEYS = ['situr_accommodation_register', 'osm_geofabrik_romania'] as const;
+export const SOURCE_KEYS = [
+  'situr_accommodation_register',
+  'osm_geofabrik_romania',
+  'overture_places',
+] as const;
 export type SourceKey = (typeof SOURCE_KEYS)[number];
 
 export type JsonValue =
@@ -20,7 +24,25 @@ export type JsonObject = Record<string, JsonValue>;
 /** Where in the Evidence a Claim value comes from (see data-acquisition-experiments.md). */
 export type EvidenceLocator =
   | { type: 'structured_field'; fields: string[] }
-  | { type: 'inferred'; policyId: string; rationale: string; inputs: JsonObject };
+  | { type: 'inferred'; policyId: string; rationale: string; inputs: JsonObject }
+  | {
+      type: 'text_span';
+      ontologyVersion: string;
+      documentId: string;
+      sourceVersion: string;
+      textSha256: string;
+      fieldPath: string[];
+      start: number;
+      end: number;
+      quote: string;
+      explicitness: string;
+      entityLevel: 'offer';
+      scope: 'advertised_accommodation';
+      temporal: { kind: string; text: string | null };
+      ambiguity: string;
+      evaluationStatus: 'independent_review_pending';
+      grounding: 'technically_validated';
+    };
 
 export const SCREENING_CLASSES = [
   'plausible',

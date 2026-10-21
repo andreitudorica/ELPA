@@ -197,9 +197,9 @@ export interface components {
       /** Format: uuid */
       id: string;
       /** @enum {string} */
-      sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+      sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania' | 'overture_places';
       /** @enum {string} */
-      stage: 'import';
+      stage: 'import' | 'extract';
       /** @enum {string} */
       status: 'running' | 'succeeded' | 'completed_with_rejections' | 'failed';
       parserVersion: string;
@@ -247,7 +247,7 @@ export interface components {
       };
       sources: {
         /** @enum {string} */
-        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania' | 'overture_places';
         label: string;
         reuseTerms: string;
         retentionPolicy: string;
@@ -371,7 +371,7 @@ export interface components {
       /** Format: uuid */
       id: string;
       /** @enum {string} */
-      sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+      sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania' | 'overture_places';
       sourceRecordKey: string;
       displayName: string;
       countyCode: string | null;
@@ -408,7 +408,7 @@ export interface components {
         /** Format: uuid */
         id: string;
         /** @enum {string} */
-        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania' | 'overture_places';
         displayName: string;
         settlementName: string | null;
         countyCode: string | null;
@@ -417,7 +417,7 @@ export interface components {
         /** Format: uuid */
         id: string;
         /** @enum {string} */
-        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania' | 'overture_places';
         displayName: string;
         settlementName: string | null;
         countyCode: string | null;
@@ -428,7 +428,7 @@ export interface components {
         /** Format: uuid */
         id: string;
         /** @enum {string} */
-        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+        sourceKey: 'situr_accommodation_register' | 'osm_geofabrik_romania' | 'overture_places';
         sourceRecordKey: string;
         displayName: string;
         countyCode: string | null;
@@ -471,6 +471,27 @@ export interface components {
         /** Format: uuid */
         acquisitionRunId: string;
         current: boolean;
+        extraction: {
+          quote: string;
+          fieldPath: string[];
+          start: number;
+          end: number;
+          documentId: string;
+          sourceVersion: string;
+          explicitness: string;
+          ambiguity: string;
+          scope: string;
+          temporal: {
+            kind: string;
+            text: string | null;
+          };
+          ontologyVersion: string;
+          /** @enum {string} */
+          evaluationStatus: 'independent_review_pending';
+          /** @enum {string} */
+          grounding: 'technically_validated';
+          conflictingClaimIds: string[];
+        } | null;
       }[];
       evidence: {
         /** Format: uuid */
@@ -639,7 +660,7 @@ export interface operations {
   AcquisitionController_listCandidates: {
     parameters: {
       query?: {
-        source?: 'situr_accommodation_register' | 'osm_geofabrik_romania';
+        source?: 'situr_accommodation_register' | 'osm_geofabrik_romania' | 'overture_places';
         screening?: 'plausible' | 'ambiguous' | 'out_of_scope' | 'insufficient_data';
         county?: string;
         search?: string;

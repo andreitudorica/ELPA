@@ -52,6 +52,9 @@ Acquisition artifacts, reports, and evaluation exports are written to the
 ignored `apps/api/.data/` directory. They may contain licence-restricted or
 personal data and must never be committed.
 
+The formatter excludes this directory: source bytes and checksums are experiment
+inputs, so formatting them would invalidate pinned acquisition manifests.
+
 ## Persistence rules
 
 - PostgreSQL remains the authoritative system of record.

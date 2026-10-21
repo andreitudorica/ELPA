@@ -93,8 +93,8 @@ missing or unverified:
 - `property_type` (Layer-2 enum: `cabana` | `casa_de_vacanta` | `vila` |
   `complex` | `cottage` | `other`)
 - `sleeps_persons`
-- `parties_allowed` (`yes` | `no` | `by_arrangement`) — inferred from source
-  policy when the listing is silent, with rationale attached
+- `parties_allowed` (`yes` | `no` | `by_arrangement`) — requires an explicit
+  event-policy statement; silence remains unknown and never establishes permission
 - `primary_contact_channel` + one usable contact detail (or a working
   booking URL)
 - `primary_photo_url`
