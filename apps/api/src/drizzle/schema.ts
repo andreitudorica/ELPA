@@ -3,6 +3,7 @@
 export * from '../access/access.schema';
 export * from '../audit/audit.schema';
 export * from '../catalog/catalog.schema';
+export * from '../curation/verification.schema';
 export * from '../research/acquisition.schema';
 export * from '../research/research.schema';
 

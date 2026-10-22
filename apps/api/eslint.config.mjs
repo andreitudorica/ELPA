@@ -15,6 +15,17 @@ const toolingSchemaRestriction = {
   message: 'The aggregate schema is for drizzle-kit only; import tables from their owner.',
 };
 
+/** Barrel-only imports between domain modules, plus the tooling schema restriction. */
+const domainPatterns = (owner) => [
+  toolingSchemaRestriction,
+  ...domainModules
+    .filter((target) => target !== owner)
+    .map((target) => ({
+      group: [`**/${target}/**`, `!**/${target}/index`, `!**/${target}/index.ts`],
+      message: 'Import another domain module through its public barrel.',
+    })),
+];
+
 export default defineConfig(
   {
     ignores: ['dist', 'coverage', '.turbo', '*.tsbuildinfo'],
@@ -56,25 +67,42 @@ export default defineConfig(
   ...domainModules.map((owner) => ({
     files: [`src/${owner}/**/*.ts`],
     rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            toolingSchemaRestriction,
-            ...domainModules
-              .filter((target) => target !== owner)
-              .map((target) => ({
-                group: [`**/${target}/**`, `!**/${target}/index`, `!**/${target}/index.ts`],
-                message: 'Import another domain module through its public barrel.',
-              })),
-          ],
-        },
-      ],
+      'no-restricted-imports': ['error', { patterns: domainPatterns(owner) }],
     },
   })),
 
   {
-    files: ['src/{audit,research}/*.schema.ts'],
+    // Rule options replace rather than merge, so the Curation barrel rules are repeated.
+    files: ['src/curation/verification/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            ...domainPatterns('curation'),
+            {
+              group: [
+                '@nestjs/*',
+                'drizzle-orm',
+                'drizzle-orm/*',
+                '@anthropic-ai/*',
+                '**/database',
+                '**/database/**',
+                '**/*.schema',
+                '**/*.repository',
+                '**/*.service',
+              ],
+              message:
+                'Verification policy logic stays independent of framework, persistence and model providers.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  {
+    files: ['src/{audit,curation,research}/*.schema.ts'],
     rules: {
       // Drizzle needs the referenced table objects to declare physical foreign keys.
       'no-restricted-imports': ['error', { patterns: [toolingSchemaRestriction] }],

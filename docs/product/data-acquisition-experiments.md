@@ -190,6 +190,12 @@ did not establish priority-attribute enrichment or independently confirmed new
 properties; the source remains experimental with an **investigate further**
 decision. The review pack and missing independent labels are explicit.
 
+The [automated verification baseline](../research/automated-verification/README.md)
+applies the same rule to verification: a risk-categorized, versioned policy may
+recommend machine verification, but a category becomes autonomous only after an
+independently labelled evaluation passes its predeclared gate and an
+Administrator approves it. None has passed; no independent labels exist yet.
+
 An experiment becomes supported product behavior only when it reduces total
 curation effort without lowering provenance or verification quality, has an
 identified owner, includes observable failure handling, and has a documented

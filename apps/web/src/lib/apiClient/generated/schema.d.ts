@@ -148,6 +148,54 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/admin/verification/policy': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['VerificationController_policy'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/verification/campaigns/{campaignId}/candidates/{candidateId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['VerificationController_candidate'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/verification/decisions/{decisionId}/override': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations['VerificationController_override'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/healthz': {
     parameters: {
       query?: never;
@@ -838,6 +886,278 @@ export interface components {
       matcherVersion: string;
       items: components['schemas']['DuplicateSuggestion_Output'][];
     };
+    VerificationPolicy_Output: {
+      version: string;
+      categories: {
+        /** @enum {string} */
+        id:
+          | 'register_locality'
+          | 'osm_county'
+          | 'register_classified_capacity'
+          | 'explicit_text_facility'
+          | 'property_shape_count'
+          | 'high_consequence';
+        /** @enum {string} */
+        risk: 'lower' | 'moderate' | 'higher';
+        proposition: string;
+        intendedUse: string;
+        evidenceRequirements: string[];
+        /** @enum {string} */
+        autonomy: 'gated' | 'never';
+        /** @enum {string} */
+        corroboration: 'not_required' | 'independent_required';
+        /** @enum {string} */
+        assessor: 'not_required' | 'advisory' | 'required';
+        publicationMethods: ('machine_policy' | 'administrator' | 'owner_confirmation')[];
+        freshnessDays: number;
+        gate: {
+          minAccepted: number;
+          maxFalseApprovalPoint: number;
+          maxFalseApprovalUpper: number;
+          minAgreement: number;
+          minReviewers: number;
+        } | null;
+        eligibility: {
+          /** Format: uuid */
+          id: string;
+          threshold: number;
+          /** Format: date-time */
+          approvedAt: string;
+        } | null;
+      }[];
+      evaluation: {
+        /** Format: uuid */
+        id: string;
+        /** Format: date-time */
+        evaluatedAt: string;
+        status: string;
+        reviewers: number;
+        labeledItems: number;
+        gates: {
+          [key: string]: {
+            passed: boolean;
+            reasons: string[];
+          };
+        };
+        holdout: {
+          [key: string]: {
+            autoApprovals: number;
+            falseApprovals: number;
+            labeled: number;
+            precision: number | null;
+            falseApprovalUpper: number | null;
+          };
+        };
+        strategies: {
+          [key: string]: {
+            recommendations: {
+              [key: string]: number;
+            };
+            assessmentCalls: number;
+            assessmentCostUsd: number;
+            assessmentLatencyMs: number;
+          };
+        };
+      } | null;
+    };
+    VerificationDecision_Output: {
+      /** Format: uuid */
+      id: string;
+      /** Format: uuid */
+      claimId: string;
+      target: string | null;
+      claimValue: unknown;
+      claimSuperseded: boolean;
+      /** @enum {string|null} */
+      category:
+        | 'register_locality'
+        | 'osm_county'
+        | 'register_classified_capacity'
+        | 'explicit_text_facility'
+        | 'property_shape_count'
+        | 'high_consequence'
+        | null;
+      /** @enum {string|null} */
+      risk: 'lower' | 'moderate' | 'higher' | null;
+      /** @enum {string} */
+      method: 'machine_policy' | 'administrator';
+      /** @enum {string} */
+      outcome:
+        | 'verified'
+        | 'further_research_required'
+        | 'insufficient_evidence'
+        | 'contradicted'
+        | 'not_eligible'
+        | 'rejected';
+      /** @enum {string|null} */
+      recommendation:
+        | 'auto_verify'
+        | 'further_research_required'
+        | 'insufficient_evidence'
+        | 'contradicted'
+        | 'not_eligible'
+        | null;
+      policyVersion: string;
+      /** @enum {string|null} */
+      strategy: 'A' | 'B' | 'C' | null;
+      evidenceScore: number | null;
+      reasons: string[];
+      conditions: string[];
+      proposition: {
+        attribute: string;
+        value:
+          | string
+          | number
+          | boolean
+          | {
+              [key: string]: string | null;
+            };
+      } | null;
+      validation: {
+        /** @enum {string} */
+        validatorVersion: 'elpa-evidence-validator@1';
+        itemId: string;
+        /** @enum {string|null} */
+        category:
+          | 'register_locality'
+          | 'osm_county'
+          | 'register_classified_capacity'
+          | 'explicit_text_facility'
+          | 'property_shape_count'
+          | 'high_consequence'
+          | null;
+        /** @enum {string} */
+        outcome: 'passed' | 'deferred' | 'contradicted' | 'rejected';
+        proposition: {
+          attribute: string;
+          value:
+            | string
+            | number
+            | boolean
+            | {
+                [key: string]: string | null;
+              };
+        } | null;
+        checks: {
+          /** @enum {string} */
+          id:
+            | 'evidence_exists'
+            | 'processing_permitted'
+            | 'source_reference_valid'
+            | 'support_present'
+            | 'identity_established'
+            | 'scope_correct'
+            | 'value_normalized'
+            | 'temporal_context'
+            | 'contradictions_checked'
+            | 'independence_assessed';
+          /** @enum {string} */
+          status: 'pass' | 'warn' | 'fail' | 'not_applicable';
+          reasons: string[];
+        }[];
+        conflicts: {
+          /** Format: uuid */
+          claimId: string;
+          /** Format: uuid */
+          candidateId: string;
+          /** Format: uuid */
+          evidenceId: string;
+          sourceKey: string;
+          conditional: boolean;
+          /** @enum {string} */
+          lineage: 'common_origin' | 'possibly_common_origin' | 'independent' | 'unknown';
+        }[];
+        corroboration: {
+          /** Format: uuid */
+          claimId: string;
+          /** Format: uuid */
+          candidateId: string;
+          /** Format: uuid */
+          evidenceId: string;
+          sourceKey: string;
+          conditional: boolean;
+          /** @enum {string} */
+          lineage: 'common_origin' | 'possibly_common_origin' | 'independent' | 'unknown';
+        }[];
+        publicationConstraints: string[];
+        aiTransfer: {
+          permitted: boolean;
+          reasons: string[];
+        };
+        reasons: string[];
+      } | null;
+      assessment: {
+        /** @enum {string} */
+        status: 'accepted' | 'rejected' | 'unavailable';
+        /** @enum {string|null} */
+        verdict:
+          | 'supported'
+          | 'contradicted'
+          | 'insufficient_evidence'
+          | 'incorrect_entity_attribution'
+          | 'uncertain'
+          | null;
+        errors: string[];
+        rationale: string | null;
+        supportingEvidenceIds: string[];
+        contradictingEvidenceIds: string[];
+        concerns: (
+          | 'negation'
+          | 'seasonal_or_temporal'
+          | 'shared_or_public_facility'
+          | 'different_property'
+          | 'different_capacity_basis'
+          | 'outdated'
+          | 'ambiguous_wording'
+          | 'none'
+        )[];
+        model: string | null;
+        promptVersion: string | null;
+        costUsd: number | null;
+        latencyMs: number | null;
+      } | null;
+      followUp: {
+        /** @enum {string} */
+        version: 'elpa-follow-up-research@1';
+        actions: {
+          /** @enum {string} */
+          action:
+            'reread_retained_evidence' | 'consult_register_counterpart' | 'request_new_observation';
+          fingerprint: string;
+          /** @enum {string} */
+          result: 'agrees' | 'disagrees' | 'absent' | 'not_permitted' | 'not_applicable';
+          detail: string;
+        }[];
+        /** @enum {number} */
+        networkCalls: 0;
+        /** @enum {number} */
+        costUsd: 0;
+        /** @enum {string} */
+        termination: 'resolved' | 'contradicted' | 'exhausted' | 'not_applicable';
+      } | null;
+      /** Format: uuid */
+      eligibilityId: string | null;
+      overrideReason: string | null;
+      /** Format: uuid */
+      supersedesDecisionId: string | null;
+      /** Format: uuid */
+      supersededBy: string | null;
+      /** Format: date-time */
+      decidedAt: string;
+      /** Format: date-time */
+      asOf: string;
+      publication: {
+        /** @enum {string} */
+        status: 'blocked';
+        reasons: string[];
+      };
+    };
+    VerificationDecisionList_Output: components['schemas']['VerificationDecision_Output'][];
+    VerificationOverride: {
+      /** @enum {string} */
+      outcome: 'verified' | 'rejected' | 'insufficient_evidence';
+      reason: string;
+    };
     HealthStatus_Output: {
       /** @enum {string} */
       status: 'ok';
@@ -1082,6 +1402,75 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['DuplicateSuggestionPage_Output'];
+        };
+      };
+    };
+  };
+  VerificationController_policy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Versioned policy, approved eligibility and the latest evaluation summary. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['VerificationPolicy_Output'];
+        };
+      };
+    };
+  };
+  VerificationController_candidate: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        campaignId: string;
+        candidateId: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Decisions about the Candidate’s Claims; publication remains a separate decision. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['VerificationDecisionList_Output'];
+        };
+      };
+    };
+  };
+  VerificationController_override: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        decisionId: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['VerificationOverride'];
+      };
+    };
+    responses: {
+      /** @description Records an Administrator decision superseding one decision, with a reason. */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['VerificationDecisionList_Output'];
         };
       };
     };

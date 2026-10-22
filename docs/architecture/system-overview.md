@@ -68,6 +68,11 @@ decision that resolves them into canonical records. The acquisition baseline
 implements only the Research side (see
 `docs/research/group-rental-property-baseline/`).
 
+Curation's first slice records Verification Decisions with their method and
+gates machine verification on an evaluated, Administrator-approved eligibility
+(ADR 0025, `docs/research/automated-verification/`). Duplicate resolution,
+canonical value selection, publication and reverification remain unbuilt.
+
 ## Contract boundary
 
 The API exposes REST/JSON. NestJS produces the OpenAPI document, and

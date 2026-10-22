@@ -28,6 +28,17 @@ depend on NestJS or Drizzle. Nothing in Research writes Catalog records or
 verification state; the `candidate` and `claim` tables constrain their status
 to `unverified` and `proposed`.
 
+Curation owns Verification Decisions (ADR 0025): append-only
+`verification_decision` rows that record their method, `verification_evaluation`
+aggregate reports and `verification_eligibility` approvals. Its pure policy code
+in `src/curation/verification/` (policy, deterministic validator, assessor
+contract, decision engine, follow-up, calibration, sampling, evaluation) is
+lint-guarded against NestJS, Drizzle, repositories and model SDKs. Curation reads
+Research only through `ClaimEvidenceReader`, which returns allowlisted,
+contact-filtered Evidence fields; it writes no Research or Catalog table, and
+nothing is published. See the
+[verification baseline](../../docs/research/automated-verification/README.md).
+
 `src/research/grouping/` supplies the shared deterministic union-find algorithm
 for report and corpus grouping. Each caller retains its own grouping rules;
 this utility does not resolve duplicates or merge Candidates. Repositories use
@@ -110,6 +121,14 @@ and Data Studio show source passages, qualifiers, warnings and rules. Independen
 quality evaluation is incomplete; see the
 [reconciliation experiment](../../docs/research/reconciliation/README.md).
 
+Verification commands seal an evaluation corpus, capture model assessments under
+a cumulative budget, decide and persist machine Verification Decisions, score
+independent labels and approve a category whose gate passed:
+`verification-corpus`, `verification-assess`, `verification-run`,
+`verification-score`, `verification-approve`. `@anthropic-ai/sdk` is the official
+client for the optional, capped model assessment; it is used only by the CLI
+adapter `src/curation/anthropic-assessor.ts`, never by HTTP requests.
+
 Two small parsing dependencies support the official register export:
 `fflate` (ZIP container of the XLSX workbook) and `saxes` (streaming XML for
 its 28 MB worksheet). The OSM PBF format is decoded by an in-repo protobuf
@@ -133,23 +152,29 @@ pnpm db:migrate
 pnpm --filter @elpa/api dev
 ```
 
+`ANTHROPIC_API_KEY` (and `ANTHROPIC_WORKSPACE_ID` for keys not scoped to a
+workspace) are optional and read only by `verification-assess`.
+
 The API has no startup schema mutation. A fresh database must be migrated
 explicitly before administrative requests are usable.
 
 ## Endpoints
 
-| Route                                                             | Purpose                                                                              |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| `GET /api/healthz`                                                | Process liveness; does not touch PostgreSQL.                                         |
-| `GET /api/readyz`                                                 | Readiness; confirms PostgreSQL is reachable.                                         |
-| `GET /api/me`                                                     | Resolve the configured Administrator membership.                                     |
-| `GET /api/admin/research-campaigns`                               | List Research Campaigns, newest first.                                               |
-| `POST /api/admin/research-campaigns`                              | Create and audit a Group Rental Property campaign (county optional: national scope). |
-| `GET /api/admin/research-campaigns/{id}/acquisition-runs`         | Acquisition Runs with artifact, versions, statistics, and failures.                  |
-| `GET /api/admin/research-campaigns/{id}/acquisition-report`       | Data-quality, cross-source, and coverage report.                                     |
-| `GET /api/admin/research-campaigns/{id}/candidates`               | Unverified Candidates, filterable and paginated.                                     |
-| `GET /api/admin/research-campaigns/{id}/candidates/{candidateId}` | Claims, Evidence, run history, and duplicate suggestions.                            |
-| `GET /api/admin/research-campaigns/{id}/duplicate-suggestions`    | Explainable suggestions of the current matcher version.                              |
+| Route                                                                 | Purpose                                                                              |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `GET /api/healthz`                                                    | Process liveness; does not touch PostgreSQL.                                         |
+| `GET /api/readyz`                                                     | Readiness; confirms PostgreSQL is reachable.                                         |
+| `GET /api/me`                                                         | Resolve the configured Administrator membership.                                     |
+| `GET /api/admin/research-campaigns`                                   | List Research Campaigns, newest first.                                               |
+| `POST /api/admin/research-campaigns`                                  | Create and audit a Group Rental Property campaign (county optional: national scope). |
+| `GET /api/admin/research-campaigns/{id}/acquisition-runs`             | Acquisition Runs with artifact, versions, statistics, and failures.                  |
+| `GET /api/admin/research-campaigns/{id}/acquisition-report`           | Data-quality, cross-source, and coverage report.                                     |
+| `GET /api/admin/research-campaigns/{id}/candidates`                   | Unverified Candidates, filterable and paginated.                                     |
+| `GET /api/admin/research-campaigns/{id}/candidates/{candidateId}`     | Claims, Evidence, run history, and duplicate suggestions.                            |
+| `GET /api/admin/verification/policy`                                  | Versioned verification policy, approved eligibility, latest evaluation summary.      |
+| `GET /api/admin/verification/campaigns/{id}/candidates/{candidateId}` | Verification Decisions about the Candidate's Claims; publication always blocked.     |
+| `POST /api/admin/verification/decisions/{decisionId}/override`        | Audited Administrator decision superseding one decision, with a reason.              |
+| `GET /api/admin/research-campaigns/{id}/duplicate-suggestions`        | Explainable suggestions of the current matcher version.                              |
 
 Every response echoes `X-Correlation-Id`. Administrative routes fail closed
 and are guarded through the Access-owned identity resolver. Simulated identity

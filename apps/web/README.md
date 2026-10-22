@@ -101,6 +101,15 @@ Cross-Candidate comparisons remain conditional; no verification/publication
 controls are added. See the
 [reconciliation experiment](../../docs/research/reconciliation/README.md).
 
+Candidate detail also has an "Automated verification (experimental)" panel: the
+versioned policy and latest evaluation summary, and every Verification Decision
+for the Candidate's Claims with its method, outcome, machine recommendation,
+deterministic checks, advisory model assessment, follow-up actions, reasons for
+abstention and why publication stays blocked. A machine decision is labelled as
+such; an Administrator may supersede it with an audited reason. No category is
+eligible for machine verification yet; see the
+[verification baseline](../../docs/research/automated-verification/README.md).
+
 ## Boundaries enforced by ESLint
 
 - `_public/**` may not import from `studio/**` or the identity boundary

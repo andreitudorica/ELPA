@@ -375,5 +375,105 @@
       "conflict": "Afirmații incompatibile, cu același context și intervale explicite suprapuse.",
       "validity": "Valorile diferă, dar suprapunerea valabilității nu este stabilită."
     }
+  },
+  "verification": {
+    "title": "Verificare automată (experimentală)",
+    "open": "Inspectează deciziile de verificare",
+    "loading": "Se încarcă deciziile de verificare",
+    "loadError": "Deciziile de verificare nu au putut fi încărcate",
+    "policyLoadError": "Politica de verificare nu a putut fi încărcată",
+    "experimental": "Experiment. Politica automată poate doar să recomande; o categorie devine eligibilă numai după o evaluare independentă și aprobarea unui Administrator. Publicarea rămâne o decizie separată.",
+    "empty": "Nicio decizie de verificare pentru acest Candidat.",
+    "policy": {
+      "title": "Politică și evaluare ({{version}})",
+      "evaluation": "Evaluare: {{status}} · recenzenți independenți: {{reviewers}} · elemente etichetate: {{labeled}} · {{date}}",
+      "noEvaluation": "Nicio evaluare înregistrată.",
+      "gateOpen": "Prag trecut, în așteptarea aprobării",
+      "gateClosed": "Prag închis: {{reasons}}",
+      "eligible": "Eligibilă (prag scor dovezi {{threshold}})",
+      "cost": "Strategia {{strategy}}: {{calls}} apeluri la model · {{cost}} USD"
+    },
+    "risk": {
+      "lower": "risc redus",
+      "moderate": "risc moderat",
+      "higher": "risc ridicat"
+    },
+    "autonomy": {
+      "gated": "automată după evaluare",
+      "never": "niciodată automată"
+    },
+    "method": {
+      "machine_policy": "Politică automată",
+      "administrator": "Administrator"
+    },
+    "outcome": {
+      "verified": "Verificat",
+      "further_research_required": "Necesită cercetare suplimentară",
+      "insufficient_evidence": "Dovezi insuficiente",
+      "contradicted": "Contrazis",
+      "not_eligible": "Neeligibil pentru verificare automată",
+      "rejected": "Respins"
+    },
+    "recommendation": {
+      "auto_verify": "Recomandat pentru verificare automată",
+      "further_research_required": "Cercetare suplimentară",
+      "insufficient_evidence": "Dovezi insuficiente",
+      "contradicted": "Contrazis",
+      "not_eligible": "Neeligibil"
+    },
+    "category": {
+      "register_locality": "Localitate din registru",
+      "osm_county": "Județ OSM (dedus)",
+      "register_classified_capacity": "Locuri clasificate (registru)",
+      "explicit_text_facility": "Facilitate descrisă explicit",
+      "property_shape_count": "Număr de camere sau paturi",
+      "high_consequence": "Atribut cu consecințe ridicate"
+    },
+    "decision": {
+      "recommendation": "Recomandare: {{value}}",
+      "meta": "Politica {{policy}} · strategia {{strategy}} · scor dovezi {{score}} · decis {{date}}",
+      "superseded": "Înlocuită de o decizie ulterioară",
+      "claimSuperseded": "Afirmația a fost între timp înlocuită",
+      "reasons": "Motive: {{reasons}}"
+    },
+    "publication": {
+      "blocked": "Publicare blocată: {{reasons}}"
+    },
+    "checks": {
+      "title": "Validare deterministă: {{outcome}}",
+      "related": "Afirmații contradictorii: {{conflicts}} · afirmații concordante: {{corroboration}}",
+      "status": {
+        "pass": "trecut",
+        "warn": "avertisment",
+        "fail": "eșuat",
+        "not_applicable": "nu se aplică"
+      }
+    },
+    "assessment": {
+      "title": "Evaluare model (consultativă)",
+      "summary": "{{status}} · verdict: {{verdict}} · {{model}} · {{prompt}}",
+      "evidence": "Sprijin: {{supporting}} · contrazicere: {{contradicting}}",
+      "errors": "Erori: {{errors}}",
+      "cost": "Cost {{cost}} USD · {{latency}} ms"
+    },
+    "followUp": {
+      "title": "Cercetare suplimentară limitată",
+      "termination": "Rezultat: {{value}}"
+    },
+    "override": {
+      "title": "Corectează această decizie",
+      "outcome": "Rezultat",
+      "outcomes": {
+        "verified": "Verificat de un Administrator",
+        "rejected": "Respins",
+        "insufficient_evidence": "Dovezi insuficiente"
+      },
+      "reason": "Motiv (auditat)",
+      "tooShort": "Motivul trebuie să aibă cel puțin 10 caractere",
+      "submit": "Înregistrează corecția",
+      "success": "Corecția a fost înregistrată",
+      "error": "Corecția nu a putut fi înregistrată",
+      "recorded": "Corecție Administrator: {{reason}}"
+    }
   }
 }

@@ -1,0 +1,9 @@
+{
+  "corpusDigest": "04f91d1ea99dec436b52b887867f39cb5319d25da58e78eaab647699f79b3cf1",
+  "outputDigest": "a6d2d0f3e358f8f41aa8f7c918677eeadd7ad602409a1aeb524c9295e7410c24",
+  "decisionsCreated": 824,
+  "decisionsUnchanged": 0,
+  "processingMs": 38,
+  "networkCalls": 0,
+  "note": "Local policy time; model calls are captured separately by verification-assess."
+}

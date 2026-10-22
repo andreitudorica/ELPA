@@ -43,6 +43,13 @@
       "when": 1792621527283,
       "tag": "0005_lively_brother_voodoo",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792624589481,
+      "tag": "0006_smooth_korvac",
+      "breakpoints": true
     }
   ]
 }

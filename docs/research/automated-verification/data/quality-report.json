@@ -1,0 +1,1067 @@
+{
+  "policyVersion": "elpa-verification-policy@1",
+  "corpusVersion": "elpa-verification-corpus@2",
+  "corpusDigest": "04f91d1ea99dec436b52b887867f39cb5319d25da58e78eaab647699f79b3cf1",
+  "assessor": {
+    "promptVersion": "elpa-evidence-assessor-prompt@1",
+    "promptSha256": "576256527fc1961f1ccbd5079d019c0dbe556bf14c780112f3c1d4c0c8e3061f"
+  },
+  "status": "independent_labels_missing",
+  "labels": {
+    "reviewers": 0,
+    "labeledItems": 0,
+    "unresolved": 0,
+    "agreement": {
+      "doubleReviewed": 0,
+      "agreements": 0,
+      "rate": null
+    },
+    "errors": []
+  },
+  "strategies": {
+    "A": {
+      "register_locality": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "osm_county": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "register_classified_capacity": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "explicit_text_facility": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "property_shape_count": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "high_consequence": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      }
+    },
+    "B": {
+      "register_locality": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "osm_county": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "register_classified_capacity": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "explicit_text_facility": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "property_shape_count": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "high_consequence": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      }
+    },
+    "C": {
+      "register_locality": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "osm_county": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "register_classified_capacity": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "explicit_text_facility": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "property_shape_count": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      },
+      "high_consequence": {
+        "calibration": {
+          "labeled": 0,
+          "riskCoverage": [],
+          "selectedThreshold": null,
+          "conformal": null
+        },
+        "holdout": {
+          "labeled": 0,
+          "autoApprovals": 0,
+          "correctApprovals": 0,
+          "falseApprovals": 0,
+          "falseRejections": 0,
+          "abstentions": 0,
+          "contradictionsFlagged": 0,
+          "coverage": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "precision": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "falseApprovalUpper": null,
+          "falseNegativeRate": {
+            "successes": 0,
+            "trials": 0,
+            "value": null,
+            "interval": null
+          },
+          "assessmentCostUsd": 0,
+          "costPerCorrectApprovalUsd": null
+        },
+        "reliability": {
+          "bins": [],
+          "expectedCalibrationError": null
+        },
+        "bySource": {},
+        "byCondition": {}
+      }
+    }
+  },
+  "gates": {
+    "register_locality": {
+      "passed": false,
+      "threshold": null,
+      "reasons": [
+        "insufficient_independent_reviewers",
+        "holdout_not_fully_double_reviewed",
+        "reviewer_agreement_below_minimum",
+        "no_calibrated_threshold",
+        "holdout_sample_too_small",
+        "false_approval_rate_above_gate",
+        "false_approval_upper_bound_above_gate"
+      ]
+    },
+    "osm_county": {
+      "passed": false,
+      "threshold": null,
+      "reasons": [
+        "insufficient_independent_reviewers",
+        "holdout_not_fully_double_reviewed",
+        "reviewer_agreement_below_minimum",
+        "no_calibrated_threshold",
+        "holdout_sample_too_small",
+        "false_approval_rate_above_gate",
+        "false_approval_upper_bound_above_gate"
+      ]
+    },
+    "register_classified_capacity": {
+      "passed": false,
+      "threshold": null,
+      "reasons": [
+        "insufficient_independent_reviewers",
+        "holdout_not_fully_double_reviewed",
+        "reviewer_agreement_below_minimum",
+        "no_calibrated_threshold",
+        "holdout_sample_too_small",
+        "false_approval_rate_above_gate",
+        "false_approval_upper_bound_above_gate"
+      ]
+    },
+    "explicit_text_facility": {
+      "passed": false,
+      "threshold": null,
+      "reasons": [
+        "insufficient_independent_reviewers",
+        "reviewer_agreement_below_minimum",
+        "no_calibrated_threshold",
+        "holdout_sample_too_small",
+        "false_approval_rate_above_gate",
+        "false_approval_upper_bound_above_gate"
+      ]
+    },
+    "property_shape_count": {
+      "passed": false,
+      "threshold": null,
+      "reasons": [
+        "insufficient_independent_reviewers",
+        "holdout_not_fully_double_reviewed",
+        "reviewer_agreement_below_minimum",
+        "no_calibrated_threshold",
+        "holdout_sample_too_small",
+        "false_approval_rate_above_gate",
+        "false_approval_upper_bound_above_gate"
+      ]
+    },
+    "high_consequence": {
+      "passed": false,
+      "threshold": null,
+      "reasons": ["category_never_autonomous", "no_gate_defined"]
+    }
+  },
+  "observed": {
+    "items": 824,
+    "bySplit": {
+      "calibration": 339,
+      "development": 72,
+      "holdout": 413
+    },
+    "byCategory": {
+      "explicit_text_facility": 5,
+      "high_consequence": 38,
+      "osm_county": 245,
+      "property_shape_count": 46,
+      "register_classified_capacity": 245,
+      "register_locality": 245
+    },
+    "strategies": {
+      "A": {
+        "recommendations": {
+          "auto_verify": 716,
+          "further_research_required": 61,
+          "insufficient_evidence": 4,
+          "not_eligible": 43
+        },
+        "outcomes": {
+          "further_research_required": 61,
+          "insufficient_evidence": 4,
+          "not_eligible": 759
+        },
+        "byCategory": {
+          "register_locality": {
+            "auto_verify": 244,
+            "insufficient_evidence": 1
+          },
+          "osm_county": {
+            "auto_verify": 245
+          },
+          "register_classified_capacity": {
+            "auto_verify": 227,
+            "further_research_required": 15,
+            "not_eligible": 3
+          },
+          "explicit_text_facility": {
+            "further_research_required": 3,
+            "not_eligible": 2
+          },
+          "property_shape_count": {
+            "further_research_required": 43,
+            "insufficient_evidence": 2,
+            "not_eligible": 1
+          },
+          "high_consequence": {
+            "insufficient_evidence": 1,
+            "not_eligible": 37
+          }
+        },
+        "assessmentCalls": 0,
+        "assessmentCostUsd": 0,
+        "assessmentLatencyMs": 0
+      },
+      "B": {
+        "recommendations": {
+          "auto_verify": 451,
+          "further_research_required": 177,
+          "insufficient_evidence": 153,
+          "not_eligible": 43
+        },
+        "outcomes": {
+          "further_research_required": 177,
+          "insufficient_evidence": 153,
+          "not_eligible": 494
+        },
+        "byCategory": {
+          "register_locality": {
+            "auto_verify": 244,
+            "insufficient_evidence": 1
+          },
+          "osm_county": {
+            "auto_verify": 2,
+            "further_research_required": 94,
+            "insufficient_evidence": 149
+          },
+          "register_classified_capacity": {
+            "auto_verify": 203,
+            "further_research_required": 39,
+            "not_eligible": 3
+          },
+          "explicit_text_facility": {
+            "auto_verify": 2,
+            "further_research_required": 1,
+            "not_eligible": 2
+          },
+          "property_shape_count": {
+            "further_research_required": 43,
+            "insufficient_evidence": 2,
+            "not_eligible": 1
+          },
+          "high_consequence": {
+            "insufficient_evidence": 1,
+            "not_eligible": 37
+          }
+        },
+        "assessmentCalls": 824,
+        "assessmentCostUsd": 4.312612,
+        "assessmentLatencyMs": 2096585
+      },
+      "C": {
+        "recommendations": {
+          "auto_verify": 718,
+          "further_research_required": 59,
+          "insufficient_evidence": 4,
+          "not_eligible": 43
+        },
+        "outcomes": {
+          "further_research_required": 59,
+          "insufficient_evidence": 4,
+          "not_eligible": 761
+        },
+        "byCategory": {
+          "register_locality": {
+            "auto_verify": 244,
+            "insufficient_evidence": 1
+          },
+          "osm_county": {
+            "auto_verify": 245
+          },
+          "register_classified_capacity": {
+            "auto_verify": 227,
+            "further_research_required": 15,
+            "not_eligible": 3
+          },
+          "explicit_text_facility": {
+            "auto_verify": 2,
+            "further_research_required": 1,
+            "not_eligible": 2
+          },
+          "property_shape_count": {
+            "further_research_required": 43,
+            "insufficient_evidence": 2,
+            "not_eligible": 1
+          },
+          "high_consequence": {
+            "insufficient_evidence": 1,
+            "not_eligible": 37
+          }
+        },
+        "assessmentCalls": 89,
+        "assessmentCostUsd": 0.432282,
+        "assessmentLatencyMs": 238600
+      }
+    },
+    "assessments": {
+      "assessed": 824,
+      "status": {
+        "accepted": 717,
+        "rejected": 107
+      },
+      "verdicts": {
+        "insufficient_evidence": 151,
+        "supported": 541,
+        "uncertain": 25
+      },
+      "errors": {
+        "contradiction_without_citation": 1,
+        "support_without_citation": 2,
+        "ungrounded_quote": 104
+      },
+      "unavailable": {}
+    },
+    "followUp": {
+      "applied": 0,
+      "terminations": {},
+      "changedRecommendation": 0
+    },
+    "verified": 0
+  }
+}

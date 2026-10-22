@@ -127,9 +127,11 @@ research population. It orders review work and never establishes eligibility.
 _Avoid_: Eligibility, qualification
 
 **Verification**:
-A human decision about whether collected claims are sufficiently supported for
-their intended use.
-_Avoid_: Automatic validation
+A decision, recorded with its method (machine policy, Administrator, or owner
+confirmation), about whether collected claims are sufficiently supported for
+their intended use. A machine policy may verify only categories whose evaluated
+eligibility an Administrator approved; it is never presented as a human decision.
+_Avoid_: Automatic validation, auto-approval
 
 **Publication**:
 The act of making approved data eligible for consumption by the recommendation

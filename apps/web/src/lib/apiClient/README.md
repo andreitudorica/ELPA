@@ -40,3 +40,7 @@ surfaces as a TypeScript error. Interim hand-written types under
 The generated file is source-controlled. Run `pnpm openapi:generate` at the
 repository root after every API contract change; it regenerates both the API
 document and these TypeScript types.
+
+`studio.verification` wraps the Administrator-only verification policy,
+Candidate decision history and the audited override; the public client never
+references these administrative schemas.

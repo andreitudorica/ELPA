@@ -14,3 +14,9 @@ export type { SourceKey } from './acquisition/source-record';
 export { createOvertureSampleArtifact, scoreIncrementalReviewFiles } from './next-source/artifacts';
 
 export { ReconciliationService } from './reconciliation.service';
+export { ClaimEvidenceReader, fieldPath } from './claim-evidence.reader';
+export type { ClaimEvidenceRow, EvidenceSnapshot, ReadableField } from './claim-evidence.reader';
+export { canonicalJson, sha256Hex } from './acquisition/source-record';
+export type { EvidenceLocator, JsonObject, JsonValue } from './acquisition/source-record';
+export { ROMANIAN_COUNTIES } from './acquisition/romania-geography';
+export { UnionFind } from './grouping/union-find';

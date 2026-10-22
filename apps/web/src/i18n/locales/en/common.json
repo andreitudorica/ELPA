@@ -375,5 +375,105 @@
       "conflict": "Incompatible assertions have matching context and explicit overlapping validity periods.",
       "validity": "Values differ, but overlapping validity has not been established."
     }
+  },
+  "verification": {
+    "title": "Automated verification (experimental)",
+    "open": "Inspect verification decisions",
+    "loading": "Loading verification decisions",
+    "loadError": "Unable to load verification decisions",
+    "policyLoadError": "Unable to load the verification policy",
+    "experimental": "Experiment. The machine policy can only recommend; a category becomes eligible only after independent evaluation and an Administrator's approval. Publication remains a separate decision.",
+    "empty": "No verification decisions for this Candidate.",
+    "policy": {
+      "title": "Policy and evaluation ({{version}})",
+      "evaluation": "Evaluation: {{status}} · independent reviewers: {{reviewers}} · labelled items: {{labeled}} · {{date}}",
+      "noEvaluation": "No evaluation recorded.",
+      "gateOpen": "Gate passed, awaiting approval",
+      "gateClosed": "Gate closed: {{reasons}}",
+      "eligible": "Eligible (evidence score threshold {{threshold}})",
+      "cost": "Strategy {{strategy}}: {{calls}} model calls · {{cost}} USD"
+    },
+    "risk": {
+      "lower": "lower risk",
+      "moderate": "moderate risk",
+      "higher": "higher risk"
+    },
+    "autonomy": {
+      "gated": "automatic after evaluation",
+      "never": "never automatic"
+    },
+    "method": {
+      "machine_policy": "Machine policy",
+      "administrator": "Administrator"
+    },
+    "outcome": {
+      "verified": "Verified",
+      "further_research_required": "Further research required",
+      "insufficient_evidence": "Insufficient evidence",
+      "contradicted": "Contradicted",
+      "not_eligible": "Not eligible for automatic verification",
+      "rejected": "Rejected"
+    },
+    "recommendation": {
+      "auto_verify": "Recommended for automatic verification",
+      "further_research_required": "Further research",
+      "insufficient_evidence": "Insufficient evidence",
+      "contradicted": "Contradicted",
+      "not_eligible": "Not eligible"
+    },
+    "category": {
+      "register_locality": "Register locality",
+      "osm_county": "OSM county (inferred)",
+      "register_classified_capacity": "Classified places (register)",
+      "explicit_text_facility": "Explicitly described facility",
+      "property_shape_count": "Rooms or beds count",
+      "high_consequence": "High-consequence attribute"
+    },
+    "decision": {
+      "recommendation": "Recommendation: {{value}}",
+      "meta": "Policy {{policy}} · strategy {{strategy}} · evidence score {{score}} · decided {{date}}",
+      "superseded": "Superseded by a later decision",
+      "claimSuperseded": "The Claim has since been superseded",
+      "reasons": "Reasons: {{reasons}}"
+    },
+    "publication": {
+      "blocked": "Publication blocked: {{reasons}}"
+    },
+    "checks": {
+      "title": "Deterministic validation: {{outcome}}",
+      "related": "Conflicting Claims: {{conflicts}} · agreeing Claims: {{corroboration}}",
+      "status": {
+        "pass": "pass",
+        "warn": "warning",
+        "fail": "fail",
+        "not_applicable": "not applicable"
+      }
+    },
+    "assessment": {
+      "title": "Model assessment (advisory)",
+      "summary": "{{status}} · verdict: {{verdict}} · {{model}} · {{prompt}}",
+      "evidence": "Supporting: {{supporting}} · contradicting: {{contradicting}}",
+      "errors": "Errors: {{errors}}",
+      "cost": "Cost {{cost}} USD · {{latency}} ms"
+    },
+    "followUp": {
+      "title": "Bounded follow-up research",
+      "termination": "Result: {{value}}"
+    },
+    "override": {
+      "title": "Correct this decision",
+      "outcome": "Outcome",
+      "outcomes": {
+        "verified": "Verified by an Administrator",
+        "rejected": "Rejected",
+        "insufficient_evidence": "Insufficient evidence"
+      },
+      "reason": "Reason (audited)",
+      "tooShort": "The reason needs at least 10 characters",
+      "submit": "Record correction",
+      "success": "Correction recorded",
+      "error": "Unable to record the correction",
+      "recorded": "Administrator correction: {{reason}}"
+    }
   }
 }

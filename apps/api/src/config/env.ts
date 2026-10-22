@@ -29,6 +29,10 @@ const envSchema = z
       .string()
       .regex(/^postgres(?:ql)?:\/\//, 'DATABASE_URL must be a PostgreSQL URL'),
     DATABASE_POOL_MAX: z.coerce.number().int().positive().max(50).default(10),
+    /** Used only by the verification CLI's capped model assessment; never by requests. */
+    ANTHROPIC_API_KEY: z.string().min(1).optional(),
+    /** Required by keys that are not scoped to one Anthropic workspace. */
+    ANTHROPIC_WORKSPACE_ID: z.string().min(1).optional(),
   })
   .superRefine((env, ctx) => {
     if (

@@ -6,6 +6,10 @@ export type ResearchCampaign = components['schemas']['ResearchCampaign_Output'];
 export type CreateResearchCampaign = components['schemas']['CreateResearchCampaign'];
 export type Administrator = components['schemas']['Administrator_Output'];
 export type ReconciliationList = components['schemas']['ReconciliationList_Output'];
+export type VerificationDecision = components['schemas']['VerificationDecision_Output'];
+export type VerificationDecisionList = components['schemas']['VerificationDecisionList_Output'];
+export type VerificationPolicy = components['schemas']['VerificationPolicy_Output'];
+export type VerificationOverride = components['schemas']['VerificationOverride'];
 export type AcquisitionRun = components['schemas']['AcquisitionRun_Output'];
 export type AcquisitionReport = components['schemas']['AcquisitionReport_Output'];
 export type CandidateSummary = components['schemas']['CandidateSummary_Output'];
@@ -73,5 +77,19 @@ export const studio = {
         query,
         ...withSignal(signal),
       }),
+  },
+  verification: {
+    policy: (signal?: AbortSignal) =>
+      api.get<VerificationPolicy>('/admin/verification/policy', withSignal(signal)),
+    candidate: (campaignId: string, candidateId: string, signal?: AbortSignal) =>
+      api.get<VerificationDecisionList>(
+        `/admin/verification/campaigns/${encodeURIComponent(campaignId)}/candidates/${encodeURIComponent(candidateId)}`,
+        withSignal(signal),
+      ),
+    override: (decisionId: string, input: VerificationOverride) =>
+      api.post<VerificationDecisionList>(
+        `/admin/verification/decisions/${encodeURIComponent(decisionId)}/override`,
+        { body: input },
+      ),
   },
 };

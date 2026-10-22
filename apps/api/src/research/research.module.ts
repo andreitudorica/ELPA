@@ -10,6 +10,7 @@ import { AcquisitionRepository } from './acquisition.repository';
 import { AcquisitionRunService } from './acquisition-run.service';
 import { AcquisitionStudioService } from './acquisition-studio.service';
 import { CandidateClaimsRepository } from './candidate-claims.repository';
+import { ClaimEvidenceReader } from './claim-evidence.reader';
 import { DuplicateSuggestionService } from './duplicate-suggestion.service';
 import { EvaluationService } from './evaluation.service';
 import { ExtractionService } from './extraction.service';
@@ -34,6 +35,7 @@ import { ReconciliationService } from './reconciliation.service';
     AcquisitionStudioService,
     AcquisitionReportService,
     CandidateClaimsRepository,
+    ClaimEvidenceReader,
     DuplicateSuggestionService,
     EvaluationService,
     ExtractionService,
@@ -52,6 +54,7 @@ import { ReconciliationService } from './reconciliation.service';
     ExtractionService,
     VisualService,
     ReconciliationService,
+    ClaimEvidenceReader,
   ],
 })
 export class ResearchModule {}

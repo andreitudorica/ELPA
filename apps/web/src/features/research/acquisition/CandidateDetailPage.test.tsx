@@ -8,6 +8,9 @@ import { CandidateDetailPage } from './CandidateDetailPage';
 
 vi.mock('../acquisitionApi', () => ({
   useReconciliation: () => ({ isPending: false, isError: false, data: [] }),
+  useCandidateVerification: () => ({ isPending: false, isError: false, data: [] }),
+  useVerificationPolicy: () => ({ isPending: false, isError: false, data: undefined }),
+  useOverrideVerification: () => ({ isPending: false, mutate: () => undefined }),
   useCandidate: () => ({ isPending: false, isError: false, data: detail }),
 }));
 

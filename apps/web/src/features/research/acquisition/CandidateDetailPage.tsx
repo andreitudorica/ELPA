@@ -21,6 +21,7 @@ import { ImageEvidence } from './ImageEvidence';
 import { formatClaimValue, screeningColor } from './labels';
 import { ReconciliationPanel } from './ReconciliationPanel';
 import { SuggestionSignals } from './SuggestionSignals';
+import { VerificationPanel } from './VerificationPanel';
 
 type Claim = CandidateDetail['claims'][number];
 
@@ -105,6 +106,7 @@ export function CandidateDetailPage({
         </Stack>
 
         <ReconciliationPanel campaignId={campaignId} candidateId={candidateId} />
+        <VerificationPanel campaignId={campaignId} candidateId={candidateId} />
 
         {extractedClaims.length > 0 && (
           <AppCard title={t('acquisition.extraction.title')}>

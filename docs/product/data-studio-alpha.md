@@ -25,7 +25,10 @@ integration does not require redesigning the domain workflow.
 5. Search for possible duplicates and resolve a Candidate to a canonical
    Provider or Offer.
 6. Create and maintain Providers, Operating Locations, Offers, and Categories.
-7. Verify Claims and select canonical values with rationale.
+7. Verify Claims and select canonical values with rationale. Verification
+   Decisions record their method; machine verification of a category requires
+   an approved, independently evaluated eligibility (ADR 0025). Administrators
+   inspect and override machine decisions rather than approving every fact.
 8. Publish approved projections for API consumption.
 9. Flag stale or contradictory data for reverification.
 10. Inspect actor-attributed audit history.

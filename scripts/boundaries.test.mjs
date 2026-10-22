@@ -111,3 +111,27 @@ test('API domain imports use public barrels at every nesting depth', async () =>
     true,
   );
 });
+
+test('verification policy logic stays independent of persistence and model providers', async () => {
+  const linter = boundaryLinter('api');
+  const pure = 'src/curation/verification/probe.ts';
+  await checkImport(linter, pure, "import Anthropic from '@anthropic-ai/sdk';", true);
+  await checkImport(linter, pure, "import { Injectable } from '@nestjs/common';", true);
+  await checkImport(linter, pure, "import { eq } from 'drizzle-orm';", true);
+  await checkImport(linter, pure, "import { DatabaseService } from '../../database';", true);
+  await checkImport(linter, pure, "import { claims } from '../verification.schema';", true);
+  await checkImport(
+    linter,
+    pure,
+    "import { ClaimEvidenceReader } from '../../research/claim-evidence.reader';",
+    true,
+  );
+  await checkImport(linter, pure, "import { CATEGORIES } from './policy';", false);
+  await checkImport(linter, pure, "import type { JsonValue } from '../../research';", false);
+  await checkImport(
+    linter,
+    'src/curation/probe.ts',
+    "import { AnthropicEvidenceAssessor } from './anthropic-assessor';",
+    false,
+  );
+});

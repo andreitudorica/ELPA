@@ -24,25 +24,51 @@ resolved.
 
 ## Research and curation
 
-| Term                     | Definition                                                                                                                                                                                                             | Aliases to avoid                                   |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| **Research Campaign**    | A bounded research effort defined by a geographic area, event need, category, minimum criteria, and investigated sources.                                                                                              | Scrape job, crawl                                  |
-| **Acquisition Run**      | One recorded attempt to import, fetch, extract, discover, or detect change from a defined input and source.                                                                                                            | Scrape when the acquisition stage is more specific |
-| **Candidate**            | A discovered possible provider, location, or offer that has not yet passed verification.                                                                                                                               | Provider, listing                                  |
-| **Claim**                | A source-attributed immutable observation that preserves its value and observation time.                                                                                                                               | Fact, canonical field                              |
-| **Evidence**             | The source material that supports one or more **Claims**.                                                                                                                                                              | Truth                                              |
-| **Verification**         | A human decision that claims are sufficiently supported for their intended use.                                                                                                                                        | Automatic validation                               |
-| **Publication**          | Making approved data eligible for consumption by the recommendation product.                                                                                                                                           | Discovery, approval                                |
-| **Reverification**       | A later **Verification** prompted by age, change, contradiction, or risk.                                                                                                                                              | Refresh                                            |
-| **Source Artifact**      | A versioned file obtained from a source (an export, an extract), identified by checksum, from which an **Acquisition Run** reads **Evidence**.                                                                         | Dump, raw file                                     |
-| **Duplicate Suggestion** | An explainable, versioned proposal that two **Candidates** describe the same property or share a **Provider**. It never merges records; resolving it is a Curation decision.                                           | Match (as a decision), merge                       |
-| **Population Screening** | An automated, inferred **Claim** that classifies a **Candidate** against a Category's research population (plausible, ambiguous, out of scope, insufficient data). It orders review and never establishes eligibility. | Eligibility, qualification                         |
+| Term                     | Definition                                                                                                                                                                                                                    | Aliases to avoid                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **Research Campaign**    | A bounded research effort defined by a geographic area, event need, category, minimum criteria, and investigated sources.                                                                                                     | Scrape job, crawl                                  |
+| **Acquisition Run**      | One recorded attempt to import, fetch, extract, discover, or detect change from a defined input and source.                                                                                                                   | Scrape when the acquisition stage is more specific |
+| **Candidate**            | A discovered possible provider, location, or offer that has not yet passed verification.                                                                                                                                      | Provider, listing                                  |
+| **Claim**                | A source-attributed immutable observation that preserves its value and observation time.                                                                                                                                      | Fact, canonical field                              |
+| **Evidence**             | The source material that supports one or more **Claims**.                                                                                                                                                                     | Truth                                              |
+| **Verification**         | A decision, recorded with its **Verification Method**, that Claims are sufficiently supported for their intended use. Machine verification is allowed only where an evaluated **Verification Eligibility** has been approved. | Automatic validation, auto-approval                |
+| **Publication**          | Making approved data eligible for consumption by the recommendation product.                                                                                                                                                  | Discovery, approval                                |
+| **Reverification**       | A later **Verification** prompted by age, change, contradiction, or risk.                                                                                                                                                     | Refresh                                            |
+| **Source Artifact**      | A versioned file obtained from a source (an export, an extract), identified by checksum, from which an **Acquisition Run** reads **Evidence**.                                                                                | Dump, raw file                                     |
+| **Duplicate Suggestion** | An explainable, versioned proposal that two **Candidates** describe the same property or share a **Provider**. It never merges records; resolving it is a Curation decision.                                                  | Match (as a decision), merge                       |
+| **Population Screening** | An automated, inferred **Claim** that classifies a **Candidate** against a Category's research population (plausible, ambiguous, out of scope, insufficient data). It orders review and never establishes eligibility.        | Eligibility, qualification                         |
 
 **Reconciliation Assessment** is a versioned, immutable Research comparison of
 proposed Claims with explicit scope, temporal context, evidence-origin warnings
 and uncertainty. It preserves inputs and rationale; it is not a Verification
 Decision, canonical value or duplicate resolution. A supported source assertion
 remains unverified and may have unknown current applicability.
+
+**Verification Decision** is an append-only Curation record about one Claim: its
+outcome (verified, further research required, insufficient evidence,
+contradicted, not eligible for automatic verification, or rejected), its
+**Verification Method**, the versioned **Verification Policy**, and the
+validation, assessment and follow-up inputs it used. It is never Publication.
+
+**Verification Method** records who or what decided: a machine policy, an
+Administrator, or (once an owner-statement Evidence source exists) an owner
+confirmation. "Machine-verified", "human-confirmed" and "owner-confirmed" name a
+verified decision by method; a machine decision is never presented as a human one.
+
+**Verification Policy** is the versioned, risk-categorized rule set that turns
+deterministic validation, an optional advisory model assessment and bounded
+follow-up research into a recommendation. A model's self-reported confidence is
+never an input.
+
+**Verification Eligibility** is an Administrator's approval that one policy
+category passed its predeclared evaluation gate on independently adjudicated
+labels. Without it the policy may only recommend. High-consequence attributes —
+guest or event capacity, whole-property rental, private-event permission, pool
+availability, noise rules — are never eligible.
+
+A fact is **publication-eligible** when its current Verification Decision is
+verified by a method its category accepts; this is derived, not stored, and
+Publication itself remains a separate decision.
 
 ## Catalog
 
@@ -114,6 +140,8 @@ remains unverified and may have unknown current applicability.
 - An **Offer** belongs to one **Provider** and may belong to one or more **Categories**.
 - Only data accepted through **Verification** becomes eligible for
   **Publication**.
+- A **Verification Decision** concerns one **Claim**; an Administrator decision
+  may supersede a machine decision, and both remain as history.
 - The **Recommendation Product** consumes published data; it does not consume
   raw **Candidates** or unverified **Claims**.
 - An **Administrator** uses simulated identity during the **Data Studio** alpha;

@@ -303,6 +303,75 @@ paths:
                 $ref: '#/components/schemas/DuplicateSuggestionPage_Output'
       tags:
         - studio-research
+  /api/admin/verification/policy:
+    get:
+      operationId: VerificationController_policy
+      parameters: []
+      responses:
+        '200':
+          description: Versioned policy, approved eligibility and the latest evaluation
+            summary.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationPolicy_Output'
+      tags:
+        - studio-verification
+  /api/admin/verification/campaigns/{campaignId}/candidates/{candidateId}:
+    get:
+      operationId: VerificationController_candidate
+      parameters:
+        - name: campaignId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            type: string
+        - name: candidateId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            type: string
+      responses:
+        '200':
+          description: Decisions about the Candidate’s Claims; publication remains a
+            separate decision.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationDecisionList_Output'
+      tags:
+        - studio-verification
+  /api/admin/verification/decisions/{decisionId}/override:
+    post:
+      operationId: VerificationController_override
+      parameters:
+        - name: decisionId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerificationOverride'
+      responses:
+        '201':
+          description: Records an Administrator decision superseding one decision, with a
+            reason.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationDecisionList_Output'
+      tags:
+        - studio-verification
   /api/healthz:
     get:
       operationId: HealthController_check
@@ -2343,6 +2412,770 @@ components:
         - pageSize
         - matcherVersion
         - items
+      additionalProperties: false
+    VerificationPolicy_Output:
+      type: object
+      properties:
+        version:
+          type: string
+        categories:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                enum:
+                  - register_locality
+                  - osm_county
+                  - register_classified_capacity
+                  - explicit_text_facility
+                  - property_shape_count
+                  - high_consequence
+              risk:
+                type: string
+                enum:
+                  - lower
+                  - moderate
+                  - higher
+              proposition:
+                type: string
+              intendedUse:
+                type: string
+              evidenceRequirements:
+                type: array
+                items:
+                  type: string
+              autonomy:
+                type: string
+                enum:
+                  - gated
+                  - never
+              corroboration:
+                type: string
+                enum:
+                  - not_required
+                  - independent_required
+              assessor:
+                type: string
+                enum:
+                  - not_required
+                  - advisory
+                  - required
+              publicationMethods:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - machine_policy
+                    - administrator
+                    - owner_confirmation
+              freshnessDays:
+                type: integer
+                minimum: -9007199254740991
+                maximum: 9007199254740991
+              gate:
+                type: object
+                properties:
+                  minAccepted:
+                    type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  maxFalseApprovalPoint:
+                    type: number
+                  maxFalseApprovalUpper:
+                    type: number
+                  minAgreement:
+                    type: number
+                  minReviewers:
+                    type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                required:
+                  - minAccepted
+                  - maxFalseApprovalPoint
+                  - maxFalseApprovalUpper
+                  - minAgreement
+                  - minReviewers
+                additionalProperties: false
+                nullable: true
+              eligibility:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  threshold:
+                    type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  approvedAt:
+                    type: string
+                    format: date-time
+                    pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+                required:
+                  - id
+                  - threshold
+                  - approvedAt
+                additionalProperties: false
+                nullable: true
+            required:
+              - id
+              - risk
+              - proposition
+              - intendedUse
+              - evidenceRequirements
+              - autonomy
+              - corroboration
+              - assessor
+              - publicationMethods
+              - freshnessDays
+              - gate
+              - eligibility
+            additionalProperties: false
+        evaluation:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            evaluatedAt:
+              type: string
+              format: date-time
+              pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+            status:
+              type: string
+            reviewers:
+              type: integer
+              minimum: -9007199254740991
+              maximum: 9007199254740991
+            labeledItems:
+              type: integer
+              minimum: -9007199254740991
+              maximum: 9007199254740991
+            gates:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  passed:
+                    type: boolean
+                  reasons:
+                    type: array
+                    items:
+                      type: string
+                required:
+                  - passed
+                  - reasons
+                additionalProperties: false
+              required:
+                - register_locality
+                - osm_county
+                - register_classified_capacity
+                - explicit_text_facility
+                - property_shape_count
+                - high_consequence
+            holdout:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  autoApprovals:
+                    type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  falseApprovals:
+                    type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  labeled:
+                    type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  precision:
+                    type: number
+                    nullable: true
+                  falseApprovalUpper:
+                    type: number
+                    nullable: true
+                required:
+                  - autoApprovals
+                  - falseApprovals
+                  - labeled
+                  - precision
+                  - falseApprovalUpper
+                additionalProperties: false
+              required:
+                - register_locality
+                - osm_county
+                - register_classified_capacity
+                - explicit_text_facility
+                - property_shape_count
+                - high_consequence
+            strategies:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  recommendations:
+                    type: object
+                    additionalProperties:
+                      type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                  assessmentCalls:
+                    type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  assessmentCostUsd:
+                    type: number
+                  assessmentLatencyMs:
+                    type: number
+                required:
+                  - recommendations
+                  - assessmentCalls
+                  - assessmentCostUsd
+                  - assessmentLatencyMs
+                additionalProperties: false
+              required:
+                - A
+                - B
+                - C
+          required:
+            - id
+            - evaluatedAt
+            - status
+            - reviewers
+            - labeledItems
+            - gates
+            - holdout
+            - strategies
+          additionalProperties: false
+          nullable: true
+      required:
+        - version
+        - categories
+        - evaluation
+      additionalProperties: false
+    VerificationDecision_Output:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+        claimId:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+        target:
+          type: string
+          nullable: true
+        claimValue: {}
+        claimSuperseded:
+          type: boolean
+        category:
+          type: string
+          enum:
+            - register_locality
+            - osm_county
+            - register_classified_capacity
+            - explicit_text_facility
+            - property_shape_count
+            - high_consequence
+            - null
+          nullable: true
+        risk:
+          type: string
+          enum:
+            - lower
+            - moderate
+            - higher
+            - null
+          nullable: true
+        method:
+          type: string
+          enum:
+            - machine_policy
+            - administrator
+        outcome:
+          type: string
+          enum:
+            - verified
+            - further_research_required
+            - insufficient_evidence
+            - contradicted
+            - not_eligible
+            - rejected
+        recommendation:
+          type: string
+          enum:
+            - auto_verify
+            - further_research_required
+            - insufficient_evidence
+            - contradicted
+            - not_eligible
+            - null
+          nullable: true
+        policyVersion:
+          type: string
+        strategy:
+          type: string
+          enum:
+            - A
+            - B
+            - C
+            - null
+          nullable: true
+        evidenceScore:
+          type: integer
+          minimum: -9007199254740991
+          maximum: 9007199254740991
+          nullable: true
+        reasons:
+          type: array
+          items:
+            type: string
+        conditions:
+          type: array
+          items:
+            type: string
+        proposition:
+          type: object
+          properties:
+            attribute:
+              type: string
+            value:
+              anyOf:
+                - type: string
+                - type: number
+                - type: boolean
+                - type: object
+                  additionalProperties:
+                    type: string
+                    nullable: true
+          required:
+            - attribute
+            - value
+          additionalProperties: false
+          nullable: true
+        validation:
+          type: object
+          properties:
+            validatorVersion:
+              type: string
+              enum:
+                - elpa-evidence-validator@1
+            itemId:
+              type: string
+              pattern: ^[a-f0-9]{64}$
+            category:
+              type: string
+              enum:
+                - register_locality
+                - osm_county
+                - register_classified_capacity
+                - explicit_text_facility
+                - property_shape_count
+                - high_consequence
+                - null
+              nullable: true
+            outcome:
+              type: string
+              enum:
+                - passed
+                - deferred
+                - contradicted
+                - rejected
+            proposition:
+              type: object
+              properties:
+                attribute:
+                  type: string
+                value:
+                  anyOf:
+                    - type: string
+                    - type: number
+                    - type: boolean
+                    - type: object
+                      additionalProperties:
+                        type: string
+                        nullable: true
+              required:
+                - attribute
+                - value
+              additionalProperties: false
+              nullable: true
+            checks:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - evidence_exists
+                      - processing_permitted
+                      - source_reference_valid
+                      - support_present
+                      - identity_established
+                      - scope_correct
+                      - value_normalized
+                      - temporal_context
+                      - contradictions_checked
+                      - independence_assessed
+                  status:
+                    type: string
+                    enum:
+                      - pass
+                      - warn
+                      - fail
+                      - not_applicable
+                  reasons:
+                    type: array
+                    items:
+                      type: string
+                required:
+                  - id
+                  - status
+                  - reasons
+                additionalProperties: false
+            conflicts:
+              type: array
+              items:
+                type: object
+                properties:
+                  claimId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  candidateId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  evidenceId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  sourceKey:
+                    type: string
+                  conditional:
+                    type: boolean
+                  lineage:
+                    type: string
+                    enum:
+                      - common_origin
+                      - possibly_common_origin
+                      - independent
+                      - unknown
+                required:
+                  - claimId
+                  - candidateId
+                  - evidenceId
+                  - sourceKey
+                  - conditional
+                  - lineage
+                additionalProperties: false
+            corroboration:
+              type: array
+              items:
+                type: object
+                properties:
+                  claimId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  candidateId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  evidenceId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  sourceKey:
+                    type: string
+                  conditional:
+                    type: boolean
+                  lineage:
+                    type: string
+                    enum:
+                      - common_origin
+                      - possibly_common_origin
+                      - independent
+                      - unknown
+                required:
+                  - claimId
+                  - candidateId
+                  - evidenceId
+                  - sourceKey
+                  - conditional
+                  - lineage
+                additionalProperties: false
+            publicationConstraints:
+              type: array
+              items:
+                type: string
+            aiTransfer:
+              type: object
+              properties:
+                permitted:
+                  type: boolean
+                reasons:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - permitted
+                - reasons
+              additionalProperties: false
+            reasons:
+              type: array
+              items:
+                type: string
+          required:
+            - validatorVersion
+            - itemId
+            - category
+            - outcome
+            - proposition
+            - checks
+            - conflicts
+            - corroboration
+            - publicationConstraints
+            - aiTransfer
+            - reasons
+          additionalProperties: false
+          nullable: true
+        assessment:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+                - accepted
+                - rejected
+                - unavailable
+            verdict:
+              type: string
+              enum:
+                - supported
+                - contradicted
+                - insufficient_evidence
+                - incorrect_entity_attribution
+                - uncertain
+                - null
+              nullable: true
+            errors:
+              type: array
+              items:
+                type: string
+            rationale:
+              type: string
+              nullable: true
+            supportingEvidenceIds:
+              type: array
+              items:
+                type: string
+                format: uuid
+                pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            contradictingEvidenceIds:
+              type: array
+              items:
+                type: string
+                format: uuid
+                pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+            concerns:
+              type: array
+              items:
+                type: string
+                enum:
+                  - negation
+                  - seasonal_or_temporal
+                  - shared_or_public_facility
+                  - different_property
+                  - different_capacity_basis
+                  - outdated
+                  - ambiguous_wording
+                  - none
+            model:
+              type: string
+              nullable: true
+            promptVersion:
+              type: string
+              nullable: true
+            costUsd:
+              type: number
+              minimum: 0
+              nullable: true
+            latencyMs:
+              type: number
+              minimum: 0
+              nullable: true
+          required:
+            - status
+            - verdict
+            - errors
+            - rationale
+            - supportingEvidenceIds
+            - contradictingEvidenceIds
+            - concerns
+            - model
+            - promptVersion
+            - costUsd
+            - latencyMs
+          additionalProperties: false
+          nullable: true
+        followUp:
+          type: object
+          properties:
+            version:
+              type: string
+              enum:
+                - elpa-follow-up-research@1
+            actions:
+              type: array
+              items:
+                type: object
+                properties:
+                  action:
+                    type: string
+                    enum:
+                      - reread_retained_evidence
+                      - consult_register_counterpart
+                      - request_new_observation
+                  fingerprint:
+                    type: string
+                  result:
+                    type: string
+                    enum:
+                      - agrees
+                      - disagrees
+                      - absent
+                      - not_permitted
+                      - not_applicable
+                  detail:
+                    type: string
+                required:
+                  - action
+                  - fingerprint
+                  - result
+                  - detail
+                additionalProperties: false
+            networkCalls:
+              type: number
+              enum:
+                - 0
+            costUsd:
+              type: number
+              enum:
+                - 0
+            termination:
+              type: string
+              enum:
+                - resolved
+                - contradicted
+                - exhausted
+                - not_applicable
+          required:
+            - version
+            - actions
+            - networkCalls
+            - costUsd
+            - termination
+          additionalProperties: false
+          nullable: true
+        eligibilityId:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+          nullable: true
+        overrideReason:
+          type: string
+          nullable: true
+        supersedesDecisionId:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+          nullable: true
+        supersededBy:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+          nullable: true
+        decidedAt:
+          type: string
+          format: date-time
+          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+        asOf:
+          type: string
+          format: date-time
+          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+        publication:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+                - blocked
+            reasons:
+              type: array
+              items:
+                type: string
+          required:
+            - status
+            - reasons
+          additionalProperties: false
+      required:
+        - id
+        - claimId
+        - target
+        - claimValue
+        - claimSuperseded
+        - category
+        - risk
+        - method
+        - outcome
+        - recommendation
+        - policyVersion
+        - strategy
+        - evidenceScore
+        - reasons
+        - conditions
+        - proposition
+        - validation
+        - assessment
+        - followUp
+        - eligibilityId
+        - overrideReason
+        - supersedesDecisionId
+        - supersededBy
+        - decidedAt
+        - asOf
+        - publication
+      additionalProperties: false
+    VerificationDecisionList_Output:
+      type: array
+      items:
+        $ref: '#/components/schemas/VerificationDecision_Output'
+    VerificationOverride:
+      type: object
+      properties:
+        outcome:
+          type: string
+          enum:
+            - verified
+            - rejected
+            - insufficient_evidence
+        reason:
+          type: string
+          minLength: 10
+          maxLength: 2000
+      required:
+        - outcome
+        - reason
       additionalProperties: false
     HealthStatus_Output:
       type: object

@@ -1,6 +1,12 @@
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { type CandidateQuery, studio, type SuggestionQuery } from '@/lib/apiClient';
+import {
+  type CandidateQuery,
+  studio,
+  type SuggestionQuery,
+  type VerificationDecisionList,
+  type VerificationOverride,
+} from '@/lib/apiClient';
 
 const acquisitionKeys = {
   all: (campaignId: string) => ['studio', 'acquisition', campaignId] as const,
@@ -71,5 +77,54 @@ export function useReconciliation(
     queryFn: ({ signal }) => studio.acquisition.reconciliation(campaignId, candidateId, signal),
     enabled,
     meta: { errorMessage },
+  });
+}
+
+const verificationKeys = {
+  policy: ['studio', 'verification', 'policy'] as const,
+  candidate: (campaignId: string, candidateId: string) =>
+    ['studio', 'verification', campaignId, candidateId] as const,
+};
+
+export function useVerificationPolicy(errorMessage: string, enabled: boolean) {
+  return useQuery({
+    queryKey: verificationKeys.policy,
+    queryFn: ({ signal }) => studio.verification.policy(signal),
+    enabled,
+    meta: { errorMessage },
+  });
+}
+
+export function useCandidateVerification(
+  campaignId: string,
+  candidateId: string,
+  errorMessage: string,
+  enabled: boolean,
+) {
+  return useQuery({
+    queryKey: verificationKeys.candidate(campaignId, candidateId),
+    queryFn: ({ signal }) => studio.verification.candidate(campaignId, candidateId, signal),
+    enabled,
+    meta: { errorMessage },
+  });
+}
+
+export function useOverrideVerification(
+  campaignId: string,
+  candidateId: string,
+  feedback: { errorMessage: string; successMessage: string },
+) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationKey: ['studio', 'verification', 'override'],
+    mutationFn: ({ decisionId, input }: { decisionId: string; input: VerificationOverride }) =>
+      studio.verification.override(decisionId, input),
+    onSuccess: (decisions) => {
+      queryClient.setQueryData<VerificationDecisionList>(
+        verificationKeys.candidate(campaignId, candidateId),
+        decisions,
+      );
+    },
+    meta: feedback,
   });
 }

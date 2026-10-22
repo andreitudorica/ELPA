@@ -59,6 +59,10 @@ it.
 
 - Research reconciliation retains immutable assessment snapshots with scoped
   Claim inputs, rule versions, time context and uncertainty (ADR 0024).
+- Verification Decisions record their method; a machine policy may verify a
+  category only after an Administrator approves an evaluation whose predeclared
+  gates passed on independent labels, and never for high-consequence attributes.
+  Publication stays a separate decision (ADR 0025).
   Assessments do not select canonical values or resolve Candidate identity.
 
 ## Access and security

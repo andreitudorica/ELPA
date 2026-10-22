@@ -1,0 +1,298 @@
+{
+  "label": "Observed system outputs on corpus elpa-verification-corpus@2; no independent labels; not accuracy",
+  "corpusDigest": "04f91d1ea99dec436b52b887867f39cb5319d25da58e78eaab647699f79b3cf1",
+  "items": 824,
+  "calls": {
+    "attempted": 828,
+    "succeeded": 824,
+    "failedBeforeModel": 2,
+    "rejectedByApi": 2,
+    "failureTypes": {
+      "Error:null": 2,
+      "BadRequestError:400": 2
+    }
+  },
+  "tokens": {
+    "input": 1325451,
+    "output": 166171,
+    "cacheRead": 0
+  },
+  "costUsd": 4.312612,
+  "costPerCallUsd": {
+    "mean": 0.005234
+  },
+  "latencyMs": {
+    "p50": 2420,
+    "p90": 3236,
+    "max": 10138
+  },
+  "stopReasons": {
+    "end_turn": 824
+  },
+  "servedModels": {
+    "claude-sonnet-5-5": 824
+  },
+  "byCategory": {
+    "register_classified_capacity": {
+      "items": 245,
+      "bySplit": {
+        "holdout": 125,
+        "development": 20,
+        "calibration": 100
+      },
+      "A": {
+        "auto_verify": 227,
+        "further_research_required": 15,
+        "not_eligible": 3
+      },
+      "B": {
+        "auto_verify": 203,
+        "further_research_required": 39,
+        "not_eligible": 3
+      },
+      "C": {
+        "auto_verify": 227,
+        "further_research_required": 15,
+        "not_eligible": 3
+      },
+      "evidenceScoreC": {
+        "1": 15,
+        "2": 3,
+        "3": 227
+      },
+      "assessmentStatus": {
+        "accepted": 220,
+        "rejected": 25
+      },
+      "assessmentVerdict": {
+        "supported": 215,
+        "none": 25,
+        "uncertain": 5
+      },
+      "assessmentErrors": {
+        "ungrounded_quote": 25
+      },
+      "conditions": {
+        "single_record": 155,
+        "has_counterpart": 78,
+        "reprocessed_copy": 12,
+        "superseded_method": 3,
+        "multiple_claims_same_target": 12,
+        "prior_holdout": 6
+      }
+    },
+    "register_locality": {
+      "items": 245,
+      "bySplit": {
+        "holdout": 125,
+        "development": 20,
+        "calibration": 100
+      },
+      "A": {
+        "auto_verify": 244,
+        "insufficient_evidence": 1
+      },
+      "B": {
+        "auto_verify": 244,
+        "insufficient_evidence": 1
+      },
+      "C": {
+        "auto_verify": 244,
+        "insufficient_evidence": 1
+      },
+      "evidenceScoreC": {
+        "2": 1,
+        "3": 179,
+        "4": 65
+      },
+      "assessmentStatus": {
+        "accepted": 245
+      },
+      "assessmentVerdict": {
+        "supported": 244,
+        "insufficient_evidence": 1
+      },
+      "assessmentErrors": {},
+      "conditions": {
+        "single_record": 154,
+        "conditional_agreement": 91
+      }
+    },
+    "osm_county": {
+      "items": 245,
+      "bySplit": {
+        "holdout": 125,
+        "calibration": 100,
+        "development": 20
+      },
+      "A": {
+        "auto_verify": 245
+      },
+      "B": {
+        "insufficient_evidence": 149,
+        "further_research_required": 94,
+        "auto_verify": 2
+      },
+      "C": {
+        "auto_verify": 245
+      },
+      "evidenceScoreC": {
+        "2": 162,
+        "3": 83
+      },
+      "assessmentStatus": {
+        "accepted": 164,
+        "rejected": 81
+      },
+      "assessmentVerdict": {
+        "insufficient_evidence": 149,
+        "none": 81,
+        "supported": 2,
+        "uncertain": 13
+      },
+      "assessmentErrors": {
+        "ungrounded_quote": 79,
+        "support_without_citation": 2
+      },
+      "conditions": {
+        "conditional_agreement": 91,
+        "inferred_settlement": 145,
+        "single_record": 154
+      }
+    },
+    "property_shape_count": {
+      "items": 46,
+      "bySplit": {
+        "calibration": 20,
+        "development": 6,
+        "holdout": 20
+      },
+      "A": {
+        "further_research_required": 43,
+        "insufficient_evidence": 2,
+        "not_eligible": 1
+      },
+      "B": {
+        "further_research_required": 43,
+        "insufficient_evidence": 2,
+        "not_eligible": 1
+      },
+      "C": {
+        "further_research_required": 43,
+        "insufficient_evidence": 2,
+        "not_eligible": 1
+      },
+      "evidenceScoreC": {
+        "0": 1,
+        "1": 2,
+        "2": 43
+      },
+      "assessmentStatus": {
+        "accepted": 46
+      },
+      "assessmentVerdict": {
+        "supported": 43,
+        "uncertain": 3
+      },
+      "assessmentErrors": {},
+      "conditions": {
+        "structured_tag": 44,
+        "text_span": 2,
+        "superseded_method": 1,
+        "multiple_claims_same_target": 2
+      }
+    },
+    "explicit_text_facility": {
+      "items": 5,
+      "bySplit": {
+        "development": 1,
+        "calibration": 4
+      },
+      "A": {
+        "further_research_required": 3,
+        "not_eligible": 2
+      },
+      "B": {
+        "further_research_required": 1,
+        "not_eligible": 2,
+        "auto_verify": 2
+      },
+      "C": {
+        "further_research_required": 1,
+        "not_eligible": 2,
+        "auto_verify": 2
+      },
+      "evidenceScoreC": {
+        "1": 1,
+        "2": 2,
+        "3": 2
+      },
+      "assessmentStatus": {
+        "accepted": 5
+      },
+      "assessmentVerdict": {
+        "uncertain": 1,
+        "supported": 4
+      },
+      "assessmentErrors": {},
+      "conditions": {
+        "current": 3,
+        "multiple_claims_same_target": 5,
+        "superseded": 2,
+        "superseded_method": 2
+      }
+    },
+    "high_consequence": {
+      "items": 38,
+      "bySplit": {
+        "holdout": 18,
+        "calibration": 15,
+        "development": 5
+      },
+      "A": {
+        "not_eligible": 37,
+        "insufficient_evidence": 1
+      },
+      "B": {
+        "not_eligible": 37,
+        "insufficient_evidence": 1
+      },
+      "C": {
+        "not_eligible": 37,
+        "insufficient_evidence": 1
+      },
+      "evidenceScoreC": {
+        "1": 5,
+        "2": 33
+      },
+      "assessmentStatus": {
+        "accepted": 37,
+        "rejected": 1
+      },
+      "assessmentVerdict": {
+        "supported": 33,
+        "uncertain": 3,
+        "insufficient_evidence": 1,
+        "none": 1
+      },
+      "assessmentErrors": {
+        "contradiction_without_citation": 1
+      },
+      "conditions": {
+        "structured_capacity": 34,
+        "text_capacity": 4,
+        "superseded_method": 3,
+        "prior_holdout": 1,
+        "multiple_claims_same_target": 1
+      }
+    }
+  },
+  "bySource": {
+    "situr_accommodation_register": 490,
+    "osm_geofabrik_romania": 334
+  },
+  "followUp": {
+    "applicable": 0
+  },
+  "verifiedOutcomes": 0
+}

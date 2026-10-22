@@ -51,6 +51,8 @@ const OSM_FIELDS = [
   'garden',
 ] as const;
 const REGISTER_FIELDS = ['Număr locuri', 'Număr spații', 'Tip unitate'] as const;
+/** Text that may carry an email address, URL or phone number never leaves Research. */
+export const CONTACT_PATTERN = /@|https?:\/\/|www\.|(?:\+?\d[\s().-]*){9,}/i;
 
 function object(value: unknown): Record<string, unknown> {
   const parsed = z.record(z.string(), z.unknown()).safeParse(value);
@@ -71,7 +73,7 @@ export function projectFields(sourceKey: string, payload: JsonObject) {
     if (typeof value !== 'string' && typeof value !== 'number') continue;
     const text = String(value);
     if (text.trim() === '') continue;
-    if (/@|https?:\/\/|www\.|(?:\+?\d[\s().-]*){9,}/i.test(text)) {
+    if (CONTACT_PATTERN.test(text)) {
       excludedFields.push({ path, reason: 'possible_contact_or_url' });
       continue;
     }

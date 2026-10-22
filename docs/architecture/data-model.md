@@ -147,6 +147,31 @@ Reverification is triggered by age, changed evidence, contradiction, source
 risk, or explicit Administrator action. Freshness policy is defined per field
 or Claim type rather than by one global expiration interval.
 
+### Verification physical model (first Curation slice)
+
+Migration 0006 adds three Curation tables (ADR 0025):
+
+- `verification_decision` — append-only, one row per decision about one Claim:
+  Candidate and campaign, category, method (`machine_policy` or
+  `administrator`), outcome, the machine recommendation and strategy, policy
+  version, evidence score, Evidence and input Claim identifiers, a JSONB `basis`
+  (validation, assessment, follow-up, reasons), an input digest that makes reruns
+  idempotent, as-of and decision times, the acting Administrator, an optional
+  superseded decision and override reason, and a `publication` column pinned to
+  `separate_decision_required`. Checks refuse machine verification without an
+  eligibility, machine verification of the high-consequence category, machine
+  rejections and Administrator decisions without a reason.
+- `verification_evaluation` — aggregate scored reports per policy and corpus;
+  never review sheets or Evidence content.
+- `verification_eligibility` — an Administrator's approval of one category whose
+  gate passed; at least two reviewers, at least 100 accepted holdout items, an
+  error bound of at most 5 %, and never the high-consequence category. One active
+  row per policy version and category.
+
+Decisions reference Claims because canonical Providers and Offers are not built.
+Publication eligibility is derived from the current decision's method and the
+category, and Publication itself remains unimplemented.
+
 ## Audit and deletion
 
 Sensitive mutations record actor, timestamp, action, target, and relevant before

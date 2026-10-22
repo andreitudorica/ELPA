@@ -15,6 +15,7 @@ import { Logger } from 'nestjs-pino';
 import { AccessService } from './access';
 import { AppModule } from './app.module';
 import type { AppClsStore } from './common';
+import { CATEGORY_IDS, SPLITS, VerificationService } from './curation';
 import {
   AcquisitionReportService,
   AcquisitionRunService,
@@ -43,6 +44,16 @@ import {
 const USAGE = `Usage: node dist/research-cli.js <command> [options]
 
 Commands:
+  verification-corpus --campaign <id> --out <dir> [--prior <manifest.json>...]
+                                                 Seal the verification evaluation corpus and blind review template
+  verification-assess --sample <dir> --split <development|calibration|holdout> --budget <usd>
+                      [--concurrency <n>] [--limit <n>]
+                                                 Capture model assessments under a cumulative hard budget
+  verification-run --sample <dir>                Validate, decide and persist machine Verification Decisions
+  verification-score --sample <dir> [--labels <json>...] [--adjudication <json>]
+                                                 Score strategies against independent labels; record the evaluation
+  verification-approve --evaluation <id> --category <id>
+                                                 Approve one category whose predeclared gate passed
   reconciliation-corpus --campaign <id> --out <dir> Seal a bounded existing-Claim corpus
   reconciliation-run --sample <dir>              Persist immutable research assessments
   reconciliation-score --sample <dir> [--labels <json>...] [--adjudication <json>]
@@ -135,6 +146,13 @@ async function main(): Promise<void> {
       frame: { type: 'string' },
       metadata: { type: 'string' },
       adjudication: { type: 'string' },
+      prior: { type: 'string', multiple: true },
+      split: { type: 'string' },
+      budget: { type: 'string' },
+      concurrency: { type: 'string' },
+      limit: { type: 'string' },
+      evaluation: { type: 'string' },
+      category: { type: 'string' },
     },
   });
 
@@ -200,6 +218,41 @@ async function runCommand(
   app: Awaited<ReturnType<typeof NestFactory.createApplicationContext>>,
 ): Promise<unknown> {
   switch (command) {
+    case 'verification-corpus':
+      return app
+        .get(VerificationService)
+        .exportCorpus(
+          required(values, 'campaign'),
+          resolve(required(values, 'out')),
+          Array.isArray(values.prior) ? values.prior.map((p) => resolve(String(p))) : [],
+        );
+    case 'verification-assess': {
+      const split = required(values, 'split');
+      if (!(SPLITS as readonly string[]).includes(split)) throw new Error(`Unknown split ${split}`);
+      const budget = Number(required(values, 'budget'));
+      if (!Number.isFinite(budget) || budget <= 0) throw new Error('--budget must be positive USD');
+      return app.get(VerificationService).assess(resolve(required(values, 'sample')), {
+        split: SPLITS.find((s) => s === split) ?? 'development',
+        budgetUsd: budget,
+        concurrency: typeof values.concurrency === 'string' ? Number(values.concurrency) : 4,
+        limit: typeof values.limit === 'string' ? Number(values.limit) : undefined,
+      });
+    }
+    case 'verification-run':
+      return app.get(VerificationService).run(resolve(required(values, 'sample')));
+    case 'verification-score':
+      return app
+        .get(VerificationService)
+        .score(
+          resolve(required(values, 'sample')),
+          Array.isArray(values.labels) ? values.labels.map((p) => resolve(String(p))) : [],
+          typeof values.adjudication === 'string' ? resolve(values.adjudication) : undefined,
+        );
+    case 'verification-approve': {
+      const category = CATEGORY_IDS.find((c) => c === required(values, 'category'));
+      if (category === undefined) throw new Error('Unknown --category');
+      return app.get(VerificationService).approve(required(values, 'evaluation'), category);
+    }
     case 'reconciliation-corpus':
       return app
         .get(ReconciliationService)
